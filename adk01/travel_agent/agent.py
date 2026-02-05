@@ -1,10 +1,11 @@
 from google.adk.agents import LlmAgent
 from google.adk.tools import google_search
+from google.adk.tools.agent_tool import AgentTool
 from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
 
-MODEL = "gemini-2.0-flash-001"
+MODEL = "gemini-2.5-pro"
 
 # --- Specialist Agent: Idea Generator ---
 idea_agent = LlmAgent(
@@ -46,6 +47,9 @@ root_agent = LlmAgent(
         2. Use "{refiner_agent.name}" to filter those ideas against the user's budget.
         3. Present the final, refined list to the user clearly.
     """,
-    sub_agents=[idea_agent, refiner_agent],
+    tools=[
+        AgentTool(agent=idea_agent),
+        AgentTool(agent=refiner_agent),
+    ],
 )
 
