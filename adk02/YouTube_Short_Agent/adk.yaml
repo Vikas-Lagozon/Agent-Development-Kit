@@ -1,2 +1,0 @@
-name: travel-agent
-entrypoint: agent:root_agent

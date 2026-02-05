@@ -1,51 +1,66 @@
 from google.adk.agents import LlmAgent
 from google.adk.tools import google_search
-# 1. Add this import
-from google.adk.models.lite_llm import LiteLlm 
+from google.adk.tools.agent_tool import AgentTool
+from dotenv import load_dotenv, find_dotenv
 
-# 2. Wrap your model name in the LiteLlm class
-MODEL = LiteLlm(model="ollama_chat/qwen3:0.6b")
+from .util import load_instructions_from_file
 
-# --- Specialist Agent: Idea Generator ---
-idea_agent = LlmAgent(
+load_dotenv(find_dotenv())
+
+MODEL = "gemini-2.5-pro"
+
+# ==================================== Sub Agents ====================================
+
+scriptwriter_agent = LlmAgent(
+    name="ScriptWriterAgent",
     model=MODEL,
-    name="IdeaAgent",
-    tools=[google_search],
-    description="Brainstorm creative and exciting weekend travel ideas based on user preferences.",
-    instruction="""
-    You are a creative travel planner. 
-    Use the search tool to find unique weekend getaway ideas tailored to the user's interests and location.
-    Be specific about why these locations fit the user's request.
-    """,
-    disallow_transfer_to_peers=True,
+    # Loads instructions for professional, informative YouTube Shorts [cite: 1]
+    instruction=load_instructions_from_file("scriptwriter_instruction.txt"),
+    # Directly passing the function avoids the 'name' keyword error
+    tools=[google_search], 
+    output_key="generated_script",
 )
 
-# --- Specialist Agent: Budget Refiner ---
-refiner_agent = LlmAgent(
+visualizer_agent = LlmAgent(
+    name="ShortVisualizerAgent",
     model=MODEL,
-    name="RefinerAgent",
-    description="Filters travel ideas to ensure they fit within a specific budget.",
-    instruction="""
-    Review the trip ideas provided by the IdeaAgent. 
-    Use your tools to estimate costs for travel and stay. 
-    Respond ONLY with the ideas likely to cost under the provided budget for a full weekend. 
-    If none seem to fit, say 'No suitable ideas found within budget.'
-    """,
-    tools=[google_search],
-    disallow_transfer_to_peers=True,
+    # Loads instructions for visual planning and clarity [cite: 16, 18]
+    instruction=load_instructions_from_file("visualizer_instruction.txt"),
+    description="Generates visual concepts based on the provided script.",
+    output_key="generated_visuals",
 )
 
-# --- Root Agent: The Orchestrator ---
-root_agent = LlmAgent(
+formatter_agent = LlmAgent(
+    name="ShortFormatterAgent",
     model=MODEL,
-    name="PlannerAgent",
+    instruction=(
+        "Combine the script from state['generated_script'] "
+        "and visual concepts from state['generated_visuals'] "
+        "into a formatted YouTube short concept."
+    ),
+    description="Formats the script and visual concepts into a final YouTube short format.",
+    output_key="final_short_concept",
+)
+
+# ==================================== Root Agent ====================================
+
+youtube_short_agent = LlmAgent(
+    name="YouTubeShortAgent",
+    model=MODEL,
     instruction=f"""
-    You are a Trip Planner, coordinating specialist agents.
-    Your goal is to provide budget-friendly weekend trip ideas. For each user request:
-        1. Use "{idea_agent.name}" to brainstorm ideas based on the user's request. 
-        2. Use "{refiner_agent.name}" to filter those ideas against the user's budget.
-        3. Present the final, refined list to the user clearly.
-    """,
-    sub_agents=[idea_agent, refiner_agent],
+You are a YouTube Short Content Creator Agent.
+
+Workflow:
+1. {scriptwriter_agent.name}
+2. {visualizer_agent.name}
+3. {formatter_agent.name}
+""",
+    tools=[
+        AgentTool(agent=scriptwriter_agent),
+        AgentTool(agent=visualizer_agent),
+        AgentTool(agent=formatter_agent),
+    ],
 )
+
+root_agent = youtube_short_agent
 
