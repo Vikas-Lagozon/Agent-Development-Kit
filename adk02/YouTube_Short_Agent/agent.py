@@ -11,6 +11,7 @@ MODEL = "gemini-2.5-pro"
 
 # ==================================== Sub Agents ====================================
 
+# --- Sub Agent 1: Script Writer ---
 scriptwriter_agent = LlmAgent(
     name="ScriptWriterAgent",
     model=MODEL,
@@ -21,6 +22,7 @@ scriptwriter_agent = LlmAgent(
     output_key="generated_script",
 )
 
+# --- Sub Agent 2: Visualizer ---
 visualizer_agent = LlmAgent(
     name="ShortVisualizerAgent",
     model=MODEL,
@@ -30,6 +32,7 @@ visualizer_agent = LlmAgent(
     output_key="generated_visuals",
 )
 
+# --- Sub Agent 3: Formatter ---
 formatter_agent = LlmAgent(
     name="ShortFormatterAgent",
     model=MODEL,
@@ -43,7 +46,7 @@ formatter_agent = LlmAgent(
 )
 
 # ==================================== Root Agent ====================================
-
+# --- LLM Agent ---
 youtube_short_agent = LlmAgent(
     name="YouTubeShortAgent",
     model=MODEL,
