@@ -1,5 +1,5 @@
 import requests
-from market_agent.config import GOOGLE_API_KEY, GOOGLE_CSE_ID
+from market_agent.config import GOOGLE_SEARCH_API_KEY, GOOGLE_CSE_ID
 
 
 def google_search(query: str) -> str:
@@ -16,7 +16,7 @@ def google_search(query: str) -> str:
     """
     url = "https://www.googleapis.com/customsearch/v1"
     params = {
-        "key": GOOGLE_API_KEY,
+        "key": GOOGLE_SEARCH_API_KEY,
         "cx": GOOGLE_CSE_ID,
         "q": query
     }
@@ -37,3 +37,28 @@ def google_search(query: str) -> str:
 
     return "\n".join(snippets)
 
+
+if __name__ == "__main__":
+    print("=== Google Search Tool Smoke Test ===")
+
+    result = google_search(
+        "cloud security market growth rate 2026"
+    )
+    print(result)
+
+
+
+
+# (venv) D:\Agent-Development-Kit\adk08>uv run python -m market_agent.tools.google_search
+# === Google Search Tool Smoke Test ===
+# Traceback (most recent call last):
+#   File "<frozen runpy>", line 198, in _run_module_as_main
+#   File "<frozen runpy>", line 88, in _run_code
+#   File "D:\Agent-Development-Kit\adk08\market_agent\tools\google_search.py", line 44, in <module>
+#     result = google_search(
+#              ^^^^^^^^^^^^^^
+#   File "D:\Agent-Development-Kit\adk08\market_agent\tools\google_search.py", line 25, in google_search
+#     response.raise_for_status()
+#   File "D:\Agent-Development-Kit\venv\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
+#     raise HTTPError(http_error_msg, response=self)
+# requests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://www.googleapis.com/customsearch/v1?key=AIzaSyDJnA30HuiU2DacaTCSCZBLWmhwFlJVNmY&cx=3705eaca13c894a13&q=cloud+security+market+growth+rate+2026

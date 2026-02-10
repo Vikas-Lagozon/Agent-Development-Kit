@@ -29,13 +29,12 @@ def create_product(product_id: str, product_name: str, category: str) -> str:
     """
     Create a new product entry.
     """
-    table = f"{BQ_PROJECT_ID}.{BQ_DATASET}.products"
-    rows = [{
-        "product_id": product_id,
-        "product_name": product_name,
-        "category": category
-    }]
-    client.insert_rows_json(table, rows)
+    query = f"""
+    INSERT INTO `{BQ_PROJECT_ID}.{BQ_DATASET}.products`
+    (product_id, product_name, category)
+    VALUES ('{product_id}', '{product_name}', '{category}')
+    """
+    client.query(query).result()
     return "Product created successfully."
 
 
@@ -74,7 +73,7 @@ def update_product(
     SET {", ".join(updates)}
     WHERE product_id = '{product_id}'
     """
-    client.query(query)
+    client.query(query).result()
     return "Product updated successfully."
 
 
@@ -86,7 +85,7 @@ def delete_product(product_id: str) -> str:
     DELETE FROM `{BQ_PROJECT_ID}.{BQ_DATASET}.products`
     WHERE product_id = '{product_id}'
     """
-    client.query(query)
+    client.query(query).result()
     return "Product deleted successfully."
 
 # ================================================================
@@ -102,14 +101,12 @@ def create_sale(
     """
     Create a new sales record.
     """
-    table = f"{BQ_PROJECT_ID}.{BQ_DATASET}.sales"
-    rows = [{
-        "sale_id": sale_id,
-        "product_id": product_id,
-        "sale_date": sale_date,
-        "revenue": revenue
-    }]
-    client.insert_rows_json(table, rows)
+    query = f"""
+    INSERT INTO `{BQ_PROJECT_ID}.{BQ_DATASET}.sales`
+    (sale_id, product_id, sale_date, revenue)
+    VALUES ('{sale_id}', '{product_id}', DATE('{sale_date}'), {revenue})
+    """
+    client.query(query).result()
     return "Sale created successfully."
 
 
@@ -145,7 +142,7 @@ def update_sale(sale_id: str, revenue: float) -> str:
     SET revenue = {revenue}
     WHERE sale_id = '{sale_id}'
     """
-    client.query(query)
+    client.query(query).result()
     return "Sale updated successfully."
 
 
@@ -157,7 +154,7 @@ def delete_sale(sale_id: str) -> str:
     DELETE FROM `{BQ_PROJECT_ID}.{BQ_DATASET}.sales`
     WHERE sale_id = '{sale_id}'
     """
-    client.query(query)
+    client.query(query).result()
     return "Sale deleted successfully."
 
 # ================================================================
@@ -173,14 +170,12 @@ def create_market_growth(
     """
     Insert a market growth report.
     """
-    table = f"{BQ_PROJECT_ID}.{BQ_DATASET}.market_growth"
-    rows = [{
-        "report_date": report_date,
-        "category": category,
-        "growth_percent": growth_percent,
-        "source": source
-    }]
-    client.insert_rows_json(table, rows)
+    query = f"""
+    INSERT INTO `{BQ_PROJECT_ID}.{BQ_DATASET}.market_growth`
+    (report_date, category, growth_percent, source)
+    VALUES (DATE('{report_date}'), '{category}', {growth_percent}, '{source}')
+    """
+    client.query(query).result()
     return "Market growth record created successfully."
 
 
@@ -208,10 +203,10 @@ def update_market_growth(
     query = f"""
     UPDATE `{BQ_PROJECT_ID}.{BQ_DATASET}.market_growth`
     SET growth_percent = {growth_percent}
-    WHERE report_date = '{report_date}'
+    WHERE report_date = DATE('{report_date}')
       AND category = '{category}'
     """
-    client.query(query)
+    client.query(query).result()
     return "Market growth record updated successfully."
 
 
@@ -221,10 +216,10 @@ def delete_market_growth(report_date: str, category: str) -> str:
     """
     query = f"""
     DELETE FROM `{BQ_PROJECT_ID}.{BQ_DATASET}.market_growth`
-    WHERE report_date = '{report_date}'
+    WHERE report_date = DATE('{report_date}')
       AND category = '{category}'
     """
-    client.query(query)
+    client.query(query).result()
     return "Market growth record deleted successfully."
 
 # ================================================================
@@ -235,9 +230,6 @@ def get_cloud_security_performance(days_back: int = 30) -> List[dict]:
     """
     Compare internal Cloud Security sales performance against
     the latest available market growth benchmark.
-
-    - Uses partition pruning on sales.sale_date
-    - Selects the most recent market_growth record
     """
     start_date = date.today() - timedelta(days=days_back)
 
@@ -268,6 +260,8 @@ def get_cloud_security_performance(days_back: int = 30) -> List[dict]:
 
     return list(client.query(query))
 
+
+
 if __name__ == "__main__":
     print("=== BigQuery Tool Smoke Test ===")
 
@@ -294,22 +288,21 @@ if __name__ == "__main__":
 
 
 
-# (venv) D:\Agent-Development-Kit\adk08>uv run python -m market_agent.tools.bigquery_tool
+
+
+# (venv) D:\Agent-Development-Kit\adk08>uv run python -m market_agent.tools.bigquery_tool2
 # === BigQuery Tool Smoke Test ===
 # Traceback (most recent call last):
 #   File "<frozen runpy>", line 198, in _run_module_as_main
 #   File "<frozen runpy>", line 88, in _run_code
-#   File "D:\Agent-Development-Kit\adk08\market_agent\tools\bigquery_tool.py", line 275, in <module>
+#   File "D:\Agent-Development-Kit\adk08\market_agent\tools\bigquery_tool2.py", line 269, in <module>
 #     print(create_product("P100", "Cloud Shield", "Cloud Security"))
 #           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-#   File "D:\Agent-Development-Kit\adk08\market_agent\tools\bigquery_tool.py", line 38, in create_product
-#     client.insert_rows_json(table, rows)
-#   File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\cloud\bigquery\client.py", line 4010, in insert_rows_json
-#     response = self._call_api(
-#                ^^^^^^^^^^^^^^^
-#   File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\cloud\bigquery\client.py", line 861, in _call_api
-#     return call()
-#            ^^^^^^
+#   File "D:\Agent-Development-Kit\adk08\market_agent\tools\bigquery_tool2.py", line 37, in create_product
+#     client.query(query).result()
+#   File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\cloud\bigquery\job\query.py", line 1773, in result
+#     while not is_job_done():
+#               ^^^^^^^^^^^^^
 #   File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 294, in retry_wrapped_func
 #     return retry_target(
 #            ^^^^^^^^^^^^^
@@ -321,6 +314,9 @@ if __name__ == "__main__":
 #   File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\api_core\retry\retry_unary.py", line 147, in retry_target
 #     result = target()
 #              ^^^^^^^^
-#   File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\cloud\_http\__init__.py", line 494, in api_request
-#     raise exceptions.from_http_response(response)
-# google.api_core.exceptions.Forbidden: 403 POST https://bigquery.googleapis.com/bigquery/v2/projects/gen-lang-client-0337338794/datasets/market_intelligence/tables/products/insertAll?prettyPrint=false: Access Denied: BigQuery BigQuery: Streaming insert is not allowed in the free tier
+#   File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\cloud\bigquery\job\query.py", line 1722, in is_job_done
+#     raise job_failed_exception
+# google.api_core.exceptions.Forbidden: 403 Billing has not been enabled for this project. Enable billing at https://console.cloud.google.com/billing. DML queries are not allowed in the free tier. Set up a billing account to remove this restriction.; reason: billingNotEnabled, message: Billing has not been enabled for this project. Enable billing at https://console.cloud.google.com/billing. DML queries are not allowed in the free tier. Set up a billing account to remove this restriction.
+
+# Location: US
+# Job ID: 6832398b-4f31-42ec-a1d9-3d7e23fff694

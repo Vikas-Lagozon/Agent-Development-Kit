@@ -1,5 +1,5 @@
 -- ============================================================
--- Project  : modified-alloy-483408-q0
+-- Project  : gen-lang-client-0337338794
 -- Dataset  : market_intelligence
 -- Purpose  : Market Intelligence Agent (Google ADK)
 -- Design   : Star-schema analytics (Dimension + Fact + Reference)
@@ -8,7 +8,7 @@
 -- ------------------------------------------------------------
 -- DATASET
 -- ------------------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `modified-alloy-483408-q0.market_intelligence`
+CREATE SCHEMA IF NOT EXISTS `gen-lang-client-0337338794.market_intelligence`
 OPTIONS (
   location = "US",
   description = "Market Intelligence dataset for ADK-based analytical agents"
@@ -19,7 +19,7 @@ OPTIONS (
 -- Defines WHAT we sell
 -- ============================================================
 CREATE TABLE IF NOT EXISTS
-  `modified-alloy-483408-q0.market_intelligence.products`
+  `gen-lang-client-0337338794.market_intelligence.products`
 (
   product_id STRING NOT NULL,
   product_name STRING NOT NULL,
@@ -35,7 +35,7 @@ OPTIONS (
 -- Defines HOW MUCH and WHEN we sell
 -- ============================================================
 CREATE TABLE IF NOT EXISTS
-  `modified-alloy-483408-q0.market_intelligence.sales`
+  `gen-lang-client-0337338794.market_intelligence.sales`
 (
   sale_id STRING NOT NULL,
   product_id STRING NOT NULL,
@@ -53,7 +53,7 @@ OPTIONS (
 -- Defines EXTERNAL MARKET BENCHMARKS
 -- ============================================================
 CREATE TABLE IF NOT EXISTS
-  `modified-alloy-483408-q0.market_intelligence.market_growth`
+  `gen-lang-client-0337338794.market_intelligence.market_growth`
 (
   report_date DATE NOT NULL,
   category STRING NOT NULL,
