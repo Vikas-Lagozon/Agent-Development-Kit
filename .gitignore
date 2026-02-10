@@ -2,4 +2,4 @@ venv/
 .*
 _*
 __*
-service_account_key.json
+*.json
