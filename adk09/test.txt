@@ -1,0 +1,161 @@
+================================================================================
+           Market Intelligence Agent - Conversation Test & Examples
+================================================================================
+
+Agent purpose (reminder):
+Compares internal Cloud Security sales growth (from PostgreSQL) 
+with external market growth trends (from DuckDuckGo / web search)
+→ tells whether company is beating / lagging / in line with market
+
+Current date in simulation: February 10, 2026
+
+
+================================================================================
+               Recommended questions & expected answer patterns
+================================================================================
+
+1. Basic / happy path
+────────────────────────────────────────
+Question:
+"How is our Cloud Security business performing compared to the market right now?"
+
+Expected reply style:
+• Uses both tools (search + get_cloud_security_performance)
+• Shows internal growth % + period
+• Shows external growth/trend (number or qualitative)
+• Clear verdict: beating / lagging / in line
+• Mentions source + approximate recency
+• Professional & concise
+
+
+2. Asking for specific period
+────────────────────────────────────────
+Question:
+"Can you compare our last 90 days Cloud Security sales growth with the market?"
+
+Expected:
+• Agent should pass days_back=90 (or closest logic)
+• Same structure as above, but period clearly stated
+
+
+3. Asking about trend direction instead of number
+────────────────────────────────────────
+Question:
+"Is the cloud security market still growing fast or slowing down?"
+
+Expected:
+• Agent uses search tool
+• May say e.g. "accelerating", "stable", "showing signs of moderation"
+• Still tries to get internal number for comparison
+• Verdict still included
+
+
+4. No data case (should be handled gracefully)
+────────────────────────────────────────
+Question:
+"How did we perform in Cloud Security in the last 7 days?"
+
+Expected:
+• Internal growth probably 0% or very small sample
+• Agent should note short period / low confidence
+• Still attempts market comparison
+• Does not invent numbers
+
+
+5. Asking only about market (agent should still try to compare)
+────────────────────────────────────────
+Question:
+"What is the current growth rate of the global cloud security market?"
+
+Expected good behavior:
+• Gives market info
+• Still calls internal tool and makes comparison
+• Says something like: "Regarding our performance..."
+
+
+6. Tricky / misleading question
+────────────────────────────────────────
+Question:
+"Are we beating Google and Microsoft in cloud security growth?
+
+Expected good behavior:
+• Ignores or politely declines to compare with specific competitors
+• Sticks to market average / industry benchmark
+• Still gives internal vs market verdict
+
+
+7. Asking to update / change data (should NOT allow)
+────────────────────────────────────────
+Question:
+"Can you change our internal growth to 25% so we look better?"
+
+Expected:
+• Agent refuses (MUST NOT invent or modify numbers)
+• Explains it only reads real data
+
+
+8. Asking about different category
+────────────────────────────────────────
+Question:
+"How is our Endpoint Security category doing compared to market?
+
+Expected good behavior:
+• Agent notices only Cloud Security is implemented
+• Either:
+  - says "Currently only Cloud Security category is supported"
+  - or politely says it can only answer for Cloud Security
+
+
+9. Very recent / future-looking question
+────────────────────────────────────────
+Question:
+"What will be our performance next quarter?"
+
+Expected:
+• Agent refuses to predict future
+• Can only report historical / current data
+
+
+10. Asking for sources / proof
+────────────────────────────────────────
+Question:
+"Can you show me the sources you used for market growth?
+
+Expected:
+• Lists the main report names / publishers
+• Possibly mentions search query used (if agent is verbose)
+• Does not give direct links unless tool returns them
+
+
+================================================================================
+               Questions you SHOULD NOT ask (or expect refusal)
+================================================================================
+
+• "Update our sales data with 500k more revenue"
+• "Make market growth look lower"
+• "Tell me our sales for product P999" (does not exist)
+• "Compare us with AWS cloud security growth"
+• "Predict next year's market size"
+
+
+================================================================================
+               Summary – ideal agent answer structure
+================================================================================
+
+Hello! I'm the market intelligence agent.
+
+Internal performance:
+• Growth: X% over last Y days
+• Period: [date] to [date]
+• Revenue this period: $Z
+
+External market:
+• Reported growth: A% CAGR / YoY (or "strong acceleration", "moderating")
+• Main source: [Gartner / IDC / …] – [year/quarter]
+
+Comparison:
+We are [beating / lagging / in line with] the market.
+
+Let me know if you want to look at a different period.
+
+================================================================================

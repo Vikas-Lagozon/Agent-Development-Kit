@@ -1,0 +1,6 @@
+# requirements.txt
+psycopg2
+python-dotenv
+requests
+duckduckgo-search
+google-adk
