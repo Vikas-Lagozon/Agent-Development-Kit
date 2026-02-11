@@ -1,15 +1,12 @@
 from google.adk.agents import LlmAgent
+from google.adk.tools.google_search_tool import GoogleSearchTool
 
 from market_agent.prompt import DESCRIPTION, INSTRUCTIONS
-
-# BigQuery tool
 from market_agent.tools.bigquery_tool import (
-    get_cloud_security_performance
-)
-
-# Google Search tool (your existing implementation)
-from market_agent.tools.google_search import (
-    google_search
+    product_tool,
+    sale_tool,
+    market_growth_tool,
+    get_cloud_security_performance,
 )
 
 # ------------------------------------------------------------
@@ -17,19 +14,22 @@ from market_agent.tools.google_search import (
 # ------------------------------------------------------------
 market_intelligence_agent = LlmAgent(
     name="market_intelligence_agent",
-
-    # Shown in ADK UI + high-level context
+    model="gemini-2.5-flash",
     description=DESCRIPTION,
-
-    # This is the SYSTEM PROMPT (rules + reasoning behavior)
     instruction=INSTRUCTIONS,
 
-    # Tools available to the LLM
     tools=[
-        google_search,                 # External market trends
-        get_cloud_security_performance # Internal sales analytics
-    ]
-)
+        # External research
+        GoogleSearchTool(bypass_multi_tools_limit=True),
+        
+        # Internal data management
+        product_tool,
+        sale_tool,
+        market_growth_tool,
 
+        # Internal analytics
+        get_cloud_security_performance,
+    ],
+)
 
 root_agent = market_intelligence_agent
