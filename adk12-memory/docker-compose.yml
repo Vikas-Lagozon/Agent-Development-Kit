@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  redis:
+    image: redis:7
+    container_name: redis-server
+    restart: always
+
+    ports:
+      - "6379:6379"
+
+    command: >
+      redis-server
+      --appendonly yes
+      --requirepass myredispassword
+
+    volumes:
+      - redis_data:/data
+
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "myredispassword", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  redis_data:
