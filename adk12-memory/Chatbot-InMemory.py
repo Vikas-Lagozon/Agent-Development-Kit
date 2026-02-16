@@ -4,7 +4,7 @@ from config import config
 
 from google.adk.agents import LlmAgent
 from google.adk.runners import Runner
-from google.adk.sessions import DatabaseSessionService
+from google.adk.sessions import InMemorySessionService
 from google.genai import types
 
 
@@ -16,9 +16,6 @@ os.environ["GOOGLE_API_KEY"] = config.GOOGLE_API_KEY
 APP_NAME = "my_chatbot_app"
 USER_ID = "user_1"
 SESSION_ID = "session_001"
-
-# SQLite async URL
-db_url = "sqlite+aiosqlite:///./my_agent_data.db"
 
 
 # -------------------------------------------------
@@ -37,14 +34,13 @@ Keep responses clear and conversational.
 # -------------------------------------------------
 # Main Async Function
 # -------------------------------------------------
-
 async def main():
 
-    # 1️⃣ Create Database Session Service
-    session_service = DatabaseSessionService(db_url=db_url)
+    # 1️⃣ Create Session Service
+    session_service = InMemorySessionService()
 
     # 2️⃣ Create Session
-    session = await session_service.create_session(
+    await session_service.create_session(
         app_name=APP_NAME,
         user_id=USER_ID,
         session_id=SESSION_ID,
@@ -60,7 +56,6 @@ async def main():
 
     print("\n================ CHATBOT STARTED ================\n")
 
-    # 4️⃣ Interactive Conversation
     while True:
 
         message = input("👤 User: ")
@@ -70,7 +65,8 @@ async def main():
 
         print("🤖 Assistant: ", end="", flush=True)
 
-        async for event in runner.run(
+        # ✅ TRUE ASYNC STREAMING
+        async for event in runner.run_async(
             user_id=USER_ID,
             session_id=SESSION_ID,
             new_message=types.Content(
@@ -79,13 +75,16 @@ async def main():
             )
         ):
             if event.content and event.content.parts:
-                print(event.content.parts[0].text, end="", flush=True)
+                text = event.content.parts[0].text
 
-        print("\n")
+                if text:
+                    print(text, end="", flush=True)
+
+        print("\n")  # newline after response completes
 
     print("\n================ CHATBOT ENDED ================\n")
 
-    # 5️⃣ Inspect Final Session
+    # 4️⃣ Inspect Final Session
     final_session = await session_service.get_session(
         app_name=APP_NAME,
         user_id=USER_ID,
@@ -98,10 +97,18 @@ async def main():
     print("Total Events:", len(final_session.events))
     print("---------------------------------\n")
 
+    # 5️⃣ Optional cleanup
+    await session_service.delete_session(
+        app_name=APP_NAME,
+        user_id=USER_ID,
+        session_id=SESSION_ID
+    )
+
+    print("✅ Session deleted successfully.")
+
 
 # -------------------------------------------------
 # Run App
 # -------------------------------------------------
-
 if __name__ == "__main__":
     asyncio.run(main())

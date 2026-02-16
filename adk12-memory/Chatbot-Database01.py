@@ -13,12 +13,12 @@ from google.genai import types
 # -------------------------------------------------
 os.environ["GOOGLE_API_KEY"] = config.GOOGLE_API_KEY
 
-APP_NAME = "my_chatbot_app"
+APP_NAME = "db_chatbot_app"
 USER_ID = "user_1"
 SESSION_ID = "session_001"
 
 # SQLite async URL
-db_url = "sqlite+aiosqlite:///./my_agent_data.db"
+db_url = "sqlite+aiosqlite:///./db_agent_data.db"
 
 
 # -------------------------------------------------
@@ -37,19 +37,29 @@ Keep responses clear and conversational.
 # -------------------------------------------------
 # Main Async Function
 # -------------------------------------------------
-
 async def main():
 
     # 1️⃣ Create Database Session Service
     session_service = DatabaseSessionService(db_url=db_url)
 
-    # 2️⃣ Create Session
-    session = await session_service.create_session(
+    # 🔥 Ensure tables exist (safe for most versions)
+    if hasattr(session_service, "initialize"):
+        await session_service.initialize()
+
+    # 2️⃣ Create or Load Session
+    session = await session_service.get_session(
         app_name=APP_NAME,
         user_id=USER_ID,
-        session_id=SESSION_ID,
-        state={"conversation_started": True}
+        session_id=SESSION_ID
     )
+
+    if not session:
+        await session_service.create_session(
+            app_name=APP_NAME,
+            user_id=USER_ID,
+            session_id=SESSION_ID,
+            state={"conversation_started": True}
+        )
 
     # 3️⃣ Create Runner
     runner = Runner(
@@ -70,7 +80,7 @@ async def main():
 
         print("🤖 Assistant: ", end="", flush=True)
 
-        async for event in runner.run(
+        async for event in runner.run_async(
             user_id=USER_ID,
             session_id=SESSION_ID,
             new_message=types.Content(
@@ -102,6 +112,6 @@ async def main():
 # -------------------------------------------------
 # Run App
 # -------------------------------------------------
-
 if __name__ == "__main__":
     asyncio.run(main())
+
