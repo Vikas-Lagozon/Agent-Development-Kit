@@ -5,7 +5,6 @@ Dynamic Brand-Aware Advertisement Generator
 Compatible with google-adk==1.22.0
 
 Run with:
-
     adk web
 
 Folder name must be a valid identifier:
@@ -39,9 +38,12 @@ IMAGE_MODEL = "gemini-2.5-flash-image"
 # IMAGE GENERATION TOOL
 # ============================================================
 
-import re
+async def generate_image_tool(
+    prompt: str,
+    brand_name: str,
+    tool_context: ToolContext,
+) -> dict:
 
-async def generate_image_tool(prompt: str, tool_context: ToolContext) -> dict:
     client = genai.Client()
 
     response = client.models.generate_content(
@@ -49,19 +51,12 @@ async def generate_image_tool(prompt: str, tool_context: ToolContext) -> dict:
         contents=[prompt],
     )
 
-    # --------------------------------------------------
-    # Extract Brand Name From Prompt
-    # --------------------------------------------------
-    brand_name_match = re.search(r"(?i)brand name[:\- ]+([A-Za-z0-9 &]+)", prompt)
-
-    if brand_name_match:
-        brand_name = brand_name_match.group(1).strip()
-    else:
-        # fallback if pattern not found
-        brand_name = "brand"
-
-    # sanitize filename (remove spaces & special chars)
-    brand_name_clean = re.sub(r'[^A-Za-z0-9]+', '_', brand_name)
+    # ----------------------------------------
+    # Clean Brand Name for Filename
+    # ----------------------------------------
+    brand_name_clean = "".join(
+        c if c.isalnum() else "_" for c in brand_name
+    )
 
     filename = f"{brand_name_clean}_ad_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
 
@@ -78,53 +73,19 @@ async def generate_image_tool(prompt: str, tool_context: ToolContext) -> dict:
     if image_bytes:
         artifact_part = types.Part.from_bytes(
             data=image_bytes,
-            mime_type="image/png"
+            mime_type="image/png",
         )
 
         await tool_context.save_artifact(
             filename=filename,
-            artifact=artifact_part
+            artifact=artifact_part,
         )
 
     return {
         "status": "success",
-        "message": f"Image generated and saved as {filename}"
+        "message": f"Image generated and saved as {filename}",
     }
 
-# async def generate_image_tool(prompt: str, tool_context: ToolContext) -> dict:
-#     client = genai.Client()
-
-#     response = client.models.generate_content(
-#         model=IMAGE_MODEL,
-#         contents=[prompt],
-#     )
-
-#     filename = f"brand_ad_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
-#     image_bytes = None
-
-#     for part in response.parts:
-#         if part.inline_data:
-#             image = part.as_image()
-#             image.save(filename)
-
-#             with open(filename, "rb") as f:
-#                 image_bytes = f.read()
-
-#     if image_bytes:
-#         artifact_part = types.Part.from_bytes(
-#             data=image_bytes,
-#             mime_type="image/png"
-#         )
-
-#         await tool_context.save_artifact(
-#             filename=filename,
-#             artifact=artifact_part
-#         )
-
-#     return {
-#         "status": "success",
-#         "message": f"Image generated and saved as {filename}"
-#     }
 
 generate_image = FunctionTool(func=generate_image_tool)
 
@@ -191,7 +152,7 @@ You are a cinematic AI creative director.
 
 From the previous structured output:
 
-1. Extract BRAND_NAME and VISUAL_DIRECTION.
+1. Extract BRAND_NAME.
 2. Create a highly detailed image generation prompt.
 3. Ensure the brand name is clearly visible in the image.
 4. Mention logo placement area.
@@ -200,8 +161,12 @@ From the previous structured output:
 
 IMPORTANT:
 
-After creating the final image prompt,
-you MUST call the generate_image tool.
+When calling generate_image tool, you MUST pass:
+
+{
+  "prompt": "<final image prompt>",
+  "brand_name": "<exact BRAND_NAME extracted>"
+}
 
 After the tool call,
 inform the user that the image is generated and visible above.
@@ -218,4 +183,3 @@ root_agent = SequentialAgent(
     name="dynamic_brand_ad_pipeline",
     sub_agents=[brand_research_agent, image_director_agent],
 )
-
