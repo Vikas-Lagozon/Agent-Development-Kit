@@ -1,0 +1,11 @@
+# Rohit
+You’ve developed a tool-aware AI assistant that seamlessly interacts with Jira, Confluence, and Gmail through specialized agents rather than hardcoded workflows. At the core is a Manager Agent that routes user intents to the correct specialist agents, ensuring all actions are deterministic, modular, and auditable. The system dynamically resolves IDs for Jira issues, Confluence pages, and spaces, removing the need for users to know APIs or internal identifiers. Through natural language, it can perform complex tasks across systems—like listing pages, searching issues, or orchestrating cross-tool actions—while maintaining reliability and correctness, making it especially valuable for enterprise environments.
+
+
+# Vikas
+I have worked on Google Agent Developement Kit with Gemini
+Worked on Gaurdrails, Apps, Plugin, ImageGeneration, VideoGeneration, Single TTS audio generation,
+Multi TTS audio generation. Agents, Tools, MCP Servers Session Management (InMemorySession, DatabaseSession)
+Artifacts, Events, BigQuery, Google Cloude, Credential and Role Settings and many more. 
+How to make multi agenting system
+take a root agent and attach many sub tools, and agents, with it.
