@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jarvis Chatbot</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <h1>Jarvis Chatbot</h1>
+
+        <div class="session-controls">
+            <button id="new-chat-btn">New Chat</button>
+            <select id="session-select">
+                {% for sid in sessions %}
+                <option value="{{ sid }}">{{ sid }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div id="chat-box"></div>
+        <form id="chat-form">
+            <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off" required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
