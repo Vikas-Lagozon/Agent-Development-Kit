@@ -3,16 +3,42 @@ from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from fastapi.middleware.cors import CORSMiddleware
 from chatbot import chat_stream, session_service, APP_NAME, USER_ID, web_reader_mcp, expense_tracker_mcp, to_do_mcp, runner
 import uuid
 import json
 import asyncio
 import logging
 from datetime import datetime, timezone
+from contextlib import asynccontextmanager
 
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="Jarvis Chatbot")
+# Lifespan events for startup/shutdown (handles MCP cleanup better)
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup: Initialize any resources (e.g., warm up MCP connections if needed)
+    logger.info("Jarvis starting up...")
+    yield
+    # Shutdown: Clean up
+    logger.info("Jarvis shutting down gracefully...")
+    try:
+        if runner and hasattr(runner, "shutdown"):
+            await asyncio.wait_for(runner.shutdown(), timeout=5.0)
+    except (asyncio.TimeoutError, Exception) as e:
+        logger.warning(f"Runner shutdown warning (safe to ignore): {e}")
+    # MCP subprocesses auto-terminate on process exit; no explicit close needed
+    logger.info("Shutdown complete.")
+
+app = FastAPI(title="Jarvis Chatbot", lifespan=lifespan)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Restrict in prod (e.g., ["https://yourdomain.com"])
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
