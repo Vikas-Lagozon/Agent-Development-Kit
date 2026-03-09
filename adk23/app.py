@@ -3,10 +3,14 @@ from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from chatbot import chat_stream, session_service, APP_NAME, USER_ID
+from chatbot import chat_stream, session_service, APP_NAME, USER_ID, web_reader_mcp, expense_tracker_mcp, to_do_mcp, runner
 import uuid
 import json
+import asyncio
+import logging
 from datetime import datetime, timezone
+
+logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Jarvis Chatbot")
 
@@ -14,38 +18,27 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 # In-memory session metadata store: { session_id: { name, created_at } }
-# For production, persist this in your database.
 session_meta: dict = {}
 
 # ─────────────────────────────────────────
 # Helper: extract a UTC ISO timestamp from an ADK session object
-# (handles both datetime objects and numeric epoch timestamps)
 # ─────────────────────────────────────────
 def _session_timestamp(s) -> str:
-    """
-    Try to get a meaningful creation timestamp from an ADK Session object.
-    Falls back to the current UTC time so that unknown sessions always
-    appear under 'Today' rather than 'Older'.
-    """
     for attr in ("create_time", "last_update_time"):
         val = getattr(s, attr, None)
         if val is None:
             continue
-        # datetime-like objects
         if hasattr(val, "isoformat"):
             return val.isoformat()
-        # Numeric epoch (seconds or milliseconds)
         try:
             num = float(val)
-            if num > 1e10:          # milliseconds → seconds
+            if num > 1e10:
                 num /= 1000
             return datetime.fromtimestamp(num, tz=timezone.utc).isoformat()
         except (TypeError, ValueError):
             pass
-        # String fallback
         if isinstance(val, str) and val:
             return val
-    # Nothing found — use now so the session lands in "Today"
     return datetime.now(timezone.utc).isoformat()
 
 
@@ -63,21 +56,15 @@ async def index(request: Request):
         for s in sessions_response.sessions:
             sid = s.id
             meta = session_meta.get(sid, {})
-
-            # ── Fix: recover created_at from the ADK session when session_meta
-            #         was cleared (e.g. after an app restart).
             created_at = meta.get("created_at", "")
             if not created_at:
                 created_at = _session_timestamp(s)
-                # Cache it so subsequent requests are fast
                 session_meta.setdefault(sid, {})["created_at"] = created_at
-
             sessions.append({
                 "id":         sid,
                 "name":       meta.get("name", sid[:8] + "…"),
                 "created_at": created_at,
             })
-        # Sort newest first
         sessions.sort(key=lambda x: x["created_at"], reverse=True)
 
     return templates.TemplateResponse("index.html", {
@@ -136,26 +123,16 @@ async def delete_session(session_id: str):
             session_id=session_id,
         )
     except Exception:
-        pass  # Session may not exist in DB yet
+        pass
     session_meta.pop(session_id, None)
     return JSONResponse({"deleted": session_id})
 
 
 # ─────────────────────────────────────────
-# Session chat history  ← NEW
-# Returns the persisted messages for a session so the frontend
-# can re-hydrate the chat after a page reload or app restart.
+# Session chat history
 # ─────────────────────────────────────────
 @app.get("/session/{session_id}/history")
 async def get_session_history(session_id: str):
-    """
-    Reads stored ADK events for a session and returns only the
-    user-facing user/bot message pairs.
-
-    Filtering rules (mirrors chatbot.py chat_stream):
-      • role == "user"  → always included
-      • agent event     → included only when NOT partial  (i.e. final response)
-    """
     try:
         session = await session_service.get_session(
             app_name=APP_NAME,
@@ -183,7 +160,6 @@ async def get_session_history(session_id: str):
         if role == "user":
             messages.append({"role": "user", "text": text})
         else:
-            # Skip partial / streaming chunks; keep only final responses
             if not getattr(event, "partial", False):
                 messages.append({"role": "bot", "text": text})
 
@@ -195,17 +171,39 @@ async def get_session_history(session_id: str):
 # ─────────────────────────────────────────
 @app.get("/chat/stream")
 async def chat_stream_endpoint(user_input: str, session_id: str):
-    # Auto-set name from first message (first 30 chars)
     if session_id in session_meta and session_meta[session_id].get("name") == "New Chat":
         session_meta[session_id]["name"] = user_input[:30].strip() + ("…" if len(user_input) > 30 else "")
 
     async def event_generator():
         async for chunk in chat_stream(user_input, session_id):
-            # JSON-encode so \n inside chunks is safe for SSE framing
             yield f"data: {json.dumps(chunk)}\n\n"
 
     return StreamingResponse(event_generator(), media_type="text/event-stream")
 
 
+# ─────────────────────────────────────────
+# Graceful shutdown
+# ─────────────────────────────────────────
+@app.on_event("shutdown")
+async def shutdown_event():
+    logger.info("Jarvis is shutting down gracefully...")
 
+    # Shut down the ADK runner if it supports it
+    try:
+        if runner and hasattr(runner, "shutdown"):
+            await asyncio.wait_for(runner.shutdown(), timeout=5.0)
+    except (asyncio.TimeoutError, Exception) as e:
+        logger.warning(f"Runner shutdown warning (safe to ignore): {e}")
+
+    # NOTE: We intentionally do NOT call aclose() on MCP toolsets here.
+    # MCP stdio clients use anyio cancel scopes that are bound to the task
+    # they were created in. Calling aclose() from the shutdown task causes:
+    #   RuntimeError: Attempted to exit cancel scope in a different task
+    # The underlying subprocess will be terminated automatically when the
+    # Python process exits — no manual cleanup is needed.
+
+    logger.info("Shutdown complete.")
+
+
+# uvicorn app:app --host 0.0.0.0 --port 8000
 # uvicorn app:app --host 0.0.0.0 --port 8000 --reload

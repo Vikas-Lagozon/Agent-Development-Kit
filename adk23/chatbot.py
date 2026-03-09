@@ -56,9 +56,9 @@ web_reader_mcp = McpToolset(
             command=PATH_TO_PYTHON,
             args=[
                 "-u",
-                r"D:\Agent-Development-Kit\adk22\MCPServer\my_adk_mcp_server.py",
+                r"D:\Agent-Development-Kit\adk23\MCPServer\my_adk_mcp_server.py",
             ],
-            cwd=r"D:\Agent-Development-Kit\adk22\MCPServer",
+            cwd=r"D:\Agent-Development-Kit\adk23\MCPServer",
         ),
         timeout_in_seconds=30,
     )
@@ -71,9 +71,9 @@ expense_tracker_mcp = McpToolset(
             command=PATH_TO_PYTHON,
             args=[
                 "-u",
-                r"D:\Agent-Development-Kit\adk22\MCPServer\expense_tracker_mcp_server.py",
+                r"D:\Agent-Development-Kit\adk23\MCPServer\expense_tracker_mcp_server.py",
             ],
-            cwd=r"D:\Agent-Development-Kit\adk22\MCPServer",
+            cwd=r"D:\Agent-Development-Kit\adk23\MCPServer",
         ),
         timeout_in_seconds=30,
     )
@@ -86,9 +86,24 @@ to_do_mcp = McpToolset(
             command=PATH_TO_PYTHON,
             args=[
                 "-u",
-                r"D:\Agent-Development-Kit\adk22\MCPServer\to_do_mcp_server.py",
+                r"D:\Agent-Development-Kit\adk23\MCPServer\to_do_mcp_server.py",
             ],
-            cwd=r"D:\Agent-Development-Kit\adk22\MCPServer",
+            cwd=r"D:\Agent-Development-Kit\adk23\MCPServer",
+        ),
+        timeout_in_seconds=30,
+    )
+)
+
+# 4️⃣ File System MCP
+file_system_mcp = McpToolset(
+    connection_params=StdioConnectionParams(
+        server_params=StdioServerParameters(
+            command=PATH_TO_PYTHON,
+            args=[
+                "-u",
+                r"D:\Agent-Development-Kit\adk23\MCPServer\server.py",
+            ],
+            cwd=r"D:\Agent-Development-Kit\adk23\MCPServer",
         ),
         timeout_in_seconds=30,
     )
@@ -149,6 +164,7 @@ Always:
         web_reader_mcp,
         expense_tracker_mcp,
         to_do_mcp,
+        file_system_mcp,
     ],
 )
 
@@ -243,3 +259,4 @@ async def chat_stream(user_input: str, session_id: str):
         for part in event.content.parts:
             if getattr(part, "text", None):
                 yield part.text
+
