@@ -1,0 +1,12 @@
+2026-03-11 17:04:33 | INFO     | BlogWriter | Logger initialised. Log file: logs\log_20260311_170433.log
+2026-03-11 17:04:33 | DEBUG    | BlogWriter | [SETUP] Initialising LLMs...
+2026-03-11 17:04:34 | DEBUG    | BlogWriter | [SETUP] LLMs ready. blog_llm=llama3.2:3b | decision_llm=llama3.2:3b
+2026-03-11 17:04:34 | DEBUG    | BlogWriter | [SETUP] Building LangGraph state graph...
+2026-03-11 17:04:34 | DEBUG    | BlogWriter | [SETUP] LangGraph compiled successfully.
+2026-03-11 17:04:34 | INFO     | BlogWriter | =================================================================
+2026-03-11 17:04:34 | INFO     | BlogWriter | [RUN] Blog generation pipeline STARTING
+2026-03-11 17:04:34 | INFO     | BlogWriter | [RUN] Topic : 'Write a blog on the Future of Quantum AI. The capability of Artificial Intellegence using the power of Quantum Computing.'
+2026-03-11 17:04:34 | INFO     | BlogWriter | =================================================================
+2026-03-11 17:04:34 | INFO     | BlogWriter | [ROUTER] ── START ──────────────────────────────────────
+2026-03-11 17:04:34 | INFO     | BlogWriter | [ROUTER] Topic received: 'Write a blog on the Future of Quantum AI. The capability of Artificial Intellegence using the power of Quantum Computing.'
+2026-03-11 17:04:34 | DEBUG    | BlogWriter | [ROUTER] Invoking decision LLM with structured output (RouterDecision)...

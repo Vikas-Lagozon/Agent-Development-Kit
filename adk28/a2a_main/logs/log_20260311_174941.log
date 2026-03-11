@@ -1,0 +1,100 @@
+2026-03-11 17:49:41 | INFO     | BlogWriter | Logger initialised. Log file: logs\log_20260311_174941.log
+2026-03-11 17:49:41 | DEBUG    | BlogWriter | [SETUP] Initialising LLMs...
+2026-03-11 17:49:41 | DEBUG    | BlogWriter | [SETUP] LLMs ready. blog_llm=llama3.2:3b | decision_llm=llama3.2:3b
+2026-03-11 17:49:41 | DEBUG    | BlogWriter | [SETUP] Building LangGraph state graph...
+2026-03-11 17:49:41 | DEBUG    | BlogWriter | [SETUP] LangGraph compiled successfully.
+2026-03-11 17:55:08 | INFO     | BlogWriter | [ROUTER] ── START ──────────────────────────────────────
+2026-03-11 17:55:08 | INFO     | BlogWriter | [ROUTER] Topic received: 'Hey
+For context:
+[root_agent] said: Hello! How can I help you today?
+
+Today is 11th March 2026. Write a blog on the Future of Agentic AI in field of Research
+For context:
+[root_agent] called tool `transfer_to_agent` with parameters: {'agent_name': 'blog_writing_agent'}
+For context:
+[root_agent] `transfer_to_agent` tool returned result: {'result': None}'
+2026-03-11 17:55:08 | DEBUG    | BlogWriter | [ROUTER] Invoking decision LLM with structured output (RouterDecision)...
+2026-03-11 17:55:17 | INFO     | BlogWriter | [ROUTER] Decision => mode='open_book' | needs_research=False | num_queries=0
+2026-03-11 17:55:17 | INFO     | BlogWriter | [ROUTER] ── END ────────────────────────────────────────
+2026-03-11 17:55:18 | INFO     | BlogWriter | [ROUTER] Routing graph → 'orchestrator'
+2026-03-11 17:55:18 | INFO     | BlogWriter | [ORCHESTRATOR] ── START ──────────────────────────────────
+2026-03-11 17:55:18 | INFO     | BlogWriter | [ORCHESTRATOR] Topic: 'Hey
+For context:
+[root_agent] said: Hello! How can I help you today?
+
+Today is 11th March 2026. Write a blog on the Future of Agentic AI in field of Research
+For context:
+[root_agent] called tool `transfer_to_agent` with parameters: {'agent_name': 'blog_writing_agent'}
+For context:
+[root_agent] `transfer_to_agent` tool returned result: {'result': None}' | Mode: 'open_book'
+2026-03-11 17:55:18 | DEBUG    | BlogWriter | [ORCHESTRATOR] Evidence items available for context: 0
+2026-03-11 17:55:18 | INFO     | BlogWriter | [ORCHESTRATOR] Planning attempt 1/3...
+2026-03-11 17:56:58 | INFO     | BlogWriter | [ORCHESTRATOR] Plan accepted: 5 tasks generated.
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [ORCHESTRATOR] Blog title : 'The Future of Agentic AI in Research: Trends and Implications'
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [ORCHESTRATOR] Audience   : 'researchers, scientists, and academics'
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [ORCHESTRATOR] Tone       : 'informative'
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [ORCHESTRATOR] Blog kind  : 'news_roundup'
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 01: 'Defining Agentic AI in Research' | ~250w | code=False | citations=False
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 02: 'Emerging Trends in Agentic AI Research' | ~300w | code=False | citations=True
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 03: 'Agentic AI in Scientific Discovery' | ~300w | code=False | citations=True
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 04: 'Challenges and Limitations of Agentic AI in Research' | ~250w | code=False | citations=True
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 05: 'Future Directions for Agentic AI Research' | ~300w | code=False | citations=True
+2026-03-11 17:56:58 | INFO     | BlogWriter | [ORCHESTRATOR] ── END ────────────────────────────────────
+2026-03-11 17:56:58 | INFO     | BlogWriter | [DISPATCHER] ── START ────────────────────────────────────
+2026-03-11 17:56:58 | INFO     | BlogWriter | [DISPATCHER] Dispatching 5 parallel worker(s)...
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 1: 'Defining Agentic AI in Research'
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 2: 'Emerging Trends in Agentic AI Research'
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 3: 'Agentic AI in Scientific Discovery'
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 4: 'Challenges and Limitations of Agentic AI in Research'
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 5: 'Future Directions for Agentic AI Research'
+2026-03-11 17:56:58 | INFO     | BlogWriter | [DISPATCHER] ── END ──────────────────────────────────────
+2026-03-11 17:56:58 | INFO     | BlogWriter | [WORKER] ── Task 1: 'Defining Agentic AI in Research' ─────────────────
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Goal           : Explain the concept of agentic AI and its significance in research.
+2026-03-11 17:56:58 | INFO     | BlogWriter | [WORKER] ── Task 2: 'Emerging Trends in Agentic AI Research' ─────────────────
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Target words   : 250
+2026-03-11 17:56:58 | INFO     | BlogWriter | [WORKER] ── Task 3: 'Agentic AI in Scientific Discovery' ─────────────────
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   requires_code  : False
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Goal           : Summarize recent advancements and future directions in agentic AI research.
+2026-03-11 17:56:58 | INFO     | BlogWriter | [WORKER] ── Task 4: 'Challenges and Limitations of Agentic AI in Research' ─────────────────
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : False
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Goal           : Explore the potential of agentic AI to accelerate scientific discovery and innovation.
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Target words   : 300
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   requires_code  : False
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Goal           : Identify the key challenges and limitations of agentic AI in research, including potential biases and errors.
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Target words   : 250
+2026-03-11 17:56:58 | INFO     | BlogWriter | [WORKER] ── Task 5: 'Future Directions for Agentic AI Research' ─────────────────
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ['Describe agentic AI as a paradigm shift from traditional AI to autonomous decision-making', 'Highlight the importance of agency in research, including scientific inquiry and knowledge discovery', 'Discuss the potential applications of agentic AI in various research domains']
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : True
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Target words   : 300
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   requires_code  : False
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 0
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ['Discuss the role of reinforcement learning in agentic AI, including applications in robotics and game playing', 'Explain the significance of meta-learning and transfer learning in agentic AI', 'Highlight the potential impact of agentic AI on scientific discovery and knowledge creation']
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   requires_code  : False
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : True
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Goal           : Propose future research directions and potential applications of agentic AI in various domains.
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 0
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : True
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ['Discuss the need for robustness and reliability in agentic AI decision-making', 'Explain the potential risks of over-reliance on agentic AI in scientific inquiry', 'Highlight the importance of human oversight and accountability in agentic AI research']
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 0
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ['Describe how agentic AI can be used to optimize experimental design and data analysis', 'Discuss the potential applications of agentic AI in fields such as materials science and chemistry', 'Highlight the need for transparency and explainability in agentic AI decision-making']
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Target words   : 300
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 0
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   requires_code  : False
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : True
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ['Discuss the potential of agentic AI to enable human-AI collaboration and co-creation', 'Explain the need for more transparent and explainable agentic AI decision-making', 'Highlight the importance of developing more robust and reliable agentic AI systems']
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 0
+2026-03-11 17:56:58 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 17:57:31 | INFO     | BlogWriter | [WORKER] Task 2 done — 'Emerging Trends in Agentic AI Research' | ~203 words written
+2026-03-11 17:57:56 | INFO     | BlogWriter | [WORKER] Task 1 done — 'Defining Agentic AI in Research' | ~218 words written
+2026-03-11 17:58:26 | INFO     | BlogWriter | [WORKER] Task 5 done — 'Future Directions for Agentic AI Research' | ~267 words written
+2026-03-11 17:58:52 | INFO     | BlogWriter | [WORKER] Task 4 done — 'Challenges and Limitations of Agentic AI in Research' | ~198 words written
+2026-03-11 17:59:19 | INFO     | BlogWriter | [WORKER] Task 3 done — 'Agentic AI in Scientific Discovery' | ~261 words written
+2026-03-11 17:59:19 | INFO     | BlogWriter | [REDUCER] ── START ───────────────────────────────────────
+2026-03-11 17:59:19 | INFO     | BlogWriter | [REDUCER] Assembling 5 section(s) for blog: 'The Future of Agentic AI in Research: Trends and Implications'
+2026-03-11 17:59:19 | INFO     | BlogWriter | [REDUCER] Total blog word count: ~1158
+2026-03-11 17:59:19 | INFO     | BlogWriter | [REDUCER] Blog saved → output\The Future of Agentic AI in Research_ Trends and Implications.md
+2026-03-11 17:59:19 | INFO     | BlogWriter | [REDUCER] ── END ─────────────────────────────────────────

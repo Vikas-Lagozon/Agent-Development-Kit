@@ -1,0 +1,161 @@
+2026-03-11 17:29:25 | INFO     | BlogWriter | Logger initialised. Log file: logs\log_20260311_172925.log
+2026-03-11 17:29:25 | DEBUG    | BlogWriter | [SETUP] Initialising LLMs...
+2026-03-11 17:29:25 | DEBUG    | BlogWriter | [SETUP] LLMs ready. blog_llm=llama3.2:3b | decision_llm=llama3.2:3b
+2026-03-11 17:29:25 | DEBUG    | BlogWriter | [SETUP] Building LangGraph state graph...
+2026-03-11 17:29:25 | DEBUG    | BlogWriter | [SETUP] LangGraph compiled successfully.
+2026-03-11 17:30:17 | INFO     | BlogWriter | [ROUTER] ── START ──────────────────────────────────────
+2026-03-11 17:30:17 | INFO     | BlogWriter | [ROUTER] Topic received: 'Hello
+For context:
+[root_agent] said: Hello! How can I help you today?
+Write a blog on the "New Era of IT Sector in India"
+For context:
+[root_agent] called tool `transfer_to_agent` with parameters: {'agent_name': 'blog_writing_agent'}
+For context:
+[root_agent] `transfer_to_agent` tool returned result: {'result': None}'
+2026-03-11 17:30:17 | DEBUG    | BlogWriter | [ROUTER] Invoking decision LLM with structured output (RouterDecision)...
+2026-03-11 17:30:29 | INFO     | BlogWriter | [ROUTER] Decision => mode='closed_book' | needs_research=True | num_queries=3
+2026-03-11 17:30:29 | DEBUG    | BlogWriter | [ROUTER]   Query 1: India IT sector trends future outlook
+2026-03-11 17:30:29 | DEBUG    | BlogWriter | [ROUTER]   Query 2: Indian IT industry growth prospects 2024
+2026-03-11 17:30:29 | DEBUG    | BlogWriter | [ROUTER]   Query 3: New era of IT in India: opportunities and challenges
+2026-03-11 17:30:29 | INFO     | BlogWriter | [ROUTER] ── END ────────────────────────────────────────
+2026-03-11 17:30:29 | INFO     | BlogWriter | [ROUTER] Routing graph → 'research'
+2026-03-11 17:30:29 | INFO     | BlogWriter | [RESEARCH] ── START ─────────────────────────────────────
+2026-03-11 17:30:29 | INFO     | BlogWriter | [RESEARCH] 3 search queries to run (max_results=6 each)
+2026-03-11 17:30:29 | INFO     | BlogWriter | [RESEARCH] Query 1/3: 'India IT sector trends future outlook'
+2026-03-11 17:30:29 | DEBUG    | BlogWriter | [TAVILY] Searching: 'India IT sector trends future outlook' (max_results=6)
+2026-03-11 17:30:31 | DEBUG    | BlogWriter | [TAVILY] Raw hits received: 6 for query 'India IT sector trends future outlook'
+2026-03-11 17:30:31 | DEBUG    | BlogWriter | [TAVILY] Normalised 6 results for query 'India IT sector trends future outlook'
+2026-03-11 17:30:31 | DEBUG    | BlogWriter | [RESEARCH] Cumulative raw results so far: 6
+2026-03-11 17:30:31 | INFO     | BlogWriter | [RESEARCH] Query 2/3: 'Indian IT industry growth prospects 2024'
+2026-03-11 17:30:31 | DEBUG    | BlogWriter | [TAVILY] Searching: 'Indian IT industry growth prospects 2024' (max_results=6)
+2026-03-11 17:30:33 | DEBUG    | BlogWriter | [TAVILY] Raw hits received: 6 for query 'Indian IT industry growth prospects 2024'
+2026-03-11 17:30:33 | DEBUG    | BlogWriter | [TAVILY] Normalised 6 results for query 'Indian IT industry growth prospects 2024'
+2026-03-11 17:30:33 | DEBUG    | BlogWriter | [RESEARCH] Cumulative raw results so far: 12
+2026-03-11 17:30:33 | INFO     | BlogWriter | [RESEARCH] Query 3/3: 'New era of IT in India: opportunities and challenges'
+2026-03-11 17:30:33 | DEBUG    | BlogWriter | [TAVILY] Searching: 'New era of IT in India: opportunities and challenges' (max_results=6)
+2026-03-11 17:30:35 | DEBUG    | BlogWriter | [TAVILY] Raw hits received: 6 for query 'New era of IT in India: opportunities and challenges'
+2026-03-11 17:30:35 | DEBUG    | BlogWriter | [TAVILY] Normalised 6 results for query 'New era of IT in India: opportunities and challenges'
+2026-03-11 17:30:35 | DEBUG    | BlogWriter | [RESEARCH] Cumulative raw results so far: 18
+2026-03-11 17:30:35 | INFO     | BlogWriter | [RESEARCH] Total raw results collected: 18
+2026-03-11 17:30:35 | DEBUG    | BlogWriter | [RESEARCH] Invoking blog LLM to extract and deduplicate EvidenceItems...
+2026-03-11 17:36:13 | INFO     | BlogWriter | [RESEARCH] Evidence items after deduplication: 17
+2026-03-11 17:36:13 | DEBUG    | BlogWriter | [RESEARCH]   Evidence 1: https://indiamacroindicators.co.in/resources/blogs/indias-it-sector-outlook-for-fy2026
+2026-03-11 17:36:13 | DEBUG    | BlogWriter | [RESEARCH]   Evidence 2: https://www.gripinvest.in/blog/the-information-technology-industry-in-india
+2026-03-11 17:36:13 | DEBUG    | BlogWriter | [RESEARCH]   Evidence 3: https://ftp.broadwayinfosys.com/blog/indias-thriving-it-industry-a-look-into-the-future-1767648166
+2026-03-11 17:36:13 | DEBUG    | BlogWriter | [RESEARCH]   Evidence 4: https://acarasolutions.in/blog/indias-it-industry-in-2025-growth-trends-challenges/
+2026-03-11 17:36:13 | DEBUG    | BlogWriter | [RESEARCH]   Evidence 5: https://www.rwskill.edu.in/blog/what-is-the-future-of-the-it-industry-in-india/
+2026-03-11 17:36:13 | DEBUG    | BlogWriter | [RESEARCH]   Evidence 6: https://www.weforum.org/stories/2025/04/the-future-of-jobs-in-india-employers-seek-to-boost-tech-talent-to-drive-ai-and-digital-technology-growth/
+2026-03-11 17:36:13 | DEBUG    | BlogWriter | [RESEARCH]   Evidence 7: https://www.sperton.com/business-development/india-it-industry-2024/
+2026-03-11 17:36:13 | DEBUG    | BlogWriter | [RESEARCH]   Evidence 8: https://www.linkedin.com/pulse/overview-industry-2024-sbcs-india-pq5yc
+2026-03-11 17:36:13 | DEBUG    | BlogWriter | [RESEARCH]   Evidence 9: https://my.idc.com/getdoc.jsp?containerId=prAP52966024
+2026-03-11 17:36:13 | DEBUG    | BlogWriter | [RESEARCH]   Evidence 10: https://invest.up.gov.in/wp-content/uploads/2024/04/India-Tech_040424.pdf
+2026-03-11 17:36:13 | DEBUG    | BlogWriter | [RESEARCH]   Evidence 11: https://uk.finance.yahoo.com/news/india-software-products-industry-report-080300751.html
+2026-03-11 17:36:13 | DEBUG    | BlogWriter | [RESEARCH]   Evidence 12: https://upforcetech.com/the-future-of-indias-it-industry-in-2025/
+2026-03-11 17:36:13 | DEBUG    | BlogWriter | [RESEARCH]   Evidence 13: https://www.wrightresearch.in/encyclopedia/chapter-report/chapter-7-challenges-and-investor-overview-of-indias-it-sector/
+2026-03-11 17:36:13 | DEBUG    | BlogWriter | [RESEARCH]   Evidence 14: https://medium.com/@messieur.udayanguha/indias-technology-transformation-in-2026-part-1-the-infrastructure-challenge-316830524c81
+2026-03-11 17:36:13 | DEBUG    | BlogWriter | [RESEARCH]   Evidence 15: https://www.youtube.com/watch?v=JSQwnclWHys
+2026-03-11 17:36:13 | DEBUG    | BlogWriter | [RESEARCH]   Evidence 16: https://www.linkedin.com/pulse/indias-industry-2025-growth-trends-challenges-rakesh-gosalia--tz7nf
+2026-03-11 17:36:13 | DEBUG    | BlogWriter | [RESEARCH]   Evidence 17: https://www.quora.com/What-are-some-problems-challenges-the-Indian-IT-industry-faces-currently
+2026-03-11 17:36:13 | INFO     | BlogWriter | [RESEARCH] ── END ──────────────────────────────────────
+2026-03-11 17:36:13 | INFO     | BlogWriter | [ORCHESTRATOR] ── START ──────────────────────────────────
+2026-03-11 17:36:13 | INFO     | BlogWriter | [ORCHESTRATOR] Topic: 'Hello
+For context:
+[root_agent] said: Hello! How can I help you today?
+Write a blog on the "New Era of IT Sector in India"
+For context:
+[root_agent] called tool `transfer_to_agent` with parameters: {'agent_name': 'blog_writing_agent'}
+For context:
+[root_agent] `transfer_to_agent` tool returned result: {'result': None}' | Mode: 'closed_book'
+2026-03-11 17:36:13 | DEBUG    | BlogWriter | [ORCHESTRATOR] Evidence items available for context: 17
+2026-03-11 17:36:13 | INFO     | BlogWriter | [ORCHESTRATOR] Planning attempt 1/3...
+2026-03-11 17:39:46 | INFO     | BlogWriter | [ORCHESTRATOR] Plan accepted: 7 tasks generated.
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [ORCHESTRATOR] Blog title : 'New Era of IT Sector in India'
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [ORCHESTRATOR] Audience   : 'developers'
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [ORCHESTRATOR] Tone       : 'informative'
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [ORCHESTRATOR] Blog kind  : 'explainer'
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 01: 'India's IT Sector Outlook for FY2026' | ~250w | code=False | citations=True
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 02: 'Challenges and Opportunities in India's IT Sector' | ~300w | code=False | citations=True
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 03: 'The Future of Jobs in India' | ~300w | code=False | citations=True
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 04: 'India's IT Industry: A Tech Leader' | ~250w | code=False | citations=True
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 05: 'The Role of Government and Policy in Shaping India's IT Sector' | ~300w | code=False | citations=True
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 06: 'India's Tech Sector Anticipates Exponential Growth' | ~250w | code=False | citations=True
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 07: 'India Software Products Industry Report 2024-2030' | ~250w | code=False | citations=True
+2026-03-11 17:39:46 | INFO     | BlogWriter | [ORCHESTRATOR] ── END ────────────────────────────────────
+2026-03-11 17:39:46 | INFO     | BlogWriter | [DISPATCHER] ── START ────────────────────────────────────
+2026-03-11 17:39:46 | INFO     | BlogWriter | [DISPATCHER] Dispatching 7 parallel worker(s)...
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 1: 'India's IT Sector Outlook for FY2026'
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 2: 'Challenges and Opportunities in India's IT Sector'
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 3: 'The Future of Jobs in India'
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 4: 'India's IT Industry: A Tech Leader'
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 5: 'The Role of Government and Policy in Shaping India's IT Sector'
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 6: 'India's Tech Sector Anticipates Exponential Growth'
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 7: 'India Software Products Industry Report 2024-2030'
+2026-03-11 17:39:46 | INFO     | BlogWriter | [DISPATCHER] ── END ──────────────────────────────────────
+2026-03-11 17:39:46 | INFO     | BlogWriter | [WORKER] ── Task 1: 'India's IT Sector Outlook for FY2026' ─────────────────
+2026-03-11 17:39:46 | INFO     | BlogWriter | [WORKER] ── Task 2: 'Challenges and Opportunities in India's IT Sector' ─────────────────
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Goal           : Explain the current outlook and growth prospects of India's IT sector.
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Target words   : 250
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   requires_code  : False
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : True
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ['Analyze industry reports from reputable sources such as India Macro Indicators, GripInvest, and Broadway Infosys', 'Identify key drivers of growth, including digital transformation, new technologies, and AI adoption', "Discuss the expected impact on the country's GDP contribution to the IT sector"]
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 17
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Goal           : Highlight the key challenges and opportunities facing India's IT sector, including talent acquisition and digital transformation.
+2026-03-11 17:39:46 | INFO     | BlogWriter | [WORKER] ── Task 3: 'The Future of Jobs in India' ─────────────────
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Target words   : 300
+2026-03-11 17:39:46 | INFO     | BlogWriter | [WORKER] ── Task 4: 'India's IT Industry: A Tech Leader' ─────────────────
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Goal           : Explain the impact of automation and AI on job creation and talent acquisition in India's IT sector.
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   requires_code  : False
+2026-03-11 17:39:46 | INFO     | BlogWriter | [WORKER] ── Task 5: 'The Role of Government and Policy in Shaping India's IT Sector' ─────────────────
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Goal           : Highlight India's position as a global tech leader and its strengths in the IT sector.
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Target words   : 250
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Target words   : 300
+2026-03-11 17:39:46 | INFO     | BlogWriter | [WORKER] ── Task 7: 'India Software Products Industry Report 2024-2030' ─────────────────
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : True
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   requires_code  : False
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : True
+2026-03-11 17:39:46 | INFO     | BlogWriter | [WORKER] ── Task 6: 'India's Tech Sector Anticipates Exponential Growth' ─────────────────
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   requires_code  : False
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Goal           : Highlight the growth prospects and trends in India's software products industry.
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Target words   : 250
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   requires_code  : False
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Goal           : Explain the role of government policies and initiatives in shaping India's IT sector.
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : True
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ['Discuss the role of AI and machine learning in automating routine tasks and enhancing productivity', 'Explain the importance of upskilling and reskilling for IT professionals to stay relevant', "Identify emerging trends and technologies that will shape the future of job creation in India's IT sector"]
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 17
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : True
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ['Analyze industry reports to identify key drivers of growth', 'Discuss the impact of emerging technologies, including AI, blockchain, and cloud computing', "Identify emerging trends and technologies that will shape the future of India's software products industry"]
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Target words   : 300
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ['Explain the importance of upskilling and reskilling for IT professionals to stay relevant', 'Discuss the impact of digital transformation on traditional industries and businesses', "Identify emerging trends and technologies that will shape the future of India's IT sector"]
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ["Discuss India's growing GDP contribution to the IT sector", "Explain the country's competitive advantages, including talent pool and cost-effectiveness", "Identify emerging trends and technologies that will drive growth in India's IT industry"]
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Goal           : Explain the expected growth prospects of India's tech sector in the coming years.
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Target words   : 250
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   requires_code  : False
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 17
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 17
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   requires_code  : False
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 17
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : True
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : True
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ['Discuss the impact of government policies on talent acquisition, digital transformation, and innovation', 'Explain the importance of regulatory frameworks for data protection and cybersecurity', "Identify emerging trends and technologies that will shape the future of India's IT industry"]
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ['Analyze industry reports and trends to identify key drivers of growth', 'Discuss the impact of emerging technologies, including AI, blockchain, and 5G', "Identify emerging trends and technologies that will shape the future of India's tech sector"]
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 17
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 17
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 17:39:46 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 17:40:59 | INFO     | BlogWriter | [WORKER] Task 1 done — 'India's IT Sector Outlook for FY2026' | ~270 words written
+2026-03-11 17:42:03 | INFO     | BlogWriter | [WORKER] Task 4 done — 'India's IT Industry: A Tech Leader' | ~232 words written
+2026-03-11 17:43:11 | INFO     | BlogWriter | [WORKER] Task 3 done — 'The Future of Jobs in India' | ~393 words written
+2026-03-11 17:44:30 | INFO     | BlogWriter | [WORKER] Task 2 done — 'Challenges and Opportunities in India's IT Sector' | ~385 words written
+2026-03-11 17:45:39 | INFO     | BlogWriter | [WORKER] Task 7 done — 'India Software Products Industry Report 2024-2030' | ~249 words written
+2026-03-11 17:47:03 | INFO     | BlogWriter | [WORKER] Task 5 done — 'The Role of Government and Policy in Shaping India's IT Sector' | ~514 words written
+2026-03-11 17:48:05 | INFO     | BlogWriter | [WORKER] Task 6 done — 'India's Tech Sector Anticipates Exponential Growth' | ~214 words written
+2026-03-11 17:48:05 | INFO     | BlogWriter | [REDUCER] ── START ───────────────────────────────────────
+2026-03-11 17:48:05 | INFO     | BlogWriter | [REDUCER] Assembling 7 section(s) for blog: 'New Era of IT Sector in India'
+2026-03-11 17:48:05 | INFO     | BlogWriter | [REDUCER] Total blog word count: ~2265
+2026-03-11 17:48:05 | INFO     | BlogWriter | [REDUCER] Blog saved → output\New Era of IT Sector in India.md
+2026-03-11 17:48:05 | INFO     | BlogWriter | [REDUCER] ── END ─────────────────────────────────────────

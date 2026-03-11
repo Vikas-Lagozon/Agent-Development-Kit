@@ -1,0 +1,158 @@
+2026-03-11 18:05:49 | INFO     | BlogWriter | Logger initialised. Log file: logs\log_20260311_180549.log
+2026-03-11 18:05:49 | DEBUG    | BlogWriter | [SETUP] Initialising LLMs...
+2026-03-11 18:05:49 | DEBUG    | BlogWriter | [SETUP] LLMs ready. blog_llm=llama3.2:3b | decision_llm=llama3.2:3b
+2026-03-11 18:05:49 | DEBUG    | BlogWriter | [SETUP] Building LangGraph state graph...
+2026-03-11 18:05:49 | DEBUG    | BlogWriter | [SETUP] LangGraph compiled successfully.
+2026-03-11 18:07:36 | INFO     | BlogWriter | [ROUTER] ── START ──────────────────────────────────────
+2026-03-11 18:07:36 | INFO     | BlogWriter | [ROUTER] Topic received: 'Hello
+For context:
+[root_agent] said: Hello! How can I help you today?
+Today is 11th March 2026. Write a blog on Evolution of Snapdragon Processor of Mobile.
+For context:
+[root_agent] called tool `transfer_to_agent` with parameters: {'agent_name': 'blog_writing_agent'}
+For context:
+[root_agent] `transfer_to_agent` tool returned result: {'result': None}'
+2026-03-11 18:07:36 | DEBUG    | BlogWriter | [ROUTER] Invoking decision LLM with structured output (RouterDecision)...
+2026-03-11 18:07:53 | INFO     | BlogWriter | [ROUTER] Decision => mode='open_book' | needs_research=True | num_queries=9
+2026-03-11 18:07:53 | DEBUG    | BlogWriter | [ROUTER]   Query 1: evolution of snapdragon processor technology
+2026-03-11 18:07:53 | DEBUG    | BlogWriter | [ROUTER]   Query 2: snapdragon processor generation by year
+2026-03-11 18:07:53 | DEBUG    | BlogWriter | [ROUTER]   Query 3: latest snapdragon processor specifications
+2026-03-11 18:07:53 | DEBUG    | BlogWriter | [ROUTER]   Query 4: snapdragon processor vs competitors 2026
+2026-03-11 18:07:53 | DEBUG    | BlogWriter | [ROUTER]   Query 5: how has the snapdragon processor impacted mobile gaming
+2026-03-11 18:07:53 | DEBUG    | BlogWriter | [ROUTER]   Query 6: when was the first snapdragon processor released
+2026-03-11 18:07:53 | DEBUG    | BlogWriter | [ROUTER]   Query 7: snapdragon processor market share 2026
+2026-03-11 18:07:53 | DEBUG    | BlogWriter | [ROUTER]   Query 8: future of snapdragon processor technology
+2026-03-11 18:07:53 | DEBUG    | BlogWriter | [ROUTER]   Query 9: snapdragon processor power consumption optimization
+2026-03-11 18:07:53 | INFO     | BlogWriter | [ROUTER] ── END ────────────────────────────────────────
+2026-03-11 18:07:53 | INFO     | BlogWriter | [ROUTER] Routing graph → 'research'
+2026-03-11 18:07:53 | INFO     | BlogWriter | [RESEARCH] ── START ─────────────────────────────────────
+2026-03-11 18:07:53 | INFO     | BlogWriter | [RESEARCH] 9 search queries to run (max_results=6 each)
+2026-03-11 18:07:53 | INFO     | BlogWriter | [RESEARCH] Query 1/9: 'evolution of snapdragon processor technology'
+2026-03-11 18:07:53 | DEBUG    | BlogWriter | [TAVILY] Searching: 'evolution of snapdragon processor technology' (max_results=6)
+2026-03-11 18:07:55 | DEBUG    | BlogWriter | [TAVILY] Raw hits received: 6 for query 'evolution of snapdragon processor technology'
+2026-03-11 18:07:55 | DEBUG    | BlogWriter | [TAVILY] Normalised 6 results for query 'evolution of snapdragon processor technology'
+2026-03-11 18:07:55 | DEBUG    | BlogWriter | [RESEARCH] Cumulative raw results so far: 6
+2026-03-11 18:07:55 | INFO     | BlogWriter | [RESEARCH] Query 2/9: 'snapdragon processor generation by year'
+2026-03-11 18:07:55 | DEBUG    | BlogWriter | [TAVILY] Searching: 'snapdragon processor generation by year' (max_results=6)
+2026-03-11 18:07:57 | DEBUG    | BlogWriter | [TAVILY] Raw hits received: 6 for query 'snapdragon processor generation by year'
+2026-03-11 18:07:57 | DEBUG    | BlogWriter | [TAVILY] Normalised 6 results for query 'snapdragon processor generation by year'
+2026-03-11 18:07:57 | DEBUG    | BlogWriter | [RESEARCH] Cumulative raw results so far: 12
+2026-03-11 18:07:57 | INFO     | BlogWriter | [RESEARCH] Query 3/9: 'latest snapdragon processor specifications'
+2026-03-11 18:07:57 | DEBUG    | BlogWriter | [TAVILY] Searching: 'latest snapdragon processor specifications' (max_results=6)
+2026-03-11 18:07:59 | DEBUG    | BlogWriter | [TAVILY] Raw hits received: 6 for query 'latest snapdragon processor specifications'
+2026-03-11 18:07:59 | DEBUG    | BlogWriter | [TAVILY] Normalised 6 results for query 'latest snapdragon processor specifications'
+2026-03-11 18:07:59 | DEBUG    | BlogWriter | [RESEARCH] Cumulative raw results so far: 18
+2026-03-11 18:07:59 | INFO     | BlogWriter | [RESEARCH] Query 4/9: 'snapdragon processor vs competitors 2026'
+2026-03-11 18:07:59 | DEBUG    | BlogWriter | [TAVILY] Searching: 'snapdragon processor vs competitors 2026' (max_results=6)
+2026-03-11 18:08:01 | DEBUG    | BlogWriter | [TAVILY] Raw hits received: 6 for query 'snapdragon processor vs competitors 2026'
+2026-03-11 18:08:01 | DEBUG    | BlogWriter | [TAVILY] Normalised 6 results for query 'snapdragon processor vs competitors 2026'
+2026-03-11 18:08:01 | DEBUG    | BlogWriter | [RESEARCH] Cumulative raw results so far: 24
+2026-03-11 18:08:01 | INFO     | BlogWriter | [RESEARCH] Query 5/9: 'how has the snapdragon processor impacted mobile gaming'
+2026-03-11 18:08:01 | DEBUG    | BlogWriter | [TAVILY] Searching: 'how has the snapdragon processor impacted mobile gaming' (max_results=6)
+2026-03-11 18:08:03 | DEBUG    | BlogWriter | [TAVILY] Raw hits received: 6 for query 'how has the snapdragon processor impacted mobile gaming'
+2026-03-11 18:08:03 | DEBUG    | BlogWriter | [TAVILY] Normalised 6 results for query 'how has the snapdragon processor impacted mobile gaming'
+2026-03-11 18:08:03 | DEBUG    | BlogWriter | [RESEARCH] Cumulative raw results so far: 30
+2026-03-11 18:08:03 | INFO     | BlogWriter | [RESEARCH] Query 6/9: 'when was the first snapdragon processor released'
+2026-03-11 18:08:03 | DEBUG    | BlogWriter | [TAVILY] Searching: 'when was the first snapdragon processor released' (max_results=6)
+2026-03-11 18:08:05 | DEBUG    | BlogWriter | [TAVILY] Raw hits received: 6 for query 'when was the first snapdragon processor released'
+2026-03-11 18:08:05 | DEBUG    | BlogWriter | [TAVILY] Normalised 6 results for query 'when was the first snapdragon processor released'
+2026-03-11 18:08:05 | DEBUG    | BlogWriter | [RESEARCH] Cumulative raw results so far: 36
+2026-03-11 18:08:05 | INFO     | BlogWriter | [RESEARCH] Query 7/9: 'snapdragon processor market share 2026'
+2026-03-11 18:08:05 | DEBUG    | BlogWriter | [TAVILY] Searching: 'snapdragon processor market share 2026' (max_results=6)
+2026-03-11 18:08:07 | DEBUG    | BlogWriter | [TAVILY] Raw hits received: 6 for query 'snapdragon processor market share 2026'
+2026-03-11 18:08:07 | DEBUG    | BlogWriter | [TAVILY] Normalised 6 results for query 'snapdragon processor market share 2026'
+2026-03-11 18:08:07 | DEBUG    | BlogWriter | [RESEARCH] Cumulative raw results so far: 42
+2026-03-11 18:08:07 | INFO     | BlogWriter | [RESEARCH] Query 8/9: 'future of snapdragon processor technology'
+2026-03-11 18:08:07 | DEBUG    | BlogWriter | [TAVILY] Searching: 'future of snapdragon processor technology' (max_results=6)
+2026-03-11 18:08:10 | DEBUG    | BlogWriter | [TAVILY] Raw hits received: 6 for query 'future of snapdragon processor technology'
+2026-03-11 18:08:10 | DEBUG    | BlogWriter | [TAVILY] Normalised 6 results for query 'future of snapdragon processor technology'
+2026-03-11 18:08:10 | DEBUG    | BlogWriter | [RESEARCH] Cumulative raw results so far: 48
+2026-03-11 18:08:10 | INFO     | BlogWriter | [RESEARCH] Query 9/9: 'snapdragon processor power consumption optimization'
+2026-03-11 18:08:10 | DEBUG    | BlogWriter | [TAVILY] Searching: 'snapdragon processor power consumption optimization' (max_results=6)
+2026-03-11 18:08:13 | DEBUG    | BlogWriter | [TAVILY] Raw hits received: 6 for query 'snapdragon processor power consumption optimization'
+2026-03-11 18:08:13 | DEBUG    | BlogWriter | [TAVILY] Normalised 6 results for query 'snapdragon processor power consumption optimization'
+2026-03-11 18:08:13 | DEBUG    | BlogWriter | [RESEARCH] Cumulative raw results so far: 54
+2026-03-11 18:08:13 | INFO     | BlogWriter | [RESEARCH] Total raw results collected: 54
+2026-03-11 18:08:13 | DEBUG    | BlogWriter | [RESEARCH] Invoking blog LLM to extract and deduplicate EvidenceItems...
+2026-03-11 18:11:36 | INFO     | BlogWriter | [RESEARCH] Evidence items after deduplication: 0
+2026-03-11 18:11:36 | INFO     | BlogWriter | [RESEARCH] ── END ──────────────────────────────────────
+2026-03-11 18:11:36 | INFO     | BlogWriter | [ORCHESTRATOR] ── START ──────────────────────────────────
+2026-03-11 18:11:36 | INFO     | BlogWriter | [ORCHESTRATOR] Topic: 'Hello
+For context:
+[root_agent] said: Hello! How can I help you today?
+Today is 11th March 2026. Write a blog on Evolution of Snapdragon Processor of Mobile.
+For context:
+[root_agent] called tool `transfer_to_agent` with parameters: {'agent_name': 'blog_writing_agent'}
+For context:
+[root_agent] `transfer_to_agent` tool returned result: {'result': None}' | Mode: 'open_book'
+2026-03-11 18:11:36 | DEBUG    | BlogWriter | [ORCHESTRATOR] Evidence items available for context: 0
+2026-03-11 18:11:36 | INFO     | BlogWriter | [ORCHESTRATOR] Planning attempt 1/3...
+2026-03-11 18:13:15 | INFO     | BlogWriter | [ORCHESTRATOR] Plan accepted: 5 tasks generated.
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [ORCHESTRATOR] Blog title : 'The Evolution of Snapdragon Processor: A Journey Through Time'
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [ORCHESTRATOR] Audience   : 'tech enthusiasts, mobile device users'
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [ORCHESTRATOR] Tone       : 'informative'
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [ORCHESTRATOR] Blog kind  : 'news_roundup'
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 01: 'Introduction to Snapdragon Processor' | ~250w | code=False | citations=True
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 02: 'Advancements in Snapdragon Processor (2013-2016)' | ~300w | code=False | citations=False
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 03: 'Snapdragon 820 and 821: A New Era of Performance' | ~250w | code=False | citations=False
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 04: 'Snapdragon 835 and 845: Artificial Intelligence and Edge AI' | ~300w | code=False | citations=False
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 05: 'Snapdragon 888 and Beyond: 5G, AI, and Performance' | ~300w | code=False | citations=False
+2026-03-11 18:13:15 | INFO     | BlogWriter | [ORCHESTRATOR] ── END ────────────────────────────────────
+2026-03-11 18:13:15 | INFO     | BlogWriter | [DISPATCHER] ── START ────────────────────────────────────
+2026-03-11 18:13:15 | INFO     | BlogWriter | [DISPATCHER] Dispatching 5 parallel worker(s)...
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 1: 'Introduction to Snapdragon Processor'
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 2: 'Advancements in Snapdragon Processor (2013-2016)'
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 3: 'Snapdragon 820 and 821: A New Era of Performance'
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 4: 'Snapdragon 835 and 845: Artificial Intelligence and Edge AI'
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 5: 'Snapdragon 888 and Beyond: 5G, AI, and Performance'
+2026-03-11 18:13:15 | INFO     | BlogWriter | [DISPATCHER] ── END ──────────────────────────────────────
+2026-03-11 18:13:15 | INFO     | BlogWriter | [WORKER] ── Task 1: 'Introduction to Snapdragon Processor' ─────────────────
+2026-03-11 18:13:15 | INFO     | BlogWriter | [WORKER] ── Task 2: 'Advancements in Snapdragon Processor (2013-2016)' ─────────────────
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Goal           : Provide an overview of the Snapdragon processor and its significance in mobile devices.
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Target words   : 250
+2026-03-11 18:13:15 | INFO     | BlogWriter | [WORKER] ── Task 3: 'Snapdragon 820 and 821: A New Era of Performance' ─────────────────
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   requires_code  : False
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : True
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Goal           : Discuss the key advancements and improvements made to the Snapdragon processor during this period.
+2026-03-11 18:13:15 | INFO     | BlogWriter | [WORKER] ── Task 4: 'Snapdragon 835 and 845: Artificial Intelligence and Edge AI' ─────────────────
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ["Explain the history of Qualcomm's acquisition of Intel's Mobile Communications Division (2007)", 'Describe the first-generation Snapdragon processor (2010) and its limitations', 'Highlight the impact of the first Snapdragon processor on the mobile industry']
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Goal           : Highlight the key features and improvements of the Snapdragon 820 and 821 processors.
+2026-03-11 18:13:15 | INFO     | BlogWriter | [WORKER] ── Task 5: 'Snapdragon 888 and Beyond: 5G, AI, and Performance' ─────────────────
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Target words   : 300
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 0
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Goal           : Discuss the introduction of artificial intelligence (AI) and edge AI capabilities in the Snapdragon processor.
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Target words   : 250
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   requires_code  : False
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Goal           : Highlight the key features and improvements of the Snapdragon 888 processor and future developments.
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Target words   : 300
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   requires_code  : False
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : False
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Target words   : 300
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   requires_code  : False
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : False
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ['Explain the introduction of the new Krait CPU architecture and its benefits', 'Describe the improved performance, power efficiency, and thermal management', "Mention the significance of the Snapdragon 821 processor's support for 4G LTE-Advanced Pro"]
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 0
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ['Mention the introduction of 4G LTE support and its impact on mobile networks', 'Describe the improved performance and power efficiency of the Adreno GPU', 'Explain the significance of the Snapdragon 808 processor (2015) and its features']
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : False
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   requires_code  : False
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : False
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ['Explain the introduction of the Qualcomm Neural Engine (QNE)', 'Describe the improved performance and power efficiency of the QNE', "Mention the significance of the Snapdragon 845 processor's support for Wi-Fi 6 and Gigabit LTE"]
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ['Explain the introduction of 5G support and its implications for mobile devices', 'Describe the improved performance, power efficiency, and thermal management', "Mention the significance of the Snapdragon 888 processor's support for AI-enhanced camera capabilities"]
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 0
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 0
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 0
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 18:13:15 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 18:13:47 | INFO     | BlogWriter | [WORKER] Task 1 done — 'Introduction to Snapdragon Processor' | ~181 words written
+2026-03-11 18:14:15 | INFO     | BlogWriter | [WORKER] Task 3 done — 'Snapdragon 820 and 821: A New Era of Performance' | ~283 words written
+2026-03-11 18:14:33 | INFO     | BlogWriter | [WORKER] Task 4 done — 'Snapdragon 835 and 845: Artificial Intelligence and Edge AI' | ~164 words written
+2026-03-11 18:14:57 | INFO     | BlogWriter | [WORKER] Task 2 done — 'Advancements in Snapdragon Processor (2013-2016)' | ~188 words written
+2026-03-11 18:15:39 | INFO     | BlogWriter | [WORKER] Task 5 done — 'Snapdragon 888 and Beyond: 5G, AI, and Performance' | ~285 words written
+2026-03-11 18:15:39 | INFO     | BlogWriter | [REDUCER] ── START ───────────────────────────────────────
+2026-03-11 18:15:39 | INFO     | BlogWriter | [REDUCER] Assembling 5 section(s) for blog: 'The Evolution of Snapdragon Processor: A Journey Through Time'
+2026-03-11 18:15:39 | INFO     | BlogWriter | [REDUCER] Total blog word count: ~1111
+2026-03-11 18:15:39 | INFO     | BlogWriter | [REDUCER] Blog saved → output\The Evolution of Snapdragon Processor_ A Journey Through Time.md
+2026-03-11 18:15:39 | INFO     | BlogWriter | [REDUCER] ── END ─────────────────────────────────────────
