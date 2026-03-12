@@ -1,0 +1,269 @@
+
+(venv) D:\Agent-Development-Kit\adk29>uvicorn app:app --host 0.0.0.0 --port 8000
+INFO:google_adk.google.adk.sessions.database_session_service:Local timezone: Asia/Calcutta
+INFO:     Started server process [6296]
+INFO:     Waiting for application startup.
+INFO:app:Jarvis starting up...
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     192.168.1.5:65493 - "GET /chat/stream?user_input=Hi&session_id=24cfca69-338c-41dd-999a-13d9273fc125 HTTP/1.1" 200 OK
+D:\Agent-Development-Kit\venv\Lib\site-packages\google\adk\tools\mcp_tool\mcp_tool.py:88: UserWarning: [EXPERIMENTAL] BaseAuthenticatedTool: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  super().__init__(
+INFO:google_genai.types:
+Note: Conversion of fields that are not included in the JSONSchema class are ignored.
+Json Schema is now supported natively by both Vertex AI and Gemini API. Users
+are recommended to pass/receive Json Schema directly to/from the API. For example:
+1. the counter part of GenerateContentConfig.response_schema is
+   GenerateContentConfig.response_json_schema, which accepts [JSON
+  Schema](https://json-schema.org/)
+2. the counter part of FunctionDeclaration.parameters is
+   FunctionDeclaration.parameters_json_schema, which accepts [JSON
+   Schema](https://json-schema.org/)
+3. the counter part of FunctionDeclaration.response is
+   FunctionDeclaration.response_json_schema, which accepts [JSON
+   Schema](https://json-schema.org/)
+
+INFO:google_adk.google.adk.tools.mcp_tool.mcp_session_manager:Retrying get_tools due to error: Failed to create MCP session: [WinError 267] The directory name is invalid
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\mcp\os\win32\utilities.py", line 169, in create_windows_process
+    process = await anyio.open_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\anyio\_core\_subprocesses.py", line 190, in open_process
+    return await get_async_backend().open_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2601, in open_process
+    process = await asyncio.create_subprocess_exec(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\asyncio\subprocess.py", line 223, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\asyncio\base_events.py", line 1708, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\asyncio\windows_events.py", line 399, in _make_subprocess_transport
+    transp = _WindowsSubprocessTransport(self, protocol, args, shell,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\asyncio\base_subprocess.py", line 36, in __init__
+    self._start(args=args, shell=shell, stdin=stdin, stdout=stdout,
+  File "C:\Program Files\Python311\Lib\asyncio\windows_events.py", line 929, in _start
+    self._proc = windows_utils.Popen(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\asyncio\windows_utils.py", line 153, in __init__
+    super().__init__(args, stdin=stdin_rfd, stdout=stdout_wfd,
+  File "C:\Program Files\Python311\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Program Files\Python311\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NotADirectoryError: [WinError 267] The directory name is invalid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\adk\tools\mcp_tool\mcp_session_manager.py", line 392, in create_session
+    transports = await asyncio.wait_for(
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\asyncio\tasks.py", line 489, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 124, in stdio_client
+    process = await _create_platform_compatible_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 249, in _create_platform_compatible_process
+    process = await create_windows_process(command, args, env, errlog, cwd)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\mcp\os\win32\utilities.py", line 184, in create_windows_process
+    process = await anyio.open_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\anyio\_core\_subprocesses.py", line 190, in open_process
+    return await get_async_backend().open_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2601, in open_process
+    process = await asyncio.create_subprocess_exec(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\asyncio\subprocess.py", line 223, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\asyncio\base_events.py", line 1708, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\asyncio\windows_events.py", line 399, in _make_subprocess_transport
+    transp = _WindowsSubprocessTransport(self, protocol, args, shell,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\asyncio\base_subprocess.py", line 36, in __init__
+    self._start(args=args, shell=shell, stdin=stdin, stdout=stdout,
+  File "C:\Program Files\Python311\Lib\asyncio\windows_events.py", line 929, in _start
+    self._proc = windows_utils.Popen(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\asyncio\windows_utils.py", line 153, in __init__
+    super().__init__(args, stdin=stdin_rfd, stdout=stdout_wfd,
+  File "C:\Program Files\Python311\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Program Files\Python311\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NotADirectoryError: [WinError 267] The directory name is invalid
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\adk\tools\mcp_tool\mcp_session_manager.py", line 160, in wrapper
+    return await func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\adk\tools\mcp_tool\mcp_toolset.py", line 163, in get_tools
+    session = await self._mcp_session_manager.create_session(headers=headers)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\adk\tools\mcp_tool\mcp_session_manager.py", line 426, in create_session
+    raise ConnectionError(f'Failed to create MCP session: {e}') from e
+ConnectionError: Failed to create MCP session: [WinError 267] The directory name is invalid
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\adk\tools\mcp_tool\mcp_session_manager.py", line 392, in create_session
+    transports = await asyncio.wait_for(
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\asyncio\tasks.py", line 489, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\contextlib.py", line 650, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 124, in stdio_client
+    process = await _create_platform_compatible_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 249, in _create_platform_compatible_process
+    process = await create_windows_process(command, args, env, errlog, cwd)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\mcp\os\win32\utilities.py", line 184, in create_windows_process
+    process = await anyio.open_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\anyio\_core\_subprocesses.py", line 190, in open_process
+    return await get_async_backend().open_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2601, in open_process
+    process = await asyncio.create_subprocess_exec(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\asyncio\subprocess.py", line 223, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\asyncio\base_events.py", line 1708, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\asyncio\windows_events.py", line 399, in _make_subprocess_transport
+    transp = _WindowsSubprocessTransport(self, protocol, args, shell,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\asyncio\base_subprocess.py", line 36, in __init__
+    self._start(args=args, shell=shell, stdin=stdin, stdout=stdout,
+  File "C:\Program Files\Python311\Lib\asyncio\windows_events.py", line 929, in _start
+    self._proc = windows_utils.Popen(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\asyncio\windows_utils.py", line 153, in __init__
+    super().__init__(args, stdin=stdin_rfd, stdout=stdout_wfd,
+  File "C:\Program Files\Python311\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Program Files\Python311\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NotADirectoryError: [WinError 267] The directory name is invalid
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\fastapi\applications.py", line 1139, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\fastapi\routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\fastapi\routing.py", line 106, in app
+    await response(scope, receive, send)
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\starlette\responses.py", line 269, in __call__
+    with collapse_excgroups():
+  File "C:\Program Files\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\starlette\_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\starlette\responses.py", line 273, in wrap
+    await func()
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\starlette\responses.py", line 253, in stream_response
+    async for chunk in self.body_iterator:
+  File "D:\Agent-Development-Kit\adk29\app.py", line 368, in event_generator
+    async for chunk in chat_stream(user_input, session_id):
+  File "D:\Agent-Development-Kit\adk29\chatbot.py", line 252, in chat_stream
+    async for event in events:
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\adk\runners.py", line 519, in run_async
+    async for event in agen:
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\adk\runners.py", line 507, in _run_with_trace
+    async for event in agen:
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\adk\runners.py", line 739, in _exec_with_plugin
+    async for event in agen:
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\adk\runners.py", line 496, in execute
+    async for event in agen:
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\adk\agents\base_agent.py", line 294, in run_async
+    async for event in agen:
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\adk\agents\llm_agent.py", line 468, in _run_async_impl
+    async for event in agen:
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\adk\flows\llm_flows\base_llm_flow.py", line 362, in run_async
+    async for event in agen:
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\adk\flows\llm_flows\base_llm_flow.py", line 381, in _run_one_step_async
+    async for event in agen:
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\adk\flows\llm_flows\base_llm_flow.py", line 496, in _preprocess_async
+    tools = await _convert_tool_union_to_tools(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\adk\agents\llm_agent.py", line 180, in _convert_tool_union_to_tools
+    return await tool_union.get_tools_with_prefix(ctx)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\adk\tools\base_toolset.py", line 114, in get_tools_with_prefix
+    tools = await self.get_tools(readonly_context)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\adk\tools\mcp_tool\mcp_session_manager.py", line 173, in wrapper
+    return await func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\adk\tools\mcp_tool\mcp_toolset.py", line 163, in get_tools
+    session = await self._mcp_session_manager.create_session(headers=headers)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\google\adk\tools\mcp_tool\mcp_session_manager.py", line 426, in create_session
+    raise ConnectionError(f'Failed to create MCP session: {e}') from e
+ConnectionError: Failed to create MCP session: [WinError 267] The directory name is invalid
+

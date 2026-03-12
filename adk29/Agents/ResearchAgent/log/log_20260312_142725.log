@@ -1,0 +1,1581 @@
+2026-03-12 14:27:25,929  [research]  INFO      research_agent  Research Agent initialised. Log → D:\Agent-Development-Kit\adk29\Agents\ResearchAgent\log\log_20260312_142725.log
+2026-03-12 14:27:25,929  [research]  DEBUG     research_agent  reducer_agent defined.
+2026-03-12 14:27:25,934  [research]  DEBUG     research_agent  QueryFanOutAgent defined.
+2026-03-12 14:27:25,934  [research]  DEBUG     research_agent  collector_agent defined.
+2026-03-12 14:27:25,934  [research]  DEBUG     research_agent  orchestrator_agent defined.
+2026-03-12 14:27:25,934  [research]  INFO      research_agent  Research pipeline assembled.
+2026-03-12 14:27:25,949  [win32]  DEBUG     tzlocal  Looking up time zone info from registry
+2026-03-12 14:27:25,963  [database_session_service]  INFO      google_adk.google.adk.sessions.database_session_service  Local timezone: Asia/Calcutta
+2026-03-12 14:27:25,967  [app]  INFO      app  Jarvis starting up...
+2026-03-12 14:27:26,678  [database_session_service]  DEBUG     google_adk.google.adk.sessions.database_session_service  Using V1 schema tables...
+2026-03-12 14:27:45,010  [mcp_session_manager]  DEBUG     google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Created new session: stdio_session
+2026-03-12 14:27:45,010  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:45,010  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:45,010  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:45,010  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:45,010  [types]  INFO      google_genai.types  
+Note: Conversion of fields that are not included in the JSONSchema class are ignored.
+Json Schema is now supported natively by both Vertex AI and Gemini API. Users
+are recommended to pass/receive Json Schema directly to/from the API. For example:
+1. the counter part of GenerateContentConfig.response_schema is
+   GenerateContentConfig.response_json_schema, which accepts [JSON
+  Schema](https://json-schema.org/)
+2. the counter part of FunctionDeclaration.parameters is
+   FunctionDeclaration.parameters_json_schema, which accepts [JSON
+   Schema](https://json-schema.org/)
+3. the counter part of FunctionDeclaration.response is
+   FunctionDeclaration.response_json_schema, which accepts [JSON
+   Schema](https://json-schema.org/)
+
+2026-03-12 14:27:50,460  [mcp_session_manager]  DEBUG     google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Created new session: stdio_session
+2026-03-12 14:27:50,460  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:50,460  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:50,460  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:50,460  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:50,460  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:56,326  [mcp_session_manager]  DEBUG     google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Created new session: stdio_session
+2026-03-12 14:27:56,343  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:56,343  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:56,343  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:56,343  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:56,343  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:56,343  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:56,343  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:56,343  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:56,343  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:56,343  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:56,343  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:56,343  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:56,343  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:56,343  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:56,343  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:56,343  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:56,827  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2026-03-12 14:27:56,829  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are Jarvis, a highly capable and professional AI assistant.
+
+You have access to the following tools and agents:
+
+1. get_current_datetime
+   - Check the current date, time, and day.
+
+2. research_agent
+   - Perform deep research and retrieve live web data.
+
+3. expense_tracker tools
+   - Record, manage, and retrieve expenses.
+
+4. to_do tools
+   - Create, update, delete, and manage tasks.
+
+5. file_system tools
+   - Read, write, list, and manage files and folders on the local file system.
+
+
+DELEGATION RULES:
+
+1. Date/Time:
+   If the user asks for the current time or date, use get_current_datetime.
+
+2. Research:
+   Delegate complex research or latest news to research_agent.
+
+3. Expense Tracking:
+   Use expense_tracker tools when the user wants to add or check expenses.
+
+4. Task Management:
+   Use to_do tools when the user wants to manage tasks or reminders.
+
+5. File System:
+   Use file_system tools when the user wants to read, write, list, move,
+   or delete files and folders on the local system.
+
+
+Always:
+- Maintain session context
+- Provide clear structured answers
+- Format responses using markdown
+
+
+You are an agent. Your internal name is "jarvis_root_agent".
+
+
+You have a list of other agents to transfer to:
+
+
+Agent name: research_agent
+Agent description: Performs deep research using parallel web searches and returns a structured report.
+
+
+If you are the best to answer the question according to your description,
+you can answer it.
+
+If another agent is better for answering the question according to its
+description, call `transfer_to_agent` function to transfer the question to that
+agent. When transferring, do not generate any text other than the function
+call.
+
+**NOTE**: the only available agents for `transfer_to_agent` function are
+`research_agent`.
+
+-----------------------------------------------------------
+Config:
+{'http_options': {'headers': {'x-goog-api-client': 'google-adk/1.22.0 gl-python/3.11.9', 'user-agent': 'google-adk/1.22.0 gl-python/3.11.9'}}, 'tools': [{}]}
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"Hello"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+transfer_to_agent: {'agent_name': {'enum': ['research_agent'], 'type': <Type.STRING: 'STRING'>}} 
+get_current_datetime: {} 
+add_expense_tool: {'date': {'type': <Type.STRING: 'STRING'>}, 'amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'category': {'type': <Type.STRING: 'STRING'>}, 'subcategory': {'default': '', 'type': <Type.STRING: 'STRING'>}, 'note': {'default': '', 'type': <Type.STRING: 'STRING'>}} 
+edit_expense_tool: {'expense_id': {'type': <Type.INTEGER: 'INTEGER'>}, 'date': {'type': <Type.STRING: 'STRING'>}, 'amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'category': {'type': <Type.STRING: 'STRING'>}, 'subcategory': {'type': <Type.STRING: 'STRING'>}, 'note': {'type': <Type.STRING: 'STRING'>}} 
+delete_expense_tool: {'expense_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+search_expenses_tool: {'category': {'type': <Type.STRING: 'STRING'>}, 'start_date': {'type': <Type.STRING: 'STRING'>}, 'end_date': {'type': <Type.STRING: 'STRING'>}, 'min_amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'max_amount': {'type': <Type.NUMBER: 'NUMBER'>}} 
+add_task_tool: {'title': {'type': <Type.STRING: 'STRING'>}, 'description': {'default': '', 'type': <Type.STRING: 'STRING'>}, 'priority': {'default': 'medium', 'type': <Type.STRING: 'STRING'>}, 'due_date': {'default': '', 'type': <Type.STRING: 'STRING'>}} 
+edit_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}, 'title': {'type': <Type.STRING: 'STRING'>}, 'description': {'type': <Type.STRING: 'STRING'>}, 'priority': {'type': <Type.STRING: 'STRING'>}, 'due_date': {'type': <Type.STRING: 'STRING'>}, 'status': {'type': <Type.STRING: 'STRING'>}} 
+delete_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+complete_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+search_tasks_tool: {'status': {'type': <Type.STRING: 'STRING'>}, 'priority': {'type': <Type.STRING: 'STRING'>}, 'due_date': {'type': <Type.STRING: 'STRING'>}} 
+read_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+write_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'content': {'type': <Type.STRING: 'STRING'>}} 
+edit_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'old_text': {'type': <Type.STRING: 'STRING'>}, 'new_text': {'type': <Type.STRING: 'STRING'>}} 
+append_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'content': {'type': <Type.STRING: 'STRING'>}} 
+copy_file_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+move_file_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+delete_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+clear_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+create_directory_tool: {'folder_path': {'type': <Type.STRING: 'STRING'>}} 
+delete_directory_tool: {'folder_path': {'type': <Type.STRING: 'STRING'>}, 'recursive': {'default': False, 'type': <Type.BOOLEAN: 'BOOLEAN'>}} 
+rename_directory_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+list_files_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}} 
+list_directories_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}} 
+list_tree_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}, 'max_depth': {'default': 5, 'type': <Type.INTEGER: 'INTEGER'>}} 
+file_info_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+supported_formats_tool: {} 
+-----------------------------------------------------------
+
+2026-03-12 14:27:58,161  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Response received from the model.
+2026-03-12 14:27:58,162  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Response:
+-----------------------------------------------------------
+Text:
+Hello! How can I help you today?
+-----------------------------------------------------------
+Function calls:
+
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Thu, 12 Mar 2026 08:57:59 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=1288","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"text":"Hello! How can I help you today?","thought_signature":"CrsBAb4-9vvzS_mzCFygKy_QJEihMHpvixG2XbH15Dy2MdPmktnG3EY80e3VUxN3kQZYQoI4CpMkkoObygBp9UDS9yGvrCoTzb_kvxHbdCEYVrLQL2G4Bio-37XbBDJpDIZAKVBZDJwruQXD8VyD88_qKSFIqSZHvlQjFIygZNEshMVTj2dikTBExTCwrQJF5CvMISJHiqZ_5DodRgnpG5dCRN2Y1WL9L8GTmpFDCyC_MYoEdkyr-O8ouna24Q=="}],"role":"model"},"finish_reason":"STOP","index":0}],"model_version":"gemini-2.5-flash","response_id":"FoCyaYCLGen14-EPr7Tu2A4","usage_metadata":{"candidates_token_count":9,"prompt_token_count":2210,"prompt_tokens_details":[{"modality":"TEXT","token_count":2210}],"thoughts_token_count":32,"total_token_count":2251}}
+-----------------------------------------------------------
+
+2026-03-12 14:27:58,163  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,163  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,163  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,163  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,163  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,163  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,163  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,163  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,163  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,163  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,163  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,175  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,175  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,175  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,175  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,175  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,175  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,175  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,175  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,175  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,175  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,175  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,175  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,175  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:27:58,175  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:29:43,345  [mcp_session_manager]  INFO      google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Cleaning up disconnected session: stdio_session
+2026-03-12 14:29:44,107  [mcp_session_manager]  WARNING   google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Error during disconnected session cleanup: Attempted to exit cancel scope in a different task than it was entered in
+2026-03-12 14:29:50,826  [mcp_session_manager]  DEBUG     google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Created new session: stdio_session
+2026-03-12 14:29:50,840  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:29:50,840  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:29:50,840  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:29:50,840  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:29:50,840  [mcp_session_manager]  INFO      google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Cleaning up disconnected session: stdio_session
+2026-03-12 14:29:51,690  [mcp_session_manager]  WARNING   google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Error during disconnected session cleanup: Attempted to exit cancel scope in a different task than it was entered in
+2026-03-12 14:29:58,457  [mcp_session_manager]  DEBUG     google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Created new session: stdio_session
+2026-03-12 14:29:58,457  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:29:58,457  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:29:58,457  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:29:58,457  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:29:58,457  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:29:58,457  [mcp_session_manager]  INFO      google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Cleaning up disconnected session: stdio_session
+2026-03-12 14:29:59,390  [mcp_session_manager]  WARNING   google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Error during disconnected session cleanup: Attempted to exit cancel scope in a different task than it was entered in
+2026-03-12 14:30:06,406  [mcp_session_manager]  DEBUG     google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Created new session: stdio_session
+2026-03-12 14:30:06,406  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:06,406  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:06,406  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:06,406  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:06,406  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:06,406  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:06,406  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:06,406  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:06,406  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:06,406  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:06,406  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:06,406  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:06,406  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:06,406  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:06,406  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:06,406  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:06,890  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2026-03-12 14:30:06,890  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are Jarvis, a highly capable and professional AI assistant.
+
+You have access to the following tools and agents:
+
+1. get_current_datetime
+   - Check the current date, time, and day.
+
+2. research_agent
+   - Perform deep research and retrieve live web data.
+
+3. expense_tracker tools
+   - Record, manage, and retrieve expenses.
+
+4. to_do tools
+   - Create, update, delete, and manage tasks.
+
+5. file_system tools
+   - Read, write, list, and manage files and folders on the local file system.
+
+
+DELEGATION RULES:
+
+1. Date/Time:
+   If the user asks for the current time or date, use get_current_datetime.
+
+2. Research:
+   Delegate complex research or latest news to research_agent.
+
+3. Expense Tracking:
+   Use expense_tracker tools when the user wants to add or check expenses.
+
+4. Task Management:
+   Use to_do tools when the user wants to manage tasks or reminders.
+
+5. File System:
+   Use file_system tools when the user wants to read, write, list, move,
+   or delete files and folders on the local system.
+
+
+Always:
+- Maintain session context
+- Provide clear structured answers
+- Format responses using markdown
+
+
+You are an agent. Your internal name is "jarvis_root_agent".
+
+
+You have a list of other agents to transfer to:
+
+
+Agent name: research_agent
+Agent description: Performs deep research using parallel web searches and returns a structured report.
+
+
+If you are the best to answer the question according to your description,
+you can answer it.
+
+If another agent is better for answering the question according to its
+description, call `transfer_to_agent` function to transfer the question to that
+agent. When transferring, do not generate any text other than the function
+call.
+
+**NOTE**: the only available agents for `transfer_to_agent` function are
+`research_agent`.
+
+-----------------------------------------------------------
+Config:
+{'http_options': {'headers': {'x-goog-api-client': 'google-adk/1.22.0 gl-python/3.11.9', 'user-agent': 'google-adk/1.22.0 gl-python/3.11.9'}}, 'tools': [{}]}
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"Hello"}],"role":"user"}
+{"parts":[{"text":"Hello! How can I help you today?","thought_signature":"CrsBAb4-9vvzS_mzCFygKy_QJEihMHpvixG2XbH15Dy2MdPmktnG3EY80e3VUxN3kQZYQoI4CpMkkoObygBp9UDS9yGvrCoTzb_kvxHbdCEYVrLQL2G4Bio-37XbBDJpDIZAKVBZDJwruQXD8VyD88_qKSFIqSZHvlQjFIygZNEshMVTj2dikTBExTCwrQJF5CvMISJHiqZ_5DodRgnpG5dCRN2Y1WL9L8GTmpFDCyC_MYoEdkyr-O8ouna24Q=="}],"role":"model"}
+{"parts":[{"text":"do a research on the latest technology introduced recently"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+transfer_to_agent: {'agent_name': {'enum': ['research_agent'], 'type': <Type.STRING: 'STRING'>}} 
+get_current_datetime: {} 
+add_expense_tool: {'date': {'type': <Type.STRING: 'STRING'>}, 'amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'category': {'type': <Type.STRING: 'STRING'>}, 'subcategory': {'default': '', 'type': <Type.STRING: 'STRING'>}, 'note': {'default': '', 'type': <Type.STRING: 'STRING'>}} 
+edit_expense_tool: {'expense_id': {'type': <Type.INTEGER: 'INTEGER'>}, 'date': {'type': <Type.STRING: 'STRING'>}, 'amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'category': {'type': <Type.STRING: 'STRING'>}, 'subcategory': {'type': <Type.STRING: 'STRING'>}, 'note': {'type': <Type.STRING: 'STRING'>}} 
+delete_expense_tool: {'expense_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+search_expenses_tool: {'category': {'type': <Type.STRING: 'STRING'>}, 'start_date': {'type': <Type.STRING: 'STRING'>}, 'end_date': {'type': <Type.STRING: 'STRING'>}, 'min_amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'max_amount': {'type': <Type.NUMBER: 'NUMBER'>}} 
+add_task_tool: {'title': {'type': <Type.STRING: 'STRING'>}, 'description': {'default': '', 'type': <Type.STRING: 'STRING'>}, 'priority': {'default': 'medium', 'type': <Type.STRING: 'STRING'>}, 'due_date': {'default': '', 'type': <Type.STRING: 'STRING'>}} 
+edit_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}, 'title': {'type': <Type.STRING: 'STRING'>}, 'description': {'type': <Type.STRING: 'STRING'>}, 'priority': {'type': <Type.STRING: 'STRING'>}, 'due_date': {'type': <Type.STRING: 'STRING'>}, 'status': {'type': <Type.STRING: 'STRING'>}} 
+delete_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+complete_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+search_tasks_tool: {'status': {'type': <Type.STRING: 'STRING'>}, 'priority': {'type': <Type.STRING: 'STRING'>}, 'due_date': {'type': <Type.STRING: 'STRING'>}} 
+read_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+write_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'content': {'type': <Type.STRING: 'STRING'>}} 
+edit_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'old_text': {'type': <Type.STRING: 'STRING'>}, 'new_text': {'type': <Type.STRING: 'STRING'>}} 
+append_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'content': {'type': <Type.STRING: 'STRING'>}} 
+copy_file_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+move_file_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+delete_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+clear_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+create_directory_tool: {'folder_path': {'type': <Type.STRING: 'STRING'>}} 
+delete_directory_tool: {'folder_path': {'type': <Type.STRING: 'STRING'>}, 'recursive': {'default': False, 'type': <Type.BOOLEAN: 'BOOLEAN'>}} 
+rename_directory_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+list_files_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}} 
+list_directories_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}} 
+list_tree_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}, 'max_depth': {'default': 5, 'type': <Type.INTEGER: 'INTEGER'>}} 
+file_info_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+supported_formats_tool: {} 
+-----------------------------------------------------------
+
+2026-03-12 14:30:07,806  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Response received from the model.
+2026-03-12 14:30:07,806  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Response:
+-----------------------------------------------------------
+Text:
+None
+-----------------------------------------------------------
+Function calls:
+
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Thu, 12 Mar 2026 09:00:09 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=877","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"role":"model"},"finish_reason":"STOP","index":0}],"model_version":"gemini-2.5-flash","response_id":"mICyaYTHHYq-juMPt5fZ0Qs","usage_metadata":{"prompt_token_count":2230,"prompt_tokens_details":[{"modality":"TEXT","token_count":2230}],"total_token_count":2230}}
+-----------------------------------------------------------
+
+2026-03-12 14:30:07,806  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,806  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,806  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,806  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:30:07,823  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:34:49,603  [mcp_session_manager]  INFO      google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Cleaning up disconnected session: stdio_session
+2026-03-12 14:34:50,483  [mcp_session_manager]  WARNING   google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Error during disconnected session cleanup: Attempted to exit cancel scope in a different task than it was entered in
+2026-03-12 14:34:56,650  [mcp_session_manager]  DEBUG     google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Created new session: stdio_session
+2026-03-12 14:34:56,650  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:34:56,650  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:34:56,650  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:34:56,650  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:34:56,666  [mcp_session_manager]  INFO      google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Cleaning up disconnected session: stdio_session
+2026-03-12 14:34:57,466  [mcp_session_manager]  WARNING   google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Error during disconnected session cleanup: Attempted to exit cancel scope in a different task than it was entered in
+2026-03-12 14:35:03,999  [mcp_session_manager]  DEBUG     google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Created new session: stdio_session
+2026-03-12 14:35:03,999  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:03,999  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:03,999  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:03,999  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:03,999  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:03,999  [mcp_session_manager]  INFO      google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Cleaning up disconnected session: stdio_session
+2026-03-12 14:35:04,867  [mcp_session_manager]  WARNING   google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Error during disconnected session cleanup: Attempted to exit cancel scope in a different task than it was entered in
+2026-03-12 14:35:11,832  [mcp_session_manager]  DEBUG     google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Created new session: stdio_session
+2026-03-12 14:35:11,848  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:11,849  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:11,849  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:11,849  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:11,849  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:11,849  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:11,850  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:11,850  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:11,850  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:11,850  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:11,850  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:11,850  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:11,850  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:11,851  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:11,851  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:11,851  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:12,349  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2026-03-12 14:35:12,349  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are Jarvis, a highly capable and professional AI assistant.
+
+You have access to the following tools and agents:
+
+1. get_current_datetime
+   - Check the current date, time, and day.
+
+2. research_agent
+   - Perform deep research and retrieve live web data.
+
+3. expense_tracker tools
+   - Record, manage, and retrieve expenses.
+
+4. to_do tools
+   - Create, update, delete, and manage tasks.
+
+5. file_system tools
+   - Read, write, list, and manage files and folders on the local file system.
+
+
+DELEGATION RULES:
+
+1. Date/Time:
+   If the user asks for the current time or date, use get_current_datetime.
+
+2. Research:
+   Delegate complex research or latest news to research_agent.
+
+3. Expense Tracking:
+   Use expense_tracker tools when the user wants to add or check expenses.
+
+4. Task Management:
+   Use to_do tools when the user wants to manage tasks or reminders.
+
+5. File System:
+   Use file_system tools when the user wants to read, write, list, move,
+   or delete files and folders on the local system.
+
+
+Always:
+- Maintain session context
+- Provide clear structured answers
+- Format responses using markdown
+
+
+You are an agent. Your internal name is "jarvis_root_agent".
+
+
+You have a list of other agents to transfer to:
+
+
+Agent name: research_agent
+Agent description: Performs deep research using parallel web searches and returns a structured report.
+
+
+If you are the best to answer the question according to your description,
+you can answer it.
+
+If another agent is better for answering the question according to its
+description, call `transfer_to_agent` function to transfer the question to that
+agent. When transferring, do not generate any text other than the function
+call.
+
+**NOTE**: the only available agents for `transfer_to_agent` function are
+`research_agent`.
+
+-----------------------------------------------------------
+Config:
+{'http_options': {'headers': {'x-goog-api-client': 'google-adk/1.22.0 gl-python/3.11.9', 'user-agent': 'google-adk/1.22.0 gl-python/3.11.9'}}, 'tools': [{}]}
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"Hello"}],"role":"user"}
+{"parts":[{"text":"Hello! How can I help you today?","thought_signature":"CrsBAb4-9vvzS_mzCFygKy_QJEihMHpvixG2XbH15Dy2MdPmktnG3EY80e3VUxN3kQZYQoI4CpMkkoObygBp9UDS9yGvrCoTzb_kvxHbdCEYVrLQL2G4Bio-37XbBDJpDIZAKVBZDJwruQXD8VyD88_qKSFIqSZHvlQjFIygZNEshMVTj2dikTBExTCwrQJF5CvMISJHiqZ_5DodRgnpG5dCRN2Y1WL9L8GTmpFDCyC_MYoEdkyr-O8ouna24Q=="}],"role":"model"}
+{"parts":[{"text":"do a research on the latest technology introduced recently"}],"role":"user"}
+{"parts":[{"text":"what it the today's date"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+transfer_to_agent: {'agent_name': {'enum': ['research_agent'], 'type': <Type.STRING: 'STRING'>}} 
+get_current_datetime: {} 
+add_expense_tool: {'date': {'type': <Type.STRING: 'STRING'>}, 'amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'category': {'type': <Type.STRING: 'STRING'>}, 'subcategory': {'default': '', 'type': <Type.STRING: 'STRING'>}, 'note': {'default': '', 'type': <Type.STRING: 'STRING'>}} 
+edit_expense_tool: {'expense_id': {'type': <Type.INTEGER: 'INTEGER'>}, 'date': {'type': <Type.STRING: 'STRING'>}, 'amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'category': {'type': <Type.STRING: 'STRING'>}, 'subcategory': {'type': <Type.STRING: 'STRING'>}, 'note': {'type': <Type.STRING: 'STRING'>}} 
+delete_expense_tool: {'expense_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+search_expenses_tool: {'category': {'type': <Type.STRING: 'STRING'>}, 'start_date': {'type': <Type.STRING: 'STRING'>}, 'end_date': {'type': <Type.STRING: 'STRING'>}, 'min_amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'max_amount': {'type': <Type.NUMBER: 'NUMBER'>}} 
+add_task_tool: {'title': {'type': <Type.STRING: 'STRING'>}, 'description': {'default': '', 'type': <Type.STRING: 'STRING'>}, 'priority': {'default': 'medium', 'type': <Type.STRING: 'STRING'>}, 'due_date': {'default': '', 'type': <Type.STRING: 'STRING'>}} 
+edit_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}, 'title': {'type': <Type.STRING: 'STRING'>}, 'description': {'type': <Type.STRING: 'STRING'>}, 'priority': {'type': <Type.STRING: 'STRING'>}, 'due_date': {'type': <Type.STRING: 'STRING'>}, 'status': {'type': <Type.STRING: 'STRING'>}} 
+delete_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+complete_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+search_tasks_tool: {'status': {'type': <Type.STRING: 'STRING'>}, 'priority': {'type': <Type.STRING: 'STRING'>}, 'due_date': {'type': <Type.STRING: 'STRING'>}} 
+read_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+write_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'content': {'type': <Type.STRING: 'STRING'>}} 
+edit_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'old_text': {'type': <Type.STRING: 'STRING'>}, 'new_text': {'type': <Type.STRING: 'STRING'>}} 
+append_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'content': {'type': <Type.STRING: 'STRING'>}} 
+copy_file_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+move_file_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+delete_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+clear_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+create_directory_tool: {'folder_path': {'type': <Type.STRING: 'STRING'>}} 
+delete_directory_tool: {'folder_path': {'type': <Type.STRING: 'STRING'>}, 'recursive': {'default': False, 'type': <Type.BOOLEAN: 'BOOLEAN'>}} 
+rename_directory_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+list_files_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}} 
+list_directories_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}} 
+list_tree_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}, 'max_depth': {'default': 5, 'type': <Type.INTEGER: 'INTEGER'>}} 
+file_info_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+supported_formats_tool: {} 
+-----------------------------------------------------------
+
+2026-03-12 14:35:14,349  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Response received from the model.
+2026-03-12 14:35:14,349  [types]  WARNING   google_genai.types  Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+2026-03-12 14:35:14,349  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Response:
+-----------------------------------------------------------
+Text:
+None
+-----------------------------------------------------------
+Function calls:
+name: get_current_datetime, args: {}
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Thu, 12 Mar 2026 09:05:15 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=1871","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"function_call":{"args":{},"name":"get_current_datetime"},"thought_signature":"CqAFAb4-9vs5LxcYgauBz_0gIzPCc6YRR6B86jUp4PlQ6pIlmCo6I4YZmcjfmvlcV1DsGizTF0w3OMzpBoUcgTEv9DkAnB7fdeRjbcPqKQ_GvHXWtgwYlVz70sCf1HeHP1HFB93uplwHmm0dGNOdHeVICoz2DERfKIX7RrIr0ZUBaBu03ZIk4iDVbr9WzWbYDelqkrNr-YZ4qa2QMI-mC1wRJKsl7b4YBRps_r3i6FifkZeTLy6j02Wn4C9WYPv5VFW6S8clZku7oxvafdDHBFZ9AZFY5yOYQVGx5WxrdPSpyuT5XyQe1ZpDonUox8Y9PFk1iJ99LZ82Lllh5rW6ZFQOpwFFskj7G7tqX6xlBeIfbcRuz1mMMTO-bmAoPM8fKdhIa-hk98nkSRyzjIiN8CkUgmsMxnGtsaJwG3Gq-7z3OUFkxOAcL2fD_sM_R3Ig7RY0pi_tMVgM6iUe1VbGYXrr1sif3g7QKxqlqwi3ygcd1uLcARtGyNSOEyahzz-M8WjNTCQtnqD4Cf2hsLfmNW_LFceOZFG-a4uqQsPscscmqcS02xLNV3NffybuS_v2xSpjp2rqWLYttRTxa8QL0G3OntHzjVhkza0fFEE4BlU4vdEuc5_LOEKWHvsv-YEWOJWBTwktVCwxFyVDApwOhqB0cI1m2FUUXww7NS_d3bXngBwCrfpmSDZXd3pW9zje4NY-wKIjVpE6BCDo8CfMkdfNJZJ0Fjy6RJiqUvt8JkjCiqWEN9b-Qjbtgg3OmmVV2KV-QHMu-DpgPV4i_qkHISQ5jgFFHbEVwUw6HEh8zwTHItqcBz1r2XlGD87s1zYYuoM8XT5COeQ-H4avIWLwTzRn1Qy1rVfitVclgDVtiF5E0H9UzY4kMjO3x8mrnrY3a8PP"}],"role":"model"},"finish_reason":"STOP","index":0}],"model_version":"gemini-2.5-flash","response_id":"yoGyad77Af3NjuMPtNrlkQg","usage_metadata":{"candidates_token_count":12,"prompt_token_count":2238,"prompt_tokens_details":[{"modality":"TEXT","token_count":2238}],"thoughts_token_count":160,"total_token_count":2410}}
+-----------------------------------------------------------
+
+2026-03-12 14:35:14,349  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,349  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,349  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,349  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,349  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,349  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,349  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,349  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,349  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,366  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,366  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,366  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,366  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,366  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,366  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,366  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,366  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,366  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,366  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,366  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,366  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,366  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,366  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,366  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,366  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,375  [research]  DEBUG     research_agent  get_current_datetime called → Thursday, March 12, 2026, 02:35 PM
+2026-03-12 14:35:14,382  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,382  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,382  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,382  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,382  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,382  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,382  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,382  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,382  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,399  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,399  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,399  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,399  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,399  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,399  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,399  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,399  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,399  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,399  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,399  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,399  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,399  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,399  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,399  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,399  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 14:35:14,883  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2026-03-12 14:35:14,883  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are Jarvis, a highly capable and professional AI assistant.
+
+You have access to the following tools and agents:
+
+1. get_current_datetime
+   - Check the current date, time, and day.
+
+2. research_agent
+   - Perform deep research and retrieve live web data.
+
+3. expense_tracker tools
+   - Record, manage, and retrieve expenses.
+
+4. to_do tools
+   - Create, update, delete, and manage tasks.
+
+5. file_system tools
+   - Read, write, list, and manage files and folders on the local file system.
+
+
+DELEGATION RULES:
+
+1. Date/Time:
+   If the user asks for the current time or date, use get_current_datetime.
+
+2. Research:
+   Delegate complex research or latest news to research_agent.
+
+3. Expense Tracking:
+   Use expense_tracker tools when the user wants to add or check expenses.
+
+4. Task Management:
+   Use to_do tools when the user wants to manage tasks or reminders.
+
+5. File System:
+   Use file_system tools when the user wants to read, write, list, move,
+   or delete files and folders on the local system.
+
+
+Always:
+- Maintain session context
+- Provide clear structured answers
+- Format responses using markdown
+
+
+You are an agent. Your internal name is "jarvis_root_agent".
+
+
+You have a list of other agents to transfer to:
+
+
+Agent name: research_agent
+Agent description: Performs deep research using parallel web searches and returns a structured report.
+
+
+If you are the best to answer the question according to your description,
+you can answer it.
+
+If another agent is better for answering the question according to its
+description, call `transfer_to_agent` function to transfer the question to that
+agent. When transferring, do not generate any text other than the function
+call.
+
+**NOTE**: the only available agents for `transfer_to_agent` function are
+`research_agent`.
+
+-----------------------------------------------------------
+Config:
+{'http_options': {'headers': {'x-goog-api-client': 'google-adk/1.22.0 gl-python/3.11.9', 'user-agent': 'google-adk/1.22.0 gl-python/3.11.9'}}, 'tools': [{}]}
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"Hello"}],"role":"user"}
+{"parts":[{"text":"Hello! How can I help you today?","thought_signature":"CrsBAb4-9vvzS_mzCFygKy_QJEihMHpvixG2XbH15Dy2MdPmktnG3EY80e3VUxN3kQZYQoI4CpMkkoObygBp9UDS9yGvrCoTzb_kvxHbdCEYVrLQL2G4Bio-37XbBDJpDIZAKVBZDJwruQXD8VyD88_qKSFIqSZHvlQjFIygZNEshMVTj2dikTBExTCwrQJF5CvMISJHiqZ_5DodRgnpG5dCRN2Y1WL9L8GTmpFDCyC_MYoEdkyr-O8ouna24Q=="}],"role":"model"}
+{"parts":[{"text":"do a research on the latest technology introduced recently"}],"role":"user"}
+{"parts":[{"text":"what it the today's date"}],"role":"user"}
+{"parts":[{"function_call":{"args":{},"name":"get_current_datetime"},"thought_signature":"CqAFAb4-9vs5LxcYgauBz_0gIzPCc6YRR6B86jUp4PlQ6pIlmCo6I4YZmcjfmvlcV1DsGizTF0w3OMzpBoUcgTEv9DkAnB7fdeRjbcPqKQ_GvHXWtgwYlVz70sCf1HeHP1HFB93uplwHmm0dGNOdHeVICoz2DERfKIX7RrIr0ZUBaBu03ZIk4iDVbr9WzWbYDelqkrNr-YZ4qa2QMI-mC1wRJKsl7b4YBRps_r3i6FifkZeTLy6j02Wn4C9WYPv5VFW6S8clZku7oxvafdDHBFZ9AZFY5yOYQVGx5WxrdPSpyuT5XyQe1ZpDonUox8Y9PFk1iJ99LZ82Lllh5rW6ZFQOpwFFskj7G7tqX6xlBeIfbcRuz1mMMTO-bmAoPM8fKdhIa-hk98nkSRyzjIiN8CkUgmsMxnGtsaJwG3Gq-7z3OUFkxOAcL2fD_sM_R3Ig7RY0pi_tMVgM6iUe1VbGYXrr1sif3g7QKxqlqwi3ygcd1uLcARtGyNSOEyahzz-M8WjNTCQtnqD4Cf2hsLfmNW_LFceOZFG-a4uqQsPscscmqcS02xLNV3NffybuS_v2xSpjp2rqWLYttRTxa8QL0G3OntHzjVhkza0fFEE4BlU4vdEuc5_LOEKWHvsv-YEWOJWBTwktVCwxFyVDApwOhqB0cI1m2FUUXww7NS_d3bXngBwCrfpmSDZXd3pW9zje4NY-wKIjVpE6BCDo8CfMkdfNJZJ0Fjy6RJiqUvt8JkjCiqWEN9b-Qjbtgg3OmmVV2KV-QHMu-DpgPV4i_qkHISQ5jgFFHbEVwUw6HEh8zwTHItqcBz1r2XlGD87s1zYYuoM8XT5COeQ-H4avIWLwTzRn1Qy1rVfitVclgDVtiF5E0H9UzY4kMjO3x8mrnrY3a8PP"}],"role":"model"}
+{"parts":[{"function_response":{"name":"get_current_datetime","response":{"result":"Thursday, March 12, 2026, 02:35 PM"}}}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+transfer_to_agent: {'agent_name': {'enum': ['research_agent'], 'type': <Type.STRING: 'STRING'>}} 
+get_current_datetime: {} 
+add_expense_tool: {'date': {'type': <Type.STRING: 'STRING'>}, 'amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'category': {'type': <Type.STRING: 'STRING'>}, 'subcategory': {'default': '', 'type': <Type.STRING: 'STRING'>}, 'note': {'default': '', 'type': <Type.STRING: 'STRING'>}} 
+edit_expense_tool: {'expense_id': {'type': <Type.INTEGER: 'INTEGER'>}, 'date': {'type': <Type.STRING: 'STRING'>}, 'amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'category': {'type': <Type.STRING: 'STRING'>}, 'subcategory': {'type': <Type.STRING: 'STRING'>}, 'note': {'type': <Type.STRING: 'STRING'>}} 
+delete_expense_tool: {'expense_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+search_expenses_tool: {'category': {'type': <Type.STRING: 'STRING'>}, 'start_date': {'type': <Type.STRING: 'STRING'>}, 'end_date': {'type': <Type.STRING: 'STRING'>}, 'min_amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'max_amount': {'type': <Type.NUMBER: 'NUMBER'>}} 
+add_task_tool: {'title': {'type': <Type.STRING: 'STRING'>}, 'description': {'default': '', 'type': <Type.STRING: 'STRING'>}, 'priority': {'default': 'medium', 'type': <Type.STRING: 'STRING'>}, 'due_date': {'default': '', 'type': <Type.STRING: 'STRING'>}} 
+edit_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}, 'title': {'type': <Type.STRING: 'STRING'>}, 'description': {'type': <Type.STRING: 'STRING'>}, 'priority': {'type': <Type.STRING: 'STRING'>}, 'due_date': {'type': <Type.STRING: 'STRING'>}, 'status': {'type': <Type.STRING: 'STRING'>}} 
+delete_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+complete_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+search_tasks_tool: {'status': {'type': <Type.STRING: 'STRING'>}, 'priority': {'type': <Type.STRING: 'STRING'>}, 'due_date': {'type': <Type.STRING: 'STRING'>}} 
+read_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+write_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'content': {'type': <Type.STRING: 'STRING'>}} 
+edit_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'old_text': {'type': <Type.STRING: 'STRING'>}, 'new_text': {'type': <Type.STRING: 'STRING'>}} 
+append_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'content': {'type': <Type.STRING: 'STRING'>}} 
+copy_file_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+move_file_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+delete_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+clear_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+create_directory_tool: {'folder_path': {'type': <Type.STRING: 'STRING'>}} 
+delete_directory_tool: {'folder_path': {'type': <Type.STRING: 'STRING'>}, 'recursive': {'default': False, 'type': <Type.BOOLEAN: 'BOOLEAN'>}} 
+rename_directory_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+list_files_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}} 
+list_directories_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}} 
+list_tree_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}, 'max_depth': {'default': 5, 'type': <Type.INTEGER: 'INTEGER'>}} 
+file_info_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+supported_formats_tool: {} 
+-----------------------------------------------------------
+
+2026-03-12 14:35:16,416  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Response received from the model.
+2026-03-12 14:35:16,416  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Response:
+-----------------------------------------------------------
+Text:
+Today's date is Thursday, March 12, 2026.
+
+I will now transfer you to the research agent to get the latest technology information.
+-----------------------------------------------------------
+Function calls:
+name: transfer_to_agent, args: {'agent_name': 'research_agent'}
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Thu, 12 Mar 2026 09:05:17 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=1388","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"text":"Today's date is Thursday, March 12, 2026.\n\nI will now transfer you to the research agent to get the latest technology information."},{"function_call":{"args":{"agent_name":"research_agent"},"name":"transfer_to_agent"}}],"role":"model"},"finish_reason":"STOP","index":0}],"model_version":"gemini-2.5-flash","response_id":"zIGyaa2YIvDKqfkPu8yj6Q4","usage_metadata":{"candidates_token_count":56,"prompt_token_count":2286,"prompt_tokens_details":[{"modality":"TEXT","token_count":2286}],"total_token_count":2342}}
+-----------------------------------------------------------
+
+2026-03-12 14:35:16,431  [research]  INFO      research_agent  [ResearchAgent] Pipeline started.
+2026-03-12 14:35:16,915  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Sending out request, model: gemini-2.5-pro, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2026-03-12 14:35:16,916  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are a Research Planner.
+
+STEP 1 — Get the current date and time:
+Call the `get_current_datetime` tool RIGHT NOW before doing anything else.
+You MUST use this to understand today's date so that all search queries
+are anchored to the most recent and relevant time period.
+
+STEP 2 — Decide whether live Google Search is required:
+   - Search IS required for: current events, recent data, latest news, prices,
+     statistics, real-time facts, anything that may have changed recently.
+   - Search is NOT required for: timeless facts, definitions, historical events,
+     pure reasoning, math, or coding questions.
+
+STEP 3 — If search IS required, generate between 4 and 10 highly specific and
+diverse search queries. Each query must:
+   - Be anchored to the current year/month from the datetime you fetched.
+   - Target a different aspect or sub-topic of the user's query.
+   - Include the current year where relevant (e.g. "AI breakthroughs 2026").
+
+STEP 4 — Output ONLY the following JSON object and nothing else:
+{
+  "search_needed": "yes",
+  "queries": [
+    "query 1",
+    "query 2",
+    "...",
+    "query N"
+  ]
+}
+
+If search is NOT required, output:
+{
+  "search_needed": "no",
+  "queries": []
+}
+
+Do not include any explanation, preamble, or markdown fences — raw JSON only.
+
+
+You are an agent. Your internal name is "reducer_agent". The description about you is "Decides if web search is needed and generates search queries.".
+-----------------------------------------------------------
+Config:
+{'http_options': {'headers': {'x-goog-api-client': 'google-adk/1.22.0 gl-python/3.11.9', 'user-agent': 'google-adk/1.22.0 gl-python/3.11.9'}}, 'tools': [{}]}
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"Hello"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Hello! How can I help you today?"}],"role":"user"}
+{"parts":[{"text":"do a research on the latest technology introduced recently"}],"role":"user"}
+{"parts":[{"text":"what it the today's date"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] called tool `get_current_datetime` with parameters: {}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `get_current_datetime` tool returned result: {'result': 'Thursday, March 12, 2026, 02:35 PM'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Today's date is Thursday, March 12, 2026.\n\nI will now transfer you to the research agent to get the latest technology information."},{"text":"[jarvis_root_agent] called tool `transfer_to_agent` with parameters: {'agent_name': 'research_agent'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `transfer_to_agent` tool returned result: {'result': None}"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+get_current_datetime: {} 
+-----------------------------------------------------------
+
+2026-03-12 14:35:26,715  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Response received from the model.
+2026-03-12 14:35:26,715  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Response:
+-----------------------------------------------------------
+Text:
+None
+-----------------------------------------------------------
+Function calls:
+name: get_current_datetime, args: {}
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Thu, 12 Mar 2026 09:05:28 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=9614","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"function_call":{"args":{},"name":"get_current_datetime"},"thought_signature":"CtUWAb4-9vuZBiTq97l1h-VMOJuPG4chosXw9Vhl9vbSEMLTdtwlmEf9jx-nGjhSG3SauGYxSfMN7Zi4Intp-ocFBu_ZW3FPjrnrxrjc8q50eKJU06ffmNVq99_RryKSrmKzJJDo5xR6QiZ_YhK47AaXP3TrPPKnFTXcd0RvC3dFG5D9lz4khdNyflvTiEyunqallGJm80SK3UPWhggWVAUswLtvlfXzH3XROdnuUh8JSp63zx3-zZVjaW5_PdPTiQE9XuhG0TLt8OBLf3rpneZblMswP3cSlW7kCK66NoOPr6Yr2pgbKFTZhyXSNJnzxPLTSurX-z0JzF5t6e23JMhQn8nQocR39QxieJDQ7CBvdUDCfybXHjlp2EwAvys_ZuxwpSSC6V4c3SWNg39Fr3E6GnRalK_5TamqUK9WJx5o6mVMZ9cA9VUJ6eSMTf4hBUIguuKCwu-UEpAIhy6wCa-Dyeer0aNqOyB3uFU-H8QMv1LqfTSngJ5emwZC6aK3cw71l-_Cs5HwQijtN762YyjVf4voIKUo3_v7q6UwDIMM818tf3JQWcY46E2SXNHK9MztP3SBxF127y2qzNnoCkRGIXw2QjAOuNE3qYsTR0_WMYnlgrgcWHSmk4QL77DnkbBc7vMp1BBTJvJOAqY5xFnBawhRMMib0quXtfxhEeq-bB8iJLsuSqGkjYBKYeFQVI0mQ1PtfoBSjpWg8ztuIFy8Rx-7zx7aP_1yuSIakNaWdTpwOTKqbEaiGsPr6SUL_0dcZQh-_WOOLiI3b7cz0WCEtvSHCNV7fCxLhBMnKyZq5CeMkcyOSrZNgeu2gqR3K4QBjFVH-jySkhYVh91iPgTReefTmEgY2-e5umAU8-oUgvjo3rbWHYJDCNq-LLP7xNkxCX3IudTmQPQ446JkEB8dTVgDPicCI1dL88UW9LVFjFzOUXhkY-ztnscdei6gCgu5kPBHLn1_Lshh30yjF7CQDD4-bP1qsVKyceEmEsJEV2X-m53IsL1qAnmfSODVOLVe_w4oHle4DG-NaCuknu5P2r4ZLDA7gRD1yrH777A4pmMZjXv4YOR8WHm8TsCjnVitP9zOCr4MHWUbXyB_xpZsNnC-R8VO5AZc5PebGLgZ_VyXHVd6G5b0AkQx6zwDgzIn26-sy2vSGUIlDOl7Z6zhT-YM2GQPfGYKHeFRXaAju9BHBrgRj7SUWq0ULnGrl2sWi5p0o6pQSWP7kSMp5k-6j6fcq51HHPnJ6W8onQf08WGYUZD3yR3N1DJ0uboZns0G7mysfqUJ-N3zJ-X3jdl2OlO9b8uHz3XubrC5Hb1iVkiep49mRC7YdTWSwLjXlRHsG1MSlCqKGJXuZjlTuGLRORVoJ-KMa3ObmhTYskcFY2XGICYbRrxBwdrp04H7TJV5Dk3IHpShFMK4UlihaGuqVOOu8gfOef4cYu0gFVrJ5aE0HRnIkeleBqtQlnMiPv_cH3y3exn3QjiPgEgn14N4exdlZ2JF3lAW9x2JSEJvbhXfyBQDTgQFx5pLnGzvOhvyTx4uEuOOGsgbWpqe_gebMN9MO_lGtRdNS6-ZRAWOncsPNJF_gKeF5IurRG39XnvScy3kHhihSlICtE2P9Rzo9rq3_dIAgKG4jCpEDwt60G1IHR1OsbfM5fbvWZ00_o5MpZvrEnnm4EUYoYSLYw3LBEkEa-bEJ_bvwPNI0DNAz8zgL7rV8krtjqxER24rfmKplxN-9vl7zbgtl0TJIwMnA_tthgcZvclNi1wHR0lAx3jwfR7OBw-lPD-pHcSmYK5geT2PqIUKKZ1WphCXFl30ohKwRa4pKgaMY9R4LnzmIkwj3aVoXyCW1FmUVjbp38PDj6PislwUgA6ahlfSsO5a09PoPiJ2jFw9QhtcjDF7srIvpcPwJUTe_RU8WefQ5WR8PfRKZ8vPHQJDRnxv8PFVSy1mfeiWnELefilAR1R6Egd1ggozemem47MyNwz_bUy9BOnSqvOf2WRoLTErdr_Y0phoojRMTGBV-5O7U1POI--jJ9EdRGIHpGzWpplndkd0nFEfW3bzQ_258gdIor1deJw8eWAeqU7UFOi5HySV486cXseO4yw4AaYYMsjZdQaMgqcYY3SwMdXZtAyJlFkJqu-P7RKyKAYWJydWFR85ytNICGjTvCieTEO1KEAWGc9VOVYHcRxNd5VhLoRk2kQu0yi7S1dA8J1ouVE_Ji-BmhTueNMXnVjJS3Bg5V8y6126Um2aUxtgLsiiiEEg5T6aeA8_gDWpmJkqw4HknaHe1vHO2Ec7ggKMDKznxO_GXWK3TKOKDQCECfVnE6hQAZ5TIDJBPrwvi8y3bRJC0K2i5m_YltFeZITt9T35DzJiRZVPdSvKFTUVnCYRSwgV1SRfMwPBH9rQQrg0To9XZVu3yf42nryCS3FFCsCOSp_jt8Lhdsu9aY8fqMH_gSn7MUhdi_EF79jLBmQM_00PvXFGHV-7eDKOo1GR4UwB1aigUSeo6ZUrsS5zsDLtODgZD_xrvGRZEh7jnNhzwrJr1nx-goZ0rF0cQdumnm6dquK4bSDMY7WnKHyKBNtDeGrEYflxMeF96sQPLfyjvtQQOZDaJZWOe5fMsCNdluYa2cOWLoGuwseVvxYK7GcYPQnWHVNGdtM6R3Oi_EM3EDCGW-4Sk3S_fOT3cpHUoXZh9-XhzcjCiy5_-ecz3t7Rl5cw9fzVDE3a_kOz0o3axyiXldYjwi44ztsgESfaefp0znydYTIe7uKytAUU8wNRn6iQ1h9RlcQbXCMkK3VekWcbHu7HCF2MlgSAAXkP7T5FVK_uGWgve8Q-M-ni-iYywnUL4rCS9mAJSUSGeLnqa5Hxwg6u-UNJ8IQUXJBQObjmaCTaVrBhOniWRB_rQjxGgYe9gFDQqud5FZbfVnhmceJ2cwrZvXwfz78E7REWUZANsNpD7MOfPEG-_q1JkHDTYKfgtWtMgUaTCa0amlcXYaW0KqKJruc2xHDLh2sBdO3pyAN9ab3y6cRM1Kwwbg45UHJv7DdWaU-dd0wrcNvReGigh85fbyq858-A_MdQph_sACotGqu5MsA7rpzFzgzp0g1MfYYfGzEkNfEuwHTiTGoC9aFd23SyglksvN0ZHVpyEhEn94iZAtxLG5tJyM_GkmMRwsKza3zV-8nmXf4DFg8ta9A-tQZ_knKJgxUEz9t5C6JyRnBeYVLJ_R7YXF0olLQnGZ79viTY80tliehZIrg1WO-AVMbNqiCvKXUITtt7M8PAcWwoXuZ6iZv_5nLQeRYVH-HR0fzsQ4Wo0QPyMYmQIc8ZBUy5U91PobYjs9R-ght31wkXaMiUCldMNs38qeNdbmO8V0xJNVfMhdxCeqX52S2WP4zfp7fDiW9DAx6CRO-68ghmzYwPYRDru9ap5cl5Ay8_Xui0GGRSqTKlQTthVRralpH6BOG0Q_k0znVAWfP2D3w5ufuUnupXn3t8sqe7P0kgLLKqDTmkfuUVWRWi4iMosvv6MNIAiYiaeWrGnqj2D91uhxxUj8nJ6PSvDa_oihDitjY63QiKieEFo-3MWNADewpFVlfxtr-ySVpm5agC2fp6PaysXAt_YidFSkZObGIjLS88hD8tWwloWDlg_IaQ6q9ZmWpm8VbbPW9G7DeOz3NSTWVhSQ1pHsCXhY0mDJNWTSmzvG3JyI9bWZpi8zcAjKM4n8rqOMr0kZADbIHhX_QuJ_yUYCSpAGuxcJdcK9tug38Wks8e3Ele1O7VzEqcQcf0OECOK_5_YnNsh6MlO-ocYDe0bv9JKqDvoMKPw2j7f8GxPquWL9iEKB-wu_MDgRqf6ufoDsFkzNi92dYkm6IuTsiRz661-7Ljin5MX-TlSbgUkRiM"}],"role":"model"},"finish_reason":"STOP","index":0}],"model_version":"gemini-2.5-pro","response_id":"14GyabnvOvDKqfkPu8yj6Q4","usage_metadata":{"candidates_token_count":12,"prompt_token_count":630,"prompt_tokens_details":[{"modality":"TEXT","token_count":630}],"thoughts_token_count":727,"total_token_count":1369}}
+-----------------------------------------------------------
+
+2026-03-12 14:35:26,715  [research]  DEBUG     research_agent  get_current_datetime called → Thursday, March 12, 2026, 02:35 PM
+2026-03-12 14:35:27,182  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Sending out request, model: gemini-2.5-pro, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2026-03-12 14:35:27,182  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are a Research Planner.
+
+STEP 1 — Get the current date and time:
+Call the `get_current_datetime` tool RIGHT NOW before doing anything else.
+You MUST use this to understand today's date so that all search queries
+are anchored to the most recent and relevant time period.
+
+STEP 2 — Decide whether live Google Search is required:
+   - Search IS required for: current events, recent data, latest news, prices,
+     statistics, real-time facts, anything that may have changed recently.
+   - Search is NOT required for: timeless facts, definitions, historical events,
+     pure reasoning, math, or coding questions.
+
+STEP 3 — If search IS required, generate between 4 and 10 highly specific and
+diverse search queries. Each query must:
+   - Be anchored to the current year/month from the datetime you fetched.
+   - Target a different aspect or sub-topic of the user's query.
+   - Include the current year where relevant (e.g. "AI breakthroughs 2026").
+
+STEP 4 — Output ONLY the following JSON object and nothing else:
+{
+  "search_needed": "yes",
+  "queries": [
+    "query 1",
+    "query 2",
+    "...",
+    "query N"
+  ]
+}
+
+If search is NOT required, output:
+{
+  "search_needed": "no",
+  "queries": []
+}
+
+Do not include any explanation, preamble, or markdown fences — raw JSON only.
+
+
+You are an agent. Your internal name is "reducer_agent". The description about you is "Decides if web search is needed and generates search queries.".
+-----------------------------------------------------------
+Config:
+{'http_options': {'headers': {'x-goog-api-client': 'google-adk/1.22.0 gl-python/3.11.9', 'user-agent': 'google-adk/1.22.0 gl-python/3.11.9'}}, 'tools': [{}]}
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"Hello"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Hello! How can I help you today?"}],"role":"user"}
+{"parts":[{"text":"do a research on the latest technology introduced recently"}],"role":"user"}
+{"parts":[{"text":"what it the today's date"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] called tool `get_current_datetime` with parameters: {}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `get_current_datetime` tool returned result: {'result': 'Thursday, March 12, 2026, 02:35 PM'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Today's date is Thursday, March 12, 2026.\n\nI will now transfer you to the research agent to get the latest technology information."},{"text":"[jarvis_root_agent] called tool `transfer_to_agent` with parameters: {'agent_name': 'research_agent'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `transfer_to_agent` tool returned result: {'result': None}"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+get_current_datetime: {} 
+-----------------------------------------------------------
+
+2026-03-12 14:35:33,148  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Response received from the model.
+2026-03-12 14:35:33,148  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Response:
+-----------------------------------------------------------
+Text:
+None
+-----------------------------------------------------------
+Function calls:
+name: get_current_datetime, args: {}
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Thu, 12 Mar 2026 09:05:34 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=5913","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"function_call":{"args":{},"name":"get_current_datetime"},"thought_signature":"CoINAb4-9vtwkT7LiypVpJ110VjkiC6-PTxo3kr7nZ-erejuKhSxyjNUOdOOWa6eNcFoEy4vtAcFeoHm4rIFNDrnCf9kew9ibU4c6q4ca47ZgNeDUtU9Zw3Qs3Ur2PHq-goNm2yJlo26O2bDWZSAVSFiLXcR7igbYLQfctt-ZfGQ8XRmejSQdMsR0gnzNPvo2S6Fx1L_ljrjUPZ2mPTOmzOgixWxPVGQUDXLt8CxGHDT251voIarnZ97TdcWuXJHCB2-ypYBG9fqrHVncekqXFH6mPWuOiequMliXz3UPRW14ljYKq_rx9Vl9pVDKV0F28dE20qAs6l7CTEe1Km5mCuOkPNJJmBN4V2SzLyWgoI23OQNuz31ZSofMS9_jKGXyw6whiqV0qGYL-AY8M33yQmlttDjSncyAb6PV7h6DuBJo5n4bC2oXSO0Sw9Cn4YwMtRPYCIHtre55qh3t3VbkOVBimWIFvheEb-On1NxaSQSbwc6psgQxUSHk-45saYnZU6raHAzcfIBJG5iGj3lG3VBe-OHhuZrJvRIFmXRt0oqH541mTe8WsJwF-Z-LlrVmy8FHE7HrjcObrsvFuaFOEg44fOJxZB7A4eIZhf2tghS7CLcxYVACplzMOyPncFf-vPqWA1O-Ugey_h5qYurx5VHxbSztL-iApPi6oxaeN0duBs5GK1FjLNNyr9mS8pAjJxVmFweFzZllrS603VJY9uoo3cvmumR4Pfvp3a_hUPJC0C6YH07Qgibit1Jab8Uhtpz7HISmXf4Hi0EU5DAoe6uoGDnJ7sxZj9ogoXdxeAURvPN4TqddooAwCAdJGRP16ssqV9KYt4-qDElH8qS01WSQtB3DvYQiW_4c84t42pzB2UGeLgr61Kscq3qyuk_tTk7ePnfyqpt-OJDB_cEyPvt0Hx70W7-4laheK79QI1EkF1SWzyGF9Ub7cGf4EXdIl3iBMHrwqNaG8OKdI3a-NwgebAdgETrQahClU6qhvjm29NzBbd23FG3FVKqIlNrPHhpupogU3tskBjV3uVvq3QD48V4jxvlaD7_keXQysSlIN7XN3O574YcQMsVIi0K7tn0HQlruph3qFZnR7gANtH79Y3sTBqj-VCbm7Mfq8v-varOF5E8gDePi8ftrQ3pcv2f68ZiHl8HcdIsEInjawE95P2UQvg6V0lX0cHP5tAFiALc8DnMQ1MRQn6H4h6hCeQ-9s3dk_M1U6DsSl-Yh52_oPRswOHjn6gxZtxtMcOyLT5HKhaCKavsP7TBsdH9kgnsQhPl642JbtyNAoi_lsiCGxH5AodnVhZM9m9EHAMsjWBlnOmFTRVjkc4IPtbCjxhIySR2axU_SARxrGmWSISXtD7IMSjOZYcXore1S3ZFqkiJnLyMpk-O3fBuH9EgCt1zeySdBvMOJirHgmbzJRE7ZsyusmuKeJcJ0g-B1zLVQq2Yc5NbiZSxALajqd_Y8-B19Hyv9RL8SDtkOU5tkNjEFw5pzkLqiLvIO9YCKXeaAJcqEqWFGpRAL0T1vuiHMUXFjXM0CFJm_XRrfY-PGaNBKQwDi6k49P_H6FkDc8TC0QCWZWCVowh7tR1rlNGraKw33jYGpmydGlMFeBZ4x00LrS919pmCDNsLGBuVJOIsOUC7WWAC5EhM4Ijqkk68SJTTS88UjoifglhBZ-TtzS_fm6SA3_gnTm3x9U7RGFc0YvLL7aFdI19TjRmLd81WG7PU7FCjYNR2T9C2LxmnptYpG7HtLFdu3q46nTjRnqEV7yNTTbqpcjCeYfe3eqdkF1AETVtf57HZwvNeyw111JeRievCJ06k_yoNkmXsDIgZUHc_yydsc8FnNcrMEMtgNF2VK7kaLCaJ9PIPLc5dbFBgIqxCJdA8fWdrAKZMxGH1i0YuGoZG9sCq6wE2BrR68atNlYEKtqQnvVoKEFRx9_TSj92VJaHf_0vIAqJq_-q_LQ2vOlo3cxauQ3__cE9WdewvtN_q9Yz0J18FBdHKrPbKhuCXaG5c1rP4tKuCuAHmZYDSsBXSUqPUc5wEGYRDTOf4FZY_PocTFN8k6WNqJeVyCtk9kBRmI0sW9pqJXHlVe1hkaWLD8s4Ge-_wfKC10SNyRyzzWYwXlpgcrBu8BOdg6u23I0tgbZVAXNuX9ZMNYhnn0GmFARwl9ofKa6HLzZ1x3ZEw5xQsG-JVBWKl54W1-ro8YYcEXtm3BhYisI-t7XPGHg=="}],"role":"model"},"finish_reason":"STOP","index":0}],"model_version":"gemini-2.5-pro","response_id":"3oGyaa-XF9mCg8UPhNefyA8","usage_metadata":{"candidates_token_count":12,"prompt_token_count":630,"prompt_tokens_details":[{"modality":"TEXT","token_count":630}],"thoughts_token_count":384,"total_token_count":1026}}
+-----------------------------------------------------------
+
+2026-03-12 14:35:33,148  [research]  DEBUG     research_agent  get_current_datetime called → Thursday, March 12, 2026, 02:35 PM
+2026-03-12 14:35:33,632  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Sending out request, model: gemini-2.5-pro, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2026-03-12 14:35:33,632  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are a Research Planner.
+
+STEP 1 — Get the current date and time:
+Call the `get_current_datetime` tool RIGHT NOW before doing anything else.
+You MUST use this to understand today's date so that all search queries
+are anchored to the most recent and relevant time period.
+
+STEP 2 — Decide whether live Google Search is required:
+   - Search IS required for: current events, recent data, latest news, prices,
+     statistics, real-time facts, anything that may have changed recently.
+   - Search is NOT required for: timeless facts, definitions, historical events,
+     pure reasoning, math, or coding questions.
+
+STEP 3 — If search IS required, generate between 4 and 10 highly specific and
+diverse search queries. Each query must:
+   - Be anchored to the current year/month from the datetime you fetched.
+   - Target a different aspect or sub-topic of the user's query.
+   - Include the current year where relevant (e.g. "AI breakthroughs 2026").
+
+STEP 4 — Output ONLY the following JSON object and nothing else:
+{
+  "search_needed": "yes",
+  "queries": [
+    "query 1",
+    "query 2",
+    "...",
+    "query N"
+  ]
+}
+
+If search is NOT required, output:
+{
+  "search_needed": "no",
+  "queries": []
+}
+
+Do not include any explanation, preamble, or markdown fences — raw JSON only.
+
+
+You are an agent. Your internal name is "reducer_agent". The description about you is "Decides if web search is needed and generates search queries.".
+-----------------------------------------------------------
+Config:
+{'http_options': {'headers': {'x-goog-api-client': 'google-adk/1.22.0 gl-python/3.11.9', 'user-agent': 'google-adk/1.22.0 gl-python/3.11.9'}}, 'tools': [{}]}
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"Hello"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Hello! How can I help you today?"}],"role":"user"}
+{"parts":[{"text":"do a research on the latest technology introduced recently"}],"role":"user"}
+{"parts":[{"text":"what it the today's date"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] called tool `get_current_datetime` with parameters: {}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `get_current_datetime` tool returned result: {'result': 'Thursday, March 12, 2026, 02:35 PM'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Today's date is Thursday, March 12, 2026.\n\nI will now transfer you to the research agent to get the latest technology information."},{"text":"[jarvis_root_agent] called tool `transfer_to_agent` with parameters: {'agent_name': 'research_agent'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `transfer_to_agent` tool returned result: {'result': None}"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+get_current_datetime: {} 
+-----------------------------------------------------------
+
+2026-03-12 14:35:43,198  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Response received from the model.
+2026-03-12 14:35:43,198  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Response:
+-----------------------------------------------------------
+Text:
+None
+-----------------------------------------------------------
+Function calls:
+name: get_current_datetime, args: {}
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Thu, 12 Mar 2026 09:05:44 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=9460","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"function_call":{"args":{},"name":"get_current_datetime"},"thought_signature":"CpoZAb4-9vtztuGCVtd7b73FClW6vIDJ6hvZqBNanQgjLPEK6VC12nByhQg6BhC3mprR_OhWxaSNy-WWUmbLWjpIE4ePYk5wDz2WtYa88FnZ9pIt_XreYoTJIlq9q5xe1dqlHvt92T8nFqnF5wefLoN-1-jX-5-dhgkgpdN9gC8FX7Gkt_PyR_7687knnJoyx1AJSQRqw-Mg0jYHThTpVidRYCyr2wSzglRcU7ibPvHJ09serAXTaXl9k65_9GSFUlDg6NxDLcLs_sbWIfkp6_ksEuzyhvt5ACWSByq38VKvwCH2CT4hBR3Dj5WJ41SlhI_8hJu9ZK61yLYQgI2btePMMC0mZh8hKlgsEJfmEpDYHoVNyvLNrW9fR4GmMF8DZ1AxIYV5KWzhKk8Lx4SUN3c_EKevnRRYYtg9AOiMaPsukUVcj1kuzhe-nbDESurhGbiGi8e3uQKUKtL-dx0Wvt8Z8UavhxQCG1V-YiWPzFQGKwTk0IgHOLz6KQI38nx0wPcjyyGl2aiMIkEhfBqi1Wms2940JCJlNWG8gMfIHi8ljxmq47F_4dNTtt2hTO_0OMHSJ3IG3uEee8kr_JtRZUGypxtJlct7IRCR8Srwelj7rSNaC_o4EFSnGJQXD0E4VMqO7IPSJE1jhtMKKt2-VarmEbdpHC6WaUUlHJL11xNFLnF-5v-hOTIIsEO3XU0FCJ3rUxvNBgbzSpOteFA7cRHkx6cBLrtBqDOAQ4Hp38FEGb9KlT6nQ2FNBc6ohhmQgcXyHtto6GUQbBizwpgEdxzJDYAEvr_wNh2D4VYNmrykcOWfm6iIRzoqAd57UkerG6chkcdEuZA4BVTwuWzdS-NNFCPabp8Kgc9b5kTbTqsutq5IAKJPSxw7Mki5fGXh4CbsP30AFONVHBh0NGYP4ZI28piz8gXpzP62edxaxy3v6_0FmvIVkPj7lgUC6AINLgv53nakA6E3PZpwJVGAA7yrBFBMFJc0TX1WvObuTY7eWjuAWB1AF25D78EAz5Gw7NgVSdHGtESDXhSYGZlTz17AXgEcjqkrtOI6EE3Tue34UdzvCVtnFHFTb5vWEnDNIvgkYMdlpt2isYbghtRkUyXEWx6AwElZo2jJQYVI1iPUcY-97dYvnVJ7zjdsnRcXfwEtJHWlO3_aht2XI_DfFvpU4CVzj7Gj7GZUPRNZv1frFRhbu4tRpxbIOgwwekhLbXRuM_jtTtn3VjhWboeK1jLufZexkwJ2RdbYzfHzWDZLGyzgM-rD6M9G-mgWFdsobYM1sZatUOgIVLnNoVc7tJ3Kg1IHVdVagnmk4m1pxsVmFEle3G6cos-H20MJDs4rBv9K1WM9evBvdFD0M3nGwM90rgkqDiDU4eRc9H2XJKCTAmsJC6j6Zg3jBK9SFA_kjugNKqU-4FAuwyaXyGYcOXghwUPFCi4lU-dE94CYEx5SgsmK3sQuiyF3S45QyX8Ja98DGd7CNW9BX7GFUVmSCYrtDvf77-a4dWaN84S6YFjMApRci4kDomszMSYcASHQKeXYljx8TBhhpnTtYaz8CZp6l8n1iAND6J83sFtuBIbTJmqpAPij0382N7C_MxHtaKGFLwG4uVls0RLNdTBWBjVTEJ4CWfGHSEceUFX4HVBeKJWNKI4QWB1z7QRKXtPjVr8y7WHSjeu3kajdPIDxDu6b32oql0h71rzn_YqRgDsRBOQkFBWua2_5_bkHf2VmW_LACGxUr-IqIruSDYv9M9FlHvbvPFBEy047lwawptpBnfBaZz_cCEGsQLAVQ9CgJav6NpmTJF7aHDH6oxZ-SsIT75P6Akmm4AyOhpK5zfsS5Kbeykx2vnZ1YpI0gKnz1yI2JIxTH1mACh97L2ruVGyyS9V540lM-rqLXt6g78SUTe9Leg1ldg6vghGsXSbXC8uIJlNVCceEGgEn3F6_E1-EgTogf_r5aw6-yKtyhmTXjZwyZN0GLK45D44TWhzqjuiQj3wopBu0Z-PFzpCX7WX7y3gq_aE2i1MpDp45aeim45hbLa0_jaxgI9HkLOOj7bemvxHIY-X0V80P6rOHuocneRAoZ7yRAURWrvUPmYyGmKp4b4a2wTIIUGxknHHyPbdJpXzFx5hI52ybVh23NftI6OI1zpbtyHzwkOYB3bksPHJpEInRdFAmRsB38xsuCHd2Vlt-fTjJLzrdP3uKqi0JOoS1_ctmFHc2UudIaDQILRRnEyORu_zRLRCSAniyReGjQZYTQR-sdGVnTdgc7qaDe9ZV09EqMpT6_lzQ2eEMVyxiNTw_VGY5693lKuF8NCPJZx6lGE3QMuI0sC9YX9Tcug-6S-Mgk4eLbZnY7_olRRBMwW-P0AK17yfNiUgq5UvJWYMGVp9wEG6R8GNV8BmCM0GQvrME7CdKaO4Ug91gobk0XukAaxjXQHktEz0bw44hyybBhj74UXcJ2AAkMHBy0zAKtyP_0vnK0AKv4G8pEeGj5-H2Z2Ln6ome3yKwsBIbkU1tHeqcsDejD0sOHinkGR9R-kcFlCuDHaIqi8X4okAxWS_tF7H5eKfgOOzzEmofwMpAdDsiXz3CY-maHc6qP1z9vGYnCItjRnlUxA9M1y5N2hI2q48R3Pjw7xGL7zvA7VZ2VogbGqCDWWZ7dhosn9-Vuf_Y7a_TVBZ6VX7JD7VrApHLfEYelRhOQneUprQ5YK71gLBe1CbPo-9J4pcF0KSMZZJCLSkaWzhS3RlaDtErGMgPKDICqLBaGkCRZCdrcEDp8MD-Fen4PgWTt93xC4t3j8MsP7488xWQx11uqTYyupJnCxRsXgPI9dW4-M-7Q8uvaG9HJY4TA3A4ggh5McWqyUhEZLx1kW_aE45oftqK5T8KEJKw8bQuzyTtdTPrcuvwZ5JeH9UdwoTUdVdujgwtb3wSz63b4QWu14f0zOJyQIyONA8pNEGxdSkr30AMMaO6T5_aLIeDs32ml64__dea6efw3zJWc46RnE1YHom5B2Cd8RH8mHCSJXbXLlWgEoe4IMzExUgEKFv39Ip_A1IxonmPknbie6Eesb5x-mvbO4fMm7p5v5PGZaS31IXKOCEmItMcUzdwl2UwW9-E55gVBjPMwMJjXlJVNz6zVHaqzdFHSoUKsCdk0fslFoavsE_WDCg5eKDg8Pl4CWf3r8lNAAXcesosJBvml2T1a7p6jj1fQN540RbmJrSBF2sto_RcfFWaUz9dGw5aW6dHqf7zPehCp6pb40x87fDd99GDcdY6NT16hScjlRrn_YfWDZ93QRj2ap14BxUqhQx864_9QMTNWGqly6wuj497tLwCRhkNIY5Qk1rqURkap7iFuZqK07C5VxT51ZoZzzmFJT8FNCH5ucVvQ7eovLs15GAk7C9QZGNS_pHGhI9wt3KKsBmRI274EUWqHT5cVRlwxNrgazDXsUY-slEVK5UK4B9F4ZCaQmSQvviKYyV00Yaga1gzA4b6_94OYEGQ6G0K-DwUcf-72R-QOh1IZZhMV7dKKgKVEvNmE5SCIjo0r9UxZNhmExWcMiU4Ww8v6g74QuXT26RCVNzIgK3hLCbbaWMFNETIMxIcEbi6Xc6adRC6qm3CEXo5hwMrk6S3cxCCtDzqCHY4ZQH8Jk0ifmIkOGygP6VzQ_paGzIyvWgHhZy__tsiu2ULM2tVrkjXPvZJ0lCRyQuBuu7aLCDRoCPM5vXa86dmMP4YQf7pQzoaN4WSY-Qm5BEuyHPbDbsFy392JUjbPxBaFsv4Q2eESR4auAYVh1KX6CXGvlewu7QuxBEe2XAU8rdozSlWsn4mtMmdBL16am9Qkz178u5R1WN26tU2DTgpCEsDbydUeOa8lHq3UmOpVlXVe4MlXmlVhCaDtIjKty9HZzBzOojrJjftWIRO2KHBnqM0dIyH_1M5racRcqZB77DxMFZV_t2X-ljGc3FATiwtSsUVEBDkqGIoscciZjz8eqjeOdzvJ-t8eUGgblxAcTg3UFNNC5iv_lJvZu_gt14ry2QnAdHIb0JCo0T_-11u5b-AtbnWkZnmFx_smKUsm-_z9g-aEMuWzs30_I9HpyhCkB3mceZnA0BOrd5As5IxM3LnyTw95F8TUpyv5DSoapYSgkhvm4eDkkgasjL9Q-ClzeJeiDujiv5x62elDwYKbnUefAwNLjNnXgQ71hCMwC6_Wcm81hO_KM_IPwbQ4eFadKDdKvh1bMxhOcwbUSze7Z3IgNgwmWFwwSx-f3KtK-EQFmGG3BrkA7AmkmSyngvmVwtK5sejcZiwbHFCaGN2d5Rm7EGwGUv1nOSnmB-ezN4XysqWAw=="}],"role":"model"},"finish_reason":"STOP","index":0}],"model_version":"gemini-2.5-pro","response_id":"6IGyacGpHeKtjuMPhcbV-A4","usage_metadata":{"candidates_token_count":12,"prompt_token_count":630,"prompt_tokens_details":[{"modality":"TEXT","token_count":630}],"thoughts_token_count":822,"total_token_count":1464}}
+-----------------------------------------------------------
+
+2026-03-12 14:35:43,198  [research]  DEBUG     research_agent  get_current_datetime called → Thursday, March 12, 2026, 02:35 PM
+2026-03-12 14:35:43,665  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Sending out request, model: gemini-2.5-pro, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2026-03-12 14:35:43,665  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are a Research Planner.
+
+STEP 1 — Get the current date and time:
+Call the `get_current_datetime` tool RIGHT NOW before doing anything else.
+You MUST use this to understand today's date so that all search queries
+are anchored to the most recent and relevant time period.
+
+STEP 2 — Decide whether live Google Search is required:
+   - Search IS required for: current events, recent data, latest news, prices,
+     statistics, real-time facts, anything that may have changed recently.
+   - Search is NOT required for: timeless facts, definitions, historical events,
+     pure reasoning, math, or coding questions.
+
+STEP 3 — If search IS required, generate between 4 and 10 highly specific and
+diverse search queries. Each query must:
+   - Be anchored to the current year/month from the datetime you fetched.
+   - Target a different aspect or sub-topic of the user's query.
+   - Include the current year where relevant (e.g. "AI breakthroughs 2026").
+
+STEP 4 — Output ONLY the following JSON object and nothing else:
+{
+  "search_needed": "yes",
+  "queries": [
+    "query 1",
+    "query 2",
+    "...",
+    "query N"
+  ]
+}
+
+If search is NOT required, output:
+{
+  "search_needed": "no",
+  "queries": []
+}
+
+Do not include any explanation, preamble, or markdown fences — raw JSON only.
+
+
+You are an agent. Your internal name is "reducer_agent". The description about you is "Decides if web search is needed and generates search queries.".
+-----------------------------------------------------------
+Config:
+{'http_options': {'headers': {'x-goog-api-client': 'google-adk/1.22.0 gl-python/3.11.9', 'user-agent': 'google-adk/1.22.0 gl-python/3.11.9'}}, 'tools': [{}]}
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"Hello"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Hello! How can I help you today?"}],"role":"user"}
+{"parts":[{"text":"do a research on the latest technology introduced recently"}],"role":"user"}
+{"parts":[{"text":"what it the today's date"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] called tool `get_current_datetime` with parameters: {}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `get_current_datetime` tool returned result: {'result': 'Thursday, March 12, 2026, 02:35 PM'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Today's date is Thursday, March 12, 2026.\n\nI will now transfer you to the research agent to get the latest technology information."},{"text":"[jarvis_root_agent] called tool `transfer_to_agent` with parameters: {'agent_name': 'research_agent'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `transfer_to_agent` tool returned result: {'result': None}"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+get_current_datetime: {} 
+-----------------------------------------------------------
+
+2026-03-12 14:35:50,148  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Response received from the model.
+2026-03-12 14:35:50,148  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Response:
+-----------------------------------------------------------
+Text:
+None
+-----------------------------------------------------------
+Function calls:
+name: get_current_datetime, args: {}
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Thu, 12 Mar 2026 09:05:51 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=6440","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"function_call":{"args":{},"name":"get_current_datetime"},"thought_signature":"CrcPAb4-9vsoGsXQYmHYgd5DuA0hK0nb5F8iGT8KLX2szPCbK24h3ZB1L37HoHTX3V7RhOvtnlhNYjAJMq-lY_0PAZt9Xfp49f74D-pjROs8q4Un6jVjN1WiKBE64W0UZ5R0XT-h3i1mjBQe5tSLcG49lJHj0ZxoeqOTxJndLFnszfvTQXPRLgS0U5t3RlDSwT6loJNhkmlZF4pCpwrSVcB4lha_8K3X5SQfFlquupjxaNYCb3uD4cVKvd7TbSwyoxVRl7sUMsHVJW9mTYaZ-tjvHu34gNiZGlElyFZsWn9272zL6ySzv6nJ4gsr81mozVjtaZfzMgIBX49liB5viibqSZvOxW4n4oOoUwdF61MIRnftAMqHehQyFGntxv3Q88wKLBLLSXeQQX5krMTVYbOU0kqqsM8lwasRnFRPdGlaSiEdYJWLzvoSkoKs3ALS2iw_frzaBbSUABscPoqi3XDOc0lQRAHG3K-jPj99qAkkrtvJU3lql4vC8BqfZ5H-iW7zde4fnvG1emX_6cFRvQfF26rvEsubEL3t1ciMlzNtGn1kW0wYXWArkuS4cxM5uHEMdj4GwdYoPURs7KPdwGsfkNmwerv4kiPkORSuDrG5P633RKco-ALoOWXU0C1RRzEhGW1ODPA_XQHdSNo6QimekqmBWElw_UPR07-vxtcNN17wAq-JsJzi2pVgC2Nf6r3xfqd4-wqaB9y58NIrBs_pzFYkZT0nZTa_ZqmWerpsQHw5XkSFwIoif_YBPCxljT0FM_23p5sWLliWgu8S8Ae0Su-9jIGX5zMVDBO38PY5JuzHcQ3fZL_93RtQ0Co19rYPmsLq2invDN3sre3Fmf4KI5eomrjhl-wdVVCIJOyHp2pT2BgVXgaT2-W6iDOocotwhAN92iAMCQtET2qsiw31gy6pM205IeQl590Ul0wVYeRpGofCccsj345jV49AEFbuOMzP1X0fCSoFNU0Zpfs6fG_i1ZF9KPJDJ3zKu2RsfKljTWsZrblKDGS-AmZEQ5PdDdv6cyKvluoU0MLRqeHlHoUhYJELud_qBiHXN_RnJWkr5TC4hWOYcI_gvjHzq17eG-1i16JANwKW61kakljgXRZZ_24SJ8kp079X678dIQdJFlASwWhN4QKPSg5tqEDO-NHADUGmjIOG1bYcKDCr1pXA9DkPLtYVtCEtF5Eqa-dtm0YJKH86lWyKF4aZUW5PdEhdAhfCJ5A_XX9pW1vS14q8qVl_qeGfcY5MjshDT9Ik_9mw-bnQiflUG_BHgGlChmVb2NOwctCXq4Xu_Kkj5x3SVZoyJa-OToYh9dmm9gdRbRtavE5e2SxGw9YnD0yUa0L5x4rlYqpx6Md9QW4ZImTLQWakFSaLjA4R2WCw1FnUc_JGT_mEsl9x3Lxj33LNHawoX83JCwlQTYhUOTVBc7jw60BNgxuR2O9XzGsOIOGPMHxw7_lHG4jeY87BGysdx7PH_DsvjoQRRRBSD3-BjXaAmp_zyGhuOjmwIg3wxatKu1twZzFisbx5qDPJcuNz-NNekmGHc_FKXucaK0gft0xqkoa0D8aISFbBkO8EFzlqpl46pLAI7INrV-V5GbIbxpEuhqConx629BexV7RQiJGwIYfuuGSKdMH-M77_I753jUgN3W1ZIRMj28fj_gbDpNjS-gzvnJ8bmK1ExY7MnQn2pn0HQh9Pq4lHgmDB9NnEAj2FwIjI8iO21b-zZ93TLjw7yKK-D_bOs3UTuf4grQuCRED9pOwbe9aBAwPSw7rtlgt2bctkmdbbk63dlB-zt4CWglDs6gPAZabyKXpbqKl4ODH3HIZpOuse6XUL6iVz6UJwQeDC7cwbUIw5c0sNVIN6kTvWFuTiaxUOjj4A2xy4I8pzYKtrwu0a4z1QgfK-234fuoxTE3i6-nX3F_lfjKqAEKMV0grNXBE-McY5e-wPKweUqmPi5g9Iyhk_vQ371mJ38dtsRhYHgPnW1_a__PUAMo0z4IRsfw_MX5IXyz9lG59F7iIWXIkkU_wE52wXEZZnWhYG8SiIEU-37mqt7AuQ4JibNY5J6o0O2Efs413b8USv-bqT3aCcM-qeZk9-KlwzA1YILmA1SqXItNPClvNGCGjtJ7fzMGpbZaignmdxtJ6iGc4o__X-ywLSMsfymDfPlMPnGFLkCUjqlQ7SwoaaiLnfu2dG8GwSOk0GyeYrLBgQZ2mhxN2zMxk6Jm-DR6bnsQqvYBlLKWcgyJB866NyeRXy8H_i_YEKvAwJ_EMDcppFgAHF7DP2LmEGcp821vGB4KdsRkguZBai8d3N9KSEYz7dHJiOMxUqWr7eEZsv99Nd65twHwb4ZojWQtkxGEuB8SSZt-tTL14eIyocajadK10dSTOCkN-AMsa3Hy0LNyAwJ2Z2H7M9J7aCav_31-f8o86M8DAeZ8T_bpGT0_JWftZFAbAeuzFDYEfdkMJuf_AQyNCL3KBDAR7CWXzcKq9w1D4ETvX_guh9Y67SmTVWUY3tSmPpWYXsDIh9F2i9CYHmSrqrQmGxFAD6_Oyk44HQkz-d1gXDi_1jVCivaNtJ1GIWrDx9Iv2MOlRWxTkmGYRuf896U2zpVfOlcZZmohoXyOY0aA_J7aboAUoUSwykDtW8pQ=="}],"role":"model"},"finish_reason":"STOP","index":0}],"model_version":"gemini-2.5-pro","response_id":"74GyaY7FGfm24-EPvOPQ-AE","usage_metadata":{"candidates_token_count":12,"prompt_token_count":630,"prompt_tokens_details":[{"modality":"TEXT","token_count":630}],"thoughts_token_count":466,"total_token_count":1108}}
+-----------------------------------------------------------
+
+2026-03-12 14:35:50,148  [research]  DEBUG     research_agent  get_current_datetime called → Thursday, March 12, 2026, 02:35 PM
+2026-03-12 14:35:50,632  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Sending out request, model: gemini-2.5-pro, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2026-03-12 14:35:50,632  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are a Research Planner.
+
+STEP 1 — Get the current date and time:
+Call the `get_current_datetime` tool RIGHT NOW before doing anything else.
+You MUST use this to understand today's date so that all search queries
+are anchored to the most recent and relevant time period.
+
+STEP 2 — Decide whether live Google Search is required:
+   - Search IS required for: current events, recent data, latest news, prices,
+     statistics, real-time facts, anything that may have changed recently.
+   - Search is NOT required for: timeless facts, definitions, historical events,
+     pure reasoning, math, or coding questions.
+
+STEP 3 — If search IS required, generate between 4 and 10 highly specific and
+diverse search queries. Each query must:
+   - Be anchored to the current year/month from the datetime you fetched.
+   - Target a different aspect or sub-topic of the user's query.
+   - Include the current year where relevant (e.g. "AI breakthroughs 2026").
+
+STEP 4 — Output ONLY the following JSON object and nothing else:
+{
+  "search_needed": "yes",
+  "queries": [
+    "query 1",
+    "query 2",
+    "...",
+    "query N"
+  ]
+}
+
+If search is NOT required, output:
+{
+  "search_needed": "no",
+  "queries": []
+}
+
+Do not include any explanation, preamble, or markdown fences — raw JSON only.
+
+
+You are an agent. Your internal name is "reducer_agent". The description about you is "Decides if web search is needed and generates search queries.".
+-----------------------------------------------------------
+Config:
+{'http_options': {'headers': {'x-goog-api-client': 'google-adk/1.22.0 gl-python/3.11.9', 'user-agent': 'google-adk/1.22.0 gl-python/3.11.9'}}, 'tools': [{}]}
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"Hello"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Hello! How can I help you today?"}],"role":"user"}
+{"parts":[{"text":"do a research on the latest technology introduced recently"}],"role":"user"}
+{"parts":[{"text":"what it the today's date"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] called tool `get_current_datetime` with parameters: {}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `get_current_datetime` tool returned result: {'result': 'Thursday, March 12, 2026, 02:35 PM'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Today's date is Thursday, March 12, 2026.\n\nI will now transfer you to the research agent to get the latest technology information."},{"text":"[jarvis_root_agent] called tool `transfer_to_agent` with parameters: {'agent_name': 'research_agent'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `transfer_to_agent` tool returned result: {'result': None}"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+get_current_datetime: {} 
+-----------------------------------------------------------
+
+2026-03-12 14:35:55,615  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Response received from the model.
+2026-03-12 14:35:55,615  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Response:
+-----------------------------------------------------------
+Text:
+None
+-----------------------------------------------------------
+Function calls:
+name: get_current_datetime, args: {}
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Thu, 12 Mar 2026 09:05:57 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=4867","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"function_call":{"args":{},"name":"get_current_datetime"},"thought_signature":"CpkLAb4-9vtPI93ZAmw2uNzjsdot3SBko7Qp4YOuNZ6lkjSlYsk7cWdsO_NVOm6I51fSJo9LSvov1S1nc9Ts9SAMWIrWoSf2tVNSx9DIaBM4Pj436IPWlX-wmvK9gZVi5Z4Hun1Ahnqc3K5lHyyeULU5FqcpUIZvTZKCWzsLzKiHOLMTcRBUfsuKAd0Cl9rJrhNOegcFJD0sZgGy4ZKWh5_YXFj5nPyYlaLoYD3kD8_SIggBXf7KgHElbfBONKGoGaypVjuq4gXduARF3ZFcmg0E1Rq9RVaIBusRgvbSDnttf4urXETI8S8CmW2KisY-idXTnUY3jmen4OQNRbOf7QEtNs-MkrQoj-Y9P649PrqmQgMp0hbsOaLeFzMQ8p_ZeYy_EnwM56eXO-pEB35WYrz8iurQ4542prpSF3IYqL7u4wk4b64SY4_QCUYMImFDXbgGZFISNA1YZuV190dtHXxDTzFQveezr7os7KQ0W3SuskJVIk14ND59GTP_Faa0av71yjqjNRSLE-Nt_0vg_boFWvJcXzXVxAdE4E6hgAiLYvpFVq_9zEVyl7P_-E9xLCvFIGoRgseIbWBL3ZX1ytjfWJui4zxQg6Pl3KBkQeX2iUsxcCUBPg_HAqZKD8JkJH4CiWRsdTskw-wZhLPFR8B6nwlG6lUDoHQySxkJ4IRgoJJdOs-RROWnLrDdVOBPijSkE4AtfXHdOiqHhkhCyE3ermcId2OvUoIAcNOM71K-9YpHS72DBc_euhAohOlUykGZI31fJg9nyA9F27YlvQWYXYUxL06seY3RNEE8slsmN6doOab6nay4mabpjQbZNBmhjLKEZgvGi9YW3nD9WWjXCodWMT6xD0XpZzQn1c3g6xewgx0uV3-5LQVthw7sFkwxLlCSnCd-CqP3DcZsruKjY_r4W_sWZR5YlDC4KgEbTnfxBuKTR4Q5Jcl4NHqO7nFCx1G6ec1KxEppTIWicZvZ077M3fZU6NEM8KFGp1Tj6DN9mIDfwkMCOf8l_iIKqJWWXMa-0RF8yuXtdjlKyob9Fn46V45LfDxIus_lYeWjV3Spw71aUud1QuUJHf1edhTmcy7h4EDIZfXRLDrG03DAdzYemiNqKybUT9uXQDovogxAqtG3qolGx4jp0a77aYkMUw71P9K9hRU0RfqJWIaaWpcXCUKd9iCockZs1l46lhxTNkn2VjlQXnSQK-VoYcZHTHM2HI_2RVjaiVKUq8gthvci1CtpEjxtWaFggnM8f4UJKWNMvDSbq21kJnsJGLvZEepJBZHpuhz4MtnWrWLLF0hrUPvvcIwLLS2GNJlC97uLU078y00h9xurBr-B8tRWRC94AUIsgYDoM42ljmIp9FEQLMxwXeOrTAjiOBHicm173oOV3riGF2nv3HkiETIuznj5ng34lHRLu3ot8S8CQWWmmLHUbNA_OkHb01ozeJ9rAJq66rXGrq3Toytz_zJdE20d005u5taumkWLSsPeHsFjJnkahn8XdfgX0CcUndN5R8KzXmzdaUxxnG9PyvAAdndeIh0xqQAiai4Ydp8ys6t5Jfk8i5bye_gp-4O4Xhf3BgoMIZKjcWObBt7rxh_urRwoHfBvWtmVw1kDTAUqlOzSjGHuKUM2BucE16IZHvJXO_Bhc2K405umNi9mMoBh0laV6mqTr2EaC9Y8GzJYoPydnzVYLm_aKjquS4mBhcOS1sVoF6yxnhC7kTv2pYAxKvSWzmqlARcxEhJY5oD_FWObAl-pBZ2Q0jfKt7ZQ99LO2iduLdm-n7VWLhbjS_vLgcduS_a8UG2j2qd0EIR5nmBj83lR275bxCbIJA1o2x_9v_NzeocmzP39AC6BmURCsdRpN3kqeixrL9xVeD6Eqzzm0klaT1jeEs5wEyOnGP8FJ15HSbxvikM="}],"role":"model"},"finish_reason":"STOP","index":0}],"model_version":"gemini-2.5-pro","response_id":"9IGyacjWM_bGjuMP8bmIgAI","usage_metadata":{"candidates_token_count":12,"prompt_token_count":630,"prompt_tokens_details":[{"modality":"TEXT","token_count":630}],"thoughts_token_count":359,"total_token_count":1001}}
+-----------------------------------------------------------
+
+2026-03-12 14:35:55,615  [research]  DEBUG     research_agent  get_current_datetime called → Thursday, March 12, 2026, 02:35 PM
+2026-03-12 14:35:56,081  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Sending out request, model: gemini-2.5-pro, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2026-03-12 14:35:56,081  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are a Research Planner.
+
+STEP 1 — Get the current date and time:
+Call the `get_current_datetime` tool RIGHT NOW before doing anything else.
+You MUST use this to understand today's date so that all search queries
+are anchored to the most recent and relevant time period.
+
+STEP 2 — Decide whether live Google Search is required:
+   - Search IS required for: current events, recent data, latest news, prices,
+     statistics, real-time facts, anything that may have changed recently.
+   - Search is NOT required for: timeless facts, definitions, historical events,
+     pure reasoning, math, or coding questions.
+
+STEP 3 — If search IS required, generate between 4 and 10 highly specific and
+diverse search queries. Each query must:
+   - Be anchored to the current year/month from the datetime you fetched.
+   - Target a different aspect or sub-topic of the user's query.
+   - Include the current year where relevant (e.g. "AI breakthroughs 2026").
+
+STEP 4 — Output ONLY the following JSON object and nothing else:
+{
+  "search_needed": "yes",
+  "queries": [
+    "query 1",
+    "query 2",
+    "...",
+    "query N"
+  ]
+}
+
+If search is NOT required, output:
+{
+  "search_needed": "no",
+  "queries": []
+}
+
+Do not include any explanation, preamble, or markdown fences — raw JSON only.
+
+
+You are an agent. Your internal name is "reducer_agent". The description about you is "Decides if web search is needed and generates search queries.".
+-----------------------------------------------------------
+Config:
+{'http_options': {'headers': {'x-goog-api-client': 'google-adk/1.22.0 gl-python/3.11.9', 'user-agent': 'google-adk/1.22.0 gl-python/3.11.9'}}, 'tools': [{}]}
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"Hello"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Hello! How can I help you today?"}],"role":"user"}
+{"parts":[{"text":"do a research on the latest technology introduced recently"}],"role":"user"}
+{"parts":[{"text":"what it the today's date"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] called tool `get_current_datetime` with parameters: {}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `get_current_datetime` tool returned result: {'result': 'Thursday, March 12, 2026, 02:35 PM'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Today's date is Thursday, March 12, 2026.\n\nI will now transfer you to the research agent to get the latest technology information."},{"text":"[jarvis_root_agent] called tool `transfer_to_agent` with parameters: {'agent_name': 'research_agent'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `transfer_to_agent` tool returned result: {'result': None}"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+get_current_datetime: {} 
+-----------------------------------------------------------
+
+2026-03-12 14:36:02,081  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Response received from the model.
+2026-03-12 14:36:02,081  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Response:
+-----------------------------------------------------------
+Text:
+None
+-----------------------------------------------------------
+Function calls:
+name: get_current_datetime, args: {}
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Thu, 12 Mar 2026 09:06:03 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=5920","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"function_call":{"args":{},"name":"get_current_datetime"},"thought_signature":"CucQAb4-9vv403FNHI7DGMm1hbjs62gUdR4jKwcpAmczuiN_FosVFNS1vh_1XFHGwwnjoF2qdGU89_IcKHintOTYyzGzE35MMSqTgkX2hy72x7S2eEFuJWibOIbjIrXcP9yfTiOHgruJnvMQEpVoi0Oxdbr9avA0ut0jmTqmqXQjVKwmPEQnv-ka7GBdJkCRtaa9-sMyJ_rzr-OwCfIp4yidNZaBvfNJB0rxS-3-Bsb0I4Fxp2FXLpEbrCPywhWsnjRcLxKMqYrPN85FqAO4AUBe1Y2PH5VXBbiDuVUldNa1FDB4YSQKKW4P1-7dV39cIu_xitGLfZMppvwoUmz0qFxRGI5-FKI-nt8PB4seiyGSQG7s4gVFH1Sq_nwTHqABSzTbe9ZSwWFoGOk-0MnKJ406xqqjUvtUrWCFRzQyesItSZLr75p2M09CgMC7_75RsEZKHgHLdyK2_uwyOoULAhNzvF5RCfv9Pc-1HHYU9HAMCb9_n0MtGGdiB-0Lv2zfa5xFRJySAcw4BQ7YtyAcQhinGlz6y6W5NeuMogBRVGycccewRG4zBfcsswUZdjMch5AsKugNd8XCFBdIhq4xMrZXXokAe083BgD54Fd3Zfl3TSp45lYLQ66rvJb8d_fb3QmSmbBncIRl1Q7wUiXjZccuQyfcuJEZAaU3OSm1NDlfXZOV75370184FbC_EaG2__0tBVrQXP9468d__qOfbgjoy4RN0SXK705-81oTKLQdrIo3gy_8Ze2kamil_QAssc1qOylCDuea2GVrYXYAICiPRtffbrCBwNTUR_EGgAfVVWgm8DlfaFgJ7HuhbGGwpxT3vVVnAdr-XGCcKhzG21Q53_yQijbTVF-eQ4s-SZP8CYLwz7uWSwtTfmfk-3PAklmSEFEff9GN7QoqIBpSFXVCfAoM6PssfBZcp8QcUxTIqh_AM1-jEC_khyvM3J4xd_00vwUTGo0T4IcWM5RkfHUEmFBmqR1EM9FM2kpiAjeNZQsM-d5w7eUJ0qckF5fyNER9uOGWd2h8mrJRkVwr3xfxdrZZf-S8fY9vSJ-2nnJlYcvhRqUoJOMvdO19mv0Dtakf-F0PTI9kxclUUcr8FIcAWWFYEs0kMco_MTw2vFVzf2CsnDIO1vhEXzmZZdDuByqbjKQ3CWZ8yojiHspjE6GxLujP5uPjTb8KKtUL3xIJD1xLb6k-bKEcAhlWt8cQ9qlf9zEQD3gmGPKG6MuhcTcrBgw4trzSQjMQ0iHtvJFw8LeeerCdLdPoR7wEB6zhdeDFSnbaTeUS27m1CCB9zi5Si2KWto2wkNaaEkd1lfzdf1hzy0HB4PdtNNiY7mDXeqNBlOa3AJfc9naW1UJAeJ_fDU07hCKxf4V2D4BuZWJOek9S_mXnZublz7phxDnJu-m0TkKuTZqwy9yd4XSjoPa7rHg5FcjxMX23L6wfQQp_tfrLDsEt1O0THz84EL6tAXPDjIyMxuf9O1-xQ4YVx8XpOcbkgJRAeCJ99cqet1H6Wq-d4NfFarKXvWbiMaPnfr9l9968d-W5D7_Hc0vbtBiswRUX5jBRf57bNexH8RbtFjPJ1R-QdcZTj5b-VEASnlBtrnj4SZTqDWk2iAS29eYRkt5ECQtwSvF_c3fkelwotvUUkac19C_FprzMN7sGoCSnPR-Uo8sHGb8AvrXLx4PNjxFS6GLXvMmXxegu5DqEBkd-Rp6Q6DrZLW_WZhpgYPLVhyheY7D51csJQk6Q8iIn1h00103R6jHk-I9-2pFlkYXUBCrEFbOdEHWAvW0GmOL3q-SlPdtwGiXvQ5dbpguBcblJUBX8GH48uCZr3K9Vb4IylgkXI3Iucjcd7EvM26fIurfhyjoDyG3gOH-h_jUOTsF7gqDW48KIfcjyivTMFoP9T8bNa4sTAxeSe-El6cVVwdq5XelYMCBoBiZjplSWGObPthxKWkaeXKT4Q2QdIYbI_o8OcPQNMNq83SyDOf5_64Xjcchd0pigDN1_iKe6UZp1wtTsJEHLCZVm02ALOBovhyhCO3RUr5mPScejbWV2ncqtuqJpw28X75i76L7O-QfUgwSsTzd4gjqb2p5kv2x_pb0cCJiedlh--kMhh9EC_8fUPR9TQxdoAJl1ei8OpdMjjmu81actZGNzKr1uQrtPUYfgB9XFCddHW2Kr7B1TxsAWpK0rL6OR6yVcfoJw7pHPSl_T35T8V2REcGvJXdak-qhpdpN_I2psVoo-J5D2Y0TUcxwrGcnMUH_wjVK8HkO7cBLUaAkqK8msbWeUhy57avUZ3gsluzdvqIicK7QjgH2Iu3T2EmP2wZirCUFrKAA7l8l3WjH5NC4imlJuWn1OHlfGpwX3nUiZ4giCnf31uf_A0e9neifc3mPaNSqg-bm3b5xEzsvi9lzgOCIOGRx91UEuBmSGhU3qewzQqqw_ldnChfzLRTUPZ_Dpt9HB0ulMyhXObH2a2oCrmqja-l6pUvBltZ2tF3BVeBTivi5pGKDb8jdiVWKH1QrG7idZjLL5F9R_K2HxHsS298DM4kQvv6SPYm_-qBtrOa3pV-vO71tAMi41qZ0KiO6iUucfy-Owts6c_fbFlOLA4fAjgqa6__XpwNWY7QW09DBOY6uEJICbMCZmdfBgrRwiKv-MkXN-d5KOV5n0_nTlxvrbeiJ7RsYwxuPjpk_T8dTVG-thO4c2nQXBNGTbatBea9-C1bXxQuKD3_pcRXtVw6mPQ2aTwKuXj7yu0QT1dK4FBY7lyB3MqM1uxpYXluc4AJLiPOpUM-bpWcSzBGoEQj3mHVnlj4ROQySKZaAftMlYZwpwXaKwuHG0XIHzSVywI28rz7w-pv9gy81Q5HaKmgzeCJXxAP7twAUG"}],"role":"model"},"finish_reason":"STOP","index":0}],"model_version":"gemini-2.5-pro","response_id":"-4GyaZPLFZ3d4-EPlYGX-QE","usage_metadata":{"candidates_token_count":12,"prompt_token_count":630,"prompt_tokens_details":[{"modality":"TEXT","token_count":630}],"thoughts_token_count":500,"total_token_count":1142}}
+-----------------------------------------------------------
+
+2026-03-12 14:36:02,081  [research]  DEBUG     research_agent  get_current_datetime called → Thursday, March 12, 2026, 02:36 PM
+2026-03-12 14:36:02,564  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Sending out request, model: gemini-2.5-pro, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2026-03-12 14:36:02,564  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are a Research Planner.
+
+STEP 1 — Get the current date and time:
+Call the `get_current_datetime` tool RIGHT NOW before doing anything else.
+You MUST use this to understand today's date so that all search queries
+are anchored to the most recent and relevant time period.
+
+STEP 2 — Decide whether live Google Search is required:
+   - Search IS required for: current events, recent data, latest news, prices,
+     statistics, real-time facts, anything that may have changed recently.
+   - Search is NOT required for: timeless facts, definitions, historical events,
+     pure reasoning, math, or coding questions.
+
+STEP 3 — If search IS required, generate between 4 and 10 highly specific and
+diverse search queries. Each query must:
+   - Be anchored to the current year/month from the datetime you fetched.
+   - Target a different aspect or sub-topic of the user's query.
+   - Include the current year where relevant (e.g. "AI breakthroughs 2026").
+
+STEP 4 — Output ONLY the following JSON object and nothing else:
+{
+  "search_needed": "yes",
+  "queries": [
+    "query 1",
+    "query 2",
+    "...",
+    "query N"
+  ]
+}
+
+If search is NOT required, output:
+{
+  "search_needed": "no",
+  "queries": []
+}
+
+Do not include any explanation, preamble, or markdown fences — raw JSON only.
+
+
+You are an agent. Your internal name is "reducer_agent". The description about you is "Decides if web search is needed and generates search queries.".
+-----------------------------------------------------------
+Config:
+{'http_options': {'headers': {'x-goog-api-client': 'google-adk/1.22.0 gl-python/3.11.9', 'user-agent': 'google-adk/1.22.0 gl-python/3.11.9'}}, 'tools': [{}]}
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"Hello"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Hello! How can I help you today?"}],"role":"user"}
+{"parts":[{"text":"do a research on the latest technology introduced recently"}],"role":"user"}
+{"parts":[{"text":"what it the today's date"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] called tool `get_current_datetime` with parameters: {}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `get_current_datetime` tool returned result: {'result': 'Thursday, March 12, 2026, 02:35 PM'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Today's date is Thursday, March 12, 2026.\n\nI will now transfer you to the research agent to get the latest technology information."},{"text":"[jarvis_root_agent] called tool `transfer_to_agent` with parameters: {'agent_name': 'research_agent'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `transfer_to_agent` tool returned result: {'result': None}"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+get_current_datetime: {} 
+-----------------------------------------------------------
+
+2026-03-12 14:36:08,397  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Response received from the model.
+2026-03-12 14:36:08,397  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Response:
+-----------------------------------------------------------
+Text:
+None
+-----------------------------------------------------------
+Function calls:
+name: get_current_datetime, args: {}
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Thu, 12 Mar 2026 09:06:09 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=5759","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"function_call":{"args":{},"name":"get_current_datetime"},"thought_signature":"CocNAb4-9vvx-_Z_VP3EtjkwbS-bRYti_3GLh6NvYsH94UcPACOMk1kh5sUtR3UrpC5Vtfxq3PhlkS_zgU7qTfGQaB3scwct4D8EFBmMVuqx1m6L9himcyTSHLaMWoua7avo-Eu8NURTDzEgHQV-s1C-zxIL-XvEeAAsX6PEhoYEiJwdSiL6GIlBae6fWzbuvSVK4_7bcqdO_L9MKP-8rollDBFRqT-hig0Ax6sFb4EmDg9F2z3H6vAJ_rOTJcQJR3_6TNofMSOVR5WCWrPGrUYsD0wPPwRqVOMFPyiTVGR3emU2Q7fr_BpkyWRLZva4JO2wNLBSxWSWpQ0zkx4Qy3Clz-Wj0PXLqSjgve7YLLy7Vk5SJ8YbtBTV5yD6O2Zryw7B0_aPS0iaMTVatt84AWFcCcxWyWtVWnqiayEf-BmBEPkiMr1zenL6SHZPRaWkALERIsMjepjjgtD_a3jyTBwnJ_fOKHoYXNV-3HThHlUaNCCjRGJerg5FYI5teN0KsLWPwiaMaWgosTQT3WGgolfdr2a_auDBZrcSRebjYF4qcgTFsu07uc4iyH7kNOP8ASr2BfQiMotJMY3PksJ53ETE57kaIy0o5IN0JvyAiwIlw7tpJY_p4jO0BpfDmkp-iK9yFYqM4bbADyggy82IlR_x4UTPd0CaEVpeooKik2wfWY4PC-OEoUANWHnNUjKbPWoohgNHnWB9JXvLV_MinUblBqKbAMOE_G7CvU3I1NUl1S3Q0xD28JvnVHADg_Fpzbhcxrnj7WblB48YjLsIlJ5c6jKP06WsasMQDR4Vmfkrsl48zs3ZJfXGGvOSgLfqE3FjzOw5Vy63Hr0Mn0tyArVNqo5IWDU2lg9MwQFvEDofx0_D9W3FeA9KhBCzaUrt_xUc3FsWJBPzUAAzP6dRGqKaoUZhfukx7yvfIJFDbVJWi8YbyOfof76xv1SBRHd6G1IhPw58X9JzyjmYDUJgtyLsM7Qkrm4k-YWEN4OHMn9t-rzB_gcYIgIZHOLzFw-LwCkJKrTeAcP3-NAVXVz60U_mSxwdkgVWnsFyhMy8_ssXkQ0orw_iTpdvyWWkXKWkUtoMXbYO0GDS69qMyuMMBDoi2bRow_FvSXP7uwzpDYyQG_gaxsuqZhNHnmSy5b-x9pjAHaDXmgeYayED23tDHZ7PNW5dLAJzHZAh_3EqJIk4M6P4ZGwKsEqNlB4s7J1NsSsbmcbQ9Pxs3iTJP8zMEZFZfqJybw27nX1rosSItkQxkylnd4vTf4NSGETN1SqPWRnrfpbbQ7w6Yzaiq0ZrgPai_X1k1gE6WXJBRp1gu94pTmvj0042t29FFGVIzeyzCGa-gv5rt4wlt6lhA4AxfEl6D-I_5eW8aCNPT0PBKfVwgM8XHK9nJq6rW9jcFZfZQFys_sq1n1RQNEupk4_O_hzZl12ep9K3JwBTuYQnBjoxsnhk7pXjFylzvtQDNoh3uUUyMtR7Rcm7D1Pl9ngLGJsv7VCEUSNR5aH9jhAmkab5ibk5sXooBxnyodxU76K9Vd-NG0cZc50gWd8faKdcl-kxsXBJWrEdw2pzpQJ3JqWqdt-oyeLSWzQEqB0Djy8B9bi6IOr8IDNehEH9mcWjbtcHV5-_OBXW0gYsuKuheqEduBAAlkdm8fomJVDAARBaGHBP7BUKdSeMjEtVHwd346NqyBplnRDP5pEplZd8k58CpcwMz9dAcxIZUD9KiwGbSGCQiAY5alumHs9tAfoEVW-uoJJ_EzdCmm5cP10gBPDGZ4UDCjjfO8DbF7EhlaqZ9q0UepsmY7-v9yUxg2-SmJ4hniZS2waJtiheaNyKmpt-55hsD0wrBDbRS0IB3js4stuExdzT3su6jStApl6c3LNonWgecewJd-tRpnsX4eY9j2BID5DOSy1Iug80b04b9FjHhAJYzKOgW6GhgkCsBnfGrMVfwmIQD2ssIMf6sDHrjIemPa_ehM4m2k9zHISEpuX_b-3-K5pUZYi2MYJMfllIcaKsiS4j0qAqO8GKRgyygKPmRjdsGoFhN7d9AhpuqbvjiGPKX-XiLZqHK2JgOZgORao-0bV_jjA0DKnTnNRsD5hPtNRrnzwr1kbZ-mYGQFfsSEOmegX-tahGNKePdsrKYeOqb1BlDDQhJpoCcokIC9hMWVNoV8O-xZycuFlXeEeDktbXBiBcQCN-JEoYHdljTwAqDSu5SxAy3LM3aFY37ydNS-_0HXZV"}],"role":"model"},"finish_reason":"STOP","index":0}],"model_version":"gemini-2.5-pro","response_id":"AYKyacLwKcbV4-EPnpDm-QE","usage_metadata":{"candidates_token_count":12,"prompt_token_count":630,"prompt_tokens_details":[{"modality":"TEXT","token_count":630}],"thoughts_token_count":420,"total_token_count":1062}}
+-----------------------------------------------------------
+
+2026-03-12 14:36:08,397  [research]  DEBUG     research_agent  get_current_datetime called → Thursday, March 12, 2026, 02:36 PM
+2026-03-12 14:36:08,880  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Sending out request, model: gemini-2.5-pro, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2026-03-12 14:36:08,881  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are a Research Planner.
+
+STEP 1 — Get the current date and time:
+Call the `get_current_datetime` tool RIGHT NOW before doing anything else.
+You MUST use this to understand today's date so that all search queries
+are anchored to the most recent and relevant time period.
+
+STEP 2 — Decide whether live Google Search is required:
+   - Search IS required for: current events, recent data, latest news, prices,
+     statistics, real-time facts, anything that may have changed recently.
+   - Search is NOT required for: timeless facts, definitions, historical events,
+     pure reasoning, math, or coding questions.
+
+STEP 3 — If search IS required, generate between 4 and 10 highly specific and
+diverse search queries. Each query must:
+   - Be anchored to the current year/month from the datetime you fetched.
+   - Target a different aspect or sub-topic of the user's query.
+   - Include the current year where relevant (e.g. "AI breakthroughs 2026").
+
+STEP 4 — Output ONLY the following JSON object and nothing else:
+{
+  "search_needed": "yes",
+  "queries": [
+    "query 1",
+    "query 2",
+    "...",
+    "query N"
+  ]
+}
+
+If search is NOT required, output:
+{
+  "search_needed": "no",
+  "queries": []
+}
+
+Do not include any explanation, preamble, or markdown fences — raw JSON only.
+
+
+You are an agent. Your internal name is "reducer_agent". The description about you is "Decides if web search is needed and generates search queries.".
+-----------------------------------------------------------
+Config:
+{'http_options': {'headers': {'x-goog-api-client': 'google-adk/1.22.0 gl-python/3.11.9', 'user-agent': 'google-adk/1.22.0 gl-python/3.11.9'}}, 'tools': [{}]}
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"Hello"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Hello! How can I help you today?"}],"role":"user"}
+{"parts":[{"text":"do a research on the latest technology introduced recently"}],"role":"user"}
+{"parts":[{"text":"what it the today's date"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] called tool `get_current_datetime` with parameters: {}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `get_current_datetime` tool returned result: {'result': 'Thursday, March 12, 2026, 02:35 PM'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Today's date is Thursday, March 12, 2026.\n\nI will now transfer you to the research agent to get the latest technology information."},{"text":"[jarvis_root_agent] called tool `transfer_to_agent` with parameters: {'agent_name': 'research_agent'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `transfer_to_agent` tool returned result: {'result': None}"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+get_current_datetime: {} 
+-----------------------------------------------------------
+
+2026-03-12 14:36:16,597  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Response received from the model.
+2026-03-12 14:36:16,597  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Response:
+-----------------------------------------------------------
+Text:
+None
+-----------------------------------------------------------
+Function calls:
+name: get_current_datetime, args: {}
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Thu, 12 Mar 2026 09:06:18 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=7665","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"function_call":{"args":{},"name":"get_current_datetime"},"thought_signature":"Cv4UAb4-9vuhk4vGf0iALRo3IN3eOxlRGjIILKffXAMjhSeVHSqDa8f218U6Ouju21vZIIgKreE630ezyjVb12TzZFNDLqxVt9_oIOcOVpFChfien2MyYandxJD7i4l7SAqJdn0dCoD6YyKU8Y5NRf4pEOnRKD02zm0WZ5Ull9jDYNzSnzN_6dh2SJns4kPeqO97niTCyTXT-jnYg_TiRqqsT2sgLCRylgGegfebM_mX-C6l-Kn6iQSiPvXc4HqSeRvgrWfc5TEKWVJT5NX7tljnw8XhiJaXPYQotvZ1cT_Y88cSxUmjDjV1PCXxvmTOJAV9m1abKQq5jd2qXt3Y_5W3wf33QFLGB9vOiQzvjpFWmW3MM0LjGN9tm6QdJDdAv3Ipy4rjw723bmOk1bSGVu5p1qjIxuHUyTXkiaaTeFz8ZbZjKmElCG5s0UoCec4kbfQgahf7fVr9yGRjmAPEDCax7EDMPEPLP7Iyj8rpjnYPh-gYYXjmlJu4fWVqur1VFtoWD-9olvupKgrhfinNIGIKDyJhDo-8By0XboJxodJa1tV7tnkvOburBW4ne8luf0sKrBKqg6asYmldscytI-ND1yF8kSX3hczHbVAiBvMyG5HMP5bui6wGLtC1oVmo0hZbVjuPtba8UjZjHhZCHfAlesnH4GaZJ-YAyhtjJtFo9Tv0e6ZRZe4OuuV4Cy_XEJMW66TVCWZ-BC9MnEqQQ8zH5IWpH-dMj502kQBWEUDF_aFylXttlbsqGlzddgdUCl0_KcD_VywSi7k_OIW0nVXExgU12ULLVmNBP-01fJ2aA9LtxY_q-b_PZ1GL5y4txSG2wXoQ7WG5oTCGCBw-jSgSTN47nVXwa2c8YkdW0pgip8Xs7IPD3g7JlrjauSmNZSi71BPUUTCmMXr6EztxXVINwTOWW_VbqoQotinUc88OW3QsQpu-hasERrCLEgQLOd2QS5w3GRb5tfec4Lurmo9t-PAbgMFoJwaMEKRiafsdSFitfcFVACJnxOHKyn9_n4nThjtM5j18mgNcJZb8SYJ4-Sfc2We30lIrG3i5DLLflV-OjghIVthBbqRXp6WKw-XeiwerJ9ff3rWisTJyKwvaI2FFKgyvWMKsiBXObXMsWvpm7lvkUWFPkI3jTaVKhF6TQuom-mhsvWGkLGWUFgvfqTOk3rBqW-WooVVqokfT4yW1_8hsnshMOB2E5FnQdOxVp1F85Uq2P5Qh_Uzbmp2lmaq0suwtIuCQa4bo8wcCi5Iltyw4IXUWidICojucVynLMbH9UcOQBOifQ83gAlTDHKCl6eHPe4w6OuOCKRMmYqRLR5vLpNXcaBzAJcos_hwQmXrKvIc-0vnYUcyecjOUNKSyuc7nsy0iSSYX_pCsxKqizc_26Uvfjdl5ZO3UvLC220RVFVT8EC_QC9eGDu6aTfT1ggyAyG_zYUZi4QabpAp0WnlxiC8U7hsMXsra5VNO09cvPtcAibn_fiuZ8uCpeVhHFu3YQO3Y0lhaumA_NFmlea85NAr1rHlZMDP1XdupGc973-fSzyVACRqNb-GGvWlGs-u3agaZDtl1Gi6u6O2zQkicmWusNDaPi1s6JFwjCChyNLzwx4HMzmqUJHw3TcvXtTtZQWu_HTr5fU3FP9WvakLp_oAhlH_wqddkqc2ghFbetReSZRyCOExB-PZS5fONVIS0AMffmXb5XcyvIWsTxROyGlfMShuPelpAteU4hRKrcpTzwBQeVJRmckzSsABzPuSyD9G3rwkGHoGCrok9lB4VW2rq-KG3v3NL53QCPx0BoPLSz8gWkK5O_jg6xR1ZSG7rtc2MEozTuVCtV5R3dguYgm4Q_ugBxq32d7saeponfG0Rh1i6O-BoHG93wueJ4UpvusAn96xfsmUajPqL591iwu6Ba0Vghf3FRs2Rr4B35izR17ZI2ngQPVfnala2ue3CwsL3s3-eec-tH9wJb7UOMDAV1v0KxZksJIFU5UEBNWmw1xdp-ZPvLzHz9oFwipJN6telViQihN5ICD1g4bwpjRmBwhsCfPMvViVk4QqkvR8cPRqAEPpCJS9-jTKm3LUfXlOtZ9bs-sCil2wZWcC2aYUbgypkL4YB8fgoEo49Ixavrk4wUj68jgRAfW9rdWF6nDEcKxl8qy_sDn9zfptSqQNUoZ9u5UQu0g4qGfdVsH-gVRhN-32Dx-GWlvGcX9UnVLmQDuIyRtJvKIeO_vOmBDRBOZ8t51kZRBe1U8hVS70kCVayg_O6NvqY4UcNLNdoD7rrBnhSRhEGdrH-rdazYce7FQLdCSwDvIZQLJIsY5xYS6aMUo1baaqcAIJ14CmkU1Mz_KRPlgG_MM0sopGKND1XzzN_8XXmTDbkO78YaPKR90eagq5b3XKVaP6w_hUdWi0Q5_oOd4Jt7aIsnXBbsJ8d4JBDx_z_IQJynF0VpGTq5x3Oo_lFDe40gVmZCnaJwySU6BPnmOqKfXlt617Z_M9kjNTkmo6puZj5X_2kqV-Au87Lvs6MoNaT4dTT0QVelXVpfmILBtLj6Y-M1PW1G0xe5fFxwwZQ8vcA1DMxT_N-gF-KoAQjQVo6ctV0N26xJcvcfq1tsBy2eIhhYkUxcDld-5hXs3nbyo-Dq77kf_58Ov1me2KVmIIJwNV8MDBQIy_nMa0XLGNKwvsFkuAg3d-yNztcvzhRTFOcx21L-H6jAJW6GhTVUx24LWI1OW9h4Yl9ojTwRnKI_xpW2rtNMRqtBZbsmxR9Vux5Laguu0tPSLmJDNOPnMi5R2HaJGxdt070JpA75k_7RKUaboI8n4CfMjjSLfrUTLZSmcM2uwtE8dVgKnoD3O0EWJQeehK9-XU9vpgGe7QY_Cy8_nmVbEIi0VOVgkMl3omGMM8M5q9UX3ni9SC8VrhT1oD-WRfRK-cjtCZQ2i1cQG9Wm9KJhUgUU-VLzYwFuQ2pSECXpaEusBTdRAlz_AMmkBzZ2pZU7WG6OFlP39n94NuQzCpCbEoTYDfw7Vinj64A-Tk1-hxvKgjCQB38ojkznkT022NxSp4ri-AnOYUD8Jz9Wg82oYdkTMV6f9N3-ivDjTpvYmTPpltZMaJyhkJpnELQiWfXAWwF9JCpU5VFwEUJnNdgzQQZrMn_s_7tKFVXfeLz6VK7Z0ccAkwKPAs-xgQ4VqmBbexz0LurJUrbXieGxDEphIpcSkAPkUhcxdsSwlCQMfpxUQS5XrXEvPwRI3q-HQfylq4_Tfp9DFjr63Lcow1GMICTZML9VUKaO1gWhq4t5OMqcZ6LHmfxKZ6pejPATRlS4CtqoNDjdrRzEJ66OZHA4dT4qFPNhzldbWr9aP5ZtXtCNo0U2thvYltDCAnt1WMq0mbIxZQcsOq9_Id-PRtP8FoOfegjTDekgvmY9i06lU54ujg6huvNU4LpanLPz817HYDeYMYkB-0Os5091FwiwHv2qSdSioacUpv5LOUBjhtSNWYUijAdK9cQtxGB4lDLpwSpqdlOnRtPTCKxCB_6jpi3UnruHG_6hljN8jsiPcpJzGGow8nFcTxwq8k_stlkbuqzK27DjWVyD2U0Yxcxi74SFDgqtnaROA=="}],"role":"model"},"finish_reason":"STOP","index":0}],"model_version":"gemini-2.5-pro","response_id":"CYKyacCLMp3d4-EPlYGX-QE","usage_metadata":{"candidates_token_count":12,"prompt_token_count":630,"prompt_tokens_details":[{"modality":"TEXT","token_count":630}],"thoughts_token_count":659,"total_token_count":1301}}
+-----------------------------------------------------------
+
+2026-03-12 14:36:16,597  [research]  DEBUG     research_agent  get_current_datetime called → Thursday, March 12, 2026, 02:36 PM
+2026-03-12 14:36:17,114  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Sending out request, model: gemini-2.5-pro, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2026-03-12 14:36:17,114  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are a Research Planner.
+
+STEP 1 — Get the current date and time:
+Call the `get_current_datetime` tool RIGHT NOW before doing anything else.
+You MUST use this to understand today's date so that all search queries
+are anchored to the most recent and relevant time period.
+
+STEP 2 — Decide whether live Google Search is required:
+   - Search IS required for: current events, recent data, latest news, prices,
+     statistics, real-time facts, anything that may have changed recently.
+   - Search is NOT required for: timeless facts, definitions, historical events,
+     pure reasoning, math, or coding questions.
+
+STEP 3 — If search IS required, generate between 4 and 10 highly specific and
+diverse search queries. Each query must:
+   - Be anchored to the current year/month from the datetime you fetched.
+   - Target a different aspect or sub-topic of the user's query.
+   - Include the current year where relevant (e.g. "AI breakthroughs 2026").
+
+STEP 4 — Output ONLY the following JSON object and nothing else:
+{
+  "search_needed": "yes",
+  "queries": [
+    "query 1",
+    "query 2",
+    "...",
+    "query N"
+  ]
+}
+
+If search is NOT required, output:
+{
+  "search_needed": "no",
+  "queries": []
+}
+
+Do not include any explanation, preamble, or markdown fences — raw JSON only.
+
+
+You are an agent. Your internal name is "reducer_agent". The description about you is "Decides if web search is needed and generates search queries.".
+-----------------------------------------------------------
+Config:
+{'http_options': {'headers': {'x-goog-api-client': 'google-adk/1.22.0 gl-python/3.11.9', 'user-agent': 'google-adk/1.22.0 gl-python/3.11.9'}}, 'tools': [{}]}
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"Hello"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Hello! How can I help you today?"}],"role":"user"}
+{"parts":[{"text":"do a research on the latest technology introduced recently"}],"role":"user"}
+{"parts":[{"text":"what it the today's date"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] called tool `get_current_datetime` with parameters: {}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `get_current_datetime` tool returned result: {'result': 'Thursday, March 12, 2026, 02:35 PM'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Today's date is Thursday, March 12, 2026.\n\nI will now transfer you to the research agent to get the latest technology information."},{"text":"[jarvis_root_agent] called tool `transfer_to_agent` with parameters: {'agent_name': 'research_agent'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `transfer_to_agent` tool returned result: {'result': None}"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+get_current_datetime: {} 
+-----------------------------------------------------------
+
+2026-03-12 14:36:23,295  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Response received from the model.
+2026-03-12 14:36:23,295  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Response:
+-----------------------------------------------------------
+Text:
+None
+-----------------------------------------------------------
+Function calls:
+name: get_current_datetime, args: {}
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Thu, 12 Mar 2026 09:06:24 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=6047","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"function_call":{"args":{},"name":"get_current_datetime"},"thought_signature":"CtYLAb4-9vsWd-foRbmJJbzdFi0vlyyUiAIWDRBgAqoLXtTbbSVq-U2E-kjqDL19OmBLZM78D3RF1zsAUNyy3nvGdSvq--JYLrO5A9aDZ2mSC8qHq5fItmEsEpkpEuSU-bq0RTmy5eXKF6t8mHU4tIiRUoT4a4_qYH-Z93xJLOuVy570pONjWL1QyahYGYdQFZtyh0ETu-ecyaZK6j8rBAbZnh90gMnkECJMd9jkTxSwI0k9oWHz_dgbLBcrcAUWVW_upZNoRaTgSLo6p3WKou8MCDuzfXAX3aRbOx3gcDIsleHTJzbFVMK-4UuZMey2HNfKVwTcXuLGxASVwd9grgEJXgZbTpk-5JT3QiIpRVx8K_L6R7-HsTzyegHX2-VfJkgFZKLVgQzIGtCf0-xFd110H610My7ONHgH1oxMtwY6-ubiSzwUNxZkk7PK_JGKfGz35p7UrBCDegv5lzCsXqetMuY9CDs3mUcmtbQDwdyD5FhpwMYrBX2iqKK1VjkYl7WtRV5raV9492AMC6bWGkQqBY2YYMaGdMVFh4BqSqm3iKphFZbIbyvNLlBAC4rkBzjvMW5H1Jxa_OoynIw-IkJi0ZRWNMaAqqcuQINtkq3iDK-XBn4JyZdJgmZnR19pMrL1c0MBlgrHXtJDdfiVszsfRrES9fYMuxED8a8vLGPxx_2nSH5f69yjDEfmFeRUgYDuwHUw6NH0GF739Of42glSPn8T0Otkw6RTefkbjGg4U1NOthYUcdmwtRR2g0KQ31kH2I6RJKOGL4ic9KQAeKZJiV_z9wutusCz_SyFCxypvp4h8uytTgzc2ZbcyJ2pwNx8je9k5HARlbT3Gu6YyLHuI3_rx7N9ozY56eQ1ZIKY3KUIoshZjCydGDB3C0hv08umuaDwxUZkeHTaB0Hm-tF8cN7vNVmczy2MBA0WImZ4exqIjxRJyC6wU4PnvT8y_2EE8X_LrS7kEN_kD0D04gJkUBmLjMEqQV3PSnvkd0ggE4Tg5p96kR8E0gLJlMFTczYRywzCk8yatcBFBywhnEk5iNzn5kpjr7KBy68g7fljCz69f44vH22Ib4qpvQA90__I1znUccHWpxNeJ_tXDOyaOSqotbNYBW1KsGJ4M0nVAImFbqf1ETSK0P9z6tdqeLKju9gXXFKT3zhhmoIRlD-5M1BAhCn0JJ-6VaCzSuV8EldzxHkcWmRn7qdotqBcJSNgTz60t2EyVLJN-Gkan5rG2tAEUVN1XfIPef7S1dm0XWNB8WDti_2JEGY5zEmIEq9jlPkkZuRYUI5rZ5QGGO_4t7qM2_z6aUB2Y2MAdFTMU-9MDtdY6hlNqFbOGKiBxXTEoM1VTAsYwbh-ixm6NBWmVxgtnP0ivVioTuMrum8QWZCy-zcw8czpr5AlGsY6ayrDkTzzfgUwWcot1tZWvIHdWga8g_Cu9sGfTqz0V1orAlhsKL3HQAluPIibC4eov6r8pbj8hR5wmyDTI7u202WIMJdo1gMvzAOxhSaKQd5DOX0eQzqcJAGfQSN-8E_CkwTgWwyhxa8bx79ELLiRK3PoyCmrPAt6L6gFgtxxuQLNIIi4xw5klQMl7PkRGFHRL7nHTsDE6VPixakp2-oqRML8dR50gwf29rOtvKhl4c2HgJmcJJxXtXMHrA2upEbcJLpVPMpdHcdcpoJ6n9IAJdmOW_7eAayhL3o54wHLxpA9HLFmOq5umpVNUicQ4UEgXT2ThWksvzqmdPuvIf81NXVuQ7YhEQgOeGoxqFd8mjaoz7MaTnXa_Spe-Ry-vHEXNGx_6fMYPfY85rE0h9h_HeBpeGOxlo4wcC6VqpFA4AR3dlloxduCjHqi-Z-mAa6rLbqh5LUdOoll-B5plGFJViNWUAhzbzbUxtYzyCb5KVy9BfhREXQ_NqAHhoedPNbRnmbgvxCI-tjwYczcuryziRH9SbalA53hkmlrjNSNvf_4bIpN-_XgB4miwuZS-WqMXha0k6j1BwGq"}],"role":"model"},"finish_reason":"STOP","index":0}],"model_version":"gemini-2.5-pro","response_id":"EIKyaZvzIfKkjuMP4rf2qA4","usage_metadata":{"candidates_token_count":12,"prompt_token_count":630,"prompt_tokens_details":[{"modality":"TEXT","token_count":630}],"thoughts_token_count":364,"total_token_count":1006}}
+-----------------------------------------------------------
+
+2026-03-12 14:36:23,295  [research]  DEBUG     research_agent  get_current_datetime called → Thursday, March 12, 2026, 02:36 PM
+2026-03-12 14:36:23,764  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Sending out request, model: gemini-2.5-pro, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2026-03-12 14:36:23,764  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are a Research Planner.
+
+STEP 1 — Get the current date and time:
+Call the `get_current_datetime` tool RIGHT NOW before doing anything else.
+You MUST use this to understand today's date so that all search queries
+are anchored to the most recent and relevant time period.
+
+STEP 2 — Decide whether live Google Search is required:
+   - Search IS required for: current events, recent data, latest news, prices,
+     statistics, real-time facts, anything that may have changed recently.
+   - Search is NOT required for: timeless facts, definitions, historical events,
+     pure reasoning, math, or coding questions.
+
+STEP 3 — If search IS required, generate between 4 and 10 highly specific and
+diverse search queries. Each query must:
+   - Be anchored to the current year/month from the datetime you fetched.
+   - Target a different aspect or sub-topic of the user's query.
+   - Include the current year where relevant (e.g. "AI breakthroughs 2026").
+
+STEP 4 — Output ONLY the following JSON object and nothing else:
+{
+  "search_needed": "yes",
+  "queries": [
+    "query 1",
+    "query 2",
+    "...",
+    "query N"
+  ]
+}
+
+If search is NOT required, output:
+{
+  "search_needed": "no",
+  "queries": []
+}
+
+Do not include any explanation, preamble, or markdown fences — raw JSON only.
+
+
+You are an agent. Your internal name is "reducer_agent". The description about you is "Decides if web search is needed and generates search queries.".
+-----------------------------------------------------------
+Config:
+{'http_options': {'headers': {'x-goog-api-client': 'google-adk/1.22.0 gl-python/3.11.9', 'user-agent': 'google-adk/1.22.0 gl-python/3.11.9'}}, 'tools': [{}]}
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"Hello"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Hello! How can I help you today?"}],"role":"user"}
+{"parts":[{"text":"do a research on the latest technology introduced recently"}],"role":"user"}
+{"parts":[{"text":"what it the today's date"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] called tool `get_current_datetime` with parameters: {}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `get_current_datetime` tool returned result: {'result': 'Thursday, March 12, 2026, 02:35 PM'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Today's date is Thursday, March 12, 2026.\n\nI will now transfer you to the research agent to get the latest technology information."},{"text":"[jarvis_root_agent] called tool `transfer_to_agent` with parameters: {'agent_name': 'research_agent'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `transfer_to_agent` tool returned result: {'result': None}"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+get_current_datetime: {} 
+-----------------------------------------------------------
+
+2026-03-12 14:36:35,302  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Response received from the model.
+2026-03-12 14:36:35,302  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Response:
+-----------------------------------------------------------
+Text:
+None
+-----------------------------------------------------------
+Function calls:
+name: get_current_datetime, args: {}
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Thu, 12 Mar 2026 09:06:36 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=11461","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"function_call":{"args":{},"name":"get_current_datetime"},"thought_signature":"CrYdAb4-9vuj4MpgM1xcTof-Da56U-Lpr4fZ5jRwa_XiRXFM5lp3k6rolQ-Dx-PtFob5s9hiEPFwQrnshY3PzMDrNsbHJJ43M5lDYOjyffq5SK92eNnDVKV72r42sMklai8g5zgwJPrV-fR-NIgX8fIewn0DVb9uvMNGhEQsZWDzcqZR3MHFjKIKJqR_BNW-nCvVwbzp1WxJnEpoL4eTuv0vi8LVwnCtN3o1HjHUe-3qzWiwrAocQaDoOHajvqkd4sp2-uXsQLwBwdyRTviz83uIEpCJbBz5yljF7VM1OXdq4I2Ijr20aWwfemojuaj2Lp-z5uhVvuwVl_7CkAjBLKjyWKoXjS8kbO29YTxlNnRk017KA9LuksPeuU8FAS2ArnrjfmGTznotH0RuzQ2E_jFqxqfr8GF7ZH9FfhJdCEMpQ-HEAS1Q69eesUqtHHjiFsqnvlytPIXbugPX4KyORhsfNLBvU9j3QITNxFJLvzWuT_eRPcDDSz5zlbF30sQIgUaXA4o5OBA8XAp5tu1Rq4ZnfFg49u0QIcgMmjj3jRPD1F4ibXWmas-9f73N4DfYqrVadOMNGEosXx-IXRH6Vm20R4nVt-UYCT19CDLAq9wt4fMqo_t1Lb9w2hFADvTXUc-sDSG38SEXlRtfvJ8siWSc9WxE3QAJ_0gSXmHInUv5QnmvktihCmKDAnZRyLR8kDJ302WNeY4-WbsP6zCJ77Mv_dQdg8awvLtd9fGO6PT8upaTm2Dn_326UKPlHlt92ayAat6LD80I1t0F5glIe_CzDpQnDCBcWfGeUQB8tqQYi8x5ZEmdJqWNkaI_RLP7iStwuQXWEeaqaWmGQAGPOJfnXDVoVg1wu9kcuRWI0iy57mJ2qGuOCCaz4P2gtMfzdlOKhQiVLJw-u64o6D7ysbEF8WCt6JbshXKo6D6DEEy8iB6hIXeILp3ceATVKxPrQfJpcuRFQWhge6PgF7uFiPSn5JpZfLc0c05ikUzfI59M-CZ7X8_IiaB8JQk3psD5r9ppnQvcCMMTIIL1svyR7r81vn_sIHBuNY_MTK0RplfwTn-LRrKvkKXNr6MoJl6bWwiXrTVh4J13XI9Rlv-4azXpZwzkBGEB6SoB1ypwxrCz7pES3xUQuPXXC0T5dlTrD_3TC7qmseKnbBDU3Q3XWE7jIsVti04ARtJ-ctGqmS383Fr7yuemzyGZBRTrCF_rDuzQdE1-B7lDM3txhGQpIP7Ma-efXEcSA-XKLNsXKIrzryqKLuftVxGRN0qvJ43xYqanZ8pbxZ27QIEmj272Mij0xqIrptwliBruHMbyg4ddaD6GnLHd2ee4DzfCraBJVeL5oMmHSlxXJ71TQXjQijC5lKmrv0jjEdeBtkRfUQhapz7rqP_2viGxTAQvN8dPP1xPeGkfzpzd-cgkuDBFKDjuk8c1u_ZTgk6h-wJSD_MA8Xsr0YGrtbMqRMyuhNqRxcV7jqRuNVioCUxg6QH2qZrxvurW-RO6vXMZOJ4qdu2NT6vfMHsJUskED7nP8sgcwZ8KzgiLlYYKh7OwSxJzvqPkqg2dfnSh7kST6p83xAz0I35AdaI5p7lOf25hj9Kgq6kcYP0cuwivbruQzQDFcBBIOOIuZwGxEdAUwHfYqtXxsPTSxgVF_gmJ0G0uOY9xToO28ik5j1NayChzYAEOIiWgugK5EeXrVTIIBpFhBnFkwp4645eTPsX6HZn3Dt2M5OiJsP4KNOz5TSp90PWxnWcVNJq1iDOOgS8ELctNblAocahP1KUQqSqiLF9U6Y-rI3_x2DtgsdvkmJUVvd_AyRkR2jRYsbpR_N3ZkAdJxNlm-LV2ME3mhFdHtsQKVyZpM8qyeY3bXIkzV5f9vEN3a7mA88t8ewnnJN5e2FxBLbB0ADI6UQMW7kBnVRYSU3n45sh9aeHsISCppNd-trR1J27jDoCzR-KnhloBbAHeVLB9UyzcC-N6pRJVqiLgTbG1_lz5JDZXnZpSEU-59gadpZPDIC47J-TElmpnWKMKkeEBnjTlPZ3Y-EDqMv5xh1kiJ7a8sFsftcMcekVW9QPRiv2Mx6OX4TC4hRTb-VsBWmo31yejobR00Dnqeplk8oU5JRj8nDC7jmk0agQD0A15OC7NWU0H_1yb91Ss-wjbHnFmgMUXPIsQSaAtBKo0z15Iq_m46OAjiqlpvbYuqvyasgE7PkUmNAHfzuI0eyvdvihuJFKWXaQWKRuNiQclSyVVTGinuzMxKSRnrRiupPovKSJo0pL1N87HNWePVC7M6ru7vlhdv3029KxHrCSulUGU-CxJuaGGtwJhD69JIHIyAL-1hAm3faMuEC0Z70aBuaXPhOjGPaDomzt7x9SYudx6vLtaLkI3nTOQLspjFyFa8ekTe2D2Ox170XD3UXFvZQGHt6U1gjzhsA7ZBz_tIUKw9w4JhdjY6EZAOxWLJJ6wC6SSkEvAfULZyqOoWU0EIPBn7GwW8nnxzCpTpiRfsaHWrTJkGONIzBa8a7fZyScB7kiKGWMlGkyqBwXhlKHasVk1esERiiLSVRYMjc520SFHNlhx4Oc0ONR3xX22ExLVKj86Z4ZcXebZNBM8ITalwojiespkMAxxurnPvfpXE0DGeSl90gQfRXoQp4wTuJJB3Uuf9TNwI8Qt9-wCPUrVP-Z-ibDTH2qDOZpcsgwcYC6B_GcWhgHg8Q0L7aa5R6jm01NvWkhMn6U4CQsi9WzjVOqWjonA_r_ONuZMLKDnzR1bc0Jkr2dQrt4dZhU9IhL2aBdaU-99cRolaQrTclSphBZhI9GVUCY9ov2ybzi424tcPKdOBL07bXH3ZOhE0RcY14q4CeZN-Vm8dpAOUVEF1B9JIJDbeoustea-dOw4ynb0vhyMYQpPA3P81EgztzfAMFv1NDUMVfyPSxtRVbgHd8JRI-MRl9rDbgLv4pDBEbd34YFWQaYn-ZJBdzK-3iuprpyFQffCY50QHdke2Cde4iL_tXKr_xO3GqYkvl_jgeq8psI0l7yhFO7theGmF925CtkLcsfMFLcV0O6CnPeC_UnPngycGsEgK8yDug1-UGq0JcZibA22DK3el8TdprQh_WCqWwx0SNzdaYbQ-CFEK2FJSWWTplGoi9d9MxwR5r_JwT39AiGRPpLtieW3g5bH9mBBt8c3wWxvD1BuHoJheJZb-547_hLi3Sxm3Ybki5-4gOE5GgFa3hPRliO2-u2Sz7kdWD0840RkMAK1licHd6DlQDp_tkMpm--HApr0PAsKKDOq4_7dWKVvwswPKpO7Y7XEzlByu3N_2WgHV5ZyLUzSODYTEd06UgEf0T6x-vKQn51N9IoTXB5vjTA3HJc6YUHtp3DuQ_IsE3QfdKEVP-Cb3WNWSGGMa2KmnX_jw9O_YcMZyGo48YtREAJnhsa4D16cBPORxVcSeOAKuc0_9isaHfD_CbeFOpnNvFXoJPkJ0mGVGZN_feLVlr9ZXilwwGHcVARc8ldDRVQIUByPoMUxoEPC8l2VSBn-SfWGqq1Or8yQp-G4jbZFlbr9u4S-VpPn4eROlyDfk67oYBesQfm-_fjD0sVFno9DQteW5FIPWhm9jFjikAEzTqIU-uCsCIq5cfhOF0Fz_pvXN7cWM3i0k1HHKWX1maPKEK5W4E-tal5yB_jLZNVU6xPi8v_0_yMem54A7lh4VmSFiKTmsZ5iWUfqkIAlbfim6dzW7OYt9chGADz8JF9uPdBHjIXS5-BuEtb2j16y9febXEi9vzfOjIwXGFGzDX-FA0AXwTzOsnBwMUM9O-FtMzAYc4YSvr2VlY1IQnuznAAJbi1b2kxST9JgQKQZzxnmG5EGUN-j7xCJyv8NbyuNIgWj3ogR0KH1dfsbo90Y-QAJ2IjH__QxFdrjh5cE5Yi08xTl3XnBWBuo6JEALMeHO2D4LUTT0HhcGDL-oFqJDzSbmLL0PIPTvlxReRMUxKfnNPScD_ltm2BbgjLN2L8NVxk7NAO7PGX8JE-1T2waBT0dAYPcJ3jalspF48dyoeWF-4pSvXAurNPkm-t0dkTDL5oDUVqbtASy1uUT5aAl2Mgg2oa7RYW5fxvv8utFJODGhW9XZ2dcYywXkyUOgcXSYi8hSa6m5Gxk5XOHO9iIMnvIW-PvDj06FPTW7TdwYZctDlelCp_gv2-HGWK6IOSVJafT0LYPQXO3eYJpx0TUf_b1uu4yYOy2i_WeJ3bW-0yv-ssByysy5BFZwkwAlj9astImqN_4jaWMiO2oGp6SgvsftnKKaLIRGNH5m5nIrqeGHAE5f0g2WEdL3MUJviLRY2k-ADqQvy3BBJDLzGrxzsabEmG3D9PSrUbelTVT6M62aVt854lL-NeSqyVCJqCHp9EFleTNOEwp2GHs7pJul-diUaa29CfjqzLiZubtfu9ZGAvVQFlQbHAKaXl6hIkpbWUC9NtfXdXNEEf6MH1IkveQoCeXGnDlyOGbYp0LVhGr3sbwhl7M_xT2RO-oy0qzOgESFK8qHXp_YsB_YuiAXblnYEzg6Rd9n8Tp-c6InxzCeT6cr0IS6ceRrgV76IgTV4CKZ6E3rjL3mBw60_Qq_Y0y_c91svNM-3GMK227G9yaQ9ciI8KssFn5HpFox1nhiD5ncKxu8_jFMZ_3yiJnOH4aL2fZhnYh8VQ-b0cXtmKykISkrKsMvcXn8p0igtyuw3HINFJSuNK25u4jY1eG4ci4fC5LyaHxTdLq3CZPEn41nGvNkoTZufVmQgat58i0ohtKMt32v6Nffyw-GYnTc7inSmz-KaCGNzAfrRcV3VJ3Y0xv3QYobtp7IUOAY_UHJhNoFtqcOThSaDi71xna1SajhpAJRG7hVre72gZYhS-K4YWJ2MWDhaMAzdd1jxqBrnE43eCwRQKg66lH2DQTDXHEwGefUwulkSJcCcLEs7mkvjjvzbh74ZP2uohWUlWjdL8KjuXZRfJav2zsuVpDdQ0MbSrwZ9xG8EFE-_YitcZLIfU1ZiK9bnQcV8uZxM4xUu3jKAr9EgUN6PZUkePVdg=="}],"role":"model"},"finish_reason":"STOP","index":0}],"model_version":"gemini-2.5-pro","response_id":"HIKyadzGIub8juMPvabI8A4","usage_metadata":{"candidates_token_count":12,"prompt_token_count":630,"prompt_tokens_details":[{"modality":"TEXT","token_count":630}],"thoughts_token_count":946,"total_token_count":1588}}
+-----------------------------------------------------------
+
+2026-03-12 14:36:35,303  [research]  DEBUG     research_agent  get_current_datetime called → Thursday, March 12, 2026, 02:36 PM
+2026-03-12 14:36:35,763  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Sending out request, model: gemini-2.5-pro, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2026-03-12 14:36:35,763  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are a Research Planner.
+
+STEP 1 — Get the current date and time:
+Call the `get_current_datetime` tool RIGHT NOW before doing anything else.
+You MUST use this to understand today's date so that all search queries
+are anchored to the most recent and relevant time period.
+
+STEP 2 — Decide whether live Google Search is required:
+   - Search IS required for: current events, recent data, latest news, prices,
+     statistics, real-time facts, anything that may have changed recently.
+   - Search is NOT required for: timeless facts, definitions, historical events,
+     pure reasoning, math, or coding questions.
+
+STEP 3 — If search IS required, generate between 4 and 10 highly specific and
+diverse search queries. Each query must:
+   - Be anchored to the current year/month from the datetime you fetched.
+   - Target a different aspect or sub-topic of the user's query.
+   - Include the current year where relevant (e.g. "AI breakthroughs 2026").
+
+STEP 4 — Output ONLY the following JSON object and nothing else:
+{
+  "search_needed": "yes",
+  "queries": [
+    "query 1",
+    "query 2",
+    "...",
+    "query N"
+  ]
+}
+
+If search is NOT required, output:
+{
+  "search_needed": "no",
+  "queries": []
+}
+
+Do not include any explanation, preamble, or markdown fences — raw JSON only.
+
+
+You are an agent. Your internal name is "reducer_agent". The description about you is "Decides if web search is needed and generates search queries.".
+-----------------------------------------------------------
+Config:
+{'http_options': {'headers': {'x-goog-api-client': 'google-adk/1.22.0 gl-python/3.11.9', 'user-agent': 'google-adk/1.22.0 gl-python/3.11.9'}}, 'tools': [{}]}
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"Hello"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Hello! How can I help you today?"}],"role":"user"}
+{"parts":[{"text":"do a research on the latest technology introduced recently"}],"role":"user"}
+{"parts":[{"text":"what it the today's date"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] called tool `get_current_datetime` with parameters: {}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `get_current_datetime` tool returned result: {'result': 'Thursday, March 12, 2026, 02:35 PM'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Today's date is Thursday, March 12, 2026.\n\nI will now transfer you to the research agent to get the latest technology information."},{"text":"[jarvis_root_agent] called tool `transfer_to_agent` with parameters: {'agent_name': 'research_agent'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `transfer_to_agent` tool returned result: {'result': None}"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+get_current_datetime: {} 
+-----------------------------------------------------------
+

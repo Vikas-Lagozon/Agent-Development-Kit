@@ -1,0 +1,15 @@
+2026-03-12 17:54:13,113  [planner]  INFO      planner_agent  Planner Agent initialised. Log → D:\Agent-Development-Kit\adk29\Agents\PlannerAgent\log\log_20260312_175413.log
+2026-03-12 17:54:13,129  [planner]  DEBUG     planner_agent  File System MCP toolset configured.
+2026-03-12 17:54:13,129  [planner]  DEBUG     planner_agent  pl_query_agent defined.
+2026-03-12 17:54:13,131  [planner]  DEBUG     planner_agent  PlannerFanOutAgent defined.
+2026-03-12 17:54:13,131  [planner]  DEBUG     planner_agent  pl_architect_agent defined.
+2026-03-12 17:54:13,131  [planner]  INFO      planner_agent  Planner Agent pipeline assembled.
+2026-03-12 18:12:19,941  [planner]  INFO      planner_agent  [PlannerAgent] Pipeline started.
+2026-03-12 18:12:19,941  [planner]  INFO      planner_agent  [PlannerEntryAgent] Description captured (149 chars): 'I want to create a backend server for surprise test. using the python flask as backend and sqlite database.
+use the planner agent to plan the project'
+2026-03-12 18:12:36,191  [planner]  DEBUG     planner_agent  [PlannerFanOutAgent] raw queries JSON: {}
+2026-03-12 18:12:36,191  [planner]  INFO      planner_agent  [PlannerFanOutAgent] project_type='unknown' | language='unknown' | tech_stack=[] | num_queries=0
+2026-03-12 18:12:36,191  [planner]  WARNING   planner_agent  [PlannerFanOutAgent] No queries — proceeding with KB only.
+2026-03-12 18:13:26,406  [planner]  INFO      planner_agent  [PlannerBuilderAgent] Starting file system build phase.
+2026-03-12 18:13:26,406  [planner]  INFO      planner_agent  [PlannerBuilderAgent] Building 'my_project' | dirs=0 | files=0
+2026-03-12 18:13:26,406  [planner]  DEBUG     planner_agent  [PlannerBuilderAgent] FS instruction: 2679 chars

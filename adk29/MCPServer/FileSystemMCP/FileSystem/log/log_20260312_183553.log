@@ -1,0 +1,469 @@
+2026-03-12 18:35:53,923  [utils]  INFO      file_system_server  FileSystem MCP Server started. Base directory: D:\Agent-Development-Kit\adk29\Vikas
+2026-03-12 18:35:53,923  [utils]  INFO      file_system_server  Log file: D:\Agent-Development-Kit\adk29\MCPServer\FileSystemMCP\FileSystem\log\log_20260312_183553.log
+2026-03-12 18:35:54,432  [server]  DEBUG     mcp.server.lowlevel.server  Initializing server 'FileSystem-ADK-MCP'
+2026-03-12 18:35:54,448  [server]  DEBUG     mcp.server.lowlevel.server  Registering handler for ListToolsRequest
+2026-03-12 18:35:54,448  [server]  DEBUG     mcp.server.lowlevel.server  Registering handler for CallToolRequest
+2026-03-12 18:35:54,448  [proactor_events]  DEBUG     asyncio  Using proactor: IocpProactor
+2026-03-12 18:35:54,448  [file_system_mcp_server]  INFO      file_system_server  FileSystem MCP server starting. BASE_DIR=D:\Agent-Development-Kit\adk29\Vikas
+2026-03-12 18:35:54,448  [file_system_mcp_server]  INFO      file_system_server  MCP STDIO connection established.
+2026-03-12 18:35:54,448  [server]  DEBUG     mcp.server.lowlevel.server  Received message: root=InitializedNotification(method='notifications/initialized', params=None, jsonrpc='2.0')
+2026-03-12 18:35:54,448  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x0000020080151D50>
+2026-03-12 18:35:54,448  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:35:54,448  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:35:54,448  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:35:54,448  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:36:18,804  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008019C4D0>
+2026-03-12 18:36:18,820  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:36:18,820  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:36:18,820  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:36:18,820  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:36:18,820  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:36:18,820  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:36:18,820  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:36:18,820  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x0000020080151D50>
+2026-03-12 18:36:18,820  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:36:18,820  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:36:18,820  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:36:18,820  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:36:43,353  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x0000020080151790>
+2026-03-12 18:36:43,353  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:36:43,353  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:36:43,353  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:36:43,353  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:36:43,353  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:36:43,353  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:36:43,353  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:36:43,353  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x0000020080151D50>
+2026-03-12 18:36:43,353  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:36:43,353  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:36:43,353  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:36:43,353  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:37:04,280  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200801BACD0>
+2026-03-12 18:37:04,280  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:37:04,280  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:37:04,280  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:37:04,280  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:37:04,280  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:37:04,280  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:37:04,280  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:37:04,280  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200801ACE10>
+2026-03-12 18:37:04,280  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:37:04,280  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:37:04,280  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:37:04,280  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:37:27,065  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008018AB10>
+2026-03-12 18:37:27,065  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:37:27,065  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:37:27,065  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:37:27,065  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:37:27,065  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:37:27,065  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:37:27,065  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:37:27,081  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200801BB750>
+2026-03-12 18:37:27,081  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:37:27,081  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:37:27,081  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:37:27,081  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:37:39,584  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200FE5CF550>
+2026-03-12 18:37:39,584  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:37:39,584  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:37:39,584  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:37:39,584  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:37:39,584  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:37:39,584  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:37:39,584  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:37:39,584  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008018AB10>
+2026-03-12 18:37:39,584  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:37:39,584  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:37:39,584  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:37:39,584  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:37:49,581  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200801C2CD0>
+2026-03-12 18:37:49,581  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:37:49,581  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:37:49,581  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:37:49,581  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:37:49,581  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:37:49,581  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:37:49,581  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:37:49,581  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200FE5CF950>
+2026-03-12 18:37:49,581  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:37:49,581  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:37:49,581  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:37:49,581  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:38:04,406  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200FE5CF550>
+2026-03-12 18:38:04,406  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:38:04,406  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:38:04,406  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:38:04,406  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:38:04,406  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:38:04,406  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:38:04,406  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:38:04,422  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008019F610>
+2026-03-12 18:38:04,422  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:38:04,422  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:38:04,422  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:38:04,422  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:38:13,196  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200FE5CF550>
+2026-03-12 18:38:13,196  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:38:13,196  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:38:13,196  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:38:13,196  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:38:13,196  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:38:13,196  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:38:13,196  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:38:13,196  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008019F610>
+2026-03-12 18:38:13,196  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:38:13,196  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:38:13,196  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:38:13,196  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:38:25,202  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008019DC50>
+2026-03-12 18:38:25,202  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:38:25,202  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:38:25,202  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:38:25,202  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:38:25,218  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:38:25,218  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:38:25,218  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:38:25,218  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008019FC10>
+2026-03-12 18:38:25,218  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:38:25,218  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:38:25,218  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:38:25,218  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:38:46,285  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200801C3FD0>
+2026-03-12 18:38:46,285  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:38:46,285  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:38:46,285  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:38:46,285  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:38:46,285  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:38:46,285  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:38:46,285  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:38:46,285  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200801AD410>
+2026-03-12 18:38:46,285  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:38:46,285  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:38:46,285  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:38:46,285  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:39:24,563  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200801C2D10>
+2026-03-12 18:39:24,577  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:39:24,577  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:39:24,577  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:39:24,579  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:39:24,579  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:39:24,579  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:39:24,579  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:39:24,583  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008018BAD0>
+2026-03-12 18:39:24,583  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:39:24,583  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:39:24,583  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:39:24,583  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:39:41,245  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008018ABD0>
+2026-03-12 18:39:41,245  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:39:41,245  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:39:41,245  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:39:41,245  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:39:41,245  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:39:41,245  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:39:41,245  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:39:41,245  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008019D810>
+2026-03-12 18:39:41,245  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:39:41,245  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:39:41,245  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:39:41,245  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:39:59,420  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008018BAD0>
+2026-03-12 18:39:59,420  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:39:59,420  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:39:59,420  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:39:59,420  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:39:59,420  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:39:59,420  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:39:59,420  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:39:59,420  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008019F350>
+2026-03-12 18:39:59,420  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:39:59,420  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:39:59,420  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:39:59,420  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:40:16,070  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008019EA90>
+2026-03-12 18:40:16,070  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:40:16,070  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:40:16,070  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:40:16,070  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:40:16,070  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:40:16,070  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:40:16,070  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:40:16,070  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008016E790>
+2026-03-12 18:40:16,070  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:40:16,070  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:40:16,070  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:40:16,087  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:40:38,482  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200801DB210>
+2026-03-12 18:40:38,483  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:40:38,483  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:40:38,484  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:40:38,485  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:40:38,485  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:40:38,485  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:40:38,485  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:40:38,485  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008016E790>
+2026-03-12 18:40:38,485  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:40:38,485  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:40:38,485  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:40:38,485  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:40:54,066  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200FE5CF550>
+2026-03-12 18:40:54,066  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:40:54,066  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:40:54,066  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:40:54,066  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:40:54,066  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:40:54,066  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:40:54,066  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:40:54,082  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008016E790>
+2026-03-12 18:40:54,082  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:40:54,082  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:40:54,082  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:40:54,082  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:41:05,999  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200801B8490>
+2026-03-12 18:41:05,999  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:41:05,999  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:41:05,999  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:41:05,999  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:41:06,014  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:41:06,014  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:41:06,014  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:41:06,016  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008016E790>
+2026-03-12 18:41:06,016  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:41:06,016  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:41:06,016  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:41:06,016  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:41:18,382  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200801D30D0>
+2026-03-12 18:41:18,382  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:41:18,382  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:41:18,382  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:41:18,398  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:41:18,398  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:41:18,398  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:41:18,399  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:41:18,399  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008016E790>
+2026-03-12 18:41:18,399  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:41:18,399  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:41:18,399  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:41:18,399  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:41:37,406  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200FE5CF550>
+2026-03-12 18:41:37,409  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:41:37,409  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:41:37,409  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:41:37,409  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:41:37,409  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:41:37,409  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:41:37,409  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:41:37,413  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008016E790>
+2026-03-12 18:41:37,413  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:41:37,413  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:41:37,413  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:41:37,415  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:41:50,648  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200FE5CF550>
+2026-03-12 18:41:50,648  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:41:50,648  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:41:50,648  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:41:50,648  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:41:50,648  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:41:50,648  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:41:50,648  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:41:50,648  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008016E790>
+2026-03-12 18:41:50,648  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:41:50,648  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:41:50,648  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:41:50,648  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:41:59,514  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200FE5CF550>
+2026-03-12 18:41:59,514  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:41:59,514  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:41:59,514  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:41:59,514  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:41:59,514  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:41:59,514  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:41:59,514  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:41:59,514  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008016E790>
+2026-03-12 18:41:59,514  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:41:59,514  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:41:59,514  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:41:59,514  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:42:14,388  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200FE5CF550>
+2026-03-12 18:42:14,388  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:42:14,388  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:42:14,388  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:42:14,388  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:42:14,388  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:42:14,388  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:42:14,388  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:42:14,388  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008016E790>
+2026-03-12 18:42:14,388  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:42:14,388  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:42:14,388  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:42:14,388  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:42:33,512  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200FE5CF550>
+2026-03-12 18:42:33,512  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:42:33,512  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:42:33,512  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:42:33,512  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:42:33,512  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:42:33,512  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:42:33,512  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:42:33,512  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x0000020080151790>
+2026-03-12 18:42:33,512  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:42:33,512  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:42:33,512  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:42:33,512  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:42:46,679  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008019C510>
+2026-03-12 18:42:46,679  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:42:46,680  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:42:46,681  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:42:46,681  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:42:46,681  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:42:46,681  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:42:46,681  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:42:46,684  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x0000020080151790>
+2026-03-12 18:42:46,685  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:42:46,685  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:42:46,685  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:42:46,687  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:42:56,464  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200801C2290>
+2026-03-12 18:42:56,464  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:42:56,464  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:42:56,464  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:42:56,464  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:42:56,464  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:42:56,464  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:42:56,464  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:42:56,481  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008016E790>
+2026-03-12 18:42:56,481  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:42:56,481  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:42:56,481  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:42:56,481  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:43:10,952  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008018AA50>
+2026-03-12 18:43:10,952  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:43:10,952  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:43:10,952  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:43:10,952  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:43:10,952  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:43:10,952  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:43:10,952  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:43:10,952  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008016E790>
+2026-03-12 18:43:10,952  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:43:10,952  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:43:10,952  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:43:10,952  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:43:22,168  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008018AA50>
+2026-03-12 18:43:22,169  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:43:22,169  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:43:22,170  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:43:22,170  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:43:22,170  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:43:22,171  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:43:22,171  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:43:22,174  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x0000020080151790>
+2026-03-12 18:43:22,174  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:43:22,174  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:43:22,174  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:43:22,176  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:43:39,666  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200801C2650>
+2026-03-12 18:43:39,666  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:43:39,667  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:43:39,667  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:43:39,668  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:43:39,668  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:43:39,668  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:43:39,668  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:43:39,671  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x0000020080151790>
+2026-03-12 18:43:39,671  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:43:39,671  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:43:39,672  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:43:39,673  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:43:51,559  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200801E2CD0>
+2026-03-12 18:43:51,559  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:43:51,559  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:43:51,559  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:43:51,559  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:43:51,559  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:43:51,559  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:43:51,559  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:43:51,565  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008019C510>
+2026-03-12 18:43:51,565  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:43:51,565  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:43:51,565  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:43:51,565  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:44:11,811  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x0000020080150E10>
+2026-03-12 18:44:11,811  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:44:11,811  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:44:11,811  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:44:11,811  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:44:11,811  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:44:11,811  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:44:11,811  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:44:11,828  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200801AD890>
+2026-03-12 18:44:11,828  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:44:11,828  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:44:11,828  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:44:11,828  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:44:31,577  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200801AE1D0>
+2026-03-12 18:44:31,577  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:44:31,577  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:44:31,577  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:44:31,577  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:44:31,577  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:44:31,593  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:44:31,593  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:44:31,597  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200801D21D0>
+2026-03-12 18:44:31,597  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:44:31,597  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:44:31,597  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:44:31,599  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:44:42,555  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200801D2410>
+2026-03-12 18:44:42,555  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:44:42,555  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:44:42,555  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:44:42,555  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:44:42,555  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:44:42,555  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:44:42,555  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:44:42,555  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200801BBC90>
+2026-03-12 18:44:42,555  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:44:42,555  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:44:42,555  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:44:42,555  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:44:49,905  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200801B9390>
+2026-03-12 18:44:49,905  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:44:49,905  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:44:49,906  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:44:49,907  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:44:49,907  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:44:49,907  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:44:49,907  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:44:49,911  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200801DAF50>
+2026-03-12 18:44:49,911  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:44:49,911  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:44:49,911  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:44:49,914  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:45:08,144  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008016E790>
+2026-03-12 18:45:08,144  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:45:08,144  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:45:08,144  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:45:08,144  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:45:08,144  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:45:08,144  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:45:08,144  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:45:08,152  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x0000020080151790>
+2026-03-12 18:45:08,152  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:45:08,152  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:45:08,153  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:45:08,153  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:45:32,979  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000002008016E790>
+2026-03-12 18:45:32,979  [server]  INFO      mcp.server.lowlevel.server  Processing request of type CallToolRequest
+2026-03-12 18:45:32,980  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type CallToolRequest
+2026-03-12 18:45:32,980  [file_system_mcp_server]  INFO      file_system_server  MCP call_tool: 'create_directory_tool' | args: {'folder_path': 'my_project'}
+2026-03-12 18:45:32,981  [directory_mcp]  DEBUG     file_system_server  create_directory_tool called | folder_path='my_project'
+2026-03-12 18:45:32,981  [directory_mcp]  INFO      file_system_server  create_directory_tool | success | path='D:\Agent-Development-Kit\adk29\Vikas\my_project'
+2026-03-12 18:45:32,981  [file_system_mcp_server]  INFO      file_system_server  Tool 'create_directory_tool' completed successfully.
+2026-03-12 18:45:32,981  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 18:45:32,984  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x00000200FE5CF550>
+2026-03-12 18:45:32,985  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 18:45:32,985  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 18:45:32,985  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 18:45:32,986  [server]  DEBUG     mcp.server.lowlevel.server  Response sent

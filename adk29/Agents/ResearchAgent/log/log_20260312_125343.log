@@ -1,0 +1,816 @@
+2026-03-12 12:53:43,846  [research]  INFO      research_agent  Research Agent initialised. Log → D:\Agent-Development-Kit\adk29\Agents\ResearchAgent\log\log_20260312_125343.log
+2026-03-12 12:53:43,846  [research]  DEBUG     research_agent  reducer_agent defined.
+2026-03-12 12:53:43,849  [research]  DEBUG     research_agent  QueryFanOutAgent defined.
+2026-03-12 12:53:43,849  [research]  DEBUG     research_agent  collector_agent defined.
+2026-03-12 12:53:43,849  [research]  DEBUG     research_agent  orchestrator_agent defined.
+2026-03-12 12:53:43,849  [research]  INFO      research_agent  Research pipeline assembled.
+2026-03-12 12:53:43,930  [win32]  DEBUG     tzlocal  Looking up time zone info from registry
+2026-03-12 12:53:43,930  [database_session_service]  INFO      google_adk.google.adk.sessions.database_session_service  Local timezone: Asia/Calcutta
+2026-03-12 12:53:43,930  [app]  INFO      app  Jarvis starting up...
+2026-03-12 12:53:51,542  [database_session_service]  DEBUG     google_adk.google.adk.sessions.database_session_service  Using V1 schema tables...
+2026-03-12 12:54:04,642  [mcp_session_manager]  DEBUG     google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Created new session: stdio_session
+2026-03-12 12:54:04,658  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:04,658  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:04,658  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:04,658  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:04,658  [types]  INFO      google_genai.types  
+Note: Conversion of fields that are not included in the JSONSchema class are ignored.
+Json Schema is now supported natively by both Vertex AI and Gemini API. Users
+are recommended to pass/receive Json Schema directly to/from the API. For example:
+1. the counter part of GenerateContentConfig.response_schema is
+   GenerateContentConfig.response_json_schema, which accepts [JSON
+  Schema](https://json-schema.org/)
+2. the counter part of FunctionDeclaration.parameters is
+   FunctionDeclaration.parameters_json_schema, which accepts [JSON
+   Schema](https://json-schema.org/)
+3. the counter part of FunctionDeclaration.response is
+   FunctionDeclaration.response_json_schema, which accepts [JSON
+   Schema](https://json-schema.org/)
+
+2026-03-12 12:54:10,241  [mcp_session_manager]  DEBUG     google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Created new session: stdio_session
+2026-03-12 12:54:10,241  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:10,241  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:10,241  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:10,241  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:10,241  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:16,858  [mcp_session_manager]  DEBUG     google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Created new session: stdio_session
+2026-03-12 12:54:16,866  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:16,866  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:16,866  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:16,866  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:16,866  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:16,866  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:16,866  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:16,866  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:16,866  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:16,866  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:16,866  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:16,866  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:16,866  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:16,866  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:16,866  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:16,866  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:17,358  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2026-03-12 12:54:17,358  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are Jarvis, a highly capable and professional AI assistant.
+
+You have access to the following tools and agents:
+
+1. get_current_datetime
+   - Check the current date, time, and day.
+
+2. research_agent
+   - Perform deep research and retrieve live web data.
+
+3. web_reader tools
+   - Browse and extract information from websites.
+
+4. expense_tracker tools
+   - Record, manage, and retrieve expenses.
+
+5. to_do tools
+   - Create, update, delete, and manage tasks.
+
+6. file_system tools
+   - Read, write, list, and manage files and folders on the local file system.
+
+
+DELEGATION RULES:
+
+1. Date/Time:
+   If the user asks for the current time or date, use get_current_datetime.
+
+2. Research:
+   Delegate complex research or latest news to research_agent.
+
+3. Web Browsing:
+   Use web_reader tools when specific webpages need to be analyzed.
+
+4. Expense Tracking:
+   Use expense_tracker tools when the user wants to add or check expenses.
+
+5. Task Management:
+   Use to_do tools when the user wants to manage tasks or reminders.
+
+6. File System:
+   Use file_system tools when the user wants to read, write, list, move,
+   or delete files and folders on the local system.
+
+
+Always:
+- Maintain session context
+- Provide clear structured answers
+- Format responses using markdown
+
+
+You are an agent. Your internal name is "jarvis_root_agent".
+
+
+You have a list of other agents to transfer to:
+
+
+Agent name: research_pipeline
+Agent description: Full research pipeline: plan → parallel search → collect → report.
+
+
+If you are the best to answer the question according to your description,
+you can answer it.
+
+If another agent is better for answering the question according to its
+description, call `transfer_to_agent` function to transfer the question to that
+agent. When transferring, do not generate any text other than the function
+call.
+
+**NOTE**: the only available agents for `transfer_to_agent` function are
+`research_pipeline`.
+
+-----------------------------------------------------------
+Config:
+{'http_options': {'headers': {'x-goog-api-client': 'google-adk/1.22.0 gl-python/3.11.9', 'user-agent': 'google-adk/1.22.0 gl-python/3.11.9'}}, 'tools': [{}]}
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"Hello"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+transfer_to_agent: {'agent_name': {'enum': ['research_pipeline'], 'type': <Type.STRING: 'STRING'>}} 
+get_current_datetime: {} 
+add_expense_tool: {'date': {'type': <Type.STRING: 'STRING'>}, 'amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'category': {'type': <Type.STRING: 'STRING'>}, 'subcategory': {'default': '', 'type': <Type.STRING: 'STRING'>}, 'note': {'default': '', 'type': <Type.STRING: 'STRING'>}} 
+edit_expense_tool: {'expense_id': {'type': <Type.INTEGER: 'INTEGER'>}, 'date': {'type': <Type.STRING: 'STRING'>}, 'amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'category': {'type': <Type.STRING: 'STRING'>}, 'subcategory': {'type': <Type.STRING: 'STRING'>}, 'note': {'type': <Type.STRING: 'STRING'>}} 
+delete_expense_tool: {'expense_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+search_expenses_tool: {'category': {'type': <Type.STRING: 'STRING'>}, 'start_date': {'type': <Type.STRING: 'STRING'>}, 'end_date': {'type': <Type.STRING: 'STRING'>}, 'min_amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'max_amount': {'type': <Type.NUMBER: 'NUMBER'>}} 
+add_task_tool: {'title': {'type': <Type.STRING: 'STRING'>}, 'description': {'default': '', 'type': <Type.STRING: 'STRING'>}, 'priority': {'default': 'medium', 'type': <Type.STRING: 'STRING'>}, 'due_date': {'default': '', 'type': <Type.STRING: 'STRING'>}} 
+edit_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}, 'title': {'type': <Type.STRING: 'STRING'>}, 'description': {'type': <Type.STRING: 'STRING'>}, 'priority': {'type': <Type.STRING: 'STRING'>}, 'due_date': {'type': <Type.STRING: 'STRING'>}, 'status': {'type': <Type.STRING: 'STRING'>}} 
+delete_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+complete_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+search_tasks_tool: {'status': {'type': <Type.STRING: 'STRING'>}, 'priority': {'type': <Type.STRING: 'STRING'>}, 'due_date': {'type': <Type.STRING: 'STRING'>}} 
+read_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+write_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'content': {'type': <Type.STRING: 'STRING'>}} 
+edit_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'old_text': {'type': <Type.STRING: 'STRING'>}, 'new_text': {'type': <Type.STRING: 'STRING'>}} 
+append_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'content': {'type': <Type.STRING: 'STRING'>}} 
+copy_file_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+move_file_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+delete_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+clear_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+create_directory_tool: {'folder_path': {'type': <Type.STRING: 'STRING'>}} 
+delete_directory_tool: {'folder_path': {'type': <Type.STRING: 'STRING'>}, 'recursive': {'default': False, 'type': <Type.BOOLEAN: 'BOOLEAN'>}} 
+rename_directory_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+list_files_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}} 
+list_directories_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}} 
+list_tree_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}, 'max_depth': {'default': 5, 'type': <Type.INTEGER: 'INTEGER'>}} 
+file_info_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+supported_formats_tool: {} 
+-----------------------------------------------------------
+
+2026-03-12 12:54:18,691  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Response received from the model.
+2026-03-12 12:54:18,691  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Response:
+-----------------------------------------------------------
+Text:
+Hello! How can I help you today?
+-----------------------------------------------------------
+Function calls:
+
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Thu, 12 Mar 2026 07:24:19 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=1301","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"text":"Hello! How can I help you today?","thought_signature":"CqEBAb4-9vuEyAMUeTFa0Z968a9cwBzFH9beo0uODHUdpXtAjGwxGyQ7BkjKYdzXdfMPhWpq0fxHXjkPnNcyksGwzdmygIrJke3dffQNdXRU_5x98soFjJRwWGw3R3JQEIuSfm9WgbX0rJdO_Mc--ad98S0hWi67S99LmRQtXunEW4vc0A9JmzzOTXIUqxrSQ4rQIYMu0tM5FM-GiyOb94_AqD4="}],"role":"model"},"finish_reason":"STOP","index":0}],"model_version":"gemini-2.5-flash","response_id":"ImqyaerJM76njuMPiuCVwA4","usage_metadata":{"candidates_token_count":9,"prompt_token_count":2249,"prompt_tokens_details":[{"modality":"TEXT","token_count":2249}],"thoughts_token_count":27,"total_token_count":2285}}
+-----------------------------------------------------------
+
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:54:18,708  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:06,104  [mcp_session_manager]  INFO      google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Cleaning up disconnected session: stdio_session
+2026-03-12 12:55:06,841  [mcp_session_manager]  WARNING   google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Error during disconnected session cleanup: Attempted to exit cancel scope in a different task than it was entered in
+2026-03-12 12:55:12,523  [mcp_session_manager]  DEBUG     google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Created new session: stdio_session
+2026-03-12 12:55:12,523  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:12,523  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:12,523  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:12,523  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:12,523  [mcp_session_manager]  INFO      google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Cleaning up disconnected session: stdio_session
+2026-03-12 12:55:13,290  [mcp_session_manager]  WARNING   google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Error during disconnected session cleanup: Attempted to exit cancel scope in a different task than it was entered in
+2026-03-12 12:55:18,890  [mcp_session_manager]  DEBUG     google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Created new session: stdio_session
+2026-03-12 12:55:18,890  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:18,890  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:18,890  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:18,890  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:18,890  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:18,890  [mcp_session_manager]  INFO      google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Cleaning up disconnected session: stdio_session
+2026-03-12 12:55:19,756  [mcp_session_manager]  WARNING   google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Error during disconnected session cleanup: Attempted to exit cancel scope in a different task than it was entered in
+2026-03-12 12:55:26,456  [mcp_session_manager]  DEBUG     google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Created new session: stdio_session
+2026-03-12 12:55:26,456  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:26,456  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:26,456  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:26,456  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:26,456  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:26,456  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:26,456  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:26,456  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:26,456  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:26,456  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:26,456  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:26,456  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:26,456  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:26,456  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:26,456  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:26,456  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:26,940  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2026-03-12 12:55:26,940  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are Jarvis, a highly capable and professional AI assistant.
+
+You have access to the following tools and agents:
+
+1. get_current_datetime
+   - Check the current date, time, and day.
+
+2. research_agent
+   - Perform deep research and retrieve live web data.
+
+3. web_reader tools
+   - Browse and extract information from websites.
+
+4. expense_tracker tools
+   - Record, manage, and retrieve expenses.
+
+5. to_do tools
+   - Create, update, delete, and manage tasks.
+
+6. file_system tools
+   - Read, write, list, and manage files and folders on the local file system.
+
+
+DELEGATION RULES:
+
+1. Date/Time:
+   If the user asks for the current time or date, use get_current_datetime.
+
+2. Research:
+   Delegate complex research or latest news to research_agent.
+
+3. Web Browsing:
+   Use web_reader tools when specific webpages need to be analyzed.
+
+4. Expense Tracking:
+   Use expense_tracker tools when the user wants to add or check expenses.
+
+5. Task Management:
+   Use to_do tools when the user wants to manage tasks or reminders.
+
+6. File System:
+   Use file_system tools when the user wants to read, write, list, move,
+   or delete files and folders on the local system.
+
+
+Always:
+- Maintain session context
+- Provide clear structured answers
+- Format responses using markdown
+
+
+You are an agent. Your internal name is "jarvis_root_agent".
+
+
+You have a list of other agents to transfer to:
+
+
+Agent name: research_pipeline
+Agent description: Full research pipeline: plan → parallel search → collect → report.
+
+
+If you are the best to answer the question according to your description,
+you can answer it.
+
+If another agent is better for answering the question according to its
+description, call `transfer_to_agent` function to transfer the question to that
+agent. When transferring, do not generate any text other than the function
+call.
+
+**NOTE**: the only available agents for `transfer_to_agent` function are
+`research_pipeline`.
+
+-----------------------------------------------------------
+Config:
+{'http_options': {'headers': {'x-goog-api-client': 'google-adk/1.22.0 gl-python/3.11.9', 'user-agent': 'google-adk/1.22.0 gl-python/3.11.9'}}, 'tools': [{}]}
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"Hello"}],"role":"user"}
+{"parts":[{"text":"Hello! How can I help you today?","thought_signature":"CqEBAb4-9vuEyAMUeTFa0Z968a9cwBzFH9beo0uODHUdpXtAjGwxGyQ7BkjKYdzXdfMPhWpq0fxHXjkPnNcyksGwzdmygIrJke3dffQNdXRU_5x98soFjJRwWGw3R3JQEIuSfm9WgbX0rJdO_Mc--ad98S0hWi67S99LmRQtXunEW4vc0A9JmzzOTXIUqxrSQ4rQIYMu0tM5FM-GiyOb94_AqD4="}],"role":"model"}
+{"parts":[{"text":"Give me the details of your tools and sub agents"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+transfer_to_agent: {'agent_name': {'enum': ['research_pipeline'], 'type': <Type.STRING: 'STRING'>}} 
+get_current_datetime: {} 
+add_expense_tool: {'date': {'type': <Type.STRING: 'STRING'>}, 'amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'category': {'type': <Type.STRING: 'STRING'>}, 'subcategory': {'default': '', 'type': <Type.STRING: 'STRING'>}, 'note': {'default': '', 'type': <Type.STRING: 'STRING'>}} 
+edit_expense_tool: {'expense_id': {'type': <Type.INTEGER: 'INTEGER'>}, 'date': {'type': <Type.STRING: 'STRING'>}, 'amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'category': {'type': <Type.STRING: 'STRING'>}, 'subcategory': {'type': <Type.STRING: 'STRING'>}, 'note': {'type': <Type.STRING: 'STRING'>}} 
+delete_expense_tool: {'expense_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+search_expenses_tool: {'category': {'type': <Type.STRING: 'STRING'>}, 'start_date': {'type': <Type.STRING: 'STRING'>}, 'end_date': {'type': <Type.STRING: 'STRING'>}, 'min_amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'max_amount': {'type': <Type.NUMBER: 'NUMBER'>}} 
+add_task_tool: {'title': {'type': <Type.STRING: 'STRING'>}, 'description': {'default': '', 'type': <Type.STRING: 'STRING'>}, 'priority': {'default': 'medium', 'type': <Type.STRING: 'STRING'>}, 'due_date': {'default': '', 'type': <Type.STRING: 'STRING'>}} 
+edit_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}, 'title': {'type': <Type.STRING: 'STRING'>}, 'description': {'type': <Type.STRING: 'STRING'>}, 'priority': {'type': <Type.STRING: 'STRING'>}, 'due_date': {'type': <Type.STRING: 'STRING'>}, 'status': {'type': <Type.STRING: 'STRING'>}} 
+delete_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+complete_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+search_tasks_tool: {'status': {'type': <Type.STRING: 'STRING'>}, 'priority': {'type': <Type.STRING: 'STRING'>}, 'due_date': {'type': <Type.STRING: 'STRING'>}} 
+read_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+write_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'content': {'type': <Type.STRING: 'STRING'>}} 
+edit_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'old_text': {'type': <Type.STRING: 'STRING'>}, 'new_text': {'type': <Type.STRING: 'STRING'>}} 
+append_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'content': {'type': <Type.STRING: 'STRING'>}} 
+copy_file_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+move_file_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+delete_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+clear_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+create_directory_tool: {'folder_path': {'type': <Type.STRING: 'STRING'>}} 
+delete_directory_tool: {'folder_path': {'type': <Type.STRING: 'STRING'>}, 'recursive': {'default': False, 'type': <Type.BOOLEAN: 'BOOLEAN'>}} 
+rename_directory_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+list_files_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}} 
+list_directories_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}} 
+list_tree_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}, 'max_depth': {'default': 5, 'type': <Type.INTEGER: 'INTEGER'>}} 
+file_info_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+supported_formats_tool: {} 
+-----------------------------------------------------------
+
+2026-03-12 12:55:31,473  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Response received from the model.
+2026-03-12 12:55:31,473  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Response:
+-----------------------------------------------------------
+Text:
+I have access to a variety of tools and can delegate to a specialized research agent.
+
+Here are the details:
+
+### **Tools:**
+
+*   **Date and Time:**
+    *   `get_current_datetime`: Retrieves the current date, time, and day of the week.
+
+*   **Expense Tracker:**
+    *   `add_expense_tool`: Adds a new expense record with details like date, amount, category, and notes.
+    *   `edit_expense_tool`: Modifies an existing expense record using its ID.
+    *   `delete_expense_tool`: Removes an expense record by its ID.
+    *   `search_expenses_tool`: Searches for expenses using various filters such as category, date range, or amount range.
+
+*   **To-Do List / Task Management:**
+    *   `add_task_tool`: Creates a new task with a title, description, due date, and priority.
+    *   `edit_task_tool`: Updates an existing task's details.
+    *   `delete_task_tool`: Deletes a task by its ID.
+    *   `complete_task_tool`: Marks a specific task as completed.
+    *   `search_tasks_tool`: Finds tasks based on filters like due date, priority, or status.
+
+*   **File System Management:**
+    *   `read_file_tool`: Reads content from a specified file.
+    *   `write_file_tool`: Writes content to a specified file (overwrites if file exists).
+    *   `edit_file_tool`: Replaces specific text within a file.
+    *   `append_file_tool`: Adds content to the end of a file.
+    *   `copy_file_tool`: Duplicates a file from a source to a destination.
+    *   `move_file_tool`: Relocates a file.
+    *   `delete_file_tool`: Deletes a specified file.
+    *   `clear_file_tool`: Empties the content of a file.
+    *   `create_directory_tool`: Creates a new folder.
+    *   `delete_directory_tool`: Removes a folder.
+    *   `rename_directory_tool`: Changes the name of a folder.
+    *   `list_files_tool`: Lists files within a directory.
+    *   `list_directories_tool`: Lists subdirectories within a directory.
+    *   `list_tree_tool`: Displays the directory tree structure.
+    *   `file_info_tool`: Provides information about a specific file.
+    *   `supported_formats_tool`: Lists supported file formats (details not available in the current context, but the tool exists).
+
+*   **Research & Web Browsing:**
+    *   `research_agent`: Performs deep research and retrieves live web data.
+    *   `web_reader` tools: Browse and extract information from websites when specific URLs are provided.
+
+### **Sub-Agents:**
+
+*   **research_pipeline**: This agent is designed for a full research workflow: planning, parallel searching, collecting information, and generating a comprehensive report.
+
+How can I assist you with these capabilities today?
+-----------------------------------------------------------
+Function calls:
+
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Thu, 12 Mar 2026 07:25:32 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=4487","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"text":"I have access to a variety of tools and can delegate to a specialized research agent.\n\nHere are the details:\n\n### **Tools:**\n\n*   **Date and Time:**\n    *   `get_current_datetime`: Retrieves the current date, time, and day of the week.\n\n*   **Expense Tracker:**\n    *   `add_expense_tool`: Adds a new expense record with details like date, amount, category, and notes.\n    *   `edit_expense_tool`: Modifies an existing expense record using its ID.\n    *   `delete_expense_tool`: Removes an expense record by its ID.\n    *   `search_expenses_tool`: Searches for expenses using various filters such as category, date range, or amount range.\n\n*   **To-Do List / Task Management:**\n    *   `add_task_tool`: Creates a new task with a title, description, due date, and priority.\n    *   `edit_task_tool`: Updates an existing task's details.\n    *   `delete_task_tool`: Deletes a task by its ID.\n    *   `complete_task_tool`: Marks a specific task as completed.\n    *   `search_tasks_tool`: Finds tasks based on filters like due date, priority, or status.\n\n*   **File System Management:**\n    *   `read_file_tool`: Reads content from a specified file.\n    *   `write_file_tool`: Writes content to a specified file (overwrites if file exists).\n    *   `edit_file_tool`: Replaces specific text within a file.\n    *   `append_file_tool`: Adds content to the end of a file.\n    *   `copy_file_tool`: Duplicates a file from a source to a destination.\n    *   `move_file_tool`: Relocates a file.\n    *   `delete_file_tool`: Deletes a specified file.\n    *   `clear_file_tool`: Empties the content of a file.\n    *   `create_directory_tool`: Creates a new folder.\n    *   `delete_directory_tool`: Removes a folder.\n    *   `rename_directory_tool`: Changes the name of a folder.\n    *   `list_files_tool`: Lists files within a directory.\n    *   `list_directories_tool`: Lists subdirectories within a directory.\n    *   `list_tree_tool`: Displays the directory tree structure.\n    *   `file_info_tool`: Provides information about a specific file.\n    *   `supported_formats_tool`: Lists supported file formats (details not available in the current context, but the tool exists).\n\n*   **Research & Web Browsing:**\n    *   `research_agent`: Performs deep research and retrieves live web data.\n    *   `web_reader` tools: Browse and extract information from websites when specific URLs are provided.\n\n### **Sub-Agents:**\n\n*   **research_pipeline**: This agent is designed for a full research workflow: planning, parallel searching, collecting information, and generating a comprehensive report.\n\nHow can I assist you with these capabilities today?","thought_signature":"CukGAb4-9vv2fHD6nDNvA0O_xuEt8ilvBIVhoSVJG6pv1WABM1OzRqYFOVdrp4gN0X0MDyUrhdVR3_yc5uZ2Ze489T5juYX6UN9hLJ_F822k5bxCX2Vk2GtKbr4O2mTE9Zo8pAOVYWYulLsApQ2XVclU4PeqLDpaa284tETvK7kgQFnRe4u0izyPjNdJrZNh8dRStVU9NA1XQZcQNloGWKxzz69ZyQnRgSNmvFZPes8mOJNuEq7GRi_aJyR7mAG2BNuXlA9kKFi-kEnro_qEKkY8RCiiS5b-9oq371lWxqGteMT2OJrERHmCLP2dNhdCN2E2-LkBVCJsLkoK_LKys7nQfpUZDtTCxBeFL3t0n1_dOoePMjr3xeBPpIAPcsRKWjvKr5SDHyDfoP8rozbwm4_MvMqMcxx6yooF-9z6AaePEFNF2imXDp9PrltTpM6Vr_Y0xVgiOEaEgmLDQ-1ieMcVh65nM3iYbyNgyvB6YsMjy_LXwzXQQuMmKHRAF0F4s8LR0Iwb3wwGDh5-9NZMV8Tp0pDkk0H6zWt57NDZ81gBBRuA9NEx7z02-hX9fmDzGDxgH1EbXpuIeg4RZCX1KDnu0CZQGkKVNjoUcJctv2aqEto8KhW7Q35-5_KJGxHI6kUpr4KSBb36ulPfS1v9zoG5UVIWNAeCk3xJqq_Qlfvi3kvm71ngCTH0OyiulQa6NH7xUJ8knWXlnoZHI_EEHMdiGVcnF-XDrjY0rH8ih3Ss7bRgAczBLiDgZs4-PLYVDbucHR5f3m24S1MId7u7Q-cKCyKtgOKVEWozgocbVh0GDqI6KYnlynXW1UOR1zYQJkXrgT_XIYxWoX2DArs6ZFwuaBlak_AXaiYHkWjA2OP4I3W2nqKMGVmCwP7jjKTR2xIswrIcPAo2j1GKO8In-Bfd-JZLazY6DwxgtfgKue3JfhQUYscCnj2IC1Sav0j1sy0TLekY-K2wK5f8wlzAwZdBow7VExC-IH-xg3H2FXIJ32hUhHLmtGniqqKac-TIKw7t9AUs8yXS3fpHqWNPrNyu9c_rTfz9c5qNPeTPPWA_0ykBWG7hSXLLrMM_DthYqU2alSNIxCyPLagj4Lx7j6nT5AnjiIyVqRkkySYCzulHweg2hICWtIK_kezWT-HCaRCbOMKB27V0a5YD"}],"role":"model"},"finish_reason":"STOP","index":0}],"model_version":"gemini-2.5-flash","response_id":"aGqyaceQGqTcjuMPrZzTmAY","usage_metadata":{"candidates_token_count":697,"prompt_token_count":2270,"prompt_tokens_details":[{"modality":"TEXT","token_count":2270}],"thoughts_token_count":216,"total_token_count":3183}}
+-----------------------------------------------------------
+
+2026-03-12 12:55:31,473  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,473  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,473  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,473  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,473  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,473  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,473  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,473  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,473  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,489  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,489  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,489  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,489  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,489  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,489  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,489  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,489  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,489  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,489  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,489  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,489  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,489  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,489  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,489  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:55:31,489  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:36,490  [mcp_session_manager]  INFO      google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Cleaning up disconnected session: stdio_session
+2026-03-12 12:57:37,339  [mcp_session_manager]  WARNING   google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Error during disconnected session cleanup: Attempted to exit cancel scope in a different task than it was entered in
+2026-03-12 12:57:44,186  [mcp_session_manager]  DEBUG     google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Created new session: stdio_session
+2026-03-12 12:57:44,186  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:44,186  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:44,186  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:44,186  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:44,202  [mcp_session_manager]  INFO      google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Cleaning up disconnected session: stdio_session
+2026-03-12 12:57:45,053  [mcp_session_manager]  WARNING   google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Error during disconnected session cleanup: Attempted to exit cancel scope in a different task than it was entered in
+2026-03-12 12:57:50,836  [mcp_session_manager]  DEBUG     google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Created new session: stdio_session
+2026-03-12 12:57:50,836  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:50,836  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:50,836  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:50,836  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:50,836  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:50,851  [mcp_session_manager]  INFO      google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Cleaning up disconnected session: stdio_session
+2026-03-12 12:57:51,703  [mcp_session_manager]  WARNING   google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Error during disconnected session cleanup: Attempted to exit cancel scope in a different task than it was entered in
+2026-03-12 12:57:58,030  [mcp_session_manager]  DEBUG     google_adk.google.adk.tools.mcp_tool.mcp_session_manager  Created new session: stdio_session
+2026-03-12 12:57:58,036  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:58,036  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:58,036  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:58,036  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:58,036  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:58,036  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:58,036  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:58,036  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:58,036  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:58,036  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:58,036  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:58,036  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:58,036  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:58,036  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:58,036  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:58,036  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:57:58,519  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2026-03-12 12:57:58,519  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are Jarvis, a highly capable and professional AI assistant.
+
+You have access to the following tools and agents:
+
+1. get_current_datetime
+   - Check the current date, time, and day.
+
+2. research_agent
+   - Perform deep research and retrieve live web data.
+
+3. web_reader tools
+   - Browse and extract information from websites.
+
+4. expense_tracker tools
+   - Record, manage, and retrieve expenses.
+
+5. to_do tools
+   - Create, update, delete, and manage tasks.
+
+6. file_system tools
+   - Read, write, list, and manage files and folders on the local file system.
+
+
+DELEGATION RULES:
+
+1. Date/Time:
+   If the user asks for the current time or date, use get_current_datetime.
+
+2. Research:
+   Delegate complex research or latest news to research_agent.
+
+3. Web Browsing:
+   Use web_reader tools when specific webpages need to be analyzed.
+
+4. Expense Tracking:
+   Use expense_tracker tools when the user wants to add or check expenses.
+
+5. Task Management:
+   Use to_do tools when the user wants to manage tasks or reminders.
+
+6. File System:
+   Use file_system tools when the user wants to read, write, list, move,
+   or delete files and folders on the local system.
+
+
+Always:
+- Maintain session context
+- Provide clear structured answers
+- Format responses using markdown
+
+
+You are an agent. Your internal name is "jarvis_root_agent".
+
+
+You have a list of other agents to transfer to:
+
+
+Agent name: research_pipeline
+Agent description: Full research pipeline: plan → parallel search → collect → report.
+
+
+If you are the best to answer the question according to your description,
+you can answer it.
+
+If another agent is better for answering the question according to its
+description, call `transfer_to_agent` function to transfer the question to that
+agent. When transferring, do not generate any text other than the function
+call.
+
+**NOTE**: the only available agents for `transfer_to_agent` function are
+`research_pipeline`.
+
+-----------------------------------------------------------
+Config:
+{'http_options': {'headers': {'x-goog-api-client': 'google-adk/1.22.0 gl-python/3.11.9', 'user-agent': 'google-adk/1.22.0 gl-python/3.11.9'}}, 'tools': [{}]}
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"Hello"}],"role":"user"}
+{"parts":[{"text":"Hello! How can I help you today?","thought_signature":"CqEBAb4-9vuEyAMUeTFa0Z968a9cwBzFH9beo0uODHUdpXtAjGwxGyQ7BkjKYdzXdfMPhWpq0fxHXjkPnNcyksGwzdmygIrJke3dffQNdXRU_5x98soFjJRwWGw3R3JQEIuSfm9WgbX0rJdO_Mc--ad98S0hWi67S99LmRQtXunEW4vc0A9JmzzOTXIUqxrSQ4rQIYMu0tM5FM-GiyOb94_AqD4="}],"role":"model"}
+{"parts":[{"text":"Give me the details of your tools and sub agents"}],"role":"user"}
+{"parts":[{"text":"I have access to a variety of tools and can delegate to a specialized research agent.\n\nHere are the details:\n\n### **Tools:**\n\n*   **Date and Time:**\n    *   `get_current_datetime`: Retrieves the current date, time, and day of the week.\n\n*   **Expense Tracker:**\n    *   `add_expense_tool`: Adds a new expense record with details like date, amount, category, and notes.\n    *   `edit_expense_tool`: Modifies an existing expense record using its ID.\n    *   `delete_expense_tool`: Removes an expense record by its ID.\n    *   `search_expenses_tool`: Searches for expenses using various filters such as category, date range, or amount range.\n\n*   **To-Do List / Task Management:**\n    *   `add_task_tool`: Creates a new task with a title, description, due date, and priority.\n    *   `edit_task_tool`: Updates an existing task's details.\n    *   `delete_task_tool`: Deletes a task by its ID.\n    *   `complete_task_tool`: Marks a specific task as completed.\n    *   `search_tasks_tool`: Finds tasks based on filters like due date, priority, or status.\n\n*   **File System Management:**\n    *   `read_file_tool`: Reads content from a specified file.\n    *   `write_file_tool`: Writes content to a specified file (overwrites if file exists).\n    *   `edit_file_tool`: Replaces specific text within a file.\n    *   `append_file_tool`: Adds content to the end of a file.\n    *   `copy_file_tool`: Duplicates a file from a source to a destination.\n    *   `move_file_tool`: Relocates a file.\n    *   `delete_file_tool`: Deletes a specified file.\n    *   `clear_file_tool`: Empties the content of a file.\n    *   `create_directory_tool`: Creates a new folder.\n    *   `delete_directory_tool`: Removes a folder.\n    *   `rename_directory_tool`: Changes the name of a folder.\n    *   `list_files_tool`: Lists files within a directory.\n    *   `list_directories_tool`: Lists subdirectories within a directory.\n    *   `list_tree_tool`: Displays the directory tree structure.\n    *   `file_info_tool`: Provides information about a specific file.\n    *   `supported_formats_tool`: Lists supported file formats (details not available in the current context, but the tool exists).\n\n*   **Research & Web Browsing:**\n    *   `research_agent`: Performs deep research and retrieves live web data.\n    *   `web_reader` tools: Browse and extract information from websites when specific URLs are provided.\n\n### **Sub-Agents:**\n\n*   **research_pipeline**: This agent is designed for a full research workflow: planning, parallel searching, collecting information, and generating a comprehensive report.\n\nHow can I assist you with these capabilities today?","thought_signature":"CukGAb4-9vv2fHD6nDNvA0O_xuEt8ilvBIVhoSVJG6pv1WABM1OzRqYFOVdrp4gN0X0MDyUrhdVR3_yc5uZ2Ze489T5juYX6UN9hLJ_F822k5bxCX2Vk2GtKbr4O2mTE9Zo8pAOVYWYulLsApQ2XVclU4PeqLDpaa284tETvK7kgQFnRe4u0izyPjNdJrZNh8dRStVU9NA1XQZcQNloGWKxzz69ZyQnRgSNmvFZPes8mOJNuEq7GRi_aJyR7mAG2BNuXlA9kKFi-kEnro_qEKkY8RCiiS5b-9oq371lWxqGteMT2OJrERHmCLP2dNhdCN2E2-LkBVCJsLkoK_LKys7nQfpUZDtTCxBeFL3t0n1_dOoePMjr3xeBPpIAPcsRKWjvKr5SDHyDfoP8rozbwm4_MvMqMcxx6yooF-9z6AaePEFNF2imXDp9PrltTpM6Vr_Y0xVgiOEaEgmLDQ-1ieMcVh65nM3iYbyNgyvB6YsMjy_LXwzXQQuMmKHRAF0F4s8LR0Iwb3wwGDh5-9NZMV8Tp0pDkk0H6zWt57NDZ81gBBRuA9NEx7z02-hX9fmDzGDxgH1EbXpuIeg4RZCX1KDnu0CZQGkKVNjoUcJctv2aqEto8KhW7Q35-5_KJGxHI6kUpr4KSBb36ulPfS1v9zoG5UVIWNAeCk3xJqq_Qlfvi3kvm71ngCTH0OyiulQa6NH7xUJ8knWXlnoZHI_EEHMdiGVcnF-XDrjY0rH8ih3Ss7bRgAczBLiDgZs4-PLYVDbucHR5f3m24S1MId7u7Q-cKCyKtgOKVEWozgocbVh0GDqI6KYnlynXW1UOR1zYQJkXrgT_XIYxWoX2DArs6ZFwuaBlak_AXaiYHkWjA2OP4I3W2nqKMGVmCwP7jjKTR2xIswrIcPAo2j1GKO8In-Bfd-JZLazY6DwxgtfgKue3JfhQUYscCnj2IC1Sav0j1sy0TLekY-K2wK5f8wlzAwZdBow7VExC-IH-xg3H2FXIJ32hUhHLmtGniqqKac-TIKw7t9AUs8yXS3fpHqWNPrNyu9c_rTfz9c5qNPeTPPWA_0ykBWG7hSXLLrMM_DthYqU2alSNIxCyPLagj4Lx7j6nT5AnjiIyVqRkkySYCzulHweg2hICWtIK_kezWT-HCaRCbOMKB27V0a5YD"}],"role":"model"}
+{"parts":[{"text":"make a research on the topic \"According the current date what could be the future of AI\""}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+transfer_to_agent: {'agent_name': {'enum': ['research_pipeline'], 'type': <Type.STRING: 'STRING'>}} 
+get_current_datetime: {} 
+add_expense_tool: {'date': {'type': <Type.STRING: 'STRING'>}, 'amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'category': {'type': <Type.STRING: 'STRING'>}, 'subcategory': {'default': '', 'type': <Type.STRING: 'STRING'>}, 'note': {'default': '', 'type': <Type.STRING: 'STRING'>}} 
+edit_expense_tool: {'expense_id': {'type': <Type.INTEGER: 'INTEGER'>}, 'date': {'type': <Type.STRING: 'STRING'>}, 'amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'category': {'type': <Type.STRING: 'STRING'>}, 'subcategory': {'type': <Type.STRING: 'STRING'>}, 'note': {'type': <Type.STRING: 'STRING'>}} 
+delete_expense_tool: {'expense_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+search_expenses_tool: {'category': {'type': <Type.STRING: 'STRING'>}, 'start_date': {'type': <Type.STRING: 'STRING'>}, 'end_date': {'type': <Type.STRING: 'STRING'>}, 'min_amount': {'type': <Type.NUMBER: 'NUMBER'>}, 'max_amount': {'type': <Type.NUMBER: 'NUMBER'>}} 
+add_task_tool: {'title': {'type': <Type.STRING: 'STRING'>}, 'description': {'default': '', 'type': <Type.STRING: 'STRING'>}, 'priority': {'default': 'medium', 'type': <Type.STRING: 'STRING'>}, 'due_date': {'default': '', 'type': <Type.STRING: 'STRING'>}} 
+edit_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}, 'title': {'type': <Type.STRING: 'STRING'>}, 'description': {'type': <Type.STRING: 'STRING'>}, 'priority': {'type': <Type.STRING: 'STRING'>}, 'due_date': {'type': <Type.STRING: 'STRING'>}, 'status': {'type': <Type.STRING: 'STRING'>}} 
+delete_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+complete_task_tool: {'task_id': {'type': <Type.INTEGER: 'INTEGER'>}} 
+search_tasks_tool: {'status': {'type': <Type.STRING: 'STRING'>}, 'priority': {'type': <Type.STRING: 'STRING'>}, 'due_date': {'type': <Type.STRING: 'STRING'>}} 
+read_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+write_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'content': {'type': <Type.STRING: 'STRING'>}} 
+edit_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'old_text': {'type': <Type.STRING: 'STRING'>}, 'new_text': {'type': <Type.STRING: 'STRING'>}} 
+append_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}, 'content': {'type': <Type.STRING: 'STRING'>}} 
+copy_file_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+move_file_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+delete_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+clear_file_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+create_directory_tool: {'folder_path': {'type': <Type.STRING: 'STRING'>}} 
+delete_directory_tool: {'folder_path': {'type': <Type.STRING: 'STRING'>}, 'recursive': {'default': False, 'type': <Type.BOOLEAN: 'BOOLEAN'>}} 
+rename_directory_tool: {'source_path': {'type': <Type.STRING: 'STRING'>}, 'destination_path': {'type': <Type.STRING: 'STRING'>}} 
+list_files_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}} 
+list_directories_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}} 
+list_tree_tool: {'folder_path': {'default': '.', 'type': <Type.STRING: 'STRING'>}, 'max_depth': {'default': 5, 'type': <Type.INTEGER: 'INTEGER'>}} 
+file_info_tool: {'file_path': {'type': <Type.STRING: 'STRING'>}} 
+supported_formats_tool: {} 
+-----------------------------------------------------------
+
+2026-03-12 12:58:00,702  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Response received from the model.
+2026-03-12 12:58:00,702  [types]  WARNING   google_genai.types  Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+2026-03-12 12:58:00,702  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Response:
+-----------------------------------------------------------
+Text:
+None
+-----------------------------------------------------------
+Function calls:
+name: transfer_to_agent, args: {'agent_name': 'research_pipeline'}
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Thu, 12 Mar 2026 07:28:02 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=2041","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"function_call":{"args":{"agent_name":"research_pipeline"},"name":"transfer_to_agent"},"thought_signature":"CrIFAb4-9vsgPMEAHHyAqkYKUYwD2HFHGCmC7rw0bqQi6eXY5jmjd5aegq98WlVaKcYdgpIefSz6yQFyMJUYVsjB7thAMLXlc9bwiK4ZSZLKTECoDvvIHjXcO2pDfBOxAcCsQJSr3wQhQLInM4z5tk-HI5VjsfxUJKadLU3_RgT2bGaGM8wxtlXsxR1xKgczCFoHAJqMvsZpqVZTEF2gIVmgULzFh-Tq4C65u0PGY6ra_ZTwUukm1SVI75JzON0nPjzg2stMQ4C1dXQ17z7kbfQaIfPIw6lPS7_mKDy5W4EUIf3YZeim1MF-m7OltZQT6crRSN4__-RKRvOwbfKIwAOOWVP--d6C7MvhJXQ4A4XXuj9vCaSEOZbXjtlKK6HOxs785zDNK5xuv4mm3R251Ccx0NV62F59x2nRdaiORdSQ0_gt6AeOvoIx7Z82GSxhxt5LCd4Woc1spUAE_AYBrDGchGIAZQj2HnNgL1iPjkGtkVJuE78yo6LXlndtGb7NZimD6dDK5bpd-CA2Nxedlj6KnlrZhQ1VWk7U8N29NMNuk_94OaT0im3-sLJTPspUb7bu_rO_wFxKuyBlddyhy_0_vqkvdsx3qpCycBI9ub1At8XbceLny22QKySuGoAnGbXA5zVUh08Y7ti_CSwxea-VrFTT4dBLojmNFSj0f4bRuUvkoi2LyNgeCBd4k3Pyi33WKoj0pxpuAivCrgi9o-24Hr93pNoLeoE99bk_akcVC40CiVzNg9hjeEZP-yel1D4lsuujkrB_rNuDkQpDaNauoXVyMm8rYgT2SsYXVY79wM0KctUS6P1UvUpHXKNIOyIRZWWDohZxjdImi-BNMKzmYZ_tglJ9D20SeYl3iW8RN8Vhs9T5F1FaEK2NwMx_ed8h57NAvivvpYuzsBsOzanPx_ct"}],"role":"model"},"finish_reason":"STOP","index":0}],"model_version":"gemini-2.5-flash","response_id":"AGuyac_vB4T6juMPnfGt4AE","usage_metadata":{"candidates_token_count":21,"prompt_token_count":2988,"prompt_tokens_details":[{"modality":"TEXT","token_count":2988}],"thoughts_token_count":135,"total_token_count":3144}}
+-----------------------------------------------------------
+
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:00,719  [base_authenticated_tool]  DEBUG     google_adk.google.adk.tools.base_authenticated_tool  auth_config or auth_config.auth_scheme is missing, so authentication will be skipped.
+2026-03-12 12:58:01,236  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Sending out request, model: gemini-2.5-pro, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2026-03-12 12:58:01,236  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Request:
+-----------------------------------------------------------
+System Instruction:
+
+You are a Research Planner.
+
+Given the user's query, do the following:
+
+1. Decide whether live Google Search is required.
+   - Search IS required for: current events, recent data, latest news, prices,
+     statistics, real-time facts, anything that may have changed recently.
+   - Search is NOT required for: timeless facts, definitions, historical events,
+     pure reasoning, math, or coding questions.
+
+2. If search IS required, generate between 4 and 10 highly specific and diverse
+   search queries that together cover the topic thoroughly from multiple angles.
+   Ensure each query targets a different aspect or sub-topic.
+
+3. Output ONLY the following JSON object and nothing else:
+{
+  "search_needed": "yes",
+  "queries": [
+    "query 1",
+    "query 2",
+    "...",
+    "query N"
+  ]
+}
+
+If search is NOT required, output:
+{
+  "search_needed": "no",
+  "queries": []
+}
+
+Do not include any explanation, preamble, or markdown fences — raw JSON only.
+
+
+You are an agent. Your internal name is "reducer_agent". The description about you is "Decides if web search is needed and generates search queries.".
+-----------------------------------------------------------
+Config:
+{'http_options': {'headers': {'x-goog-api-client': 'google-adk/1.22.0 gl-python/3.11.9', 'user-agent': 'google-adk/1.22.0 gl-python/3.11.9'}}}
+-----------------------------------------------------------
+Contents:
+{"parts":[{"text":"Hello"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: Hello! How can I help you today?"}],"role":"user"}
+{"parts":[{"text":"Give me the details of your tools and sub agents"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] said: I have access to a variety of tools and can delegate to a specialized research agent.\n\nHere are the details:\n\n### **Tools:**\n\n*   **Date and Time:**\n    *   `get_current_datetime`: Retrieves the current date, time, and day of the week.\n\n*   **Expense Tracker:**\n    *   `add_expense_tool`: Adds a new expense record with details like date, amount, category, and notes.\n    *   `edit_expense_tool`: Modifies an existing expense record using its ID.\n    *   `delete_expense_tool`: Removes an expense record by its ID.\n    *   `search_expenses_tool`: Searches for expenses using various filters such as category, date range, or amount range.\n\n*   **To-Do List / Task Management:**\n    *   `add_task_tool`: Creates a new task with a title, description, due date, and priority.\n    *   `edit_task_tool`: Updates an existing task's details.\n    *   `delete_task_tool`: Deletes a task by its ID.\n    *   `complete_task_tool`: Marks a specific task as completed.\n    *   `search_tasks_tool`: Finds tasks based on filters like due date, priority, or status.\n\n*   **File System Management:**\n    *   `read_file_tool`: Reads content from a specified file.\n    *   `write_file_tool`: Writes content to a specified file (overwrites if file exists).\n    *   `edit_file_tool`: Replaces specific text within a file.\n    *   `append_file_tool`: Adds content to the end of a file.\n    *   `copy_file_tool`: Duplicates a file from a source to a destination.\n    *   `move_file_tool`: Relocates a file.\n    *   `delete_file_tool`: Deletes a specified file.\n    *   `clear_file_tool`: Empties the content of a file.\n    *   `create_directory_tool`: Creates a new folder.\n    *   `delete_directory_tool`: Removes a folder.\n    *   `rename_directory_tool`: Changes the name of a folder.\n    *   `list_files_tool`: Lists files within a directory.\n    *   `list_directories_tool`: Lists subdirectories within a directory.\n    *   `list_tree_tool`: Displays the directory tree structure.\n    *   `file_info_tool`: Provides information about a specific file.\n    *   `supported_formats_tool`: Lists supported file formats (details not available in the current context, but the tool exists).\n\n*   **Research & Web Browsing:**\n    *   `research_agent`: Performs deep research and retrieves live web data.\n    *   `web_reader` tools: Browse and extract information from websites when specific URLs are provided.\n\n### **Sub-Agents:**\n\n*   **research_pipeline**: This agent is designed for a full research workflow: planning, parallel searching, collecting information, and generating a comprehensive report.\n\nHow can I assist you with these capabilities today?"}],"role":"user"}
+{"parts":[{"text":"make a research on the topic \"According the current date what could be the future of AI\""}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] called tool `transfer_to_agent` with parameters: {'agent_name': 'research_pipeline'}"}],"role":"user"}
+{"parts":[{"text":"For context:"},{"text":"[jarvis_root_agent] `transfer_to_agent` tool returned result: {'result': None}"}],"role":"user"}
+-----------------------------------------------------------
+Functions:
+
+-----------------------------------------------------------
+
+2026-03-12 12:58:01,236  [models]  INFO      google_genai.models  AFC is enabled with max remote calls: 10.
+2026-03-12 12:58:07,436  [google_llm]  INFO      google_adk.google.adk.models.google_llm  Response received from the model.
+2026-03-12 12:58:07,436  [google_llm]  DEBUG     google_adk.google.adk.models.google_llm  
+LLM Response:
+-----------------------------------------------------------
+Text:
+```json
+{
+  "search_needed": "yes",
+  "queries": [
+    "current state of artificial intelligence 2024",
+    "expert predictions on the future of AI",
+    "long-term impact of AI on the job market and economy",
+    "breakthroughs in artificial general intelligence (AGI) recent developments",
+    "ethical challenges and risks in future AI development",
+    "future of AI in specific sectors like healthcare, finance, and transportation",
+    "role of government and regulation in shaping the future of AI",
+    "AI's potential impact on society and daily life by 2030"
+  ]
+}
+```
+-----------------------------------------------------------
+Function calls:
+
+-----------------------------------------------------------
+Raw response:
+{"sdk_http_response":{"headers":{"Content-Type":"application/json; charset=UTF-8","Vary":"Origin, X-Origin, Referer","Content-Encoding":"gzip","Date":"Thu, 12 Mar 2026 07:28:08 GMT","Server":"scaffolding on HTTPServer2","X-XSS-Protection":"0","X-Frame-Options":"SAMEORIGIN","X-Content-Type-Options":"nosniff","Server-Timing":"gfet4t7; dur=6124","Alt-Svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","Transfer-Encoding":"chunked"}},"candidates":[{"content":{"parts":[{"text":"```json\n{\n  \"search_needed\": \"yes\",\n  \"queries\": [\n    \"current state of artificial intelligence 2024\",\n    \"expert predictions on the future of AI\",\n    \"long-term impact of AI on the job market and economy\",\n    \"breakthroughs in artificial general intelligence (AGI) recent developments\",\n    \"ethical challenges and risks in future AI development\",\n    \"future of AI in specific sectors like healthcare, finance, and transportation\",\n    \"role of government and regulation in shaping the future of AI\",\n    \"AI's potential impact on society and daily life by 2030\"\n  ]\n}\n```"}],"role":"model"},"finish_reason":"STOP","index":0}],"model_version":"gemini-2.5-pro","response_id":"CGuyaYS5IJ3d4-EPlYGX-QE","usage_metadata":{"candidates_token_count":149,"prompt_token_count":1110,"prompt_tokens_details":[{"modality":"TEXT","token_count":1110}],"thoughts_token_count":413,"total_token_count":1672},"automatic_function_calling_history":[]}
+-----------------------------------------------------------
+
+2026-03-12 12:58:07,436  [llm_agent]  DEBUG     google_adk.google.adk.agents.llm_agent  Skipping output save for agent jarvis_root_agent: event authored by reducer_agent
+2026-03-12 12:58:07,436  [research]  DEBUG     research_agent  [QueryFanOutAgent] raw reducer output: ```json
+{
+  "search_needed": "yes",
+  "queries": [
+    "current state of artificial intelligence 2024",
+    "expert predictions on the future of AI",
+    "long-term impact of AI on the job market and economy",
+    "breakthroughs in artificial general intelligence (AGI) recent developments",
+    "ethical challenges and risks in future AI development",
+    "future of AI in specific sectors like healthcare, finance, and transportation",
+    "role of government and regulation in shaping the future of AI",
+    "AI's potential impact on society and daily life by 2030"
+  ]
+}
+```
+2026-03-12 12:58:07,436  [research]  INFO      research_agent  [QueryFanOutAgent] search_needed=yes, num_queries=8
+2026-03-12 12:58:07,436  [llm_agent]  DEBUG     google_adk.google.adk.agents.llm_agent  Skipping output save for agent jarvis_root_agent: event authored by query_fan_out_agent
+2026-03-12 12:59:28,851  [app]  INFO      app  Jarvis shutting down gracefully...
+2026-03-12 12:59:28,851  [app]  INFO      app  Shutdown complete.
+2026-03-12 12:59:29,792  [base_events]  ERROR     asyncio  an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x00000223C2BE4040>
+asyncgen: <async_generator object stdio_client at 0x00000223C2BE4040>
+  + Exception Group Traceback (most recent call last):
+  |   File "D:\Agent-Development-Kit\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | BaseExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\Agent-Development-Kit\venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 189, in stdio_client
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 182, in stdio_client
+    async with (
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 789, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 461, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2026-03-12 12:59:29,794  [base_events]  ERROR     asyncio  an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x00000223C2BE4190>
+asyncgen: <async_generator object stdio_client at 0x00000223C2BE4190>
+  + Exception Group Traceback (most recent call last):
+  |   File "D:\Agent-Development-Kit\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | BaseExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\Agent-Development-Kit\venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 189, in stdio_client
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 182, in stdio_client
+    async with (
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 789, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 461, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2026-03-12 12:59:29,794  [base_events]  ERROR     asyncio  an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x00000223C18ABA00>
+asyncgen: <async_generator object stdio_client at 0x00000223C18ABA00>
+  + Exception Group Traceback (most recent call last):
+  |   File "D:\Agent-Development-Kit\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 783, in __aexit__
+  |     raise BaseExceptionGroup(
+  | BaseExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\Agent-Development-Kit\venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 189, in stdio_client
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 182, in stdio_client
+    async with (
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 789, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Agent-Development-Kit\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 461, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in

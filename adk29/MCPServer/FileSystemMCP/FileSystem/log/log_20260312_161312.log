@@ -1,0 +1,19 @@
+2026-03-12 16:13:12,355  [utils]  INFO      file_system_server  FileSystem MCP Server started. Base directory: D:\Agent-Development-Kit\adk29\Vikas
+2026-03-12 16:13:12,355  [utils]  INFO      file_system_server  Log file: D:\Agent-Development-Kit\adk29\MCPServer\FileSystemMCP\FileSystem\log\log_20260312_161312.log
+2026-03-12 16:13:13,005  [server]  DEBUG     mcp.server.lowlevel.server  Initializing server 'FileSystem-ADK-MCP'
+2026-03-12 16:13:13,005  [server]  DEBUG     mcp.server.lowlevel.server  Registering handler for ListToolsRequest
+2026-03-12 16:13:13,005  [server]  DEBUG     mcp.server.lowlevel.server  Registering handler for CallToolRequest
+2026-03-12 16:13:13,005  [proactor_events]  DEBUG     asyncio  Using proactor: IocpProactor
+2026-03-12 16:13:13,021  [file_system_mcp_server]  INFO      file_system_server  FileSystem MCP server starting. BASE_DIR=D:\Agent-Development-Kit\adk29\Vikas
+2026-03-12 16:13:13,021  [file_system_mcp_server]  INFO      file_system_server  MCP STDIO connection established.
+2026-03-12 16:13:13,021  [server]  DEBUG     mcp.server.lowlevel.server  Received message: root=InitializedNotification(method='notifications/initialized', params=None, jsonrpc='2.0')
+2026-03-12 16:13:13,021  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000001E2983B6490>
+2026-03-12 16:13:13,021  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 16:13:13,021  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 16:13:13,021  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 16:13:13,021  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
+2026-03-12 16:13:16,488  [server]  DEBUG     mcp.server.lowlevel.server  Received message: <mcp.shared.session.RequestResponder object at 0x000001E2AEE6A450>
+2026-03-12 16:13:16,488  [server]  INFO      mcp.server.lowlevel.server  Processing request of type ListToolsRequest
+2026-03-12 16:13:16,488  [server]  DEBUG     mcp.server.lowlevel.server  Dispatching request of type ListToolsRequest
+2026-03-12 16:13:16,488  [file_system_mcp_server]  INFO      file_system_server  MCP list_tools called
+2026-03-12 16:13:16,488  [server]  DEBUG     mcp.server.lowlevel.server  Response sent
