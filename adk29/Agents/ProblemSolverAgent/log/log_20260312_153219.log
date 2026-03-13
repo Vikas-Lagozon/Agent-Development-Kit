@@ -1,6 +1,0 @@
-2026-03-12 15:32:19,395  [problem_solver]  INFO      problem_solver_agent  Problem Solver Agent initialised. Log → D:\Agent-Development-Kit\adk29\Agents\ProblemSolverAgent\log\log_20260312_153219.log
-2026-03-12 15:32:19,395  [problem_solver]  DEBUG     problem_solver_agent  ps_analyser_agent defined.
-2026-03-12 15:32:19,395  [problem_solver]  DEBUG     problem_solver_agent  PSFanOutAgent defined.
-2026-03-12 15:32:19,395  [problem_solver]  DEBUG     problem_solver_agent  ps_root_cause_agent defined.
-2026-03-12 15:32:19,395  [problem_solver]  DEBUG     problem_solver_agent  ps_solution_agent defined.
-2026-03-12 15:32:19,395  [problem_solver]  INFO      problem_solver_agent  Problem Solver pipeline assembled.

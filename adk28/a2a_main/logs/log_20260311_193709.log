@@ -1,0 +1,140 @@
+2026-03-11 19:37:09 | INFO     | BlogWriter | Logger initialised. Log file: logs\log_20260311_193709.log
+2026-03-11 19:37:09 | DEBUG    | BlogWriter | [SETUP] Initialising LLMs...
+2026-03-11 19:37:10 | DEBUG    | BlogWriter | [SETUP] LLMs ready. blog_llm=llama3.2:3b | decision_llm=llama3.2:3b
+2026-03-11 19:37:10 | DEBUG    | BlogWriter | [SETUP] Building LangGraph state graph...
+2026-03-11 19:37:10 | DEBUG    | BlogWriter | [SETUP] LangGraph compiled successfully.
+2026-03-11 19:43:07 | INFO     | BlogWriter | [ROUTER] ── START ──────────────────────────────────────
+2026-03-11 19:43:07 | INFO     | BlogWriter | [ROUTER] Topic received: '*   Rolling a die/dice
+*   Checking if a number or a list of numbers is prime
+*   Writing blog posts/articles/tutorials/technical explainers/news roundups/comparisons/system-design posts.
+
+Would you like me to do one of these instead?
+show me the list of your tools 
+*   **Roll a die/dice**: I can tell you the result of rolling a die or multiple dice.
+*   **Check prime numbers**: I can check if a number or a list of numbers is prime.
+*   **Write blog posts**: I can write various types of blog content, including:
+    *   Blog posts/articles/tutorials
+    *   Technical explainers
+    *   News roundups
+    *   Comparisons or system-design posts
+generate blog on generativeAI'
+2026-03-11 19:43:07 | DEBUG    | BlogWriter | [ROUTER] Invoking decision LLM with structured output (RouterDecision)...
+2026-03-11 19:43:30 | INFO     | BlogWriter | [ROUTER] Decision => mode='open_book' | needs_research=True | num_queries=6
+2026-03-11 19:43:30 | DEBUG    | BlogWriter | [ROUTER]   Query 1: generative AI applications in natural language processing
+2026-03-11 19:43:30 | DEBUG    | BlogWriter | [ROUTER]   Query 2: latest developments in generative AI for content generation
+2026-03-11 19:43:30 | DEBUG    | BlogWriter | [ROUTER]   Query 3: future of generative AI in creative industries
+2026-03-11 19:43:30 | DEBUG    | BlogWriter | [ROUTER]   Query 4: case studies of successful generative AI implementations
+2026-03-11 19:43:30 | DEBUG    | BlogWriter | [ROUTER]   Query 5: challenges and limitations of generative AI in content creation
+2026-03-11 19:43:30 | DEBUG    | BlogWriter | [ROUTER]   Query 6: trends in generative AI research and its impact on society
+2026-03-11 19:43:30 | INFO     | BlogWriter | [ROUTER] ── END ────────────────────────────────────────
+2026-03-11 19:43:30 | INFO     | BlogWriter | [ROUTER] Routing graph → 'research'
+2026-03-11 19:43:30 | INFO     | BlogWriter | [RESEARCH] ── START ─────────────────────────────────────
+2026-03-11 19:43:30 | INFO     | BlogWriter | [RESEARCH] 6 search queries to run (max_results=6 each)
+2026-03-11 19:43:30 | INFO     | BlogWriter | [RESEARCH] Query 1/6: 'generative AI applications in natural language processing'
+2026-03-11 19:43:30 | DEBUG    | BlogWriter | [TAVILY] Searching: 'generative AI applications in natural language processing' (max_results=6)
+2026-03-11 19:44:33 | DEBUG    | BlogWriter | [TAVILY] Raw hits received: 0 for query 'generative AI applications in natural language processing'
+2026-03-11 19:44:33 | DEBUG    | BlogWriter | [TAVILY] Normalised 0 results for query 'generative AI applications in natural language processing'
+2026-03-11 19:44:33 | DEBUG    | BlogWriter | [RESEARCH] Cumulative raw results so far: 0
+2026-03-11 19:44:33 | INFO     | BlogWriter | [RESEARCH] Query 2/6: 'latest developments in generative AI for content generation'
+2026-03-11 19:44:33 | DEBUG    | BlogWriter | [TAVILY] Searching: 'latest developments in generative AI for content generation' (max_results=6)
+2026-03-11 19:45:36 | DEBUG    | BlogWriter | [TAVILY] Raw hits received: 0 for query 'latest developments in generative AI for content generation'
+2026-03-11 19:45:36 | DEBUG    | BlogWriter | [TAVILY] Normalised 0 results for query 'latest developments in generative AI for content generation'
+2026-03-11 19:45:36 | DEBUG    | BlogWriter | [RESEARCH] Cumulative raw results so far: 0
+2026-03-11 19:45:36 | INFO     | BlogWriter | [RESEARCH] Query 3/6: 'future of generative AI in creative industries'
+2026-03-11 19:45:36 | DEBUG    | BlogWriter | [TAVILY] Searching: 'future of generative AI in creative industries' (max_results=6)
+2026-03-11 19:46:40 | DEBUG    | BlogWriter | [TAVILY] Raw hits received: 0 for query 'future of generative AI in creative industries'
+2026-03-11 19:46:40 | DEBUG    | BlogWriter | [TAVILY] Normalised 0 results for query 'future of generative AI in creative industries'
+2026-03-11 19:46:40 | DEBUG    | BlogWriter | [RESEARCH] Cumulative raw results so far: 0
+2026-03-11 19:46:40 | INFO     | BlogWriter | [RESEARCH] Query 4/6: 'case studies of successful generative AI implementations'
+2026-03-11 19:46:40 | DEBUG    | BlogWriter | [TAVILY] Searching: 'case studies of successful generative AI implementations' (max_results=6)
+2026-03-11 19:47:43 | DEBUG    | BlogWriter | [TAVILY] Raw hits received: 0 for query 'case studies of successful generative AI implementations'
+2026-03-11 19:47:43 | DEBUG    | BlogWriter | [TAVILY] Normalised 0 results for query 'case studies of successful generative AI implementations'
+2026-03-11 19:47:43 | DEBUG    | BlogWriter | [RESEARCH] Cumulative raw results so far: 0
+2026-03-11 19:47:43 | INFO     | BlogWriter | [RESEARCH] Query 5/6: 'challenges and limitations of generative AI in content creation'
+2026-03-11 19:47:43 | DEBUG    | BlogWriter | [TAVILY] Searching: 'challenges and limitations of generative AI in content creation' (max_results=6)
+2026-03-11 19:48:46 | DEBUG    | BlogWriter | [TAVILY] Raw hits received: 0 for query 'challenges and limitations of generative AI in content creation'
+2026-03-11 19:48:46 | DEBUG    | BlogWriter | [TAVILY] Normalised 0 results for query 'challenges and limitations of generative AI in content creation'
+2026-03-11 19:48:46 | DEBUG    | BlogWriter | [RESEARCH] Cumulative raw results so far: 0
+2026-03-11 19:48:46 | INFO     | BlogWriter | [RESEARCH] Query 6/6: 'trends in generative AI research and its impact on society'
+2026-03-11 19:48:46 | DEBUG    | BlogWriter | [TAVILY] Searching: 'trends in generative AI research and its impact on society' (max_results=6)
+2026-03-11 19:49:49 | DEBUG    | BlogWriter | [TAVILY] Raw hits received: 0 for query 'trends in generative AI research and its impact on society'
+2026-03-11 19:49:49 | DEBUG    | BlogWriter | [TAVILY] Normalised 0 results for query 'trends in generative AI research and its impact on society'
+2026-03-11 19:49:49 | DEBUG    | BlogWriter | [RESEARCH] Cumulative raw results so far: 0
+2026-03-11 19:49:49 | INFO     | BlogWriter | [RESEARCH] Total raw results collected: 0
+2026-03-11 19:49:49 | WARNING  | BlogWriter | [RESEARCH] No raw results found — returning empty evidence.
+2026-03-11 19:49:49 | INFO     | BlogWriter | [RESEARCH] ── END ──────────────────────────────────────
+2026-03-11 19:49:49 | INFO     | BlogWriter | [ORCHESTRATOR] ── START ──────────────────────────────────
+2026-03-11 19:49:49 | INFO     | BlogWriter | [ORCHESTRATOR] Topic: '*   Rolling a die/dice
+*   Checking if a number or a list of numbers is prime
+*   Writing blog posts/articles/tutorials/technical explainers/news roundups/comparisons/system-design posts.
+
+Would you like me to do one of these instead?
+show me the list of your tools 
+*   **Roll a die/dice**: I can tell you the result of rolling a die or multiple dice.
+*   **Check prime numbers**: I can check if a number or a list of numbers is prime.
+*   **Write blog posts**: I can write various types of blog content, including:
+    *   Blog posts/articles/tutorials
+    *   Technical explainers
+    *   News roundups
+    *   Comparisons or system-design posts
+generate blog on generativeAI' | Mode: 'open_book'
+2026-03-11 19:49:49 | DEBUG    | BlogWriter | [ORCHESTRATOR] Evidence items available for context: 0
+2026-03-11 19:49:49 | INFO     | BlogWriter | [ORCHESTRATOR] Planning attempt 1/3...
+2026-03-11 19:51:21 | INFO     | BlogWriter | [ORCHESTRATOR] Plan accepted: 4 tasks generated.
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [ORCHESTRATOR] Blog title : 'Exploring the World of Generative AI'
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [ORCHESTRATOR] Audience   : 'developers and enthusiasts'
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [ORCHESTRATOR] Tone       : 'informative and conversational'
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [ORCHESTRATOR] Blog kind  : 'news_roundup'
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 01: 'Understanding Generative Adversarial Networks (GANs)' | ~250w | code=False | citations=False
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 02: 'Real-World Applications of Generative AI' | ~300w | code=False | citations=False
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 03: 'Comparing Generative Models: A Deep Dive' | ~400w | code=False | citations=True
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [ORCHESTRATOR]   Task 04: 'Debugging and Troubleshooting Generative AI Models' | ~300w | code=True | citations=False
+2026-03-11 19:51:21 | INFO     | BlogWriter | [ORCHESTRATOR] ── END ────────────────────────────────────
+2026-03-11 19:51:21 | INFO     | BlogWriter | [DISPATCHER] ── START ────────────────────────────────────
+2026-03-11 19:51:21 | INFO     | BlogWriter | [DISPATCHER] Dispatching 4 parallel worker(s)...
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 1: 'Understanding Generative Adversarial Networks (GANs)'
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 2: 'Real-World Applications of Generative AI'
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 3: 'Comparing Generative Models: A Deep Dive'
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [DISPATCHER]   → Worker for Task 4: 'Debugging and Troubleshooting Generative AI Models'
+2026-03-11 19:51:21 | INFO     | BlogWriter | [DISPATCHER] ── END ──────────────────────────────────────
+2026-03-11 19:51:21 | INFO     | BlogWriter | [WORKER] ── Task 1: 'Understanding Generative Adversarial Networks (GANs)' ─────────────────
+2026-03-11 19:51:21 | INFO     | BlogWriter | [WORKER] ── Task 2: 'Real-World Applications of Generative AI' ─────────────────
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   Goal           : Summarize the key concepts and applications of GANs in generative AI.
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   Target words   : 250
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   requires_code  : False
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : False
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ['Explain the basic architecture of GANs', 'Describe the role of generators and discriminators', 'Discuss the challenges and limitations of GANs']
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 0
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 19:51:21 | INFO     | BlogWriter | [WORKER] ── Task 3: 'Comparing Generative Models: A Deep Dive' ─────────────────
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   Goal           : Highlight notable examples of generative AI in practice.
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   Target words   : 300
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   requires_code  : False
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   Goal           : Compare and contrast different generative models, including GANs, Variational Autoencoders (VAEs), and Neural Style Transfer.
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : False
+2026-03-11 19:51:21 | INFO     | BlogWriter | [WORKER] ── Task 4: 'Debugging and Troubleshooting Generative AI Models' ─────────────────
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   Target words   : 400
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ['Discuss the use of GANs in image and video generation', 'Explain how generative models are used in music and audio processing', 'Describe the applications of generative models in text and language generation']
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   requires_code  : False
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 0
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   Goal           : Provide tips and best practices for identifying and fixing common issues in generative AI models.
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : True
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   Target words   : 300
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ['Describe the strengths and weaknesses of each model type', 'Discuss the use cases for each model type', 'Explain the differences in training objectives and loss functions']
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   requires_code  : True
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 0
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   requires_cit.  : False
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   Bullets (3)   : ['Discuss the importance of data quality and preprocessing', 'Explain how to diagnose and fix mode collapse issues', 'Describe how to handle overfitting and underfitting']
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   Evidence items : 0
+2026-03-11 19:51:21 | DEBUG    | BlogWriter | [WORKER]   Invoking blog LLM to write section...
+2026-03-11 19:52:10 | INFO     | BlogWriter | [WORKER] Task 1 done — 'Understanding Generative Adversarial Networks (GANs)' | ~328 words written
+2026-03-11 19:53:08 | INFO     | BlogWriter | [WORKER] Task 4 done — 'Debugging and Troubleshooting Generative AI Models' | ~487 words written
+2026-03-11 19:53:57 | INFO     | BlogWriter | [WORKER] Task 3 done — 'Comparing Generative Models: A Deep Dive' | ~425 words written
+2026-03-11 19:54:24 | INFO     | BlogWriter | [WORKER] Task 2 done — 'Real-World Applications of Generative AI' | ~241 words written
+2026-03-11 19:54:24 | INFO     | BlogWriter | [REDUCER] ── START ───────────────────────────────────────
+2026-03-11 19:54:24 | INFO     | BlogWriter | [REDUCER] Assembling 4 section(s) for blog: 'Exploring the World of Generative AI'
+2026-03-11 19:54:24 | INFO     | BlogWriter | [REDUCER] Total blog word count: ~1488
+2026-03-11 19:54:24 | INFO     | BlogWriter | [REDUCER] Blog saved → output\Exploring the World of Generative AI.md
+2026-03-11 19:54:24 | INFO     | BlogWriter | [REDUCER] ── END ─────────────────────────────────────────

@@ -1,18 +1,6 @@
 # planner.py
 # ─────────────────────────────────────────────────────────────
 # Planner Agent Module (UPDATED & FIXED)
-#
-# FIXED: LLM tool-name hallucination in PlannerBuilderAgent
-#   • The model was outputting invalid function call name "call"
-#   • Root cause: ambiguous step-by-step prompt confused the tool-calling flow
-#   • Fix: Completely rewritten _build_fs_instruction() with:
-#       - Full explicit list of ALL available MCP tools
-#       - Strict "use EXACT tool name" anti-hallucination rules
-#       - Clear "Make a function call to XXX with:" phrasing for every step
-#       - One-step-at-a-time guidance so the ADK tool-calling loop works correctly
-#
-# All other logic (research, architecture, comment-only placeholders, PROJECT.md)
-# remains unchanged. The project will now build successfully on disk.
 # ─────────────────────────────────────────────────────────────
 
 import os
@@ -34,7 +22,7 @@ from google.adk.tools.mcp_tool.mcp_session_manager import StdioConnectionParams
 from mcp import StdioServerParameters
 from google.genai import types
 
-from config import config
+from .config import config
 
 # ─────────────────────────────────────────────────────────────
 # LOGGING

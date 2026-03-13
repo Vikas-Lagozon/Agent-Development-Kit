@@ -7,8 +7,13 @@
 #   2. Analyse problem + generate 2–8 search queries via LLM
 #      (output captured directly from events — no SequentialAgent/output_key)
 #   3. Run all queries in parallel → collect results from event stream
-#   4. Root cause analysis combining search results + own knowledge
-#   5. Generate final markdown solution report
+#   4. List out the tree directory of the project if you have the project root folder.
+#      Else you can skip this. The project list file tree can help to visualize
+#      the project more deeply.
+#   5. Read the file if required due to which this error arises. So that you can
+#      understand the program also.
+#   6. Root cause analysis combining search results + own knowledge
+#   7. Generate final markdown solution report
 #
 # Google Search is ALWAYS mandatory.
 # ─────────────────────────────────────────────────────────────
@@ -30,6 +35,7 @@ from google.adk.agents.parallel_agent import ParallelAgent
 from google.adk.agents.invocation_context import InvocationContext
 from google.adk.events import Event, EventActions
 from google.adk.tools.google_search_tool import google_search
+from google.adk.tools import FunctionTool
 from google.genai import types
 
 from .config import config
@@ -102,6 +108,89 @@ def _sanitize_for_instruction(text: str) -> str:
     remain readable in the LLM prompt without triggering the scanner.
     """
     return text.replace("{", "(").replace("}", ")")
+
+
+# ─────────────────────────────────────────────────────────────
+# FILE INSPECTION TOOLS
+# ─────────────────────────────────────────────────────────────
+IGNORED_DIRS = {
+    "venv",
+    "__pycache__",
+    "node_modules",
+    "dist",
+    "build",
+    ".git",
+    ".idea",
+    ".vscode",
+    ".cache",
+    ".pytest_cache",
+}
+
+
+def should_ignore(name: str, is_dir: bool) -> bool:
+    """Determine if a file or directory should be ignored."""
+    if name.startswith("."):
+        return True
+    if name.startswith("_"):
+        return True
+    if name.startswith("__"):
+        return True
+    if is_dir and name in IGNORED_DIRS:
+        return True
+    return False
+
+
+def list_directory_tree(root_dir: str, prefix: str = "") -> str:
+    """
+    Recursively builds and returns the directory tree of the given root directory.
+    Use this to visualize the project structure when a project root path is available.
+    Returns an empty string if root_dir does not exist or is inaccessible.
+    """
+    result = ""
+
+    try:
+        items = os.listdir(root_dir)
+    except Exception as e:
+        _ps_logger.error(f"Error accessing {root_dir}: {e}")
+        return result
+
+    filtered_items = []
+    for item in items:
+        path = os.path.join(root_dir, item)
+        if should_ignore(item, os.path.isdir(path)):
+            continue
+        filtered_items.append(item)
+
+    for index, item in enumerate(filtered_items):
+        path = os.path.join(root_dir, item)
+        connector = "└── " if index == len(filtered_items) - 1 else "├── "
+        result += prefix + connector + item + "\n"
+
+        if os.path.isdir(path):
+            extension = "    " if index == len(filtered_items) - 1 else "│   "
+            result += list_directory_tree(path, prefix + extension)
+
+    return result
+
+
+def read_file_content(file_path: str) -> str:
+    """
+    Opens a file and returns its full content as a string.
+    Use this to read source files relevant to the reported error so the
+    actual code can be inspected during root cause analysis.
+    Returns an error message string if the file cannot be read.
+    """
+    try:
+        with open(file_path, "r", encoding="utf-8") as file:
+            return file.read()
+    except Exception as e:
+        _ps_logger.error(f"Error reading file: {e}")
+        return f"Error reading file: {e}"
+
+
+_FILE_TOOLS = [FunctionTool(list_directory_tree), FunctionTool(read_file_content)]
+
+_ps_logger.debug("File inspection tools defined.")
 
 
 # ─────────────────────────────────────────────────────────────
@@ -362,13 +451,92 @@ class ProblemSolverAgent(BaseAgent):
 
         _ps_logger.info(f"[ProblemSolverAgent] Collected {len(results_list)} non-empty results.")
 
-        # ── STEP 5: Build solution agent with everything embedded in the prompt.
-        # Search results may also contain { } (JSON, code snippets) — escape them too.
+        # ── STEPS 5 & 6: File inspection — list directory tree + read relevant files
+        #
+        # An LlmAgent is given the two FunctionTools (list_directory_tree,
+        # read_file_content) and instructed to:
+        #   • Call list_directory_tree if a project root path is detectable from
+        #     the problem statement (e.g. a file path, import path, traceback line).
+        #   • Call read_file_content on any source file that appears directly
+        #     linked to the error (e.g. the file named in the traceback).
+        #   • Skip both calls if no relevant path information is present.
+        #
+        # The agent's output — tree + file contents — is captured from the event
+        # stream using the same pattern used for the analyser and search workers.
+        # ─────────────────────────────────────────────────────────────────────────
+        file_inspector_instruction = (
+            "You are a File Inspector assistant helping to debug a technical problem.\n"
+            "\n"
+            "Problem statement:\n"
+            + _sanitize_for_instruction(problem) + "\n"
+            "\n"
+            "Your job — follow these steps IN ORDER:\n"
+            "\n"
+            "STEP 1 — Project directory tree:\n"
+            "  - Look at the problem statement for any file paths, import paths,\n"
+            "    or tracebacks that reveal the project root folder.\n"
+            "  - If you can identify the project root, call list_directory_tree(root_dir=<path>)\n"
+            "    to visualise the project structure.\n"
+            "  - If no project root can be determined, skip this step and say so.\n"
+            "\n"
+            "STEP 2 — Read relevant source file(s):\n"
+            "  - Identify the specific file(s) mentioned in the error / traceback\n"
+            "    (e.g. the file on the last traceback line, or the file the user mentioned).\n"
+            "  - For each such file, call read_file_content(file_path=<absolute_path>)\n"
+            "    so that the actual source code can be inspected.\n"
+            "  - If no specific file can be identified from the problem statement, skip\n"
+            "    this step and say so.\n"
+            "\n"
+            "Output format:\n"
+            "  - If you listed the tree, include it under the heading: ## Directory Tree\n"
+            "  - If you read file(s), include each under: ## File: <path>\n"
+            "  - If you skipped both steps, output exactly: NO_FILE_CONTEXT\n"
+            "  - Do NOT add any other commentary or preamble.\n"
+        )
+
+        file_inspector = LlmAgent(
+            name="ps_file_inspector_agent",
+            model=RESEARCH_MODEL,
+            instruction=file_inspector_instruction,
+            tools=_FILE_TOOLS,
+        )
+
+        file_context = ""
+        _ps_logger.info("[ProblemSolverAgent] Running file inspector agent.")
+        async for event in file_inspector.run_async(ctx):
+            if event.is_final_response() and event.content and event.content.parts:
+                for part in event.content.parts:
+                    if getattr(part, "text", None):
+                        file_context += part.text
+
+        file_context = file_context.strip()
+
+        if not file_context or file_context == "NO_FILE_CONTEXT":
+            _ps_logger.info("[ProblemSolverAgent] File inspector: no file context available.")
+            file_context = ""
+        else:
+            _ps_logger.info(
+                f"[ProblemSolverAgent] File inspector produced {len(file_context)} chars of context."
+            )
+
+        # ── STEP 7: Build solution agent with everything embedded in the prompt.
+        # Search results and file content may contain { } (JSON, code snippets) — escape them.
         search_block = "\n\n".join(results_list) if results_list else "No search results available."
 
+        # Build file context section — only included when the inspector found something.
+        if file_context:
+            file_context_section = (
+                "\n"
+                "--- PROJECT FILE CONTEXT ---\n"
+                + _sanitize_for_instruction(file_context) + "\n"
+                "--- END OF FILE CONTEXT ---\n"
+            )
+        else:
+            file_context_section = ""
+
         # Build instruction via concatenation — NOT an f-string.
-        # search_block contains search result text which may include code snippets,
-        # JSON, Python dicts — all with { } chars that would break ADK's scanner.
+        # Both search_block and file_context may contain code snippets / JSON with
+        # { } chars that would break ADK's inject_session_state scanner.
         solution_instruction = (
             "You are a Senior Software Engineer and Debugging Expert.\n"
             "\n"
@@ -378,8 +546,11 @@ class ProblemSolverAgent(BaseAgent):
             "--- GOOGLE SEARCH RESULTS ---\n"
             + _sanitize_for_instruction(search_block) + "\n"
             "--- END OF SEARCH RESULTS ---\n"
-            "\n"
-            "Using the search results above AND your own technical knowledge, produce a complete\n"
+            + file_context_section
+            + "\n"
+            "Using the search results above"
+            + (" and the project file context" if file_context else "")
+            + " AND your own technical knowledge, produce a complete\n"
             "solution report in markdown:\n"
             "\n"
             "## Problem Summary\n"
