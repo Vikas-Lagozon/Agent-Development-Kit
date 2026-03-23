@@ -1,0 +1,78 @@
+2026-03-16 15:31:09  INFO      fastapi  Player X won game mygame123
+2026-03-16 15:31:09  INFO      fastapi  Player X won game mygame123
+2026-03-16 15:31:34  INFO      fastapi  Client disconnected from game mygame123
+2026-03-16 15:31:54  INFO      fastapi  Client disconnected from game mygame123
+2026-03-16 15:31:54  INFO      fastapi  Client disconnected from game mygame123
+2026-03-16 15:33:49  ERROR     fastapi  An error occurred:
+Traceback (most recent call last):
+  File "D:\Agent-Development-Kit\Projects\Tik-Tak-Toe\app.py", line 123, in websocket_endpoint
+    game.reset()
+    ^^^^^^^^^^
+AttributeError: 'TicTacToe' object has no attribute 'reset'
+2026-03-16 15:34:12  INFO      fastapi  Game mygame123 ended in a draw
+2026-03-16 15:34:14  ERROR     fastapi  An error occurred:
+Traceback (most recent call last):
+  File "D:\Agent-Development-Kit\Projects\Tik-Tak-Toe\app.py", line 123, in websocket_endpoint
+    game.reset()
+    ^^^^^^^^^^
+AttributeError: 'TicTacToe' object has no attribute 'reset'
+2026-03-16 15:34:14  ERROR     fastapi  An error occurred:
+Traceback (most recent call last):
+  File "D:\Agent-Development-Kit\Projects\Tik-Tak-Toe\app.py", line 123, in websocket_endpoint
+    game.reset()
+    ^^^^^^^^^^
+AttributeError: 'TicTacToe' object has no attribute 'reset'
+2026-03-16 15:36:02  INFO      fastapi  Game mygame123 ended in a draw
+2026-03-16 15:36:05  INFO      fastapi  Game mygame123 reset by client
+2026-03-16 15:36:24  INFO      fastapi  Player X won game mygame123
+2026-03-16 15:36:27  INFO      fastapi  Game mygame123 reset by client
+2026-03-16 15:36:34  INFO      fastapi  Game mygame123 reset by client
+2026-03-16 15:36:53  INFO      fastapi  Player O won game mygame123
+2026-03-16 15:36:56  INFO      fastapi  Game mygame123 reset by client
+2026-03-16 15:37:10  INFO      fastapi  Player O won game mygame123
+2026-03-16 15:37:17  INFO      fastapi  Game mygame123 reset by client
+2026-03-16 15:37:22  INFO      fastapi  Player O won game mygame123
+2026-03-16 15:37:23  INFO      fastapi  Player O won game mygame123
+2026-03-16 15:37:23  INFO      fastapi  Player O won game mygame123
+2026-03-16 15:37:24  INFO      fastapi  Player O won game mygame123
+2026-03-16 15:37:32  INFO      fastapi  Game mygame123 reset by client
+2026-03-16 15:37:37  INFO      fastapi  Player X won game mygame123
+2026-03-16 15:38:22  INFO      fastapi  Game mygame123 reset by client
+2026-03-16 15:38:25  INFO      fastapi  Player X won game mygame123
+2026-03-16 15:38:26  INFO      fastapi  Player X won game mygame123
+2026-03-16 15:38:26  INFO      fastapi  Player X won game mygame123
+2026-03-16 15:38:31  INFO      fastapi  Game mygame123 reset by client
+2026-03-16 15:38:35  INFO      fastapi  Player O won game mygame123
+2026-03-16 15:38:35  INFO      fastapi  Player O won game mygame123
+2026-03-16 15:38:50  INFO      fastapi  Game mygame123 reset by client
+2026-03-16 15:38:53  INFO      fastapi  Player X won game mygame123
+2026-03-16 15:38:53  INFO      fastapi  Player X won game mygame123
+2026-03-16 15:38:54  INFO      fastapi  Player X won game mygame123
+2026-03-16 15:39:07  INFO      fastapi  Game mygame123 reset by client
+2026-03-16 15:39:10  INFO      fastapi  Player X won game mygame123
+2026-03-16 15:39:12  INFO      fastapi  Player X won game mygame123
+2026-03-16 15:39:12  INFO      fastapi  Player X won game mygame123
+2026-03-16 15:39:12  INFO      fastapi  Player X won game mygame123
+2026-03-16 15:39:19  INFO      fastapi  Player X won game mygame123
+2026-03-16 15:40:07  INFO      fastapi  Client disconnected from game mygame123
+2026-03-16 15:40:07  INFO      fastapi  Client disconnected from game mygame123
+2026-03-16 15:41:42  INFO      fastapi  Player X won game mygame123
+2026-03-16 15:41:58  INFO      fastapi  Game mygame123 reset by client
+2026-03-16 15:42:05  INFO      fastapi  Player O won game mygame123
+2026-03-16 15:42:28  INFO      fastapi  Game mygame123 reset by client
+2026-03-16 15:42:39  INFO      fastapi  Client disconnected from game mygame123
+2026-03-16 15:42:54  INFO      fastapi  Player O won game mygame123
+2026-03-16 15:42:59  INFO      fastapi  Game mygame123 reset by client
+2026-03-16 15:43:10  INFO      fastapi  Player X won game mygame123
+2026-03-16 15:43:16  INFO      fastapi  Game mygame123 reset by client
+2026-03-16 15:43:27  INFO      fastapi  Game mygame123 reset by client
+2026-03-16 15:43:30  INFO      fastapi  Game mygame123 reset by client
+2026-03-16 15:43:47  INFO      fastapi  Player X won game mygame123
+2026-03-16 15:43:49  INFO      fastapi  Game mygame123 reset by client
+2026-03-16 15:43:55  INFO      fastapi  Player X won game mygame123
+2026-03-16 15:44:01  INFO      fastapi  Game mygame123 reset by client
+2026-03-16 15:44:05  INFO      fastapi  Player X won game mygame123
+2026-03-16 15:45:40  INFO      fastapi  Client disconnected from game mygame123
+2026-03-16 15:45:43  INFO      fastapi  Game mygame123 reset by client
+2026-03-16 16:07:59  INFO      fastapi  Client disconnected from game mygame123
+2026-03-16 16:07:59  INFO      fastapi  Client disconnected from game mygame123

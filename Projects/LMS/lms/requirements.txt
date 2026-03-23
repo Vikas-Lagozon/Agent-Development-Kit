@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+# Require SQLAlchemy 2.0+ for modern async support (AsyncAttrs)
+SQLAlchemy[asyncio]>=2.0.0
+python-dotenv
+passlib[bcrypt]
+python-jose[cryptography]
+alembic
+# Use an async database driver like asyncpg for PostgreSQL
+asyncpg
+
+pydantic-settings

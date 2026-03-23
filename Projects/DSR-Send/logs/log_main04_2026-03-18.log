@@ -1,0 +1,21 @@
+2026-03-18 15:57:34,092 [INFO] Starting WhatsApp automation...
+2026-03-18 15:57:34,092 [INFO] ====== WebDriver manager ======
+2026-03-18 15:57:34,857 [INFO] Get LATEST chromedriver version for google-chrome
+2026-03-18 15:57:35,072 [INFO] Get LATEST chromedriver version for google-chrome
+2026-03-18 15:57:35,264 [INFO] Driver [C:\Users\DELL\.wdm\drivers\chromedriver\win64\146.0.7680.80\chromedriver-win32/chromedriver.exe] found in cache
+2026-03-18 15:57:37,421 [INFO] Waiting up to 60s for WhatsApp Web...
+2026-03-18 15:57:45,795 [INFO] WhatsApp Web loaded successfully.
+2026-03-18 15:57:45,795 [INFO] Searching for 'Yash Bansal'...
+2026-03-18 15:57:50,720 [INFO] Checking: Yash Bansal Lgzn \u2192 Score: 100.0
+2026-03-18 15:57:50,728 [INFO] Checking: Lagozon Gen AI team \u2192 Score: 33.333333333333336
+2026-03-18 15:57:50,734 [INFO] Checking: Yash Bansal Lgzn is also in this group \u2192 Score: 100.0
+2026-03-18 15:57:50,739 [INFO] Checking: Lagozon Gen AI DSR \u2192 Score: 35.29411764705882
+2026-03-18 15:57:50,745 [INFO] Checking: Yash Bansal Lgzn is also in this group \u2192 Score: 100.0
+2026-03-18 15:57:50,751 [INFO] Checking: +91 731 092 8266 \u2192 Score: 13.33333333333333
+2026-03-18 15:57:50,755 [INFO] Checking: Yash Bansal Lgzn \u2192 Score: 100.0
+2026-03-18 15:57:50,761 [INFO] Best match: Yash Bansal Lgzn (100.0%)
+2026-03-18 15:57:50,998 [INFO] Chat opened: Yash Bansal Lgzn
+2026-03-18 15:57:50,998 [INFO] Typing message...
+2026-03-18 15:57:53,320 [INFO] Message sent successfully!
+2026-03-18 15:57:56,323 [INFO] Process completed successfully.
+2026-03-18 15:57:58,465 [INFO] Browser closed.

@@ -1,0 +1,2178 @@
+# # -*- coding: utf-8 -*-
+# """
+# VAHAN Dashboard Scraper v5
+# ===========================
+# KEY FIX over v4: When scanning for breakdown tables after a month click,
+# we now ONLY look inside the panel that was freshly updated by that click.
+# The "Till Today" tables that remain persistently on the page are ignored.
+
+# After clicking a month tab, PrimeFaces updates a specific panel whose
+# heading contains the month abbreviation (e.g. "Total Registration Data ...
+# JAN 2025 ..."). We wait for that heading to appear, then extract ONLY from
+# the tables inside that specific container — ignoring global/persistent tables.
+
+# USAGE:
+#     python vahan_scraper_v5.py --states DL --headed        # Delhi visible
+#     python vahan_scraper_v5.py --states UP AP MH DL        # multi-state
+#     python vahan_scraper_v5.py                              # ALL states
+#     python vahan_scraper_v5.py --reset --states DL         # clear & redo DL
+# """
+
+# import time, json, sys, argparse, logging, re
+# from datetime import datetime
+# from pathlib import Path
+
+# import pandas as pd
+# from selenium import webdriver
+# from selenium.webdriver.common.by import By
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions as EC
+# from selenium.webdriver.chrome.options import Options as ChromeOptions
+# from selenium.webdriver.firefox.options import Options as FirefoxOptions
+# from selenium.common.exceptions import (
+#     TimeoutException, NoSuchElementException, StaleElementReferenceException
+# )
+
+# # ── Config ───────────────────────────────────────────────────────────────────
+# BASE_URL   = "https://vahan.parivahan.gov.in/vahan4dashboard/"
+# OUT_DIR    = Path("vahan_data")
+
+# START_YEAR, START_MONTH = 2025, 1
+# NOW = datetime.now()
+# END_YEAR, END_MONTH = NOW.year, NOW.month
+
+# WAIT_PAGE   = 18
+# WAIT_STATE  = 8
+# WAIT_RTO    = 14
+# WAIT_YEAR   = 12
+# WAIT_MONTH  = 12   # time for the month breakdown panel to fully render
+# RETRIES     = 3
+
+# MONTH_ABBRS = ["JAN","FEB","MAR","APR","MAY","JUN",
+#                "JUL","AUG","SEP","OCT","NOV","DEC"]
+
+# SECTION_KEYWORDS = {
+#     "vehicle_class":    "vehicle class",
+#     "vehicle_category": "vehicle category",
+#     "fuel":             "fuel",
+#     "norms":            "norms",
+#     "maker":            "maker",
+# }
+
+# # ── Logging ──────────────────────────────────────────────────────────────────
+# OUT_DIR.mkdir(exist_ok=True)
+
+# class AsciiFilter(logging.Filter):
+#     def filter(self, record):
+#         record.msg = str(record.msg).encode("ascii","replace").decode("ascii")
+#         return True
+
+# handlers = [
+#     logging.FileHandler(OUT_DIR/"vahan_scraper.log", encoding="utf-8"),
+#     logging.StreamHandler(sys.stdout),
+# ]
+# for h in handlers:
+#     h.addFilter(AsciiFilter())
+# logging.basicConfig(level=logging.INFO,
+#     format="%(asctime)s [%(levelname)s] %(message)s", handlers=handlers)
+# log = logging.getLogger(__name__)
+
+# PROGRESS_FILE = OUT_DIR / "vahan_progress.json"
+# RAW_FILE      = OUT_DIR / "vahan_raw.json"
+
+# def load_json(p, default):
+#     return json.loads(p.read_text(encoding="utf-8")) if p.exists() else default
+
+# def save_json(p, obj):
+#     p.write_text(json.dumps(obj, indent=2, ensure_ascii=False), encoding="utf-8")
+
+# def append_raw(rec):
+#     d = load_json(RAW_FILE, [])
+#     d.append(rec)
+#     save_json(RAW_FILE, d)
+
+# # ── Browser ──────────────────────────────────────────────────────────────────
+# def get_driver(browser="chrome", headed=False):
+#     if browser == "chrome":
+#         opts = ChromeOptions()
+#         if not headed:
+#             opts.add_argument("--headless=new")
+#         for a in ["--no-sandbox","--disable-dev-shm-usage","--disable-gpu",
+#                   "--window-size=1920,1200","--disable-blink-features=AutomationControlled"]:
+#             opts.add_argument(a)
+#         opts.add_experimental_option("excludeSwitches", ["enable-automation"])
+#         opts.add_experimental_option("useAutomationExtension", False)
+#         opts.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+#             "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36")
+#         d = webdriver.Chrome(options=opts)
+#     else:
+#         opts = FirefoxOptions()
+#         if not headed: opts.add_argument("--headless")
+#         d = webdriver.Firefox(options=opts)
+#     d.set_page_load_timeout(60)
+#     return d
+
+# # ── JS helpers ───────────────────────────────────────────────────────────────
+# def js(d, s, *a):
+#     try: return d.execute_script(s, *a)
+#     except Exception as e: log.debug(f"js: {e}"); return None
+
+# def wait_jquery(d, timeout=20):
+#     try:
+#         WebDriverWait(d, timeout).until(
+#             lambda x: x.execute_script(
+#                 "return typeof jQuery!=='undefined' && jQuery.active===0;"))
+#     except Exception: pass
+
+# # ── Dynamic ID discovery ─────────────────────────────────────────────────────
+# # JSF regenerates element IDs (j_idt30, j_idt43, j_idt48) on every app
+# # restart. We discover them at runtime by inspecting option values/counts.
+
+# _ID_CACHE: dict = {}  # cached once per session
+
+# def _discover_ids(d):
+#     """
+#     Scan all <select> and <button> elements to identify:
+#       - type_id:   select whose options include 'Y' (yearwise) and 'M' (monthly)
+#       - state_id:  select with 30+ options (state list)
+#       - rto_id:    select named 'selectedRto' or with id containing 'Rto'
+#       - refresh_id: button/input that triggers data refresh
+#     Falls back to known IDs if discovery fails.
+#     """
+#     if _ID_CACHE:
+#         return _ID_CACHE
+
+#     result = js(d, """
+#         var selects = document.querySelectorAll('select');
+#         var found = {type_id:null, state_id:null, rto_id:null, refresh_id:null};
+#         for (var i=0; i<selects.length; i++) {
+#             var s = selects[i];
+#             var id = s.id || '';
+#             var name = (s.name || '').toLowerCase();
+#             var opts = s.options;
+#             var vals = [];
+#             for (var j=0; j<opts.length; j++) vals.push(opts[j].value);
+
+#             // RTO select: id/name contains 'rto' (case-insensitive)
+#             if (id.toLowerCase().indexOf('rto') !== -1 || name.indexOf('rto') !== -1) {
+#                 found.rto_id = id; continue;
+#             }
+#             // Type select: has options Y, M, or A (small option set)
+#             if (vals.indexOf('Y') !== -1 || vals.indexOf('A') !== -1) {
+#                 if (opts.length < 10) { found.type_id = id; continue; }
+#             }
+#             // State select: 30-40 options with short 2-letter values
+#             if (opts.length >= 25 && opts.length <= 45) {
+#                 var short = vals.filter(function(v){ return v && v.length<=3 && v!=='-1'; });
+#                 if (short.length >= 20) { found.state_id = id; continue; }
+#             }
+#         }
+#         // Refresh button: find button nearest to the RTO/state selects
+#         // It's typically a button right after the dropdowns in the form
+#         var allBtns = document.querySelectorAll('button,input[type=submit],input[type=button]');
+#         var candidates = [];
+#         for (var k=0; k<allBtns.length; k++) {
+#             var bid = allBtns[k].id || '';
+#             var btext = (allBtns[k].innerText || allBtns[k].value || '').trim().toLowerCase();
+#             var bcls = (allBtns[k].className || '').toLowerCase();
+#             if (!bid) continue;
+#             // Skip obvious non-refresh buttons
+#             if (btext.indexOf('cancel') !== -1 || btext.indexOf('close') !== -1 ||
+#                 btext.indexOf('reset') !== -1 || bcls.indexOf('ui-datepicker') !== -1) continue;
+#             // Good candidates: small/icon buttons with idt in id, or explicit refresh/search
+#             if (bid.indexOf('idt') !== -1) {
+#                 candidates.push({id: bid, text: btext, len: btext.length});
+#             }
+#         }
+#         // Prefer buttons with refresh/search text, then shortest text (icon buttons)
+#         candidates.sort(function(a,b) {
+#             var aGood = a.text.indexOf('refresh')!==-1 || a.text.indexOf('search')!==-1 ? 0 : 1;
+#             var bGood = b.text.indexOf('refresh')!==-1 || b.text.indexOf('search')!==-1 ? 0 : 1;
+#             if (aGood !== bGood) return aGood - bGood;
+#             return a.len - b.len;
+#         });
+#         if (candidates.length > 0) found.refresh_id = candidates[0].id;
+#         return found;
+#     """)
+
+#     # Fallbacks to known IDs
+#     ids = {
+#         'type_id':    (result or {}).get('type_id')    or 'j_idt30_input',
+#         'state_id':   (result or {}).get('state_id')   or 'j_idt43_input',
+#         'rto_id':     (result or {}).get('rto_id')     or 'selectedRto_input',
+#         'refresh_id': (result or {}).get('refresh_id') or 'j_idt48',
+#     }
+#     log.info(f"  Element IDs: {ids}")
+#     _ID_CACHE.update(ids)
+#     return _ID_CACHE
+
+# def _get_id(d, key):
+#     return _discover_ids(d)[key]
+
+# def pf_set(d, eid, val, wait=4):
+#     # If eid is a logical key, resolve it; otherwise use directly
+#     resolved = _ID_CACHE.get(eid, eid)
+#     r = js(d, """
+#         var s=document.getElementById(arguments[0]);
+#         if(!s) return 'NOT_FOUND';
+#         s.value=arguments[1];
+#         s.dispatchEvent(new Event('change',{bubbles:true}));
+#         return s.value;
+#     """, resolved, val)
+#     time.sleep(wait); wait_jquery(d); return r
+
+# def get_opts(d, eid):
+#     resolved = _ID_CACHE.get(eid, eid)
+#     return js(d, """
+#         var s=document.getElementById(arguments[0]);
+#         if(!s) return [];
+#         var r=[];
+#         for(var i=0;i<s.options.length;i++){
+#             var v=s.options[i].value,t=s.options[i].text.trim();
+#             if(v&&v!=='-1') r.push([v,t]);
+#         }
+#         return r;
+#     """, resolved) or []
+
+# def click_refresh(d, wait=WAIT_RTO):
+#     """
+#     Click the refresh/search button. Tries multiple strategies:
+#     1. Known/discovered ID via WebDriverWait
+#     2. JS click on discovered ID
+#     3. Scan ALL buttons and click the one that triggers data reload
+#     """
+#     rid = _get_id(d, 'refresh_id')
+
+#     # Strategy 1: Selenium click on discovered ID
+#     try:
+#         b = WebDriverWait(d, 8).until(EC.element_to_be_clickable((By.ID, rid)))
+#         js(d, "arguments[0].click();", b)
+#         time.sleep(wait); wait_jquery(d)
+#         return
+#     except Exception as e:
+#         log.debug(f"  Refresh strategy 1 failed (id={rid}): {e}")
+
+#     # Strategy 2: JS click on discovered ID (bypasses interactability check)
+#     try:
+#         result = js(d, """
+#             var b = document.getElementById(arguments[0]);
+#             if (b) { b.click(); return 'ok'; }
+#             return 'not_found';
+#         """, rid)
+#         if result == 'ok':
+#             time.sleep(wait); wait_jquery(d)
+#             return
+#     except Exception as e:
+#         log.debug(f"  Refresh strategy 2 failed: {e}")
+
+#     # Strategy 3: Find any button/input that looks like a refresh/search trigger
+#     # by clicking all visible buttons with idt in their id and checking which one
+#     # causes the year links panel to update
+#     log.info("  Refresh: trying button scan strategy...")
+#     clicked = js(d, """
+#         var btns = document.querySelectorAll('button, input[type=submit], input[type=button], a.ui-button');
+#         for (var i=0; i<btns.length; i++) {
+#             var bid = btns[i].id || '';
+#             var bcls = btns[i].className || '';
+#             var btxt = (btns[i].innerText || btns[i].value || '').trim().toLowerCase();
+#             // Skip dropdowns, cancel, close buttons
+#             if (btxt.indexOf('cancel') !== -1 || btxt.indexOf('close') !== -1) continue;
+#             // Click buttons with idt in id that have no text (icon buttons) or say refresh/search/show
+#             if (bid && bid.indexOf('idt') !== -1) {
+#                 if (btxt === '' || btxt.indexOf('refresh') !== -1 || 
+#                     btxt.indexOf('search') !== -1 || btxt.indexOf('show') !== -1 ||
+#                     btxt.indexOf('go') !== -1 || btxt.length < 4) {
+#                     btns[i].click();
+#                     return 'clicked:' + bid + ':' + btxt;
+#                 }
+#             }
+#         }
+#         return null;
+#     """)
+#     if clicked:
+#         log.info(f"  Refresh strategy 3: {clicked}")
+#         # Update the cache with the real button ID
+#         real_id = clicked.split(':')[1] if ':' in clicked else rid
+#         _ID_CACHE['refresh_id'] = real_id
+#         time.sleep(wait); wait_jquery(d)
+#         return
+
+#     log.warning(f"  All refresh strategies failed — page may show stale data")
+
+# # ── Text helpers ──────────────────────────────────────────────────────────────
+# def stext(el):
+#     try: return el.text.strip()
+#     except StaleElementReferenceException: return ""
+
+# def parse_int(s):
+#     try: return int(str(s).replace(",","").replace(" ","").strip())
+#     except (ValueError, AttributeError): return None
+
+# # ── TARGETED panel discovery ──────────────────────────────────────────────────
+# #
+# # After clicking a month tab, PrimeFaces AJAX updates a panel.
+# # The updated panel has a header/title containing the month name.
+# # We find that specific panel, then extract ONLY from tables inside it.
+# #
+# # The panel title typically looks like:
+# #   "Total Registration Data of DWARKA - DL9, Delhi (2025 Jan)"
+# #   or "Registration Data JAN 2025" etc.
+# #
+# # We identify it by looking for an element whose text contains the month abbr.
+# # ─────────────────────────────────────────────────────────────────────────────
+
+# def find_active_detail_panel(driver, month_abbr: str, year: int):
+#     """
+#     Find the DOM container that was updated after clicking the month tab.
+#     Returns the element, or None.
+#     Priority:
+#     1. Element with text containing month_abbr + year (most specific)
+#     2. The infoMsg / panelHeader panels if they contain the month
+#     3. Any panel/div whose text starts with month_abbr
+#     """
+#     abbr_u = month_abbr.upper()
+#     yr_str  = str(year)
+
+#     # Try known panel IDs first
+#     for panel_id in ["infoMsg", "panelHeader", "yearWiseRegnDataTable",
+#                      "mainpagepnl", "dashboardContentsPanel"]:
+#         try:
+#             el = driver.find_element(By.ID, panel_id)
+#             txt = (el.get_attribute("innerText") or "").upper()
+#             if abbr_u in txt and yr_str in txt:
+#                 log.info(f"        Active panel found: #{panel_id}")
+#                 return el
+#         except NoSuchElementException:
+#             continue
+
+#     # Generic: walk from pnl_regn_content siblings/parent
+#     try:
+#         base = driver.find_element(By.ID, "pnl_regn_content")
+#         parent = base.find_element(By.XPATH, "..")
+#         siblings = parent.find_elements(By.XPATH, "./*")
+#         for sib in siblings:
+#             txt = (sib.get_attribute("innerText") or "").upper()
+#             if abbr_u in txt and yr_str in txt and len(sib.find_elements(By.TAG_NAME,"table")) > 0:
+#                 log.info(f"        Active panel found: sibling of pnl_regn_content")
+#                 return sib
+#     except Exception:
+#         pass
+
+#     # Broader: any div/section whose innerText contains month+year and has tables
+#     panels = driver.find_elements(By.XPATH,
+#         "//div[contains(@class,'ui-panel') or contains(@class,'ui-widget')]")
+#     for p in panels:
+#         try:
+#             txt = (p.get_attribute("innerText") or "").upper()
+#             if abbr_u in txt and yr_str in txt:
+#                 tables = p.find_elements(By.TAG_NAME,"table")
+#                 if tables:
+#                     log.info(f"        Active panel found: ui-panel/widget with {len(tables)} tables")
+#                     return p
+#         except Exception:
+#             continue
+
+#     log.warning(f"        No panel found containing '{abbr_u}' + '{yr_str}' — will scan full page")
+#     return None
+
+# def table_header_text(tbl, driver=None) -> str:
+#     """Get the header text of a table. Uses JS innerText for accuracy."""
+#     try:
+#         # Use JS to get just the first row's text cleanly
+#         if driver:
+#             hdr = driver.execute_script("""
+#                 var tbl = arguments[0];
+#                 var rows = tbl.rows;
+#                 if (!rows || rows.length === 0) return '';
+#                 // Check thead first
+#                 var thead = tbl.querySelector('thead');
+#                 if (thead) {
+#                     return (thead.innerText || '').trim().toLowerCase();
+#                 }
+#                 // Fallback: first row
+#                 return (rows[0].innerText || '').trim().toLowerCase();
+#             """, tbl)
+#             return hdr or ""
+#         ths = tbl.find_elements(By.CSS_SELECTOR,"thead th,thead td")
+#         if ths: return " ".join(stext(t) for t in ths).lower()
+#         trs = tbl.find_elements(By.TAG_NAME,"tr")
+#         if trs:
+#             cells = trs[0].find_elements(By.TAG_NAME,"td") + \
+#                     trs[0].find_elements(By.TAG_NAME,"th")
+#             return " ".join(stext(c) for c in cells).lower()
+#     except Exception: pass
+#     return ""
+
+# def _classify_table(tbl, driver) -> str:
+#     """
+#     Return the section key for a table by checking:
+#     1. Table header row (most specific - e.g. "Vehicle Class(2026)")
+#     2. Nearest preceding heading/caption element
+#     3. Immediate parent's own text (excluding child table text)
+#     Returns one of: vehicle_class, vehicle_category, fuel, norms, maker, or ''
+#     """
+#     # SECTION_KEYWORDS ordered so longer/more specific come first
+#     # "vehicle class" must be checked BEFORE "vehicle" to avoid false matches
+#     ordered = [
+#         ("vehicle_class",    "vehicle class"),
+#         ("vehicle_category", "vehicle category"),
+#         ("fuel",             "fuel"),
+#         ("norms",            "norms"),
+#         ("maker",            "maker"),
+#     ]
+
+#     # 1. Check table header via JS (most reliable)
+#     hdr = table_header_text(tbl, driver)
+#     for key, kw in ordered:
+#         if kw in hdr:
+#             return key
+
+#     # 2. Check nearest preceding sibling heading or caption
+#     try:
+#         label = driver.execute_script("""
+#             var tbl = arguments[0];
+#             // Check caption inside table
+#             var cap = tbl.querySelector('caption');
+#             if (cap) return (cap.innerText||'').toLowerCase();
+#             // Walk up and look for preceding text node / heading
+#             var el = tbl;
+#             for (var i=0; i<5; i++) {
+#                 el = el.parentElement;
+#                 if (!el) break;
+#                 // Look for heading elements before this table
+#                 var kids = el.children;
+#                 for (var j=0; j<kids.length; j++) {
+#                     var tag = kids[j].tagName.toLowerCase();
+#                     if (kids[j].contains(tbl)) break;
+#                     if (['h1','h2','h3','h4','h5','h6','span','div','p','th','td'].includes(tag)) {
+#                         var txt = (kids[j].innerText||'').trim().toLowerCase();
+#                         if (txt && txt.length < 60) return txt;
+#                     }
+#                 }
+#                 // Check parent's own direct text (not children)
+#                 var directTxt = '';
+#                 for (var n=0; n<el.childNodes.length; n++) {
+#                     if (el.childNodes[n].nodeType === 3) {
+#                         directTxt += el.childNodes[n].textContent;
+#                     }
+#                 }
+#                 directTxt = directTxt.trim().toLowerCase();
+#                 if (directTxt && directTxt.length < 60) return directTxt;
+#             }
+#             return '';
+#         """, tbl)
+#         if label:
+#             for key, kw in ordered:
+#                 if kw in label:
+#                     return key
+#     except Exception:
+#         pass
+
+#     return ""
+
+# def extract_table_rows(tbl) -> list[tuple[str,int]]:
+#     rows = []
+#     try:
+#         trs = tbl.find_elements(By.TAG_NAME,"tr")
+#         start = 1 if len(trs) > 1 else 0
+#         for tr in trs[start:]:
+#             tds = tr.find_elements(By.TAG_NAME,"td")
+#             if len(tds) < 2: continue
+#             name = stext(tds[0]).strip()
+#             if not name: continue
+#             # Skip pure sub-header rows (exact keyword match, not partial)
+#             name_lower = name.lower()
+#             if name_lower in ["vehicle class","vehicle category","fuel type",
+#                                "norms","maker brand","total","maker/brand"]:
+#                 continue
+#             # Keep hierarchical sub-items (those starting with "-")
+#             # They are valid data rows
+#             count = None
+#             for td in reversed(tds):
+#                 v = parse_int(stext(td))
+#                 if v is not None: count = v; break
+#             if name and count is not None and count >= 0:
+#                 rows.append((name, count))
+#     except Exception as e: log.debug(f"extract_rows: {e}")
+#     return rows
+
+# def find_breakdown_in_scope(scope_el, driver=None) -> dict[str,list]:
+#     """Extract all 5 breakdown tables from a given container element."""
+#     result = {k:[] for k in SECTION_KEYWORDS}
+#     tables = scope_el.find_elements(By.TAG_NAME,"table")
+
+#     for tbl in tables:
+#         key = _classify_table(tbl, driver) if driver else ""
+#         if not key:
+#             # Fallback: old method using combined header + parent text
+#             hdr = table_header_text(tbl)
+#             try:
+#                 parent_txt = (tbl.find_element(By.XPATH,"..").get_attribute("innerText") or "")[:200].lower()
+#             except Exception:
+#                 parent_txt = ""
+#             combined = hdr + " " + parent_txt
+#             for k, kw in SECTION_KEYWORDS.items():
+#                 if kw in combined:
+#                     key = k; break
+
+#         if key:
+#             rows = extract_table_rows(tbl)
+#             if len(rows) > len(result[key]):
+#                 result[key] = rows
+
+#     # Heading-based fallback for any still-missing sections
+#     for key, kw in SECTION_KEYWORDS.items():
+#         if result[key]: continue
+#         try:
+#             headings = scope_el.find_elements(By.XPATH,
+#                 f".//*[contains(translate(normalize-space(text()),'abcdefghijklmnopqrstuvwxyz',"
+#                 f"'ABCDEFGHIJKLMNOPQRSTUVWXYZ'),'{kw.upper()}')]")
+#             for h in headings:
+#                 parent = h
+#                 for _ in range(6):
+#                     try:
+#                         parent = parent.find_element(By.XPATH,"..")
+#                         tbls = parent.find_elements(By.TAG_NAME,"table")
+#                         if tbls:
+#                             rows = extract_table_rows(tbls[0])
+#                             if len(rows) > len(result[key]):
+#                                 result[key] = rows
+#                             break
+#                     except Exception: break
+#         except Exception: pass
+
+#     return result
+
+# def extract_all_breakdowns(driver, month_abbr: str, year: int) -> dict[str,list]:
+#     """
+#     Find the active monthly panel and extract breakdowns ONLY from it.
+#     Falls back to full-page scan only if no specific panel found.
+#     """
+#     panel = find_active_detail_panel(driver, month_abbr, year)
+
+#     if panel:
+#         result = find_breakdown_in_scope(panel, driver)
+#         for k, rows in result.items():
+#             log.info(f"        {k}: {len(rows)} rows")
+#         return result
+
+#     # FALLBACK: full page scan — but skip the pnl_regn_content "Till Today" tables
+#     # by excluding containers that contain "till today" in their text
+#     log.info("        [fallback] scanning full page, excluding Till Today panel...")
+#     result = {k:[] for k in SECTION_KEYWORDS}
+#     tables = driver.find_elements(By.TAG_NAME,"table")
+#     for tbl in tables:
+#         try:
+#             # Skip if this table is inside the "Till Today" persistent section
+#             ancestor_text = js(driver, """
+#                 var el = arguments[0];
+#                 for (var i=0; i<10; i++) {
+#                     el = el.parentElement;
+#                     if (!el) break;
+#                     if ((el.innerText||'').toLowerCase().indexOf('till today') !== -1 &&
+#                         (el.innerText||'').toLowerCase().indexOf('""" + month_abbr.lower() + """') === -1) {
+#                         return 'skip';
+#                     }
+#                 }
+#                 return 'ok';
+#             """, tbl)
+#             if ancestor_text == "skip":
+#                 continue
+
+#             hdr = table_header_text(tbl)
+#             for key, kw in SECTION_KEYWORDS.items():
+#                 if kw in hdr:
+#                     rows = extract_table_rows(tbl)
+#                     if len(rows) > len(result[key]):
+#                         result[key] = rows
+#                     break
+#         except StaleElementReferenceException:
+#             continue
+#         except Exception:
+#             continue
+
+#     for k, rows in result.items():
+#         log.info(f"        {k}: {len(rows)} rows")
+#     return result
+
+# # ── Year / Month navigation ────────────────────────────────────────────────────
+# def get_year_links(driver):
+#     try:
+#         panel = driver.find_element(By.ID,"pnl_regn_content")
+#         return [stext(l) for l in panel.find_elements(By.CSS_SELECTOR,"a.ui-commandlink") if stext(l)]
+#     except Exception: return []
+
+# def click_year(driver, year: int) -> bool:
+#     target = str(year)
+#     try:
+#         panel = driver.find_element(By.ID,"pnl_regn_content")
+#         for lnk in panel.find_elements(By.CSS_SELECTOR,"a.ui-commandlink"):
+#             t = stext(lnk)
+#             if target in t and "Till" not in t:
+#                 js(driver,"arguments[0].click();",lnk)
+#                 time.sleep(WAIT_YEAR); wait_jquery(driver); return True
+#     except Exception: pass
+
+#     found = js(driver,"""
+#         var links=document.querySelectorAll('#pnl_regn_content a.ui-commandlink,a.ui-commandlink');
+#         for(var i=0;i<links.length;i++){
+#             var t=(links[i].innerText||'').trim();
+#             if(t.indexOf(arguments[0])!==-1 && t.indexOf('Till')===-1 && t.length<10){
+#                 links[i].click(); return 'ok:'+t;
+#             }
+#         }
+#         return null;
+#     """, target)
+#     if found:
+#         time.sleep(WAIT_YEAR); wait_jquery(driver); return True
+#     return False
+
+# def wait_for_month_tabs(driver, timeout=15) -> bool:
+#     """
+#     Wait up to `timeout` seconds for month tab elements to appear on the page.
+#     Returns True if found, False if timed out.
+#     """
+#     deadline = time.time() + timeout
+#     while time.time() < deadline:
+#         tabs = _scan_month_tabs(driver)
+#         if tabs:
+#             return True
+#         time.sleep(1)
+#     return False
+
+# def _scan_month_tabs(driver) -> list[tuple[str, object]]:
+#     """
+#     Find month tab <a> elements on the VAHAN dashboard.
+
+#     Diagnostic confirmed: after year click, month tabs are rendered as
+#       <a id="j_idt6XX" class="ui-commandlink ui-widget font-color">JAN</a>
+#     inside the 'panelHeader' / 'infoMsg' panel.
+
+#     Key issue: Selenium's el.text includes child text and may return
+#     "JAN\n4,227.00" instead of "JAN". We use JS innerText (trimmed first
+#     line only) to match exactly.
+#     """
+#     # Strategy 1: JS scan of all <a class="ui-commandlink"> — uses innerText
+#     # first line only so nested numbers don't pollute the match.
+#     results = js(driver, """
+#         var abbrs = {'JAN':1,'FEB':1,'MAR':1,'APR':1,'MAY':1,'JUN':1,
+#                      'JUL':1,'AUG':1,'SEP':1,'OCT':1,'NOV':1,'DEC':1};
+#         var els = document.querySelectorAll('a.ui-commandlink');
+#         var found = [];
+#         for (var i=0; i<els.length; i++) {
+#             var raw = (els[i].innerText || '').trim();
+#             var first = raw.split(/[\\n\\r\\t,]/)[0].trim();
+#             if (abbrs[first]) found.push([first, els[i].id]);
+#         }
+#         return found;
+#     """)
+
+#     if results:
+#         pairs = []
+#         for (abbr, eid) in results:
+#             try:
+#                 el = driver.find_element(By.ID, eid)
+#                 pairs.append((abbr, el))
+#             except Exception:
+#                 pass
+#         if pairs:
+#             return pairs
+
+#     # Strategy 2: All <a> tags via JS innerText (catches any class variant)
+#     results2 = js(driver, """
+#         var abbrs = {'JAN':1,'FEB':1,'MAR':1,'APR':1,'MAY':1,'JUN':1,
+#                      'JUL':1,'AUG':1,'SEP':1,'OCT':1,'NOV':1,'DEC':1};
+#         var els = document.getElementsByTagName('a');
+#         var found = [];
+#         for (var i=0; i<els.length; i++) {
+#             var raw = (els[i].innerText || '').trim();
+#             var first = raw.split(/[\\n\\r\\t,]/)[0].trim();
+#             if (abbrs[first]) found.push([first, els[i].id]);
+#         }
+#         return found;
+#     """)
+
+#     if results2:
+#         pairs = []
+#         for (abbr, eid) in results2:
+#             try:
+#                 el = driver.find_element(By.ID, eid) if eid else None
+#                 if el:
+#                     pairs.append((abbr, el))
+#             except Exception:
+#                 pass
+#         if pairs:
+#             return pairs
+
+#     # Strategy 3: Selenium fallback — search known panels for any clickable element
+#     ALL_TAGS = ("self::td or self::th or self::a or self::span or "
+#                 "self::li or self::div or self::button or self::p")
+#     for sid in ["panelHeader", "infoMsg", "yearWiseRegnDataTable", "mainpagepnl"]:
+#         try:
+#             scope = driver.find_element(By.ID, sid)
+#             hits = []
+#             for el in scope.find_elements(By.XPATH, f".//*[{ALL_TAGS}]"):
+#                 try:
+#                     # Use JS innerText to avoid child-text pollution
+#                     raw = driver.execute_script(
+#                         "return (arguments[0].innerText||'').trim().split(/[\\n\\r\\t,]/)[0].trim();", el)
+#                     if raw in MONTH_ABBRS:
+#                         hits.append((raw, el))
+#                 except Exception:
+#                     pass
+#             if hits:
+#                 return hits
+#         except NoSuchElementException:
+#             continue
+
+#     return []
+
+# def get_month_tabs(driver):
+#     """Find month tab elements after year click, with wait."""
+#     # First try immediately
+#     tabs = _scan_month_tabs(driver)
+#     if tabs:
+#         return tabs
+#     # Give it a bit more time and retry
+#     time.sleep(3)
+#     wait_jquery(driver)
+#     return _scan_month_tabs(driver)
+
+# def click_month_tab(driver, month_abbr: str) -> bool:
+#     tabs = get_month_tabs(driver)
+#     for (m, el) in tabs:
+#         if m == month_abbr:
+#             try:
+#                 js(driver,"arguments[0].click();",el)
+#                 time.sleep(WAIT_MONTH); wait_jquery(driver); return True
+#             except StaleElementReferenceException: pass
+
+#     # Pure JS click — uses innerText first-line to avoid child-text pollution
+#     found = js(driver,"""
+#         var abbr=arguments[0];
+#         var abbrs={'JAN':1,'FEB':1,'MAR':1,'APR':1,'MAY':1,'JUN':1,
+#                    'JUL':1,'AUG':1,'SEP':1,'OCT':1,'NOV':1,'DEC':1};
+#         var tags=['a','td','th','span','li','div','button','p','label'];
+#         for(var t=0;t<tags.length;t++){
+#             var els=document.getElementsByTagName(tags[t]);
+#             for(var i=0;i<els.length;i++){
+#                 var raw=(els[i].innerText||els[i].value||'').trim();
+#                 var first=raw.split(/[\\n\\r\\t,]/)[0].trim();
+#                 if(first===abbr){
+#                     els[i].click(); return 'ok:'+tags[t]+':'+i;
+#                 }
+#             }
+#         }
+#         return null;
+#     """, month_abbr)
+#     if found:
+#         log.info(f"        JS click: {found}")
+#         time.sleep(WAIT_MONTH); wait_jquery(driver); return True
+#     return False
+
+# # ── Scrape one RTO ────────────────────────────────────────────────────────────
+# def months_list():
+#     out, y, m = [], START_YEAR, START_MONTH
+#     while (y,m) <= (END_YEAR, END_MONTH):
+#         out.append((y, MONTH_ABBRS[m-1]))
+#         m += 1
+#         if m > 12: m, y = 1, y+1
+#     return out
+
+# def scrape_rto(driver, sc, sn, rc, rn, months) -> list[dict]:
+#     rows = []
+#     by_year: dict[int,list[str]] = {}
+#     for (yr, mo) in months: by_year.setdefault(yr,[]).append(mo)
+
+#     for year in sorted(by_year):
+#         avail = get_year_links(driver)
+#         log.info(f"      Year {year} | available links: {avail}")
+
+#         if not click_year(driver, year):
+#             log.warning(f"      Cannot click {year} — no data for this year")
+#             continue
+
+#         # Wait for month tabs to render (some states are slower / different UI)
+#         wait_for_month_tabs(driver, timeout=18)
+#         tabs = get_month_tabs(driver)
+#         log.info(f"      Month tabs ({len(tabs)} found): {[m for m,_ in tabs]}")
+#         if not tabs:
+#             hint = js(driver, """
+#                 var c={};
+#                 ['td','th','a','span','li','div','button','p'].forEach(function(t){
+#                     c[t]=document.getElementsByTagName(t).length;
+#                 });
+#                 return JSON.stringify(c);
+#             """)
+#             log.warning(f"      No month tabs — page element counts: {hint}")
+
+#         for month_abbr in by_year[year]:
+#             log.info(f"        Month {month_abbr} ...")
+#             tp = f"{year}-{MONTH_ABBRS.index(month_abbr)+1:02d}"
+#             base = dict(time_period=tp, month=month_abbr, year=str(year),
+#                         state_code=sc, state_name=sn, rto_code=rc, rto_name=rn)
+
+#             # Re-click year before every month tab — after long table extraction
+#             # (3-4 min) PrimeFaces session times out and collapses the month panel.
+#             click_year(driver, year)
+#             wait_for_month_tabs(driver, timeout=12)
+
+#             if not click_month_tab(driver, month_abbr):
+#                 log.warning(f"        Cannot click {month_abbr} — retrying after year re-click")
+#                 time.sleep(3)
+#                 click_year(driver, year)
+#                 wait_for_month_tabs(driver, timeout=15)
+#                 if not click_month_tab(driver, month_abbr):
+#                     log.warning(f"        Cannot click {month_abbr} — skipping")
+#                     rows.append({**base,"breakdown_type":"total","maker":"",
+#                         "vehicle_class":"","vehicle_category":"","fuel":"","norms":"",
+#                         "registrations_count":None})
+#                     continue
+
+#             bkd = extract_all_breakdowns(driver, month_abbr, year)
+#             added = 0
+
+#             for section, items in bkd.items():
+#                 for (name, count) in items:
+#                     row = {**base, "breakdown_type": section}
+#                     row["maker"]            = name if section=="maker"            else ""
+#                     row["vehicle_class"]    = name if section=="vehicle_class"    else ""
+#                     row["vehicle_category"] = name if section=="vehicle_category" else ""
+#                     row["fuel"]             = name if section=="fuel"             else ""
+#                     row["norms"]            = name if section=="norms"            else ""
+#                     row["registrations_count"] = count
+#                     rows.append(row)
+#                     added += 1
+
+#             if added == 0:
+#                 rows.append({**base,"breakdown_type":"total","maker":"",
+#                     "vehicle_class":"","vehicle_category":"","fuel":"","norms":"",
+#                     "registrations_count":None})
+
+#     return rows
+
+# # ── Main loop ─────────────────────────────────────────────────────────────────
+# def run(driver, state_filter, months, progress):
+#     all_rows = []
+#     # Set type and wait for state dropdown to populate (retry up to 30s)
+#     # Discover dynamic JSF element IDs, then set type dropdown
+#     _ID_CACHE.clear()  # reset cache for fresh discovery each run
+#     ids = _discover_ids(driver)
+#     type_id  = ids['type_id']
+#     state_id = ids['state_id']
+#     rto_id   = ids['rto_id']
+
+#     # Try both 'A' (all) and 'Y' (yearwise) — site uses different values
+#     for type_val in ['A', 'Y']:
+#         pf_set(driver, type_id, type_val, wait=3)
+#         state_opts = []
+#         for _attempt in range(15):
+#             state_opts = get_opts(driver, state_id)
+#             if state_opts:
+#                 break
+#             log.info(f"  Waiting for state dropdown (type={type_val}, attempt {_attempt+1})...")
+#             time.sleep(2)
+#             wait_jquery(driver)
+#         if state_opts:
+#             log.info(f"  Type value '{type_val}' worked — {len(state_opts)} states loaded")
+#             break
+
+#     log.info(f"States: {len(state_opts)}")
+#     if not state_opts:
+#         log.error("State dropdown empty — reloading page and retrying with fresh ID discovery")
+#         driver.get(BASE_URL)
+#         time.sleep(WAIT_PAGE); wait_jquery(driver)
+#         _ID_CACHE.clear()
+#         ids = _discover_ids(driver)
+#         type_id  = ids['type_id']
+#         state_id = ids['state_id']
+#         rto_id   = ids['rto_id']
+#         for type_val in ['A', 'Y']:
+#             pf_set(driver, type_id, type_val, wait=5)
+#             time.sleep(5); wait_jquery(driver)
+#             state_opts = get_opts(driver, state_id)
+#             if state_opts:
+#                 break
+#         log.info(f"States after reload: {len(state_opts)}")
+
+#     if state_filter:
+#         sf = [s.upper() for s in state_filter]
+#         state_opts = [(v,t) for v,t in state_opts if v.upper() in sf]
+#         log.info(f"Filtered to: {[v for v,_ in state_opts]}")
+
+#     for (sc, sn) in state_opts:
+#         log.info(f"\n{'='*65}\nSTATE: {sn} (code={sc})\n{'='*65}")
+#         pf_set(driver, state_id, sc, wait=WAIT_STATE)
+#         wait_jquery(driver)
+
+#         rto_opts = get_opts(driver, rto_id)
+#         log.info(f"  RTOs: {len(rto_opts)}")
+
+#         for (rc, rl) in rto_opts:
+#             rk = f"{sc}::{rc}"
+#             if rk in progress["completed"]:
+#                 log.info(f"  [SKIP] {rl}"); continue
+
+#             log.info(f"\n  RTO: {rl} (code={rc})")
+#             for attempt in range(RETRIES):
+#                 try:
+#                     pf_set(driver, state_id, sc, wait=3); wait_jquery(driver)
+#                     pf_set(driver, rto_id, rc, wait=4); wait_jquery(driver)
+#                     click_refresh(driver,wait=WAIT_RTO)
+
+#                     rto_rows = scrape_rto(driver,sc,sn,rc,rl,months)
+#                     all_rows.extend(rto_rows)
+#                     append_raw({"rto_key":rk,"rows":rto_rows})
+#                     progress["completed"].append(rk)
+#                     save_json(PROGRESS_FILE, progress)
+#                     log.info(f"  DONE {rl} -> {len(rto_rows)} rows")
+#                     break
+#                 except KeyboardInterrupt: raise
+#                 except Exception as e:
+#                     log.warning(f"  Attempt {attempt+1}/{RETRIES}: {e}")
+#                     if attempt == RETRIES-1:
+#                         progress["failed"].append(rk)
+#                         save_json(PROGRESS_FILE, progress)
+#                     else:
+#                         time.sleep(6)
+#                         try:
+#                             driver.get(BASE_URL); time.sleep(WAIT_PAGE)
+#                             _ID_CACHE.clear(); _discover_ids(driver)
+#                             pf_set(driver, _ID_CACHE.get('type_id','j_idt30_input'), 'A', wait=2)
+#                         except Exception: pass
+#             time.sleep(3)
+
+#         if all_rows: save_excel(all_rows)
+#         time.sleep(5)
+
+#     return all_rows
+
+# # ── Output ────────────────────────────────────────────────────────────────────
+# COLUMNS = ["time_period","month","year","state_code","state_name","rto_code",
+#            "rto_name","breakdown_type","maker","vehicle_class","vehicle_category",
+#            "fuel","norms","registrations_count"]
+
+# def save_excel(rows):
+#     if not rows: return
+#     df = pd.DataFrame(rows)
+#     for c in COLUMNS:
+#         if c not in df.columns: df[c]=""
+#     df = df[COLUMNS]
+#     df = df.assign(registrations_count=pd.to_numeric(df["registrations_count"],errors="coerce"))
+
+#     xlsx = OUT_DIR/"vahan_registrations.xlsx"
+#     with pd.ExcelWriter(xlsx,engine="openpyxl") as w:
+#         df.to_excel(w,sheet_name="Registrations",index=False)
+#         ws = w.sheets["Registrations"]
+#         ws.freeze_panes = "A2"
+#         widths = {"A":14,"B":8,"C":6,"D":12,"E":26,"F":10,"G":42,
+#                   "H":18,"I":32,"J":22,"K":22,"L":20,"M":20,"N":20}
+#         from openpyxl.styles import Font, PatternFill, Alignment
+#         fill = PatternFill("solid",fgColor="1F4E79")
+#         for cell in ws[1]:
+#             cell.font = Font(bold=True,color="FFFFFF",size=10)
+#             cell.fill = fill
+#             cell.alignment = Alignment(horizontal="center")
+#         for col,w_val in widths.items():
+#             ws.column_dimensions[col].width = w_val
+#     log.info(f"Saved {xlsx} ({len(df):,} rows)")
+#     df.to_csv(OUT_DIR/"vahan_registrations.csv",index=False,encoding="utf-8-sig")
+#     log.info(f"Saved CSV ({len(df):,} rows)")
+
+# # ── Entry point ───────────────────────────────────────────────────────────────
+# def main():
+#     p = argparse.ArgumentParser(description="VAHAN Scraper v5")
+#     p.add_argument("--browser",choices=["chrome","firefox"],default="chrome")
+#     p.add_argument("--states",nargs="*",default=None)
+#     p.add_argument("--headed",action="store_true")
+#     p.add_argument("--reset",action="store_true",help="Clear progress and restart")
+#     args = p.parse_args()
+
+#     if args.reset and PROGRESS_FILE.exists():
+#         PROGRESS_FILE.unlink(); log.info("Progress cleared.")
+
+#     months   = months_list()
+#     progress = load_json(PROGRESS_FILE,{"completed":[],"failed":[]})
+
+#     log.info("="*65)
+#     log.info("VAHAN Scraper v5")
+#     log.info(f"Browser : {args.browser} ({'headed' if args.headed else 'headless'})")
+#     log.info(f"Period  : {months[0]} to {months[-1]} ({len(months)} months)")
+#     log.info(f"States  : {args.states or 'ALL'}")
+#     log.info(f"Done    : {len(progress['completed'])} RTOs already scraped")
+#     log.info("="*65)
+
+#     driver = get_driver(args.browser, headed=args.headed)
+#     all_rows = []
+#     try:
+#         driver.get(BASE_URL)
+#         time.sleep(WAIT_PAGE); wait_jquery(driver)
+#         log.info(f"Page loaded: {driver.title}")
+#         all_rows = run(driver, args.states, months, progress)
+#     except KeyboardInterrupt:
+#         log.info("Interrupted — saving progress...")
+#     except Exception as e:
+#         log.exception(f"Fatal: {e}")
+#     finally:
+#         driver.quit()
+#         log.info("Browser closed.")
+
+#     if all_rows:
+#         save_excel(all_rows)
+#     else:
+#         raw = load_json(RAW_FILE,[])
+#         recovered = [r for e in raw for r in e.get("rows",[])]
+#         if recovered:
+#             log.info(f"Recovering {len(recovered):,} rows from raw file")
+#             save_excel(recovered)
+
+#     log.info(f"\nOutput  : {OUT_DIR.resolve()}")
+#     log.info(f"Done    : {len(progress['completed'])} RTOs")
+#     log.info(f"Failed  : {len(progress['failed'])} RTOs")
+#     if progress["failed"]: log.info(f"Failed  : {progress['failed']}")
+
+#     # ── Auto-format after scraping ─────────────────────────────────────────
+#     raw_xlsx = OUT_DIR / "vahan_registrations.xlsx"
+#     if raw_xlsx.exists():
+#         try:
+#             import importlib.util, datetime
+#             formatter_path = Path(__file__).parent / "vahan_format.py"
+#             if formatter_path.exists():
+#                 spec = importlib.util.spec_from_file_location("vahan_format", formatter_path)
+#                 fmt = importlib.util.module_from_spec(spec)
+#                 spec.loader.exec_module(fmt)
+
+#                 state_codes = args.states if args.states else None
+#                 if state_codes:
+#                     codes = "_".join(sorted(s.upper() for s in state_codes))
+#                 else:
+#                     try:
+#                         import pandas as _pd
+#                         codes = "_".join(sorted(_pd.read_excel(raw_xlsx,
+#                             usecols=["state_code"])["state_code"].unique().tolist()))
+#                     except Exception:
+#                         codes = "ALL"
+
+#                 ts = datetime.datetime.now().strftime("%Y%m%d")
+#                 out_path = OUT_DIR / f"VAHAN_{codes}_{ts}_formatted.xlsx"
+#                 log.info("="*65)
+#                 log.info(f"Auto-formatting data → {out_path.name}")
+#                 log.info("="*65)
+#                 fmt.format_data(raw_xlsx, out_path, state_filter=state_codes)
+#                 log.info(f"Formatted report saved: {out_path.resolve()}")
+#             else:
+#                 log.warning(f"vahan_format.py not found at {formatter_path} — skipping auto-format")
+#                 log.warning("Download vahan_format.py and place it in the same folder as this script.")
+#         except Exception as _fe:
+#             log.warning(f"Auto-format failed: {_fe} — raw data still saved to {raw_xlsx}")
+
+# if __name__=="__main__":
+#     main()
+# -*- coding: utf-8 -*-
+"""
+VAHAN Dashboard Scraper v5
+===========================
+KEY FIX over v4: When scanning for breakdown tables after a month click,
+we now ONLY look inside the panel that was freshly updated by that click.
+The "Till Today" tables that remain persistently on the page are ignored.
+
+After clicking a month tab, PrimeFaces updates a specific panel whose
+heading contains the month abbreviation (e.g. "Total Registration Data ...
+JAN 2025 ..."). We wait for that heading to appear, then extract ONLY from
+the tables inside that specific container — ignoring global/persistent tables.
+
+USAGE:
+    python vahan_scraper_v5.py --states DL --headed        # Delhi visible
+    python vahan_scraper_v5.py --states UP AP MH DL        # multi-state
+    python vahan_scraper_v5.py                              # ALL states
+    python vahan_scraper_v5.py --reset --states DL         # clear & redo DL
+"""
+
+import time, json, sys, argparse, logging, re
+from datetime import datetime
+from pathlib import Path
+
+import pandas as pd
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options as ChromeOptions
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from selenium.common.exceptions import (
+    TimeoutException, NoSuchElementException, StaleElementReferenceException
+)
+
+# ── Config ───────────────────────────────────────────────────────────────────
+BASE_URL   = "https://vahan.parivahan.gov.in/vahan4dashboard/"
+OUT_DIR    = Path("vahan_data")
+
+START_YEAR, START_MONTH = 2025, 1
+NOW = datetime.now()
+END_YEAR, END_MONTH = NOW.year, NOW.month
+
+WAIT_PAGE   = 18
+WAIT_STATE  = 8
+WAIT_RTO    = 14
+WAIT_YEAR   = 12
+WAIT_MONTH  = 12   # time for the month breakdown panel to fully render
+RETRIES     = 3
+
+MONTH_ABBRS = ["JAN","FEB","MAR","APR","MAY","JUN",
+               "JUL","AUG","SEP","OCT","NOV","DEC"]
+
+SECTION_KEYWORDS = {
+    "vehicle_class":    "vehicle class",
+    "vehicle_category": "vehicle category",
+    "fuel":             "fuel",
+    "norms":            "norms",
+    "maker":            "maker",
+}
+
+# ── Logging ──────────────────────────────────────────────────────────────────
+OUT_DIR.mkdir(exist_ok=True)
+
+class AsciiFilter(logging.Filter):
+    def filter(self, record):
+        record.msg = str(record.msg).encode("ascii","replace").decode("ascii")
+        return True
+
+handlers = [
+    logging.FileHandler(OUT_DIR/"vahan_scraper.log", encoding="utf-8"),
+    logging.StreamHandler(sys.stdout),
+]
+for h in handlers:
+    h.addFilter(AsciiFilter())
+logging.basicConfig(level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s", handlers=handlers)
+log = logging.getLogger(__name__)
+
+PROGRESS_FILE = OUT_DIR / "vahan_progress.json"
+RAW_FILE      = OUT_DIR / "vahan_raw.json"
+
+def load_json(p, default):
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else default
+
+def save_json(p, obj):
+    p.write_text(json.dumps(obj, indent=2, ensure_ascii=False), encoding="utf-8")
+
+def append_raw(rec):
+    d = load_json(RAW_FILE, [])
+    d.append(rec)
+    save_json(RAW_FILE, d)
+
+# ── Browser ──────────────────────────────────────────────────────────────────
+def get_driver(browser="chrome", headed=False):
+    if browser == "chrome":
+        opts = ChromeOptions()
+        if not headed:
+            opts.add_argument("--headless=new")
+        for a in ["--no-sandbox","--disable-dev-shm-usage","--disable-gpu",
+                  "--window-size=1920,1200","--disable-blink-features=AutomationControlled"]:
+            opts.add_argument(a)
+        opts.add_experimental_option("excludeSwitches", ["enable-automation"])
+        opts.add_experimental_option("useAutomationExtension", False)
+        opts.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36")
+        d = webdriver.Chrome(options=opts)
+    else:
+        opts = FirefoxOptions()
+        if not headed: opts.add_argument("--headless")
+        d = webdriver.Firefox(options=opts)
+    d.set_page_load_timeout(60)
+    return d
+
+# ── JS helpers ───────────────────────────────────────────────────────────────
+def js(d, s, *a):
+    try: return d.execute_script(s, *a)
+    except Exception as e: log.debug(f"js: {e}"); return None
+
+def wait_jquery(d, timeout=20):
+    try:
+        WebDriverWait(d, timeout).until(
+            lambda x: x.execute_script(
+                "return typeof jQuery!=='undefined' && jQuery.active===0;"))
+    except Exception: pass
+
+# ── Dynamic ID discovery ─────────────────────────────────────────────────────
+# JSF regenerates element IDs (j_idt30, j_idt43, j_idt48) on every app
+# restart. We discover them at runtime by inspecting option values/counts.
+
+_ID_CACHE: dict = {}  # cached once per session
+
+def _discover_ids(d):
+    """
+    Scan all <select> and <button> elements to identify:
+      - type_id:   select whose options include 'Y' (yearwise) and 'M' (monthly)
+      - state_id:  select with 30+ options (state list)
+      - rto_id:    select named 'selectedRto' or with id containing 'Rto'
+      - refresh_id: button/input that triggers data refresh
+    Falls back to known IDs if discovery fails.
+    """
+    if _ID_CACHE:
+        return _ID_CACHE
+
+    result = js(d, """
+        var selects = document.querySelectorAll('select');
+        var found = {type_id:null, state_id:null, rto_id:null, refresh_id:null};
+        for (var i=0; i<selects.length; i++) {
+            var s = selects[i];
+            var id = s.id || '';
+            var name = (s.name || '').toLowerCase();
+            var opts = s.options;
+            var vals = [];
+            for (var j=0; j<opts.length; j++) vals.push(opts[j].value);
+
+            // RTO select: id/name contains 'rto' (case-insensitive)
+            if (id.toLowerCase().indexOf('rto') !== -1 || name.indexOf('rto') !== -1) {
+                found.rto_id = id; continue;
+            }
+            // Type select: has options Y, M, or A (small option set)
+            if (vals.indexOf('Y') !== -1 || vals.indexOf('A') !== -1) {
+                if (opts.length < 10) { found.type_id = id; continue; }
+            }
+            // State select: 30-40 options with short 2-letter values
+            if (opts.length >= 25 && opts.length <= 45) {
+                var short = vals.filter(function(v){ return v && v.length<=3 && v!=='-1'; });
+                if (short.length >= 20) { found.state_id = id; continue; }
+            }
+        }
+        // Refresh button: find button nearest to the RTO/state selects
+        // It's typically a button right after the dropdowns in the form
+        var allBtns = document.querySelectorAll('button,input[type=submit],input[type=button]');
+        var candidates = [];
+        for (var k=0; k<allBtns.length; k++) {
+            var bid = allBtns[k].id || '';
+            var btext = (allBtns[k].innerText || allBtns[k].value || '').trim().toLowerCase();
+            var bcls = (allBtns[k].className || '').toLowerCase();
+            if (!bid) continue;
+            // Skip obvious non-refresh buttons
+            if (btext.indexOf('cancel') !== -1 || btext.indexOf('close') !== -1 ||
+                btext.indexOf('reset') !== -1 || bcls.indexOf('ui-datepicker') !== -1) continue;
+            // Good candidates: small/icon buttons with idt in id, or explicit refresh/search
+            if (bid.indexOf('idt') !== -1) {
+                candidates.push({id: bid, text: btext, len: btext.length});
+            }
+        }
+        // Prefer buttons with refresh/search text, then shortest text (icon buttons)
+        candidates.sort(function(a,b) {
+            var aGood = a.text.indexOf('refresh')!==-1 || a.text.indexOf('search')!==-1 ? 0 : 1;
+            var bGood = b.text.indexOf('refresh')!==-1 || b.text.indexOf('search')!==-1 ? 0 : 1;
+            if (aGood !== bGood) return aGood - bGood;
+            return a.len - b.len;
+        });
+        if (candidates.length > 0) found.refresh_id = candidates[0].id;
+        return found;
+    """)
+
+    # Fallbacks to known IDs
+    ids = {
+        'type_id':    (result or {}).get('type_id')    or 'j_idt30_input',
+        'state_id':   (result or {}).get('state_id')   or 'j_idt43_input',
+        'rto_id':     (result or {}).get('rto_id')     or 'selectedRto_input',
+        'refresh_id': (result or {}).get('refresh_id') or 'j_idt48',
+    }
+    log.info(f"  Element IDs: {ids}")
+    _ID_CACHE.update(ids)
+    return _ID_CACHE
+
+def _get_id(d, key):
+    return _discover_ids(d)[key]
+
+def pf_set(d, eid, val, wait=4):
+    # If eid is a logical key, resolve it; otherwise use directly
+    resolved = _ID_CACHE.get(eid, eid)
+    r = js(d, """
+        var s=document.getElementById(arguments[0]);
+        if(!s) return 'NOT_FOUND';
+        s.value=arguments[1];
+        s.dispatchEvent(new Event('change',{bubbles:true}));
+        return s.value;
+    """, resolved, val)
+    time.sleep(wait); wait_jquery(d); return r
+
+def get_opts(d, eid):
+    resolved = _ID_CACHE.get(eid, eid)
+    return js(d, """
+        var s=document.getElementById(arguments[0]);
+        if(!s) return [];
+        var r=[];
+        for(var i=0;i<s.options.length;i++){
+            var v=s.options[i].value,t=s.options[i].text.trim();
+            if(v&&v!=='-1') r.push([v,t]);
+        }
+        return r;
+    """, resolved) or []
+
+def click_refresh(d, wait=WAIT_RTO):
+    """
+    Click the refresh/search button. Tries multiple strategies:
+    1. Known/discovered ID via WebDriverWait
+    2. JS click on discovered ID
+    3. Scan ALL buttons and click the one that triggers data reload
+    """
+    rid = _get_id(d, 'refresh_id')
+
+    # Strategy 1: Selenium click on discovered ID
+    try:
+        b = WebDriverWait(d, 8).until(EC.element_to_be_clickable((By.ID, rid)))
+        js(d, "arguments[0].click();", b)
+        time.sleep(wait); wait_jquery(d)
+        return
+    except Exception as e:
+        log.debug(f"  Refresh strategy 1 failed (id={rid}): {e}")
+
+    # Strategy 2: JS click on discovered ID (bypasses interactability check)
+    try:
+        result = js(d, """
+            var b = document.getElementById(arguments[0]);
+            if (b) { b.click(); return 'ok'; }
+            return 'not_found';
+        """, rid)
+        if result == 'ok':
+            time.sleep(wait); wait_jquery(d)
+            return
+    except Exception as e:
+        log.debug(f"  Refresh strategy 2 failed: {e}")
+
+    # Strategy 3: Find any button/input that looks like a refresh/search trigger
+    # by clicking all visible buttons with idt in their id and checking which one
+    # causes the year links panel to update
+    log.info("  Refresh: trying button scan strategy...")
+    clicked = js(d, """
+        var btns = document.querySelectorAll('button, input[type=submit], input[type=button], a.ui-button');
+        for (var i=0; i<btns.length; i++) {
+            var bid = btns[i].id || '';
+            var bcls = btns[i].className || '';
+            var btxt = (btns[i].innerText || btns[i].value || '').trim().toLowerCase();
+            // Skip dropdowns, cancel, close buttons
+            if (btxt.indexOf('cancel') !== -1 || btxt.indexOf('close') !== -1) continue;
+            // Click buttons with idt in id that have no text (icon buttons) or say refresh/search/show
+            if (bid && bid.indexOf('idt') !== -1) {
+                if (btxt === '' || btxt.indexOf('refresh') !== -1 || 
+                    btxt.indexOf('search') !== -1 || btxt.indexOf('show') !== -1 ||
+                    btxt.indexOf('go') !== -1 || btxt.length < 4) {
+                    btns[i].click();
+                    return 'clicked:' + bid + ':' + btxt;
+                }
+            }
+        }
+        return null;
+    """)
+    if clicked:
+        log.info(f"  Refresh strategy 3: {clicked}")
+        # Update the cache with the real button ID
+        real_id = clicked.split(':')[1] if ':' in clicked else rid
+        _ID_CACHE['refresh_id'] = real_id
+        time.sleep(wait); wait_jquery(d)
+        return
+
+    log.warning(f"  All refresh strategies failed — page may show stale data")
+
+# ── Text helpers ──────────────────────────────────────────────────────────────
+def stext(el):
+    try: return el.text.strip()
+    except StaleElementReferenceException: return ""
+
+def parse_int(s):
+    try: return int(str(s).replace(",","").replace(" ","").strip())
+    except (ValueError, AttributeError): return None
+
+# ── TARGETED panel discovery ──────────────────────────────────────────────────
+#
+# After clicking a month tab, PrimeFaces AJAX updates a panel.
+# The updated panel has a header/title containing the month name.
+# We find that specific panel, then extract ONLY from tables inside it.
+#
+# The panel title typically looks like:
+#   "Total Registration Data of DWARKA - DL9, Delhi (2025 Jan)"
+#   or "Registration Data JAN 2025" etc.
+#
+# We identify it by looking for an element whose text contains the month abbr.
+# ─────────────────────────────────────────────────────────────────────────────
+
+def find_active_detail_panel(driver, month_abbr: str, year: int):
+    """
+    Find the DOM container that was updated after clicking the month tab.
+    Returns the element, or None.
+    Priority:
+    1. Element with text containing month_abbr + year (most specific)
+    2. The infoMsg / panelHeader panels if they contain the month
+    3. Any panel/div whose text starts with month_abbr
+    """
+    abbr_u = month_abbr.upper()
+    yr_str  = str(year)
+
+    # Try known panel IDs first
+    for panel_id in ["infoMsg", "panelHeader", "yearWiseRegnDataTable",
+                     "mainpagepnl", "dashboardContentsPanel"]:
+        try:
+            el = driver.find_element(By.ID, panel_id)
+            txt = (el.get_attribute("innerText") or "").upper()
+            if abbr_u in txt and yr_str in txt:
+                log.info(f"        Active panel found: #{panel_id}")
+                return el
+        except NoSuchElementException:
+            continue
+
+    # Generic: walk from pnl_regn_content siblings/parent
+    try:
+        base = driver.find_element(By.ID, "pnl_regn_content")
+        parent = base.find_element(By.XPATH, "..")
+        siblings = parent.find_elements(By.XPATH, "./*")
+        for sib in siblings:
+            txt = (sib.get_attribute("innerText") or "").upper()
+            if abbr_u in txt and yr_str in txt and len(sib.find_elements(By.TAG_NAME,"table")) > 0:
+                log.info(f"        Active panel found: sibling of pnl_regn_content")
+                return sib
+    except Exception:
+        pass
+
+    # Broader: any div/section whose innerText contains month+year and has tables
+    panels = driver.find_elements(By.XPATH,
+        "//div[contains(@class,'ui-panel') or contains(@class,'ui-widget')]")
+    for p in panels:
+        try:
+            txt = (p.get_attribute("innerText") or "").upper()
+            if abbr_u in txt and yr_str in txt:
+                tables = p.find_elements(By.TAG_NAME,"table")
+                if tables:
+                    log.info(f"        Active panel found: ui-panel/widget with {len(tables)} tables")
+                    return p
+        except Exception:
+            continue
+
+    log.warning(f"        No panel found containing '{abbr_u}' + '{yr_str}' — will scan full page")
+    return None
+
+def table_header_text(tbl, driver=None) -> str:
+    """Get the header text of a table. Uses JS innerText for accuracy."""
+    try:
+        # Use JS to get just the first row's text cleanly
+        if driver:
+            hdr = driver.execute_script("""
+                var tbl = arguments[0];
+                var rows = tbl.rows;
+                if (!rows || rows.length === 0) return '';
+                // Check thead first
+                var thead = tbl.querySelector('thead');
+                if (thead) {
+                    return (thead.innerText || '').trim().toLowerCase();
+                }
+                // Fallback: first row
+                return (rows[0].innerText || '').trim().toLowerCase();
+            """, tbl)
+            return hdr or ""
+        ths = tbl.find_elements(By.CSS_SELECTOR,"thead th,thead td")
+        if ths: return " ".join(stext(t) for t in ths).lower()
+        trs = tbl.find_elements(By.TAG_NAME,"tr")
+        if trs:
+            cells = trs[0].find_elements(By.TAG_NAME,"td") + \
+                    trs[0].find_elements(By.TAG_NAME,"th")
+            return " ".join(stext(c) for c in cells).lower()
+    except Exception: pass
+    return ""
+
+def _classify_table(tbl, driver) -> str:
+    """
+    Return the section key for a table by checking:
+    1. Table header row (most specific - e.g. "Vehicle Class(2026)")
+    2. Nearest preceding heading/caption element
+    3. Immediate parent's own text (excluding child table text)
+    Returns one of: vehicle_class, vehicle_category, fuel, norms, maker, or ''
+    """
+    # SECTION_KEYWORDS ordered so longer/more specific come first
+    # "vehicle class" must be checked BEFORE "vehicle" to avoid false matches
+    ordered = [
+        ("vehicle_class",    "vehicle class"),
+        ("vehicle_category", "vehicle category"),
+        ("fuel",             "fuel"),
+        ("norms",            "norms"),
+        ("maker",            "maker"),
+    ]
+
+    # 1. Check table header via JS (most reliable)
+    hdr = table_header_text(tbl, driver)
+    for key, kw in ordered:
+        if kw in hdr:
+            return key
+
+    # 2. Check nearest preceding sibling heading or caption
+    try:
+        label = driver.execute_script("""
+            var tbl = arguments[0];
+            // Check caption inside table
+            var cap = tbl.querySelector('caption');
+            if (cap) return (cap.innerText||'').toLowerCase();
+            // Walk up and look for preceding text node / heading
+            var el = tbl;
+            for (var i=0; i<5; i++) {
+                el = el.parentElement;
+                if (!el) break;
+                // Look for heading elements before this table
+                var kids = el.children;
+                for (var j=0; j<kids.length; j++) {
+                    var tag = kids[j].tagName.toLowerCase();
+                    if (kids[j].contains(tbl)) break;
+                    if (['h1','h2','h3','h4','h5','h6','span','div','p','th','td'].includes(tag)) {
+                        var txt = (kids[j].innerText||'').trim().toLowerCase();
+                        if (txt && txt.length < 60) return txt;
+                    }
+                }
+                // Check parent's own direct text (not children)
+                var directTxt = '';
+                for (var n=0; n<el.childNodes.length; n++) {
+                    if (el.childNodes[n].nodeType === 3) {
+                        directTxt += el.childNodes[n].textContent;
+                    }
+                }
+                directTxt = directTxt.trim().toLowerCase();
+                if (directTxt && directTxt.length < 60) return directTxt;
+            }
+            return '';
+        """, tbl)
+        if label:
+            for key, kw in ordered:
+                if kw in label:
+                    return key
+    except Exception:
+        pass
+
+    return ""
+
+# Keywords that identify a row as a section sub-header (not real data)
+_HEADER_KEYWORDS = {
+    "vehicle class", "vehicle category", "fuel type", "fuel",
+    "norms", "maker brand", "maker/brand", "total", "sr.no",
+}
+
+def _is_header_row(tr) -> bool:
+    """
+    Return True if this <tr> is a table header row that should be skipped.
+    A row is a header if:
+      1. It lives inside a <thead> element, OR
+      2. All its cells are <th> (not <td>), OR
+      3. Its first cell text exactly matches a known section keyword
+    """
+    try:
+        # Check if inside <thead>
+        parent_tag = tr.find_element(By.XPATH, "..").tag_name.lower()
+        if parent_tag == "thead":
+            return True
+        # Check if all cells are <th>
+        cells = tr.find_elements(By.TAG_NAME, "th")
+        tds   = tr.find_elements(By.TAG_NAME, "td")
+        if cells and not tds:
+            return True
+        # Check if first cell text is a section keyword
+        first_cells = cells or tds
+        if first_cells:
+            txt = stext(first_cells[0]).lower().strip()
+            if txt in _HEADER_KEYWORDS:
+                return True
+    except Exception:
+        pass
+    return False
+
+def extract_table_rows(tbl) -> list[tuple[str,int]]:
+    rows = []
+    try:
+        trs = tbl.find_elements(By.TAG_NAME,"tr")
+        for tr in trs:
+            # Skip genuine header rows — do NOT blindly skip row 0
+            if _is_header_row(tr):
+                continue
+            tds = tr.find_elements(By.TAG_NAME,"td")
+            if len(tds) < 2:
+                continue
+            name = stext(tds[0]).strip()
+            if not name:
+                continue
+            # Skip section sub-header rows by keyword match
+            if name.lower().strip() in _HEADER_KEYWORDS:
+                continue
+            # Extract the rightmost numeric value as the count
+            count = None
+            for td in reversed(tds):
+                v = parse_int(stext(td))
+                if v is not None:
+                    count = v
+                    break
+            if name and count is not None and count >= 0:
+                rows.append((name, count))
+    except Exception as e:
+        log.debug(f"extract_rows: {e}")
+    return rows
+
+def find_breakdown_in_scope(scope_el, driver=None) -> dict[str,list]:
+    """Extract all 5 breakdown tables from a given container element."""
+    result = {k:[] for k in SECTION_KEYWORDS}
+    tables = scope_el.find_elements(By.TAG_NAME,"table")
+
+    for tbl in tables:
+        key = _classify_table(tbl, driver) if driver else ""
+        if not key:
+            # Fallback: old method using combined header + parent text
+            hdr = table_header_text(tbl)
+            try:
+                parent_txt = (tbl.find_element(By.XPATH,"..").get_attribute("innerText") or "")[:200].lower()
+            except Exception:
+                parent_txt = ""
+            combined = hdr + " " + parent_txt
+            for k, kw in SECTION_KEYWORDS.items():
+                if kw in combined:
+                    key = k; break
+
+        if key:
+            rows = extract_table_rows(tbl)
+            if len(rows) > len(result[key]):
+                result[key] = rows
+
+    # Heading-based fallback for any still-missing sections
+    for key, kw in SECTION_KEYWORDS.items():
+        if result[key]: continue
+        try:
+            headings = scope_el.find_elements(By.XPATH,
+                f".//*[contains(translate(normalize-space(text()),'abcdefghijklmnopqrstuvwxyz',"
+                f"'ABCDEFGHIJKLMNOPQRSTUVWXYZ'),'{kw.upper()}')]")
+            for h in headings:
+                parent = h
+                for _ in range(6):
+                    try:
+                        parent = parent.find_element(By.XPATH,"..")
+                        tbls = parent.find_elements(By.TAG_NAME,"table")
+                        if tbls:
+                            rows = extract_table_rows(tbls[0])
+                            if len(rows) > len(result[key]):
+                                result[key] = rows
+                            break
+                    except Exception: break
+        except Exception: pass
+
+    return result
+
+def extract_all_breakdowns(driver, month_abbr: str, year: int) -> dict[str,list]:
+    """
+    Find the active monthly panel and extract breakdowns ONLY from it.
+    Falls back to full-page scan only if no specific panel found.
+    """
+    panel = find_active_detail_panel(driver, month_abbr, year)
+
+    if panel:
+        result = find_breakdown_in_scope(panel, driver)
+        for k, rows in result.items():
+            log.info(f"        {k}: {len(rows)} rows")
+        return result
+
+    # FALLBACK: full page scan — but skip the pnl_regn_content "Till Today" tables
+    # by excluding containers that contain "till today" in their text
+    log.info("        [fallback] scanning full page, excluding Till Today panel...")
+    result = {k:[] for k in SECTION_KEYWORDS}
+    tables = driver.find_elements(By.TAG_NAME,"table")
+    for tbl in tables:
+        try:
+            # Skip if this table is inside the "Till Today" persistent section
+            ancestor_text = js(driver, """
+                var el = arguments[0];
+                for (var i=0; i<10; i++) {
+                    el = el.parentElement;
+                    if (!el) break;
+                    if ((el.innerText||'').toLowerCase().indexOf('till today') !== -1 &&
+                        (el.innerText||'').toLowerCase().indexOf('""" + month_abbr.lower() + """') === -1) {
+                        return 'skip';
+                    }
+                }
+                return 'ok';
+            """, tbl)
+            if ancestor_text == "skip":
+                continue
+
+            hdr = table_header_text(tbl)
+            for key, kw in SECTION_KEYWORDS.items():
+                if kw in hdr:
+                    rows = extract_table_rows(tbl)
+                    if len(rows) > len(result[key]):
+                        result[key] = rows
+                    break
+        except StaleElementReferenceException:
+            continue
+        except Exception:
+            continue
+
+    for k, rows in result.items():
+        log.info(f"        {k}: {len(rows)} rows")
+    return result
+
+# ── Year / Month navigation ────────────────────────────────────────────────────
+def get_year_links(driver):
+    try:
+        panel = driver.find_element(By.ID,"pnl_regn_content")
+        return [stext(l) for l in panel.find_elements(By.CSS_SELECTOR,"a.ui-commandlink") if stext(l)]
+    except Exception: return []
+
+def click_year(driver, year: int) -> bool:
+    target = str(year)
+    try:
+        panel = driver.find_element(By.ID,"pnl_regn_content")
+        for lnk in panel.find_elements(By.CSS_SELECTOR,"a.ui-commandlink"):
+            t = stext(lnk)
+            if target in t and "Till" not in t:
+                js(driver,"arguments[0].click();",lnk)
+                time.sleep(WAIT_YEAR); wait_jquery(driver); return True
+    except Exception: pass
+
+    found = js(driver,"""
+        var links=document.querySelectorAll('#pnl_regn_content a.ui-commandlink,a.ui-commandlink');
+        for(var i=0;i<links.length;i++){
+            var t=(links[i].innerText||'').trim();
+            if(t.indexOf(arguments[0])!==-1 && t.indexOf('Till')===-1 && t.length<10){
+                links[i].click(); return 'ok:'+t;
+            }
+        }
+        return null;
+    """, target)
+    if found:
+        time.sleep(WAIT_YEAR); wait_jquery(driver); return True
+    return False
+
+def wait_for_month_tabs(driver, timeout=15) -> bool:
+    """
+    Wait up to `timeout` seconds for month tab elements to appear on the page.
+    Returns True if found, False if timed out.
+    """
+    deadline = time.time() + timeout
+    while time.time() < deadline:
+        tabs = _scan_month_tabs(driver)
+        if tabs:
+            return True
+        time.sleep(1)
+    return False
+
+def _scan_month_tabs(driver) -> list[tuple[str, object]]:
+    """
+    Find month tab <a> elements on the VAHAN dashboard.
+
+    Diagnostic confirmed: after year click, month tabs are rendered as
+      <a id="j_idt6XX" class="ui-commandlink ui-widget font-color">JAN</a>
+    inside the 'panelHeader' / 'infoMsg' panel.
+
+    Key issue: Selenium's el.text includes child text and may return
+    "JAN\n4,227.00" instead of "JAN". We use JS innerText (trimmed first
+    line only) to match exactly.
+    """
+    # Strategy 1: JS scan of all <a class="ui-commandlink"> — uses innerText
+    # first line only so nested numbers don't pollute the match.
+    results = js(driver, """
+        var abbrs = {'JAN':1,'FEB':1,'MAR':1,'APR':1,'MAY':1,'JUN':1,
+                     'JUL':1,'AUG':1,'SEP':1,'OCT':1,'NOV':1,'DEC':1};
+        var els = document.querySelectorAll('a.ui-commandlink');
+        var found = [];
+        for (var i=0; i<els.length; i++) {
+            var raw = (els[i].innerText || '').trim();
+            var first = raw.split(/[\\n\\r\\t,]/)[0].trim();
+            if (abbrs[first]) found.push([first, els[i].id]);
+        }
+        return found;
+    """)
+
+    if results:
+        pairs = []
+        for (abbr, eid) in results:
+            try:
+                el = driver.find_element(By.ID, eid)
+                pairs.append((abbr, el))
+            except Exception:
+                pass
+        if pairs:
+            return pairs
+
+    # Strategy 2: All <a> tags via JS innerText (catches any class variant)
+    results2 = js(driver, """
+        var abbrs = {'JAN':1,'FEB':1,'MAR':1,'APR':1,'MAY':1,'JUN':1,
+                     'JUL':1,'AUG':1,'SEP':1,'OCT':1,'NOV':1,'DEC':1};
+        var els = document.getElementsByTagName('a');
+        var found = [];
+        for (var i=0; i<els.length; i++) {
+            var raw = (els[i].innerText || '').trim();
+            var first = raw.split(/[\\n\\r\\t,]/)[0].trim();
+            if (abbrs[first]) found.push([first, els[i].id]);
+        }
+        return found;
+    """)
+
+    if results2:
+        pairs = []
+        for (abbr, eid) in results2:
+            try:
+                el = driver.find_element(By.ID, eid) if eid else None
+                if el:
+                    pairs.append((abbr, el))
+            except Exception:
+                pass
+        if pairs:
+            return pairs
+
+    # Strategy 3: Selenium fallback — search known panels for any clickable element
+    ALL_TAGS = ("self::td or self::th or self::a or self::span or "
+                "self::li or self::div or self::button or self::p")
+    for sid in ["panelHeader", "infoMsg", "yearWiseRegnDataTable", "mainpagepnl"]:
+        try:
+            scope = driver.find_element(By.ID, sid)
+            hits = []
+            for el in scope.find_elements(By.XPATH, f".//*[{ALL_TAGS}]"):
+                try:
+                    # Use JS innerText to avoid child-text pollution
+                    raw = driver.execute_script(
+                        "return (arguments[0].innerText||'').trim().split(/[\\n\\r\\t,]/)[0].trim();", el)
+                    if raw in MONTH_ABBRS:
+                        hits.append((raw, el))
+                except Exception:
+                    pass
+            if hits:
+                return hits
+        except NoSuchElementException:
+            continue
+
+    return []
+
+def get_month_tabs(driver):
+    """Find month tab elements after year click, with wait."""
+    # First try immediately
+    tabs = _scan_month_tabs(driver)
+    if tabs:
+        return tabs
+    # Give it a bit more time and retry
+    time.sleep(3)
+    wait_jquery(driver)
+    return _scan_month_tabs(driver)
+
+def click_month_tab(driver, month_abbr: str) -> bool:
+    tabs = get_month_tabs(driver)
+    for (m, el) in tabs:
+        if m == month_abbr:
+            try:
+                js(driver,"arguments[0].click();",el)
+                time.sleep(WAIT_MONTH); wait_jquery(driver); return True
+            except StaleElementReferenceException: pass
+
+    # Pure JS click — uses innerText first-line to avoid child-text pollution
+    found = js(driver,"""
+        var abbr=arguments[0];
+        var abbrs={'JAN':1,'FEB':1,'MAR':1,'APR':1,'MAY':1,'JUN':1,
+                   'JUL':1,'AUG':1,'SEP':1,'OCT':1,'NOV':1,'DEC':1};
+        var tags=['a','td','th','span','li','div','button','p','label'];
+        for(var t=0;t<tags.length;t++){
+            var els=document.getElementsByTagName(tags[t]);
+            for(var i=0;i<els.length;i++){
+                var raw=(els[i].innerText||els[i].value||'').trim();
+                var first=raw.split(/[\\n\\r\\t,]/)[0].trim();
+                if(first===abbr){
+                    els[i].click(); return 'ok:'+tags[t]+':'+i;
+                }
+            }
+        }
+        return null;
+    """, month_abbr)
+    if found:
+        log.info(f"        JS click: {found}")
+        time.sleep(WAIT_MONTH); wait_jquery(driver); return True
+    return False
+
+# ── Scrape one RTO ────────────────────────────────────────────────────────────
+def months_list():
+    out, y, m = [], START_YEAR, START_MONTH
+    while (y,m) <= (END_YEAR, END_MONTH):
+        out.append((y, MONTH_ABBRS[m-1]))
+        m += 1
+        if m > 12: m, y = 1, y+1
+    return out
+
+def scrape_rto(driver, sc, sn, rc, rn, months) -> list[dict]:
+    rows = []
+    by_year: dict[int,list[str]] = {}
+    for (yr, mo) in months: by_year.setdefault(yr,[]).append(mo)
+
+    for year in sorted(by_year):
+        avail = get_year_links(driver)
+        log.info(f"      Year {year} | available links: {avail}")
+
+        if not click_year(driver, year):
+            log.warning(f"      Cannot click {year} — no data for this year")
+            continue
+
+        # Wait for month tabs to render (some states are slower / different UI)
+        wait_for_month_tabs(driver, timeout=18)
+        tabs = get_month_tabs(driver)
+        log.info(f"      Month tabs ({len(tabs)} found): {[m for m,_ in tabs]}")
+        if not tabs:
+            hint = js(driver, """
+                var c={};
+                ['td','th','a','span','li','div','button','p'].forEach(function(t){
+                    c[t]=document.getElementsByTagName(t).length;
+                });
+                return JSON.stringify(c);
+            """)
+            log.warning(f"      No month tabs — page element counts: {hint}")
+
+        for month_abbr in by_year[year]:
+            log.info(f"        Month {month_abbr} ...")
+            tp = f"{year}-{MONTH_ABBRS.index(month_abbr)+1:02d}"
+            base = dict(time_period=tp, month=month_abbr, year=str(year),
+                        state_code=sc, state_name=sn, rto_code=rc, rto_name=rn)
+
+            # Re-click year before every month tab — after long table extraction
+            # (3-4 min) PrimeFaces session times out and collapses the month panel.
+            click_year(driver, year)
+            wait_for_month_tabs(driver, timeout=12)
+
+            if not click_month_tab(driver, month_abbr):
+                log.warning(f"        Cannot click {month_abbr} — retrying after year re-click")
+                time.sleep(3)
+                click_year(driver, year)
+                wait_for_month_tabs(driver, timeout=15)
+                if not click_month_tab(driver, month_abbr):
+                    log.warning(f"        Cannot click {month_abbr} — skipping")
+                    rows.append({**base,"breakdown_type":"total","maker":"",
+                        "vehicle_class":"","vehicle_category":"","fuel":"","norms":"",
+                        "registrations_count":None})
+                    continue
+
+            bkd = extract_all_breakdowns(driver, month_abbr, year)
+            added = 0
+
+            for section, items in bkd.items():
+                for (name, count) in items:
+                    row = {**base, "breakdown_type": section}
+                    row["maker"]            = name if section=="maker"            else ""
+                    row["vehicle_class"]    = name if section=="vehicle_class"    else ""
+                    row["vehicle_category"] = name if section=="vehicle_category" else ""
+                    row["fuel"]             = name if section=="fuel"             else ""
+                    row["norms"]            = name if section=="norms"            else ""
+                    row["registrations_count"] = count
+                    rows.append(row)
+                    added += 1
+
+            if added == 0:
+                rows.append({**base,"breakdown_type":"total","maker":"",
+                    "vehicle_class":"","vehicle_category":"","fuel":"","norms":"",
+                    "registrations_count":None})
+
+    return rows
+
+# ── Main loop ─────────────────────────────────────────────────────────────────
+def run(driver, state_filter, months, progress):
+    all_rows = []
+    # Set type and wait for state dropdown to populate (retry up to 30s)
+    # Discover dynamic JSF element IDs, then set type dropdown
+    _ID_CACHE.clear()  # reset cache for fresh discovery each run
+    ids = _discover_ids(driver)
+    type_id  = ids['type_id']
+    state_id = ids['state_id']
+    rto_id   = ids['rto_id']
+
+    # Try both 'A' (all) and 'Y' (yearwise) — site uses different values
+    for type_val in ['A', 'Y']:
+        pf_set(driver, type_id, type_val, wait=3)
+        state_opts = []
+        for _attempt in range(15):
+            state_opts = get_opts(driver, state_id)
+            if state_opts:
+                break
+            log.info(f"  Waiting for state dropdown (type={type_val}, attempt {_attempt+1})...")
+            time.sleep(2)
+            wait_jquery(driver)
+        if state_opts:
+            log.info(f"  Type value '{type_val}' worked — {len(state_opts)} states loaded")
+            break
+
+    log.info(f"States: {len(state_opts)}")
+    if not state_opts:
+        log.error("State dropdown empty — reloading page and retrying with fresh ID discovery")
+        driver.get(BASE_URL)
+        time.sleep(WAIT_PAGE); wait_jquery(driver)
+        _ID_CACHE.clear()
+        ids = _discover_ids(driver)
+        type_id  = ids['type_id']
+        state_id = ids['state_id']
+        rto_id   = ids['rto_id']
+        for type_val in ['A', 'Y']:
+            pf_set(driver, type_id, type_val, wait=5)
+            time.sleep(5); wait_jquery(driver)
+            state_opts = get_opts(driver, state_id)
+            if state_opts:
+                break
+        log.info(f"States after reload: {len(state_opts)}")
+
+    if state_filter:
+        sf = [s.upper() for s in state_filter]
+        state_opts = [(v,t) for v,t in state_opts if v.upper() in sf]
+        log.info(f"Filtered to: {[v for v,_ in state_opts]}")
+
+    for (sc, sn) in state_opts:
+        log.info(f"\n{'='*65}\nSTATE: {sn} (code={sc})\n{'='*65}")
+        pf_set(driver, state_id, sc, wait=WAIT_STATE)
+        wait_jquery(driver)
+
+        rto_opts = get_opts(driver, rto_id)
+        log.info(f"  RTOs: {len(rto_opts)}")
+
+        for (rc, rl) in rto_opts:
+            rk = f"{sc}::{rc}"
+            if rk in progress["completed"]:
+                log.info(f"  [SKIP] {rl}"); continue
+
+            log.info(f"\n  RTO: {rl} (code={rc})")
+            for attempt in range(RETRIES):
+                try:
+                    pf_set(driver, state_id, sc, wait=3); wait_jquery(driver)
+                    pf_set(driver, rto_id, rc, wait=4); wait_jquery(driver)
+                    click_refresh(driver,wait=WAIT_RTO)
+
+                    rto_rows = scrape_rto(driver,sc,sn,rc,rl,months)
+                    all_rows.extend(rto_rows)
+                    append_raw({"rto_key":rk,"rows":rto_rows})
+                    progress["completed"].append(rk)
+                    save_json(PROGRESS_FILE, progress)
+                    log.info(f"  DONE {rl} -> {len(rto_rows)} rows")
+                    break
+                except KeyboardInterrupt: raise
+                except Exception as e:
+                    log.warning(f"  Attempt {attempt+1}/{RETRIES}: {e}")
+                    if attempt == RETRIES-1:
+                        progress["failed"].append(rk)
+                        save_json(PROGRESS_FILE, progress)
+                    else:
+                        time.sleep(6)
+                        try:
+                            driver.get(BASE_URL); time.sleep(WAIT_PAGE)
+                            _ID_CACHE.clear(); _discover_ids(driver)
+                            pf_set(driver, _ID_CACHE.get('type_id','j_idt30_input'), 'A', wait=2)
+                        except Exception: pass
+            time.sleep(3)
+
+        if all_rows: save_excel(all_rows)
+        time.sleep(5)
+
+    return all_rows
+
+# ── Output ────────────────────────────────────────────────────────────────────
+COLUMNS = ["time_period","month","year","state_code","state_name","rto_code",
+           "rto_name","breakdown_type","maker","vehicle_class","vehicle_category",
+           "fuel","norms","registrations_count"]
+
+def save_excel(rows):
+    if not rows: return
+    df = pd.DataFrame(rows)
+    for c in COLUMNS:
+        if c not in df.columns: df[c]=""
+    df = df[COLUMNS]
+    df = df.assign(registrations_count=pd.to_numeric(df["registrations_count"],errors="coerce"))
+
+    xlsx = OUT_DIR/"vahan_registrations.xlsx"
+    with pd.ExcelWriter(xlsx,engine="openpyxl") as w:
+        df.to_excel(w,sheet_name="Registrations",index=False)
+        ws = w.sheets["Registrations"]
+        ws.freeze_panes = "A2"
+        widths = {"A":14,"B":8,"C":6,"D":12,"E":26,"F":10,"G":42,
+                  "H":18,"I":32,"J":22,"K":22,"L":20,"M":20,"N":20}
+        from openpyxl.styles import Font, PatternFill, Alignment
+        fill = PatternFill("solid",fgColor="1F4E79")
+        for cell in ws[1]:
+            cell.font = Font(bold=True,color="FFFFFF",size=10)
+            cell.fill = fill
+            cell.alignment = Alignment(horizontal="center")
+        for col,w_val in widths.items():
+            ws.column_dimensions[col].width = w_val
+    log.info(f"Saved {xlsx} ({len(df):,} rows)")
+    df.to_csv(OUT_DIR/"vahan_registrations.csv",index=False,encoding="utf-8-sig")
+    log.info(f"Saved CSV ({len(df):,} rows)")
+
+# ── Entry point ───────────────────────────────────────────────────────────────
+def main():
+    p = argparse.ArgumentParser(description="VAHAN Scraper v5")
+    p.add_argument("--browser",choices=["chrome","firefox"],default="chrome")
+    p.add_argument("--states",nargs="*",default=None)
+    p.add_argument("--headed",action="store_true")
+    p.add_argument("--reset",action="store_true",help="Clear progress and restart")
+    args = p.parse_args()
+
+    if args.reset and PROGRESS_FILE.exists():
+        PROGRESS_FILE.unlink(); log.info("Progress cleared.")
+
+    months   = months_list()
+    progress = load_json(PROGRESS_FILE,{"completed":[],"failed":[]})
+
+    log.info("="*65)
+    log.info("VAHAN Scraper v5")
+    log.info(f"Browser : {args.browser} ({'headed' if args.headed else 'headless'})")
+    log.info(f"Period  : {months[0]} to {months[-1]} ({len(months)} months)")
+    log.info(f"States  : {args.states or 'ALL'}")
+    log.info(f"Done    : {len(progress['completed'])} RTOs already scraped")
+    log.info("="*65)
+
+    driver = get_driver(args.browser, headed=args.headed)
+    all_rows = []
+    try:
+        driver.get(BASE_URL)
+        time.sleep(WAIT_PAGE); wait_jquery(driver)
+        log.info(f"Page loaded: {driver.title}")
+        all_rows = run(driver, args.states, months, progress)
+    except KeyboardInterrupt:
+        log.info("Interrupted — saving progress...")
+    except Exception as e:
+        log.exception(f"Fatal: {e}")
+    finally:
+        driver.quit()
+        log.info("Browser closed.")
+
+    if all_rows:
+        save_excel(all_rows)
+    else:
+        raw = load_json(RAW_FILE,[])
+        recovered = [r for e in raw for r in e.get("rows",[])]
+        if recovered:
+            log.info(f"Recovering {len(recovered):,} rows from raw file")
+            save_excel(recovered)
+
+    log.info(f"\nOutput  : {OUT_DIR.resolve()}")
+    log.info(f"Done    : {len(progress['completed'])} RTOs")
+    log.info(f"Failed  : {len(progress['failed'])} RTOs")
+    if progress["failed"]: log.info(f"Failed  : {progress['failed']}")
+
+    # ── Auto-format after scraping ─────────────────────────────────────────
+    raw_xlsx = OUT_DIR / "vahan_registrations.xlsx"
+    if raw_xlsx.exists():
+        try:
+            import importlib.util, datetime
+            formatter_path = Path(__file__).parent / "vahan_format.py"
+            if formatter_path.exists():
+                spec = importlib.util.spec_from_file_location("vahan_format", formatter_path)
+                fmt = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(fmt)
+
+                state_codes = args.states if args.states else None
+                if state_codes:
+                    codes = "_".join(sorted(s.upper() for s in state_codes))
+                else:
+                    try:
+                        import pandas as _pd
+                        codes = "_".join(sorted(_pd.read_excel(raw_xlsx,
+                            usecols=["state_code"])["state_code"].unique().tolist()))
+                    except Exception:
+                        codes = "ALL"
+
+                ts = datetime.datetime.now().strftime("%Y%m%d")
+                out_path = OUT_DIR / f"VAHAN_{codes}_{ts}_formatted.xlsx"
+                log.info("="*65)
+                log.info(f"Auto-formatting data → {out_path.name}")
+                log.info("="*65)
+                fmt.format_data(raw_xlsx, out_path, state_filter=state_codes)
+                log.info(f"Formatted report saved: {out_path.resolve()}")
+            else:
+                log.warning(f"vahan_format.py not found at {formatter_path} — skipping auto-format")
+                log.warning("Download vahan_format.py and place it in the same folder as this script.")
+        except Exception as _fe:
+            log.warning(f"Auto-format failed: {_fe} — raw data still saved to {raw_xlsx}")
+
+if __name__=="__main__":
+    main()

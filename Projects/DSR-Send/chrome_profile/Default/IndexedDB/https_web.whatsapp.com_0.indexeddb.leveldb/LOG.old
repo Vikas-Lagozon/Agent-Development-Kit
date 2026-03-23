@@ -1,0 +1,22 @@
+2026/03/18-15:55:20.340 1ff8 Reusing MANIFEST D:\Agent-Development-Kit\Projects\DSR-Send\chrome_profile\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/03/18-15:55:20.340 1ff8 Recovering log #88
+2026/03/18-15:55:20.375 1ff8 Reusing old log D:\Agent-Development-Kit\Projects\DSR-Send\chrome_profile\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000088.log 
+2026/03/18-15:55:27.450 481c Level-0 table #98: started
+2026/03/18-15:55:27.476 481c Level-0 table #98: 1207856 bytes OK
+2026/03/18-15:55:27.479 481c Delete type=0 #88
+2026/03/18-15:55:27.535 481c Compacting 1@1 + 6@2 files
+2026/03/18-15:55:27.616 481c Generated table #99@1: 50959 keys, 2216960 bytes
+2026/03/18-15:55:27.635 481c Generated table #100@1: 1496 keys, 2137976 bytes
+2026/03/18-15:55:27.655 481c Generated table #101@1: 1947 keys, 2142870 bytes
+2026/03/18-15:55:27.687 481c Generated table #102@1: 12103 keys, 2177718 bytes
+2026/03/18-15:55:27.752 481c Generated table #103@1: 37563 keys, 2230626 bytes
+2026/03/18-15:55:27.803 481c Generated table #104@1: 55365 keys, 1336702 bytes
+2026/03/18-15:55:27.803 481c Compacted 1@1 + 6@2 files => 12242852 bytes
+2026/03/18-15:55:27.805 481c compacted to: files[ 0 0 6 0 0 0 0 ]
+2026/03/18-15:55:27.806 481c Delete type=2 #90
+2026/03/18-15:55:27.806 481c Delete type=2 #91
+2026/03/18-15:55:27.806 481c Delete type=2 #92
+2026/03/18-15:55:27.806 481c Delete type=2 #93
+2026/03/18-15:55:27.806 481c Delete type=2 #94
+2026/03/18-15:55:27.807 481c Delete type=2 #95
+2026/03/18-15:55:27.807 481c Delete type=2 #98

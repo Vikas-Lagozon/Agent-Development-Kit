@@ -1,0 +1,1 @@
+# setup.py is not needed for this project as there are no dependencies
