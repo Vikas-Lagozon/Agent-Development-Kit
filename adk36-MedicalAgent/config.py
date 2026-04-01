@@ -1,10 +1,10 @@
 # config.py
 
 import os
-from dotenv import load_dotenv, find_dotenv
+from dotenv import load_dotenv
 
 # Load .env file
-load_dotenv(find_dotenv())
+load_dotenv()
 
 class Config:
     # ── Models ────────────────────────────────────────────────
@@ -12,6 +12,7 @@ class Config:
     # because the root agent uses NO tools (no function calling needed).
     MODEL: str = os.getenv("MODEL", "gemini-2.5-flash")
     RESEARCH_MODEL: str = os.getenv("RESEARCH_MODEL", "gemini-2.0-flash")
+    CODE_MODEL: str = os.getenv("CODE_MODEL", "gemini-2.0-flash")
     
     # -----------------------------
     # Gemini (API Key Mode)
@@ -59,3 +60,4 @@ class Config:
 
 # Create config instance
 config = Config()
+
